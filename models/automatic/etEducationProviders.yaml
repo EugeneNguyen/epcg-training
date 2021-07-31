@@ -1,0 +1,30 @@
+modelName: etEducationProviders
+fields:
+  id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: true
+    autoIncrement: false
+    comment: null
+  name:
+    type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+  createdAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+  updatedAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null

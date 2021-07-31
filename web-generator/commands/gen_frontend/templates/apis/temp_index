@@ -1,0 +1,15 @@
+import {gql} from "@apollo/client";
+
+const GET_{{modelName}} = gql`
+query ExampleQuery {
+  {{modelNameSnakeCase}}_get_all {
+      {{#fieldsArray}}
+      {{name}}
+      {{/fieldsArray}}
+  }
+}
+`;
+
+export {
+  GET_{{modelName}},
+};

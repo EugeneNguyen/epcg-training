@@ -1,0 +1,11 @@
+let db = require('../../database/models');
+
+let mutation = {
+  {{modelNameSnakeCase}}_add(parent, { data: { name } }, context, info) {
+    return db.{{modelName}}.create({
+      name,
+    });
+  },
+};
+
+module.exports = mutation;

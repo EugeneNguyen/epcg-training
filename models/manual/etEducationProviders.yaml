@@ -1,0 +1,11 @@
+modelName: etEducationProvider
+modelNameSnakeCase: et_education_provider
+fields:
+  id:
+    graphType: String
+  name:
+    graphType: String
+  createdAt:
+    graphType: String
+  updatedAt:
+    graphType: String

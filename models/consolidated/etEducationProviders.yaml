@@ -1,0 +1,68 @@
+modelName: etEducationProvider
+fields:
+  id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: true
+    autoIncrement: false
+    comment: null
+    graphType: String
+  name:
+    type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+  createdAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+  updatedAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+modelNameSnakeCase: et_education_provider
+fieldsArray:
+  - type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: true
+    autoIncrement: false
+    comment: null
+    graphType: String
+    name: id
+  - type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    name: name
+  - type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    name: createdAt
+  - type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    name: updatedAt
