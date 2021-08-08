@@ -10,7 +10,7 @@ export default function FormEtCourseTemplateEdit() {
   const history = useHistory();
 
   const [name, setname] = useState(null);
-  const [education_provider_id, seteducation_provider_id] = useState(null);
+  const [educationProviderId, seteducationProviderId] = useState(null);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -19,7 +19,7 @@ export default function FormEtCourseTemplateEdit() {
       variables: { id },
       onCompleted: (response) => {
         setname(response.et_course_template_get_by_id.name);
-        seteducation_provider_id(response.et_course_template_get_by_id.education_provider_id);
+        seteducationProviderId(response.et_course_template_get_by_id.educationProviderId);
       },
     }
   );
@@ -45,10 +45,10 @@ export default function FormEtCourseTemplateEdit() {
       />
       <Input
         type="text"
-        name="education_provider_id"
-        displayLabel="Education Provider Id"
-        value={education_provider_id}
-        onChange={(event) => seteducation_provider_id(event.target.value)}
+        name="educationProviderId"
+        displayLabel="Education Provider"
+        value={educationProviderId}
+        onChange={(event) => seteducationProviderId(event.target.value)}
       />
       <button type="submit" class="btn btn-primary">Submit</button>
     </Form>

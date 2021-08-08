@@ -5,7 +5,7 @@ query et_course_template_get_all {
   et_course_template_get_all {
     id
     name
-    education_provider_id
+    educationProviderId
     createdAt
     updatedAt
   }
@@ -17,7 +17,7 @@ query et_course_template_get_by_id($id: String) {
   et_course_template_get_by_id(id: $id) {
     id
     name
-    education_provider_id
+    educationProviderId
     createdAt
     updatedAt
   }
@@ -29,7 +29,7 @@ mutation et_course_template_add($data: EtCourseTemplateInput) {
   et_course_template_add(data: $data) {
     id
     name
-    education_provider_id
+    educationProviderId
     createdAt
     updatedAt
   }
@@ -41,7 +41,7 @@ mutation et_course_template_edit($id: String, $data: EtCourseTemplateInput) {
   et_course_template_edit(id: $id, data: $data) {
     id
     name
-    education_provider_id
+    educationProviderId
     createdAt
     updatedAt
   }

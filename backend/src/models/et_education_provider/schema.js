@@ -4,6 +4,8 @@ type EtEducationProvider {
   name: String
   createdAt: String
   updatedAt: String
+  courseTemplates: [EtCourseTemplate]
+  courseTemplatesCount: Int
 }
 
 input EtEducationProviderInput {

@@ -4,13 +4,13 @@ let mutation = {
   async et_course_template_add(parent, { data }, context, info) {
     return db.etCourseTemplate.create({
       name: data.name,
-      education_provider_id: data.education_provider_id,
+      educationProviderId: data.educationProviderId,
     });
   },
   async et_course_template_edit(parent, { id, data }, context, info) {
     const etCourseTemplate = await db.etCourseTemplate.findByPk(id);
     etCourseTemplate.name = data.name;
-    etCourseTemplate.education_provider_id = data.education_provider_id;
+    etCourseTemplate.educationProviderId = data.educationProviderId;
     await etCourseTemplate.save();
     await etCourseTemplate.reload();
 

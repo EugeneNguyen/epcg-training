@@ -28,7 +28,7 @@ fields:
     addForm: true
     editForm: true
     displayLabel: Name
-  education_provider_id:
+  educationProviderId:
     type: CHAR(36)
     allowNull: false
     defaultValue: null

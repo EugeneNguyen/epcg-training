@@ -7,10 +7,11 @@ fields:
   id:
     addForm: false
     editForm: false
+    link: /etCourseTemplate/${item.id}
   name:
     addForm: true
     editForm: true
-  education_provider_id:
+  educationProviderId:
     type: DROPDOWN
     addForm: true
     editForm: true
@@ -24,6 +25,6 @@ fields:
 relationships:
   - name: educationProvider
     type: many_to_one
-    self_field: education_provider_id
-    target_model: etEducationProviders
-    target_field: id
+    selfField: education_provider_id
+    targetModel: etEducationProviders
+    targetField: id

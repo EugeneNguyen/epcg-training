@@ -2,14 +2,14 @@ let type = `
 type EtCourseTemplate {
   id: String
   name: String
-  education_provider_id: String
+  educationProviderId: String
   createdAt: String
   updatedAt: String
 }
 
 input EtCourseTemplateInput {
   name: String
-  education_provider_id: String
+  educationProviderId: String
 }
 `;
 

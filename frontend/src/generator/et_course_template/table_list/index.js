@@ -22,7 +22,7 @@ export default function TableEtCourseTemplateList() {
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
-          <th scope="col">Education Provider Id</th>
+          <th scope="col">Education Provider</th>
           <th scope="col">Created At</th>
           <th scope="col">Updated At</th>
           <th scope="col">Action</th>
@@ -33,6 +33,7 @@ export default function TableEtCourseTemplateList() {
             <tr>
               <Cell
                 type="CHAR(36)"
+                link={`/etCourseTemplate/${item.id}`}
               >
                 {item.id}
               </Cell>
@@ -42,9 +43,9 @@ export default function TableEtCourseTemplateList() {
                 {item.name}
               </Cell>
               <Cell
-                type="CHAR(36)"
+                type="DROPDOWN"
               >
-                {item.education_provider_id}
+                {item.educationProviderId}
               </Cell>
               <Cell
                 type="DATETIME"

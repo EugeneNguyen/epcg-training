@@ -3,6 +3,12 @@ type <%= modelNameCapitalCamel %> {
 <% for (const field of fieldsArray) { -%>
   <%= field.name %>: <%= field.graphType %>
 <% } -%>
+<% for (const relationship of relationships) { -%>
+<%   if (relationship.type == "one_to_many") { -%>
+  <%= relationship.name %>: [<%= relationship.target.modelNameCapitalCamel %>]
+  <%= relationship.name %>Count: Int
+<%   } -%>
+<% } -%>
 }
 
 input <%= modelNameCapitalCamel %>Input {

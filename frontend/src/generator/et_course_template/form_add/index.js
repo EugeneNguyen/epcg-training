@@ -29,8 +29,8 @@ export default function FormEtCourseTemplateAdd() {
         />
         <Input
           type="text"
-          name="education_provider_id"
-          displayLabel="Education Provider Id"
+          name="educationProviderId"
+          displayLabel="Education Provider"
         />
       <button type="submit" class="btn btn-primary">Submit</button>
     </Form>

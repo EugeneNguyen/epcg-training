@@ -16,6 +16,7 @@ fields:
     addForm: false
     editForm: false
     displayLabel: Id
+    link: /etCourseTemplate/${item.id}
   name:
     type: VARCHAR(255)
     allowNull: false
@@ -28,8 +29,8 @@ fields:
     addForm: true
     editForm: true
     displayLabel: Name
-  education_provider_id:
-    type: CHAR(36)
+  educationProviderId:
+    type: DROPDOWN
     allowNull: false
     defaultValue: null
     primaryKey: false
@@ -39,7 +40,7 @@ fields:
     showTable: true
     addForm: true
     editForm: true
-    displayLabel: Education Provider Id
+    displayLabel: Education Provider
   createdAt:
     type: DATETIME
     allowNull: false
@@ -64,6 +65,12 @@ fields:
     addForm: false
     editForm: false
     displayLabel: Updated At
+relationships:
+  - name: educationProvider
+    type: many_to_one
+    selfField: education_provider_id
+    targetModel: etEducationProviders
+    targetField: id
 fieldsArray:
   - type: CHAR(36)
     allowNull: false
@@ -76,6 +83,7 @@ fieldsArray:
     addForm: false
     editForm: false
     displayLabel: Id
+    link: /etCourseTemplate/${item.id}
     name: id
   - type: VARCHAR(255)
     allowNull: false
@@ -89,7 +97,7 @@ fieldsArray:
     editForm: true
     displayLabel: Name
     name: name
-  - type: CHAR(36)
+  - type: DROPDOWN
     allowNull: false
     defaultValue: null
     primaryKey: false
@@ -99,8 +107,8 @@ fieldsArray:
     showTable: true
     addForm: true
     editForm: true
-    displayLabel: Education Provider Id
-    name: education_provider_id
+    displayLabel: Education Provider
+    name: educationProviderId
   - type: DATETIME
     allowNull: false
     defaultValue: null

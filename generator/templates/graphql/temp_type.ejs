@@ -1,0 +1,26 @@
+let db = require('../../database/models');
+
+let type = {
+  <%= modelNameCapitalCamel %>: {
+<% for (const relationship of relationships) { -%>
+<%   if (relationship.type == "one_to_many") { -%>
+    <%= relationship.name %>(parent, args, context, info) {
+      return db.<%= relationship.target.modelName %>.findAll({
+        where: {
+          <%= relationship.target.linkedField %>: parent.<%= relationship.self.linkedField %>
+        }
+      });
+    },
+    <%= relationship.name %>Count(parent, args, context, info) {
+      return db.<%= relationship.target.modelName %>.count({
+        where: {
+          <%= relationship.target.linkedField %>: parent.<%= relationship.self.linkedField %>
+        }
+      });
+    },
+<%   } -%>
+<% } -%>
+  },
+};
+
+module.exports = type;

@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.UUIDV4,
     },
     name: DataTypes.STRING,
-    education_provider_id: DataTypes.STRING
+    educationProviderId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'etCourseTemplate',

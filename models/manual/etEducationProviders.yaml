@@ -14,3 +14,12 @@ fields:
     addForm: false
     editForm: false
     dateFormat: lll
+relationships:
+  - type: one_to_many
+    name: courseTemplates
+    self:
+      linkedField: id
+    target:
+      modelName: etCourseTemplate
+      modelNameCapitalCamel: EtCourseTemplate
+      linkedField: educationProviderId

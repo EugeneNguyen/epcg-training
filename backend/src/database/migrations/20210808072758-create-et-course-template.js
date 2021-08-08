@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      education_provider_id: {
+      educationProviderId: {
         type: Sequelize.UUID,
         allowNull: false,
       },

@@ -13,7 +13,7 @@ export default function ViewEtCourseTemplateInfo() {
 
   const [id, setid] = useState(null);
   const [name, setname] = useState(null);
-  const [education_provider_id, seteducation_provider_id] = useState(null);
+  const [educationProviderId, seteducationProviderId] = useState(null);
   const [createdAt, setcreatedAt] = useState(null);
   const [updatedAt, setupdatedAt] = useState(null);
 
@@ -25,7 +25,7 @@ export default function ViewEtCourseTemplateInfo() {
       onCompleted: (response) => {
         setid(response.et_course_template_get_by_id.id);
         setname(response.et_course_template_get_by_id.name);
-        seteducation_provider_id(response.et_course_template_get_by_id.education_provider_id);
+        seteducationProviderId(response.et_course_template_get_by_id.educationProviderId);
         setcreatedAt(response.et_course_template_get_by_id.createdAt);
         setupdatedAt(response.et_course_template_get_by_id.updatedAt);
       },
@@ -56,9 +56,9 @@ export default function ViewEtCourseTemplateInfo() {
           />
           <Input
             type="text"
-            name="education_provider_id"
-            displayLabel="Education Provider Id"
-            value={education_provider_id}
+            name="educationProviderId"
+            displayLabel="Education Provider"
+            value={educationProviderId}
             disabled
           />
           <Input

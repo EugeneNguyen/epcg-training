@@ -30,6 +30,7 @@ for (const model of models) {
   typeDefsObject.type += model.schema.type;
   typeDefsObject.query += model.schema.query;
   typeDefsObject.mutation += model.schema.mutation;
+  resolvers = Object.assign(resolvers, model.type);
 }
 
 let typeDefs = `

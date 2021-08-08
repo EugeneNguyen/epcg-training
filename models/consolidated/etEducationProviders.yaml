@@ -55,6 +55,15 @@ fields:
     editForm: false
     displayLabel: Updated At
     dateFormat: lll
+relationships:
+  - type: one_to_many
+    name: courseTemplates
+    self:
+      linkedField: id
+    target:
+      modelName: etCourseTemplate
+      modelNameCapitalCamel: EtCourseTemplate
+      linkedField: educationProviderId
 fieldsArray:
   - type: CHAR(36)
     allowNull: false
