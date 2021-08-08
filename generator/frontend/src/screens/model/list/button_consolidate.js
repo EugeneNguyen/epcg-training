@@ -1,9 +1,10 @@
 import API from '../../../apis';
 import {useMutation} from "@apollo/client";
+import {toast} from 'react-toastify';
 
 export default function ButtonConsolidate({model}) {
   const [consolidate] = useMutation(API.model.CONSOLIDATE, {
-    onCompleted: () => alert("Done"),
+    onCompleted: () => toast.success("Done"),
     variables: {
       model
     }

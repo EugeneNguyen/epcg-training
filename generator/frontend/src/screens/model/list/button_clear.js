@@ -1,9 +1,10 @@
 import API from '../../../apis';
 import {useMutation} from "@apollo/client";
+import {toast} from 'react-toastify';
 
 export default function ButtonClear() {
   const [clear] = useMutation(API.model.CLEAR, {
-    onCompleted: () => alert("Done"),
+    onCompleted: () => toast.success("Done"),
   });
 
   return (

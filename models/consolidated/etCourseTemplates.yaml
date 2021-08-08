@@ -49,8 +49,8 @@ fields:
     comment: null
     graphType: String
     showTable: true
-    addForm: true
-    editForm: true
+    addForm: false
+    editForm: false
     displayLabel: Created At
   updatedAt:
     type: DATETIME
@@ -61,8 +61,8 @@ fields:
     comment: null
     graphType: String
     showTable: true
-    addForm: true
-    editForm: true
+    addForm: false
+    editForm: false
     displayLabel: Updated At
 fieldsArray:
   - type: CHAR(36)
@@ -109,8 +109,8 @@ fieldsArray:
     comment: null
     graphType: String
     showTable: true
-    addForm: true
-    editForm: true
+    addForm: false
+    editForm: false
     displayLabel: Created At
     name: createdAt
   - type: DATETIME
@@ -121,7 +121,7 @@ fieldsArray:
     comment: null
     graphType: String
     showTable: true
-    addForm: true
-    editForm: true
+    addForm: false
+    editForm: false
     displayLabel: Updated At
     name: updatedAt

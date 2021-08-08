@@ -1,9 +1,10 @@
 import API from '../../../apis';
 import {useMutation} from "@apollo/client";
+import {toast} from 'react-toastify';
 
 export default function ButtonGenerateGraphql({model}) {
   const [generateGraphql] = useMutation(API.model.GENERATE_GRAPHQL, {
-    onCompleted: () => alert("Done"),
+    onCompleted: () => toast.success("Done"),
     variables: {
       model
     }

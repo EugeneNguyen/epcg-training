@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const lodash = require('lodash');
-const Mustache = require('mustache');
+const ejs = require('ejs');
 const constant = require('../../../constant');
 const helpers = require('../../../helpers');
 
@@ -42,8 +42,8 @@ function readDir(dirPath) {
 
 function generate(templatePath, data) {
   const template = loadTemplate(templatePath);
-  const content = Mustache.render(template, data);
-  saveJSFile(data.modelName, templatePath.replace(templatesFolder, "").replace("temp_", ""), content);
+  const content = ejs.render(template, data);
+  saveJSFile(data.modelName, templatePath.replace(templatesFolder, "").replace("temp_", "").replace(".ejs", ""), content);
 }
 
 function loadTemplate(file) {

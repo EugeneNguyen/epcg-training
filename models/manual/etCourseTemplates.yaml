@@ -1,0 +1,29 @@
+modelName: etCourseTemplate
+modelNameSnake: et_course_template
+modelNameCapitalCamel: EtCourseTemplate
+modelNameUpSnake: ET_COURSE_TEMPLATE
+baseUrl: etCourseTemplate
+fields:
+  id:
+    addForm: false
+    editForm: false
+  name:
+    addForm: true
+    editForm: true
+  education_provider_id:
+    type: DROPDOWN
+    addForm: true
+    editForm: true
+    displayLabel: Education Provider
+  createdAt:
+    addForm: false
+    editForm: false
+  updatedAt:
+    addForm: false
+    editForm: false
+relationships:
+  - name: educationProvider
+    type: many_to_one
+    self_field: education_provider_id
+    target_model: etEducationProviders
+    target_field: id

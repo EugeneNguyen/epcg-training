@@ -1,9 +1,10 @@
 import API from '../../../apis';
 import {useMutation} from "@apollo/client";
+import {toast} from 'react-toastify';
 
 export default function ButtonGenerateFrontend({model}) {
   const [generateFrontend] = useMutation(API.model.GENERATE_FRONTEND, {
-    onCompleted: () => alert("Done"),
+    onCompleted: () => toast.success("Done"),
     variables: {
       model
     }

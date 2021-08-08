@@ -1,9 +1,10 @@
 import API from '../../../apis';
 import {useMutation} from "@apollo/client";
+import {toast} from 'react-toastify';
 
 export default function ButtonFetch() {
   const [fetch] = useMutation(API.model.FETCH, {
-    onCompleted: () => alert("Done"),
+    onCompleted: () => toast.success("Done"),
   });
 
   return (

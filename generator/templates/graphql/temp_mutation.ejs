@@ -1,17 +1,20 @@
 let db = require('../../database/models');
 
 let mutation = {
-  async {{modelNameSnake}}_add(parent, { data }, context, info) {
-    return db.{{modelName}}.create({
-      {{#fieldsArray}}
-      {{#addForm}}
-      {{name}}: data.{{name}},
-      {{/addForm}}
-      {{/fieldsArray}}
+  async <%= modelNameSnake %>_add(parent, { data }, context, info) {
+    return db.<%= modelName %>.create({<%
+      for (const field of fieldsArray) {
+        if (field.addForm) {
+      %>
+      <%= field.name %>: data.<%= field.name -%>
+      <%
+        }
+      }
+      %>
     });
   },
-  async {{modelNameSnake}}_edit(parent, { id, data }, context, info) {
-    const {{modelName}} = await db.{{modelName}}.findByPk(id);
+  async <%= modelNameSnake  %>_edit(parent, { id, data }, context, info) {
+    const <%= modelName %> = await db.<%= modelName %>.findByPk(id);
     {{#fieldsArray}}
     {{#editForm}}
     {{modelName}}.{{name}} = data.{{name}};
