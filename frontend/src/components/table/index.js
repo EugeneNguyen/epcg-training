@@ -1,4 +1,6 @@
-function Table () {
+import Cell from "./cell";
+
+export default function Table () {
   return (
     <table className="table">
       <thead>
@@ -30,6 +32,4 @@ function Table () {
       </tbody>
     </table>
   )
-};
-
-export default Table;
+}

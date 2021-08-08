@@ -1,0 +1,1 @@
+yarn --cwd=frontend start & yarn --cwd=backend start && fg
