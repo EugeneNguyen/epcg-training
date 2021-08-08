@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('etEducationProviders', {
+    await queryInterface.createTable('etCourseTemplates', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -10,6 +10,10 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      education_provider_id: {
+        type: Sequelize.UUID,
         allowNull: false,
       },
       createdAt: {
@@ -23,6 +27,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('etEducationProviders');
+    await queryInterface.dropTable('etCourseTemplates');
   }
 };
