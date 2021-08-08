@@ -5,12 +5,12 @@ import { Alert } from 'reactstrap';
 import API from '../apis';
 import {Form, Input} from '../../../components/form';
 
-export default function Form{{modelNameCapitalCamel}}Add() {
+export default function Form<%= modelNameCapitalCamel %>Add() {
   const history = useHistory();
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
-      history.push('/{{baseUrl}}');
+      history.push('/<%= baseUrl %>');
     }
   });
 
@@ -22,15 +22,15 @@ export default function Form{{modelNameCapitalCamel}}Add() {
     <>
       {error && <Alert color="danger">{error}</Alert>}
       <Form onSubmitParams={handleSubmit}>
-        {{#fieldsArray}}
-        {{#addForm}}
+<% for (const field of fieldsArray) { -%>
+<%   if (field.addForm) { -%>
         <Input
           type="text"
-          name="{{name}}"
-          displayLabel="{{displayLabel}}"
+          name="<%= field.name %>"
+          displayLabel="<%= field.displayLabel %>"
         />
-        {{/addForm}}
-        {{/fieldsArray}}
+<%   } -%>
+<% } -%>
       <button type="submit" class="btn btn-primary">Submit</button>
     </Form>
     </>

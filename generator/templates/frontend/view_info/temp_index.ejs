@@ -7,13 +7,13 @@ import API from '../apis';
 import {AlertError} from '../../../components/alert';
 import {Form, Input} from '../../../components/form';
 
-export default function View{{modelNameCapitalCamel}}Info() {
+export default function View<%= modelNameCapitalCamel %>Info() {
   const { id: objectId } = useParams();
   const history = useHistory();
 
-  {{#fieldsArray}}
-  const [{{name}}, set{{name}}] = useState(null);
-  {{/fieldsArray}}
+<% for (const field of fieldsArray) { -%>
+  const [<%= field.name %>, set<%= field.name %>] = useState(null);
+<% } -%>
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -21,9 +21,9 @@ export default function View{{modelNameCapitalCamel}}Info() {
       ...API.DEFAULT_OPTIONS,
       variables: { id: objectId },
       onCompleted: (response) => {
-        {{#fieldsArray}}
-        set{{name}}(response.{{modelNameSnake}}_get_by_id.{{name}});
-        {{/fieldsArray}}
+<% for (const field of fieldsArray) { -%>
+        set<%= field.name %>(response.<%= modelNameSnake %>_get_by_id.<%= field.name %>);
+<% } -%>
       },
     }
   );
@@ -36,15 +36,15 @@ export default function View{{modelNameCapitalCamel}}Info() {
     <Row>
       <Col sm={6}>
         <Form>
-          {{#fieldsArray}}
+<% for (const field of fieldsArray) { -%>
           <Input
             type="text"
-            name="{{name}}"
-            displayLabel="{{displayLabel}}"
-            value={ {{name}} }
+            name="<%= field.name %>"
+            displayLabel="<%= field.displayLabel %>"
+            value={<%= field.name %>}
             disabled
           />
-          {{/fieldsArray}}
+<% } -%>
         </Form>
       </Col>
     </Row>

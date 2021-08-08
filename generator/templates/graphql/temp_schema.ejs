@@ -1,22 +1,16 @@
 let type = `
-type <%= modelNameCapitalCamel %> {<%
-  for (const field of fieldsArray) {
-  %>
-  <%= field.name %>: <%= field.graphType -%>
-  <%
-  }
-  %>
+type <%= modelNameCapitalCamel %> {
+<% for (const field of fieldsArray) { -%>
+  <%= field.name %>: <%= field.graphType %>
+<% } -%>
 }
 
-input <%= modelNameCapitalCamel %>Input {<%
-  for (const field of fieldsArray) {
-    if (field.addForm) {
-  %>
-  <%= field.name %>: <%= field.graphType -%>
-  <%
-    }
-  }
-  %>
+input <%= modelNameCapitalCamel %>Input {
+<% for (const field of fieldsArray) { -%>
+<%   if (field.addForm) { -%>
+  <%= field.name %>: <%= field.graphType %>
+<%   } -%>
+<% } -%>
 }
 `;
 

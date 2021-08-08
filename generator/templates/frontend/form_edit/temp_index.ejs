@@ -3,18 +3,17 @@ import {useParams, useHistory} from "react-router-dom";
 import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
-import {AlertError} from '../../../components/alert';
 import {Form, Input} from '../../../components/form';
 
-export default function Form{{modelNameCapitalCamel}}Edit() {
+export default function Form<%= modelNameCapitalCamel %>Edit() {
   const { id } = useParams();
   const history = useHistory();
 
-  {{#fieldsArray}}
-  {{#addForm}}
-  const [{{name}}, set{{name}}] = useState(null);
-  {{/addForm}}
-  {{/fieldsArray}}
+<% for (const field of fieldsArray) { -%>
+<%   if (field.editForm) { -%>
+  const [<%= field.name %>, set<%= field.name %>] = useState(null);
+<%   } -%>
+<% } -%>
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -22,18 +21,18 @@ export default function Form{{modelNameCapitalCamel}}Edit() {
       ...API.DEFAULT_OPTIONS,
       variables: { id },
       onCompleted: (response) => {
-        {{#fieldsArray}}
-        {{#addForm}}
-        set{{name}}(response.{{modelNameSnake}}_get_by_id.{{name}});
-        {{/addForm}}
-        {{/fieldsArray}}
+<% for (const field of fieldsArray) { -%>
+<%   if (field.editForm) { -%>
+        set<%= field.name %>(response.<%= modelNameSnake %>_get_by_id.<%= field.name %>);
+<%   } -%>
+<% } -%>
       },
     }
   );
   const [edit] = useMutation(API.EDIT, {
     onCompleted: () => {
       toast.success('Edit completed');
-      history.push('/{{baseUrl}}');
+      history.push('/<%= baseUrl %>');
     }
   });
 
@@ -43,17 +42,17 @@ export default function Form{{modelNameCapitalCamel}}Edit() {
 
   return (
     <Form onSubmitParams={(params) => edit({ variables: { id, data: params } })}>
-      {{#fieldsArray}}
-      {{#addForm}}
+<% for (const field of fieldsArray) { -%>
+<%   if (field.editForm) { -%>
       <Input
         type="text"
-        name="{{name}}"
-        displayLabel="{{displayLabel}}"
-        value={ {{name}} }
-        onChange={(event) => set{{name}}(event.target.value)}
+        name="<%= field.name %>"
+        displayLabel="<%= field.displayLabel %>"
+        value={<%= field.name %>}
+        onChange={(event) => set<%= field.name %>(event.target.value)}
       />
-      {{/addForm}}
-      {{/fieldsArray}}
+<%   } -%>
+<% } -%>
       <button type="submit" class="btn btn-primary">Submit</button>
     </Form>
   );

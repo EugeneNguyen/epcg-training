@@ -7,7 +7,7 @@ import {ButtonLink} from '../../../components/button';
 import Cell from '../../../components/table/cell';
 import ButtonDelete from './button_delete';
 
-export default function Table{{modelNameCapitalCamel}}List() {
+export default function Table<%= modelNameCapitalCamel %>List() {
   const { loading, error, data, refetch } = useQuery(API.ALL, API.DEFAULT_OPTIONS);
 
   return (
@@ -15,31 +15,35 @@ export default function Table{{modelNameCapitalCamel}}List() {
       {error && <AlertError error={error} refetch={refetch} />}
       <Button onClick={refetch} size="sm" color="primary">Reload</Button>
       {' '}
-      <ButtonLink to="/{{baseUrl}}/add" size="sm" color="primary">Add</ButtonLink>
+      <ButtonLink to="/<%= baseUrl %>/add" size="sm" color="primary">Add</ButtonLink>
 
       <Table>
         <thead>
         <tr>
-          {{#fieldsArray}}
-          <th scope="col">{{displayLabel}}</th>
-          {{/fieldsArray}}
+<% for (const field of fieldsArray) { -%>
+          <th scope="col"><%= field.displayLabel %></th>
+<% } -%>
           <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-          {data && data.{{modelNameSnake}}_get_all.map(item => (
+          {data && data.<%= modelNameSnake %>_get_all.map(item => (
             <tr>
-              {{#fieldsArray}}
+<% for (const field of fieldsArray) { -%>
               <Cell
-                type="{{type}}"
-                {{#dateFormat}}dateFormat="{{dateFormat}}"{{/dateFormat}}
-                {{#link}}link={`{{{link}}}`}{{/link}}
+                type="<%= field.type %>"
+<%   if (field.dateFormat) { -%>
+                dateFormat="<%= field.dateFormat %>"
+<%   } -%>
+<%   if (field.link) { -%>
+                link={`<%= field.link %>`}
+<%   } -%>
               >
-                {item.{{name}}}
+                {item.<%= field.name %>}
               </Cell>
-              {{/fieldsArray}}
+<% } -%>
               <td>
-                <ButtonLink to={`/{{baseUrl}}/${item.id}/edit`} color="primary" size="sm">Edit</ButtonLink>
+                <ButtonLink to={`/<%= baseUrl %>/${item.id}/edit`} color="primary" size="sm">Edit</ButtonLink>
                 {' '}
                 <ButtonDelete id={item.id} didDelete={refetch} color="danger" size="sm">Delete</ButtonDelete>
               </td>

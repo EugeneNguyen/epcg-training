@@ -41,7 +41,7 @@ function readDir(dirPath) {
 function generate(templatePath, data) {
   const template = loadTemplate(templatePath);
   const content = ejs.render(template, data);
-  saveJSFile(data.modelName, templatePath.replace(templatesFolder, "").replace("temp_", "").replace("temp_", ".ejs"), content);
+  saveJSFile(data.modelName, templatePath.replace(templatesFolder, "").replace("temp_", "").replace(".ejs", ""), content);
 }
 
 function loadTemplate(file) {
