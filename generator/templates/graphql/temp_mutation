@@ -1,0 +1,33 @@
+let db = require('../../database/models');
+
+let mutation = {
+  async {{modelNameSnake}}_add(parent, { data }, context, info) {
+    return db.{{modelName}}.create({
+      {{#fieldsArray}}
+      {{#addForm}}
+      {{name}}: data.{{name}},
+      {{/addForm}}
+      {{/fieldsArray}}
+    });
+  },
+  async {{modelNameSnake}}_edit(parent, { id, data }, context, info) {
+    const {{modelName}} = await db.{{modelName}}.findByPk(id);
+    {{#fieldsArray}}
+    {{#editForm}}
+    {{modelName}}.{{name}} = data.{{name}};
+    {{/editForm}}
+    {{/fieldsArray}}
+    await {{modelName}}.save();
+    await {{modelName}}.reload();
+
+    return {{modelName}};
+  },
+  async {{modelNameSnake}}_delete(parent, { id }, context, info) {
+    const {{modelName}} = await db.{{modelName}}.findByPk(id);
+    await {{modelName}}.destroy();
+    return true;
+  },
+
+};
+
+module.exports = mutation;

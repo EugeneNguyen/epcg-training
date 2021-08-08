@@ -1,0 +1,60 @@
+import {useMutation, useQuery} from "@apollo/client";
+import {useParams, useHistory} from "react-router-dom";
+import {useState} from "react";
+import {toast} from 'react-toastify';
+import API from '../apis';
+import {AlertError} from '../../../components/alert';
+import {Form, Input} from '../../../components/form';
+
+export default function Form{{modelNameCapitalCamel}}Edit() {
+  const { id } = useParams();
+  const history = useHistory();
+
+  {{#fieldsArray}}
+  {{#addForm}}
+  const [{{name}}, set{{name}}] = useState(null);
+  {{/addForm}}
+  {{/fieldsArray}}
+
+  const { loading, error, data, refetch } = useQuery(
+    API.GET_BY_ID,
+    {
+      ...API.DEFAULT_OPTIONS,
+      variables: { id },
+      onCompleted: (response) => {
+        {{#fieldsArray}}
+        {{#addForm}}
+        set{{name}}(response.{{modelNameSnake}}_get_by_id.{{name}});
+        {{/addForm}}
+        {{/fieldsArray}}
+      },
+    }
+  );
+  const [edit] = useMutation(API.EDIT, {
+    onCompleted: () => {
+      toast.success('Edit completed');
+      history.push('/{{baseUrl}}');
+    }
+  });
+
+  if (loading) return "Loading ...";
+  if (error) return "Error";
+  if (!data) return "No data";
+
+  return (
+    <Form onSubmitParams={(params) => edit({ variables: { id, data: params } })}>
+      {{#fieldsArray}}
+      {{#addForm}}
+      <Input
+        type="text"
+        name="{{name}}"
+        displayLabel="{{displayLabel}}"
+        value={ {{name}} }
+        onChange={(event) => set{{name}}(event.target.value)}
+      />
+      {{/addForm}}
+      {{/fieldsArray}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </Form>
+  );
+}

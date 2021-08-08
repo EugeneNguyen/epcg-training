@@ -1,0 +1,12 @@
+let db = require('../../database/models');
+
+let query = {
+  {{modelNameSnake}}_get_all(parent, args, context, info) {
+    return db.{{modelName}}.findAll();
+  },
+  {{modelNameSnake}}_get_by_id(parent, {id}, context, info) {
+    return db.{{modelName}}.findByPk(id);
+  },
+};
+
+module.exports = query;

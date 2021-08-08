@@ -1,0 +1,61 @@
+import {gql, useQuery} from "@apollo/client";
+
+const ALL = gql`
+query {{modelNameSnake}}_get_all {
+  {{modelNameSnake}}_get_all {
+    {{#fieldsArray}}
+    {{name}}
+    {{/fieldsArray}}
+  }
+}
+`;
+
+const GET_BY_ID = gql`
+query {{modelNameSnake}}_get_by_id($id: String) {
+  {{modelNameSnake}}_get_by_id(id: $id) {
+    {{#fieldsArray}}
+    {{name}}
+    {{/fieldsArray}}
+  }
+}
+`;
+
+const ADD = gql`
+mutation {{modelNameSnake}}_add($data: {{modelNameCapitalCamel}}Input) {
+  {{modelNameSnake}}_add(data: $data) {
+    {{#fieldsArray}}
+    {{name}}
+    {{/fieldsArray}}
+  }
+}
+`;
+
+const EDIT = gql`
+mutation {{modelNameSnake}}_edit($id: String, $data: {{modelNameCapitalCamel}}Input) {
+  {{modelNameSnake}}_edit(id: $id, data: $data) {
+    {{#fieldsArray}}
+    {{name}}
+    {{/fieldsArray}}
+  }
+}
+`;
+
+const DELETE = gql`
+mutation {{modelNameSnake}}_delete($id: String) {
+  {{modelNameSnake}}_delete(id: $id)
+}
+`;
+
+const DEFAULT_OPTIONS = {
+  notifyOnNetworkStatusChange: true,
+  fetchPolicy: "cache-and-network",
+}
+
+export default {
+  ALL,
+  GET_BY_ID,
+  ADD,
+  EDIT,
+  DELETE,
+  DEFAULT_OPTIONS,
+};
