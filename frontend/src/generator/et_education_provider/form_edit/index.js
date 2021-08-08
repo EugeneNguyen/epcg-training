@@ -3,7 +3,6 @@ import {useParams, useHistory} from "react-router-dom";
 import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
-import {AlertError} from '../../../components/alert';
 import {Form, Input} from '../../../components/form';
 
 export default function FormEtEducationProviderEdit() {
@@ -39,7 +38,7 @@ export default function FormEtEducationProviderEdit() {
         type="text"
         name="name"
         displayLabel="Name"
-        value={ name }
+        value={name}
         onChange={(event) => setname(event.target.value)}
       />
       <button type="submit" class="btn btn-primary">Submit</button>

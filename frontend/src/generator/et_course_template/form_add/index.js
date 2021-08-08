@@ -32,16 +32,6 @@ export default function FormEtCourseTemplateAdd() {
           name="education_provider_id"
           displayLabel="Education Provider Id"
         />
-        <Input
-          type="text"
-          name="createdAt"
-          displayLabel="Created At"
-        />
-        <Input
-          type="text"
-          name="updatedAt"
-          displayLabel="Updated At"
-        />
       <button type="submit" class="btn btn-primary">Submit</button>
     </Form>
     </>

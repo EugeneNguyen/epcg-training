@@ -1,4 +1,4 @@
-import {gql, useQuery} from "@apollo/client";
+import {gql} from "@apollo/client";
 
 const ALL = gql`
 query et_course_template_get_all {

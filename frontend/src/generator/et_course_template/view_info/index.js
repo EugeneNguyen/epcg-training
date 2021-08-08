@@ -44,35 +44,35 @@ export default function ViewEtCourseTemplateInfo() {
             type="text"
             name="id"
             displayLabel="Id"
-            value={ id }
+            value={id}
             disabled
           />
           <Input
             type="text"
             name="name"
             displayLabel="Name"
-            value={ name }
+            value={name}
             disabled
           />
           <Input
             type="text"
             name="education_provider_id"
             displayLabel="Education Provider Id"
-            value={ education_provider_id }
+            value={education_provider_id}
             disabled
           />
           <Input
             type="text"
             name="createdAt"
             displayLabel="Created At"
-            value={ createdAt }
+            value={createdAt}
             disabled
           />
           <Input
             type="text"
             name="updatedAt"
             displayLabel="Updated At"
-            value={ updatedAt }
+            value={updatedAt}
             disabled
           />
         </Form>
