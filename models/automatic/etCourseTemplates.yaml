@@ -1,8 +1,8 @@
-modelName: etEducationProvider
-modelNameSnake: et_education_provider
-modelNameCapitalCamel: EtEducationProvider
-modelNameUpSnake: ET_EDUCATION_PROVIDER
-baseUrl: etEducationProvider
+modelName: etCourseTemplate
+modelNameSnake: et_course_template
+modelNameCapitalCamel: EtCourseTemplate
+modelNameUpSnake: ET_COURSE_TEMPLATE
+baseUrl: etCourseTemplate
 fields:
   id:
     type: CHAR(36)
@@ -28,6 +28,18 @@ fields:
     addForm: true
     editForm: true
     displayLabel: Name
+  education_provider_id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    showTable: true
+    addForm: true
+    editForm: true
+    displayLabel: Education Provider Id
   createdAt:
     type: DATETIME
     allowNull: false

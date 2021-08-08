@@ -1,8 +1,8 @@
-modelName: etEducationProvider
-modelNameSnake: et_education_provider
-modelNameCapitalCamel: EtEducationProvider
-modelNameUpSnake: ET_EDUCATION_PROVIDER
-baseUrl: etEducationProvider
+modelName: etCourseTemplate
+modelNameSnake: et_course_template
+modelNameCapitalCamel: EtCourseTemplate
+modelNameUpSnake: ET_COURSE_TEMPLATE
+baseUrl: etCourseTemplate
 fields:
   id:
     type: CHAR(36)
@@ -16,7 +16,6 @@ fields:
     addForm: false
     editForm: false
     displayLabel: Id
-    link: /etEducationProvider/${item.id}
   name:
     type: VARCHAR(255)
     allowNull: false
@@ -29,6 +28,18 @@ fields:
     addForm: true
     editForm: true
     displayLabel: Name
+  education_provider_id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    showTable: true
+    addForm: true
+    editForm: true
+    displayLabel: Education Provider Id
   createdAt:
     type: DATETIME
     allowNull: false
@@ -38,10 +49,9 @@ fields:
     comment: null
     graphType: String
     showTable: true
-    addForm: false
-    editForm: false
+    addForm: true
+    editForm: true
     displayLabel: Created At
-    dateFormat: lll
   updatedAt:
     type: DATETIME
     allowNull: false
@@ -51,10 +61,9 @@ fields:
     comment: null
     graphType: String
     showTable: true
-    addForm: false
-    editForm: false
+    addForm: true
+    editForm: true
     displayLabel: Updated At
-    dateFormat: lll
 fieldsArray:
   - type: CHAR(36)
     allowNull: false
@@ -67,7 +76,6 @@ fieldsArray:
     addForm: false
     editForm: false
     displayLabel: Id
-    link: /etEducationProvider/${item.id}
     name: id
   - type: VARCHAR(255)
     allowNull: false
@@ -81,6 +89,18 @@ fieldsArray:
     editForm: true
     displayLabel: Name
     name: name
+  - type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    graphType: String
+    showTable: true
+    addForm: true
+    editForm: true
+    displayLabel: Education Provider Id
+    name: education_provider_id
   - type: DATETIME
     allowNull: false
     defaultValue: null
@@ -89,10 +109,9 @@ fieldsArray:
     comment: null
     graphType: String
     showTable: true
-    addForm: false
-    editForm: false
+    addForm: true
+    editForm: true
     displayLabel: Created At
-    dateFormat: lll
     name: createdAt
   - type: DATETIME
     allowNull: false
@@ -102,8 +121,7 @@ fieldsArray:
     comment: null
     graphType: String
     showTable: true
-    addForm: false
-    editForm: false
+    addForm: true
+    editForm: true
     displayLabel: Updated At
-    dateFormat: lll
     name: updatedAt

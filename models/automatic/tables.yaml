@@ -1,3 +1,4 @@
 tables:
   - SequelizeMeta
+  - etCourseTemplates
   - etEducationProviders
