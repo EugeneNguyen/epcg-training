@@ -1,9 +1,0 @@
-let db = require('../../database/models');
-
-let query = {
-  {{modelNameSnakeCase}}_get_all(parent, args, context, info) {
-    return db.{{modelName}}.findAll();
-  },
-};
-
-module.exports = query;
