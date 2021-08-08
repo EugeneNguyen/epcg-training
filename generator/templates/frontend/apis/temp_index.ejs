@@ -20,6 +20,18 @@ query <%= modelNameSnake %>_get_by_id($id: String) {
 }
 `;
 
+<% for (const relationship of relationships) { -%>
+  <%   if (relationship.type == "one_to_many") { -%>
+const GET_<%= relationship.target.modelNameUpSnake %> = qgl`
+query <%= modelNameSnake %>_get_by_id($id: String) {
+  <%= modelNameSnake %>_get_by_id(id: $id) {
+
+  }
+}
+`;
+  <%   } -%>
+<% } -%>
+
 const ADD = gql`
 mutation <%= modelNameSnake %>_add($data: <%= modelNameCapitalCamel %>Input) {
   <%= modelNameSnake %>_add(data: $data) {

@@ -9,7 +9,7 @@ const UTF8 = 'utf8';
 const templatesFolder = '../../../../../templates/frontend';
 
 function execute(table) {
-  const auto_data = helpers.yml.read(constant.modelPath(`consolidated/${table}.yaml`));
+  const auto_data = helpers.yml.read(constant.modelPath(`04_consolidated/${table}.yaml`));
   createFolder(auto_data);
   loadTemplates(auto_data);
 }

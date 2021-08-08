@@ -6,7 +6,7 @@ async function fetch() {
   const tableObj = await sequelize.getQueryInterface().showAllSchemas();
   const tables = tableObj.map(obj => Object.values(obj).pop());
   helpers.yml.write(
-    constant.modelPath("automatic/tables.yaml"),
+    constant.modelPath("01_automatic/tables.yaml"),
     {tables},
   );
 }

@@ -21,7 +21,7 @@ async function info(model) {
     baseUrl: modelName,
     fields,
   };
-  helpers.yml.write(constant.modelPath(`automatic/${model}.yaml`), data);
+  helpers.yml.write(constant.modelPath(`01_automatic/${model}.yaml`), data);
 }
 
 function fixGraphType(field) {
