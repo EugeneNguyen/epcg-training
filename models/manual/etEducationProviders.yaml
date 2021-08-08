@@ -1,11 +1,16 @@
-modelName: etEducationProvider
-modelNameSnakeCase: et_education_provider
 fields:
   id:
-    graphType: String
+    addForm: false
+    editForm: false
+    link: /etEducationProvider/${item.id}
   name:
-    graphType: String
+    addForm: true
+    editForm: true
   createdAt:
-    graphType: String
+    addForm: false
+    editForm: false
+    dateFormat: lll
   updatedAt:
-    graphType: String
+    addForm: false
+    editForm: false
+    dateFormat: lll
