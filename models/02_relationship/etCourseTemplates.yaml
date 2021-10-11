@@ -1,0 +1,34 @@
+relationships:
+  - name: educationProvider
+    label: Education Provider
+    type: many_to_one
+    self:
+      key: educationProviderId
+    target:
+      name: etEducationProviders
+      key: id
+      label: name
+  - name: questions
+    label: Questions
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionMCQs
+      key: courseTemplateId
+  - name: questionSources
+    label: Question Source
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionSources
+      key: courseTemplateId
+  - name: tags
+    label: Tags
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionTags
+      key: courseTemplateId

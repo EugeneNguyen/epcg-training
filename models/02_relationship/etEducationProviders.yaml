@@ -1,0 +1,9 @@
+relationships:
+  - name: courseTemplates
+    label: Course Templates
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplates
+      key: educationProviderId

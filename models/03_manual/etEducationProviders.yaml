@@ -1,25 +1,21 @@
 fields:
   id:
-    addForm: false
-    editForm: false
-    link: /etEducationProvider/${item.id}
+    list:
+      enable: false
   name:
-    addForm: true
-    editForm: true
+    list:
+      link: /etEducationProvider/${item.id}
   createdAt:
-    addForm: false
-    editForm: false
-    dateFormat: lll
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
   updatedAt:
-    addForm: false
-    editForm: false
-    dateFormat: lll
-relationships:
-  - type: one_to_many
-    name: courseTemplates
-    self:
-      linkedField: id
-    target:
-      modelName: etCourseTemplate
-      modelNameCapitalCamel: EtCourseTemplate
-      linkedField: educationProviderId
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false

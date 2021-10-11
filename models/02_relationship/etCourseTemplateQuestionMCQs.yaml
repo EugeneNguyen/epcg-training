@@ -1,0 +1,32 @@
+relationships:
+  - name: questionSource
+    label: Question Source
+    type: many_to_one
+    self:
+      key: questionSourceId
+    target:
+      name: etCourseTemplateQuestionSources
+      key: id
+      label: name
+  - name: courseTemplate
+    label: Course Template
+    type: many_to_one
+    self:
+      key: courseTemplateId
+    target:
+      name: etCourseTemplates
+      key: id
+      label: name
+  - name: tags
+    label: Tags
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionTags
+      key: id
+      label: name
+    link:
+      name: etCourseTemplateQuestionTagLinks
+      selfId: questionId
+      targetId: questionTagId

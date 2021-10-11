@@ -1,0 +1,23 @@
+relationships:
+  - name: courseTemplate
+    label: Courese Template
+    type: many_to_one
+    self:
+      key: courseTemplateId
+    target:
+      name: etCourseTemplates
+      key: id
+      label: name
+  - name: questions
+    label: Questions
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionMCQs
+      key: id
+      label: questionCode
+    link:
+      name: etCourseTemplateQuestionTagLinks
+      selfId: questionTagId
+      targetId: questionId

@@ -1,0 +1,45 @@
+defaultOrder:
+  field: questionCode
+  order: ASC
+fields:
+  id:
+    list:
+      enable: false
+  questionCode:
+    list:
+      link: /etCourseTemplateQuestionMCQ/${item.id}
+  question:
+    list:
+      enable: false
+  answerA:
+    list:
+      enable: false
+  answerB:
+    list:
+      enable: false
+  answerC:
+    list:
+      enable: false
+  answerD:
+    list:
+      enable: false
+  explanation:
+    list:
+      enable: false
+  courseTemplateId:
+    list:
+      enable: false
+  createdAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  updatedAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false

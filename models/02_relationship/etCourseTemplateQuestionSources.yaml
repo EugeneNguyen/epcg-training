@@ -1,0 +1,9 @@
+relationships:
+  - name: questions
+    label: Questions
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateQuestionMCQs
+      key: questionSourceId

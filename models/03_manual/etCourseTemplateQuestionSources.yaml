@@ -4,7 +4,7 @@ fields:
       enable: false
   name:
     list:
-      link: /etCourseTemplate/${item.id}
+      link: /etCourseTemplateQuestionSource/${item.id}
   createdAt:
     list:
       enable: false

@@ -1,0 +1,19 @@
+relationships:
+  - name: tag
+    label: Tag
+    type: many_to_one
+    self:
+      key: questionTagId
+    target:
+      name: etCourseTemplateQuestionTags
+      key: id
+      label: name
+  - name: question
+    label: Question
+    type: many_to_one
+    self:
+      key: questionId
+    target:
+      name: etCourseTemplateQuestionMCQs
+      key: id
+      label: questionCode

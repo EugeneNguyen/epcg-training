@@ -11,23 +11,31 @@ fields:
     primaryKey: true
     autoIncrement: false
     comment: null
+    name: id
     graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
     displayLabel: Id
-    link: /etEducationProvider/${item.id}
   name:
     type: VARCHAR(255)
-    allowNull: false
+    allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
+    name: name
     graphType: String
-    showTable: true
-    addForm: true
-    editForm: true
+    list:
+      enable: true
+      link: /etEducationProvider/${item.id}
+    add:
+      enable: true
+    edit:
+      enable: true
     displayLabel: Name
   createdAt:
     type: DATETIME
@@ -36,12 +44,15 @@ fields:
     primaryKey: false
     autoIncrement: false
     comment: null
+    name: createdAt
     graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
     displayLabel: Created At
-    dateFormat: lll
   updatedAt:
     type: DATETIME
     allowNull: false
@@ -49,70 +60,107 @@ fields:
     primaryKey: false
     autoIncrement: false
     comment: null
-    graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
-    displayLabel: Updated At
-    dateFormat: lll
-relationships:
-  - type: one_to_many
-    name: courseTemplates
-    self:
-      linkedField: id
-    target:
-      modelName: etCourseTemplate
-      modelNameCapitalCamel: EtCourseTemplate
-      linkedField: educationProviderId
-fieldsArray:
-  - type: CHAR(36)
-    allowNull: false
-    defaultValue: null
-    primaryKey: true
-    autoIncrement: false
-    comment: null
-    graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
-    displayLabel: Id
-    link: /etEducationProvider/${item.id}
-    name: id
-  - type: VARCHAR(255)
-    allowNull: false
-    defaultValue: null
-    primaryKey: false
-    autoIncrement: false
-    comment: null
-    graphType: String
-    showTable: true
-    addForm: true
-    editForm: true
-    displayLabel: Name
-    name: name
-  - type: DATETIME
-    allowNull: false
-    defaultValue: null
-    primaryKey: false
-    autoIncrement: false
-    comment: null
-    graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
-    displayLabel: Created At
-    dateFormat: lll
-    name: createdAt
-  - type: DATETIME
-    allowNull: false
-    defaultValue: null
-    primaryKey: false
-    autoIncrement: false
-    comment: null
-    graphType: String
-    showTable: true
-    addForm: false
-    editForm: false
-    displayLabel: Updated At
-    dateFormat: lll
     name: updatedAt
+    graphType: String
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+    displayLabel: Updated At
+relationships:
+  - name: courseTemplates
+    label: Course Templates
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplates
+      key: educationProviderId
+      modelName: etCourseTemplate
+      modelNameSnake: et_course_template
+      modelNameCapitalCamel: EtCourseTemplate
+      modelNameUpSnake: ET_COURSE_TEMPLATE
+      baseUrl: etCourseTemplate
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        name:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: name
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Name
+        educationProviderId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: educationProviderId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Education Provider Id
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At

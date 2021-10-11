@@ -1,4 +1,8 @@
 tables:
   - SequelizeMeta
+  - etCourseTemplateQuestionMCQs
+  - etCourseTemplateQuestionSources
+  - etCourseTemplateQuestionTagLinks
+  - etCourseTemplateQuestionTags
   - etCourseTemplates
   - etEducationProviders

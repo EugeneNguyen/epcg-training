@@ -1,8 +1,8 @@
-modelName: etCourseTemplate
-modelNameSnake: et_course_template
-modelNameCapitalCamel: EtCourseTemplate
-modelNameUpSnake: ET_COURSE_TEMPLATE
-baseUrl: etCourseTemplate
+modelName: etCourseTemplateQuestionMCQ
+modelNameSnake: et_course_template_question_mcq
+modelNameCapitalCamel: EtCourseTemplateQuestionMcq
+modelNameUpSnake: ET_COURSE_TEMPLATE_QUESTION_MCQ
+baseUrl: etCourseTemplateQuestionMCQ
 fields:
   id:
     type: CHAR(36)
@@ -14,37 +14,148 @@ fields:
     name: id
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
       enable: false
     edit:
       enable: false
     displayLabel: Id
-  name:
+  questionCode:
     type: VARCHAR(255)
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: name
+    name: questionCode
     graphType: String
     list:
       enable: true
-      link: /etCourseTemplate/${item.id}
     add:
       enable: true
     edit:
       enable: true
-    displayLabel: Name
-  educationProviderId:
+    displayLabel: Question Code
+  question:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: question
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Question
+  answerA:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: answerA
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Answer A
+  answerB:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: answerB
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Answer B
+  answerC:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: answerC
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Answer C
+  answerD:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: answerD
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Answer D
+  correctAnswer:
+    type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: correctAnswer
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Correct Answer
+  explanation:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: explanation
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Explanation
+  courseTemplateId:
     type: CHAR(36)
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: educationProviderId
+    name: courseTemplateId
     graphType: String
     list:
       enable: true
@@ -52,7 +163,23 @@ fields:
       enable: true
     edit:
       enable: true
-    displayLabel: Education Provider Id
+    displayLabel: Course Template Id
+  questionSourceId:
+    type: CHAR(36)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: questionSourceId
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Question Source Id
   createdAt:
     type: DATETIME
     allowNull: false
@@ -63,11 +190,11 @@ fields:
     name: createdAt
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
-      enable: false
+      enable: true
     edit:
-      enable: false
+      enable: true
     displayLabel: Created At
   updatedAt:
     type: DATETIME
@@ -79,322 +206,22 @@ fields:
     name: updatedAt
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
-      enable: false
+      enable: true
     edit:
-      enable: false
+      enable: true
     displayLabel: Updated At
 relationships:
-  - name: educationProvider
-    label: Education Provider
+  - name: questionSource
+    label: Question Source
     type: many_to_one
     self:
-      key: educationProviderId
-    target:
-      name: etEducationProviders
-      key: id
-      label: name
-      modelName: etEducationProvider
-      modelNameSnake: et_education_provider
-      modelNameCapitalCamel: EtEducationProvider
-      modelNameUpSnake: ET_EDUCATION_PROVIDER
-      baseUrl: etEducationProvider
-      fields:
-        id:
-          type: CHAR(36)
-          allowNull: false
-          defaultValue: null
-          primaryKey: true
-          autoIncrement: false
-          comment: null
-          name: id
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: false
-          edit:
-            enable: false
-          displayLabel: Id
-        name:
-          type: VARCHAR(255)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: name
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Name
-        createdAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: createdAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Created At
-        updatedAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: updatedAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Updated At
-  - name: questions
-    label: Questions
-    type: one_to_many
-    self:
-      key: id
-    target:
-      name: etCourseTemplateQuestionMCQs
-      key: courseTemplateId
-      modelName: etCourseTemplateQuestionMCQ
-      modelNameSnake: et_course_template_question_mcq
-      modelNameCapitalCamel: EtCourseTemplateQuestionMcq
-      modelNameUpSnake: ET_COURSE_TEMPLATE_QUESTION_MCQ
-      baseUrl: etCourseTemplateQuestionMCQ
-      fields:
-        id:
-          type: CHAR(36)
-          allowNull: false
-          defaultValue: null
-          primaryKey: true
-          autoIncrement: false
-          comment: null
-          name: id
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: false
-          edit:
-            enable: false
-          displayLabel: Id
-        questionCode:
-          type: VARCHAR(255)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: questionCode
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Question Code
-        question:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: question
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Question
-        answerA:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: answerA
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Answer A
-        answerB:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: answerB
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Answer B
-        answerC:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: answerC
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Answer C
-        answerD:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: answerD
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Answer D
-        correctAnswer:
-          type: VARCHAR(255)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: correctAnswer
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Correct Answer
-        explanation:
-          type: TEXT
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: explanation
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Explanation
-        courseTemplateId:
-          type: CHAR(36)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: courseTemplateId
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Course Template Id
-        questionSourceId:
-          type: CHAR(36)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: questionSourceId
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Question Source Id
-        createdAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: createdAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Created At
-        updatedAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: updatedAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Updated At
-  - name: questionSources
-    label: Question Source
-    type: one_to_many
-    self:
-      key: id
+      key: questionSourceId
     target:
       name: etCourseTemplateQuestionSources
-      key: courseTemplateId
+      key: id
+      label: name
       modelName: etCourseTemplateQuestionSource
       modelNameSnake: et_course_template_question_source
       modelNameCapitalCamel: EtCourseTemplateQuestionSource
@@ -481,14 +308,110 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+  - name: courseTemplate
+    label: Course Template
+    type: many_to_one
+    self:
+      key: courseTemplateId
+    target:
+      name: etCourseTemplates
+      key: id
+      label: name
+      modelName: etCourseTemplate
+      modelNameSnake: et_course_template
+      modelNameCapitalCamel: EtCourseTemplate
+      modelNameUpSnake: ET_COURSE_TEMPLATE
+      baseUrl: etCourseTemplate
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        name:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: name
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Name
+        educationProviderId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: educationProviderId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Education Provider Id
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At
   - name: tags
     label: Tags
-    type: one_to_many
+    type: many_to_many
     self:
       key: id
     target:
       name: etCourseTemplateQuestionTags
-      key: courseTemplateId
+      key: id
+      label: name
       modelName: etCourseTemplateQuestionTag
       modelNameSnake: et_course_template_question_tag
       modelNameCapitalCamel: EtCourseTemplateQuestionTag
@@ -543,6 +466,96 @@ relationships:
           edit:
             enable: true
           displayLabel: Course Template Id
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At
+    link:
+      name: etCourseTemplateQuestionTagLinks
+      selfId: questionId
+      targetId: questionTagId
+      modelName: etCourseTemplateQuestionTagLink
+      modelNameSnake: et_course_template_question_tag_link
+      modelNameCapitalCamel: EtCourseTemplateQuestionTagLink
+      modelNameUpSnake: ET_COURSE_TEMPLATE_QUESTION_TAG_LINK
+      baseUrl: etCourseTemplateQuestionTagLink
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        questionId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Id
+        questionTagId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionTagId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Tag Id
         createdAt:
           type: DATETIME
           allowNull: false
