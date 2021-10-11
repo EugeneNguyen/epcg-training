@@ -1,8 +1,8 @@
 import {gql} from "@apollo/client";
 
 const ALL = gql`
-query et_education_provider_get_all {
-  et_education_provider_get_all {
+query et_education_provider_get_all($where: EtEducationProviderWhere) {
+  data: et_education_provider_get_all(where: $where) {
     id
     name
     createdAt
@@ -11,11 +11,41 @@ query et_education_provider_get_all {
 }
 `;
 
+const ALL_WITH_PAGE = gql`
+query et_education_provider_get_all_with_page($pagination: EtEducationProviderPaginationInput, $where: EtEducationProviderWhere) {
+  data: et_education_provider_get_all_with_page(pagination: $pagination, where: $where) {
+    rows {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    pagination {
+      total
+      offset
+      limit
+    }
+  }
+}
+`;
+
 const GET_BY_ID = gql`
+query et_education_provider_get_by_id($id: String) {
+  data: et_education_provider_get_by_id(id: $id) {
+  id
+  name
+  createdAt
+  updatedAt
+  }
+}
+`;
+
+const GET_ET_COURSE_TEMPLATE = gql`
 query et_education_provider_get_by_id($id: String) {
   et_education_provider_get_by_id(id: $id) {
     id
     name
+    educationProviderId
     createdAt
     updatedAt
   }
@@ -52,11 +82,13 @@ mutation et_education_provider_delete($id: String) {
 
 const DEFAULT_OPTIONS = {
   notifyOnNetworkStatusChange: true,
-  fetchPolicy: "cache-and-network",
+  fetchPolicy: 'cache-and-network',
+  errorPolicy: 'all',
 }
 
 export default {
   ALL,
+  ALL_WITH_PAGE,
   GET_BY_ID,
   ADD,
   EDIT,

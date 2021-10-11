@@ -2,14 +2,11 @@ let db = require('../../database/models');
 
 let mutation = {
   async et_education_provider_add(parent, { data }, context, info) {
-    return db.etEducationProvider.create({
-      name: data.name,
-    });
+    return db.etEducationProvider.create(data);
   },
   async et_education_provider_edit(parent, { id, data }, context, info) {
     const etEducationProvider = await db.etEducationProvider.findByPk(id);
-    etEducationProvider.name = data.name;
-    await etEducationProvider.save();
+    await etEducationProvider.update(data);
     await etEducationProvider.reload();
 
     return etEducationProvider;

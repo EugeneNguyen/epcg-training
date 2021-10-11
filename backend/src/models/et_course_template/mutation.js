@@ -2,16 +2,11 @@ let db = require('../../database/models');
 
 let mutation = {
   async et_course_template_add(parent, { data }, context, info) {
-    return db.etCourseTemplate.create({
-      name: data.name,
-      educationProviderId: data.educationProviderId,
-    });
+    return db.etCourseTemplate.create(data);
   },
   async et_course_template_edit(parent, { id, data }, context, info) {
     const etCourseTemplate = await db.etCourseTemplate.findByPk(id);
-    etCourseTemplate.name = data.name;
-    etCourseTemplate.educationProviderId = data.educationProviderId;
-    await etCourseTemplate.save();
+    await etCourseTemplate.update(data);
     await etCourseTemplate.reload();
 
     return etCourseTemplate;

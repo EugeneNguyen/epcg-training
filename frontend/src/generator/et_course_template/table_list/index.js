@@ -1,71 +1,50 @@
-import {useQuery} from "@apollo/client";
-import {Link} from "react-router-dom";
-import {Button, Table} from 'reactstrap';
-import API from '../apis';
-import {AlertError} from '../../../components/alert';
-import {ButtonLink} from '../../../components/button';
-import Cell from '../../../components/table/cell';
-import ButtonDelete from './button_delete';
+import {useState} from 'react';
+import {useLocation} from 'react-router-dom';
+import {ArrowRepeat} from 'react-bootstrap-icons';
+import {ButtonLink, Button} from '../../_components/button';
+import Paginator from '../../_components/paginator';
+import EtCourseTemplateTable from './table';
+import path from 'path';
 
-export default function TableEtCourseTemplateList() {
-  const { loading, error, data, refetch } = useQuery(API.ALL, API.DEFAULT_OPTIONS);
-
+export default function TableEtCourseTemplateList({where, excludeColumns, relationshipName}) {
+  const [limit, setLimit] = useState(10);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const location = useLocation();
+  let refetch = null;
   return (
-    <>
-      {error && <AlertError error={error} refetch={refetch} />}
-      <Button onClick={refetch} size="sm" color="primary">Reload</Button>
-      {' '}
-      <ButtonLink to="/etCourseTemplate/add" size="sm" color="primary">Add</ButtonLink>
-
-      <Table>
-        <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Education Provider</th>
-          <th scope="col">Created At</th>
-          <th scope="col">Updated At</th>
-          <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-          {data && data.et_course_template_get_all.map(item => (
-            <tr>
-              <Cell
-                type="CHAR(36)"
-                link={`/etCourseTemplate/${item.id}`}
-              >
-                {item.id}
-              </Cell>
-              <Cell
-                type="VARCHAR(255)"
-              >
-                {item.name}
-              </Cell>
-              <Cell
-                type="DROPDOWN"
-              >
-                {item.educationProviderId}
-              </Cell>
-              <Cell
-                type="DATETIME"
-              >
-                {item.createdAt}
-              </Cell>
-              <Cell
-                type="DATETIME"
-              >
-                {item.updatedAt}
-              </Cell>
-              <td>
-                <ButtonLink to={`/etCourseTemplate/${item.id}/edit`} color="primary" size="sm">Edit</ButtonLink>
-                {' '}
-                <ButtonDelete id={item.id} didDelete={refetch} color="danger" size="sm">Delete</ButtonDelete>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 pb-5 align-middle inline-block min-w-full sm:px-6 lg:px-8 space-y-5">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <EtCourseTemplateTable
+              limit={limit}
+              offset={offset}
+              where={where}
+              relationshipName={relationshipName}
+              pathname={location.pathname}
+              excludeColumns={excludeColumns}
+              onRefRefetch={ref => refetch = ref}
+              didLoadData={result => setTotal(result.data.pagination.total)}
+            />
+            <Paginator
+              total={total}
+              offset={offset}
+              limit={limit}
+              onChangePage={page => setOffset(page * limit)}
+              onChangeLimit={limit => setLimit(limit)}
+              refetch={() => refetch()}
+            />
+          </div>
+          <div className="w-full flex flex-wrap justify-between">
+            {relationshipName ? (
+            <ButtonLink to={path.join(location.pathname, relationshipName, 'add')} color="primary">Add</ButtonLink>
+            ) : (
+            <ButtonLink to={path.join(location.pathname, 'add')} color="primary">Add</ButtonLink>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,4 +1,8 @@
-let db = require('../../database/models');
+const db = require('../../database/models');
+const DataLoader = require('dataloader');
+const Op = db.Sequelize.Op;
+
+
 
 let type = {
   EtEducationProvider: {

@@ -1,10 +1,11 @@
 import {useState} from 'react';
 import {useMutation} from "@apollo/client";
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
+import {Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
 import API from '../apis';
 import {toast} from 'react-toastify';
+import {Button} from '../../_components/button';
 
-export default function ButtonDelete({id, didDelete, ...props}) {
+export default function ButtonDelete({id, didDelete, children, ...props}) {
   const [modal, setModal] = useState(false);
   const [apiDelete, { data, loading, error }] = useMutation(API.DELETE, {
     onCompleted: () => {
@@ -17,7 +18,7 @@ export default function ButtonDelete({id, didDelete, ...props}) {
 
   return (
     <>
-      <Button onClick={() => setModal(true)} {...props}>Delete</Button>
+      <Button onClick={() => setModal(true)} {...props}>{children}</Button>
       <Modal isOpen={modal} toggle={() => setModal(false)}>
         <ModalHeader toggle={() => setModal(false)}>Warning</ModalHeader>
         <ModalBody>
