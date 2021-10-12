@@ -9,6 +9,7 @@ import RouteEtCourseTemplate from "./generator/et_course_template/router";
 import RouteEtCourseTemplateQuestionMcq from "./generator/et_course_template_question_mcq/router";
 import RouteEtCourseTemplateQuestionSource from "./generator/et_course_template_question_source/router";
 import RouteEtCourseTemplateQuestionTag from "./generator/et_course_template_question_tag/router";
+import RouteEtCourseTemplateExam from "./generator/et_course_template_exam/router";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <RouteEtCourseTemplateQuestionMcq/>
             <RouteEtCourseTemplateQuestionSource/>
             <RouteEtCourseTemplateQuestionTag/>
+            <RouteEtCourseTemplateExam/>
             <ToastContainer/>
           </div>
         </div>

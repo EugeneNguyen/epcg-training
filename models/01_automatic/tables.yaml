@@ -1,5 +1,7 @@
 tables:
   - SequelizeMeta
+  - etCourseTemplateExamQuestions
+  - etCourseTemplateExams
   - etCourseTemplateQuestionMCQs
   - etCourseTemplateQuestionSources
   - etCourseTemplateQuestionTagLinks

@@ -38,7 +38,7 @@ export default function FormEtCourseTemplateQuestionTagLinkAdd({fixedParams}) {
             idKey="id"
             labelKey="questionCode"
             name="questionId"
-            displayLabel="Question Id"
+            displayLabel="Question"
             value={questionId}
             onValueChange={(value) => setquestionId(value)}
           />
@@ -52,7 +52,7 @@ export default function FormEtCourseTemplateQuestionTagLinkAdd({fixedParams}) {
             idKey="id"
             labelKey="name"
             name="questionTagId"
-            displayLabel="Question Tag Id"
+            displayLabel="Tag"
             value={questionTagId}
             onValueChange={(value) => setquestionTagId(value)}
           />

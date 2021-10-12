@@ -32,3 +32,11 @@ relationships:
     target:
       name: etCourseTemplateQuestionTags
       key: courseTemplateId
+  - name: exams
+    label: Exams
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateExams
+      key: courseTemplateId

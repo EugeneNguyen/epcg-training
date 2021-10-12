@@ -92,6 +92,17 @@ query et_course_template_get_by_id($id: String) {
   }
 }
 `;
+const GET_ET_COURSE_TEMPLATE_EXAM = gql`
+query et_course_template_get_by_id($id: String) {
+  et_course_template_get_by_id(id: $id) {
+    id
+    name
+    courseTemplateId
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation et_course_template_add($data: EtCourseTemplateInput) {

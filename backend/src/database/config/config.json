@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "db_user",
-    "password": "db_user_pass",
-    "database": "nexus_resource",
-    "host": "localhost",
+    "username": "root",
+    "password": "Libreteam259!!",
+    "database": "epcg-training",
+    "host": "database-1.c0vo06onkxid.ap-southeast-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

@@ -134,7 +134,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
             idKey="id"
             labelKey="name"
             name="courseTemplateId"
-            displayLabel="Course Template Id"
+            displayLabel="Course Template"
             value={courseTemplateId}
             onValueChange={(value) => setcourseTemplateId(value)}
           />
@@ -148,11 +148,20 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
             idKey="id"
             labelKey="name"
             name="questionSourceId"
-            displayLabel="Question Source Id"
+            displayLabel="Question Source"
             value={questionSourceId}
             onValueChange={(value) => setquestionSourceId(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../et_course_template_question_tag/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="tags"
+          displayLabel="Tags"
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

@@ -1,0 +1,293 @@
+modelName: etCourseTemplateExam
+modelNameSnake: et_course_template_exam
+modelNameCapitalCamel: EtCourseTemplateExam
+modelNameUpSnake: ET_COURSE_TEMPLATE_EXAM
+baseUrl: etCourseTemplateExam
+fields:
+  id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: true
+    autoIncrement: false
+    comment: null
+    name: id
+    graphType: String
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+    displayLabel: Id
+  name:
+    type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: name
+    graphType: String
+    list:
+      enable: true
+      link: /etCourseTemplateExam/${item.id}
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Name
+  courseTemplateId:
+    type: CHAR(36)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: courseTemplateId
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Course Template Id
+  createdAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: createdAt
+    graphType: String
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+    displayLabel: Created At
+  updatedAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: updatedAt
+    graphType: String
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+    displayLabel: Updated At
+relationships:
+  - name: courseTemplate
+    label: Course Template
+    type: many_to_one
+    self:
+      key: courseTemplateId
+    target:
+      name: etCourseTemplates
+      key: id
+      label: name
+      modelName: etCourseTemplate
+      modelNameSnake: et_course_template
+      modelNameCapitalCamel: EtCourseTemplate
+      modelNameUpSnake: ET_COURSE_TEMPLATE
+      baseUrl: etCourseTemplate
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        name:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: name
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Name
+        educationProviderId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: educationProviderId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Education Provider Id
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At
+  - name: questions
+    label: Questions
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseTemplateExamQuestions
+      key: examId
+      modelName: etCourseTemplateExamQuestion
+      modelNameSnake: et_course_template_exam_question
+      modelNameCapitalCamel: EtCourseTemplateExamQuestion
+      modelNameUpSnake: ET_COURSE_TEMPLATE_EXAM_QUESTION
+      baseUrl: etCourseTemplateExamQuestion
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        examId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: examId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Exam Id
+        questionId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Id
+        order:
+          type: INT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: order
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Order
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At

@@ -28,6 +28,7 @@ type EtCourseTemplateQuestionTagPagination {
 input EtCourseTemplateQuestionTagInput {
   name: String
   courseTemplateId: String
+  questions: [String]
 }
 
 input EtCourseTemplateQuestionTagPaginationInput {

@@ -4,6 +4,7 @@ import Nav from '../../_components/nav';
 import TableEtCourseTemplateQuestionMcqList from '../../et_course_template_question_mcq/table_list';
 import TableEtCourseTemplateQuestionSourceList from '../../et_course_template_question_source/table_list';
 import TableEtCourseTemplateQuestionTagList from '../../et_course_template_question_tag/table_list';
+import TableEtCourseTemplateExamList from '../../et_course_template_exam/table_list';
 
 export default function ViewEtCourseTemplateInfo() {
   const { id: objectId } = useParams();
@@ -35,6 +36,15 @@ export default function ViewEtCourseTemplateInfo() {
           <div className="mt-3">
             <TableEtCourseTemplateQuestionTagList
               relationshipName="tags"
+              where={{courseTemplateId: objectId}}
+              excludeColumns={["courseTemplateId"]}
+            />
+          </div>
+        )},
+        {id: 'exams', label: 'Exams', content: (
+          <div className="mt-3">
+            <TableEtCourseTemplateExamList
+              relationshipName="exams"
               where={{courseTemplateId: objectId}}
               excludeColumns={["courseTemplateId"]}
             />

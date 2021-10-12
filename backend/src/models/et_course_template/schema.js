@@ -15,6 +15,8 @@ type EtCourseTemplate {
   questionSourcesCount: Int
   tags: [EtCourseTemplateQuestionTag]
   tagsCount: Int
+  exams: [EtCourseTemplateExam]
+  examsCount: Int
 }
 
 type EtCourseTemplateWithPagination {

@@ -20,10 +20,18 @@ let type = {
     courseTemplate(parent, args, context, info) {
       return courseTemplateLoader.load(parent.courseTemplateId);
     },
-    questions(parent, args, context, info) {
-      return db.etCourseTemplateQuestionMCQ.findOne({
+    async questions(parent, args, context, info) {
+      const links = await db.etCourseTemplateQuestionTagLink.findAll({
         where: {
-          id: parent.id
+          questionTagId: parent.id
+        }
+      });
+      const ids = links.map(link => link.questionId);
+      return db.etCourseTemplateQuestionMCQ.findAll({
+        where: {
+          id: {
+            [Op.in]: ids,
+          }
         }
       });
     },

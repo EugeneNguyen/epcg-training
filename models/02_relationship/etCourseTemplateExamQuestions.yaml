@@ -1,0 +1,10 @@
+relationships:
+  - name: question
+    label: Question
+    type: many_to_one
+    self:
+      key: questionId
+    target:
+      name: etCourseTemplateQuestionMCQs
+      key: id
+      label: questionCode

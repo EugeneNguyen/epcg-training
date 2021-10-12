@@ -1,31 +1,54 @@
 import {useQuery} from '@apollo/client';
 import Select from 'react-select';
 
-function InputSelect({displayLabel, name, onValueChange, query, idKey, labelKey, ...props}) {
-  const { loading, error, data, refetch } = useQuery(query, {
+export default function InputSelect(props) {
+  if (props.query) {
+    return <InputSelectQuery {...props} />;
+  } else {
+    return <InputSelectOption {...props} />;
+  }
+}
+
+function InputSelectQuery({query, variables, idKey, labelKey, ...props}) {
+  const {data} = useQuery(query, {
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "cache-and-network",
+    variables: variables,
   });
 
   if (!data) return <div>Loading</div>
 
   const options = [
-    {value: '---', label: '---'},
+    {value: '', label: '---'},
     ...data.data.map(item => ({value: item[idKey], label: item[labelKey]}))
   ];
 
-  return data ? (
-    <div className="mb-3">
-      <label for="exampleInputEmail1" className="form-label">{displayLabel}</label>
+  return (
+    <InputSelectOption
+      options={options}
+      {...props}
+    />
+  );
+}
+
+function InputSelectOption({displayLabel, name, onValueChange, options, isMulti, ...props}) {
+  return options ? (
+    <div>
+      <label
+        className="text-gray-700 dark:text-gray-200"
+        htmlFor={name}
+      >
+        {displayLabel}
+      </label>
       <Select
         name={name}
         value={options.find(v => v.value == props.value)}
-        onChange={(v) => onValueChange(v.value)}
+        onChange={(v) => onValueChange && onValueChange(v.value)}
         options={options}
+        defaultValue={options.find(v => v.value == props.defaultValue)}
         menuPortalTarget={document.body}
+        isMulti={isMulti}
       />
     </div>
   ) : null;
 }
-
-export default InputSelect;

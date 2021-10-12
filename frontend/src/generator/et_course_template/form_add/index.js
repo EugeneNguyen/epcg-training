@@ -49,7 +49,7 @@ export default function FormEtCourseTemplateAdd({fixedParams}) {
             idKey="id"
             labelKey="name"
             name="educationProviderId"
-            displayLabel="Education Provider Id"
+            displayLabel="Education Provider"
             value={educationProviderId}
             onValueChange={(value) => seteducationProviderId(value)}
           />

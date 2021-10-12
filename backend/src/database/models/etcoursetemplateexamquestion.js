@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const uuid = require('uuid');
+
 module.exports = (sequelize, DataTypes) => {
   class etCourseTemplateExamQuestion extends Model {
     /**
@@ -14,10 +16,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   etCourseTemplateExamQuestion.init({
-    name: DataTypes.STRING
+    id: {
+      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: sequelize.UUIDV4,
+    },
+    examId: {
+      type: DataTypes.UUID,
+    },
+    questionId: {
+      type: DataTypes.UUID,
+    },
+    order: {
+      type: DataTypes.INTEGER,
+    },
   }, {
     sequelize,
     modelName: 'etCourseTemplateExamQuestion',
   });
+
+  etCourseTemplateExamQuestion.beforeCreate(o => o.id = uuid.v4());
   return etCourseTemplateExamQuestion;
 };

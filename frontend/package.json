@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://test/admin",
   "dependencies": {
     "@apollo/client": "^3.3.21",
     "@popperjs/core": "^2.9.3",

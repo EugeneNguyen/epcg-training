@@ -13,6 +13,9 @@ import FormEtCourseTemplateQuestionSourceEdit from '../../et_course_template_que
 import TableEtCourseTemplateQuestionTagList from '../../et_course_template_question_tag/table_list';
 import FormEtCourseTemplateQuestionTagAdd from '../../et_course_template_question_tag/form_add';
 import FormEtCourseTemplateQuestionTagEdit from '../../et_course_template_question_tag/form_edit';
+import TableEtCourseTemplateExamList from '../../et_course_template_exam/table_list';
+import FormEtCourseTemplateExamAdd from '../../et_course_template_exam/form_add';
+import FormEtCourseTemplateExamEdit from '../../et_course_template_exam/form_edit';
 
 export default function RouteEtCourseTemplate() {
   return (
@@ -109,6 +112,34 @@ export default function RouteEtCourseTemplate() {
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionTagEdit
+            fixedParams={{courseTemplateId: renderProps.match.params.id}}
+          />
+          )}
+      />
+      <Route
+        path="/etCourseTemplate/:id/exams"
+        exact
+        render={(renderProps) => (
+          <TableEtCourseTemplateExamList
+            where={{courseTemplateId: renderProps.match.params.id}}
+            excludeColumns={["courseTemplateId"]}
+          />
+        )}
+      />
+      <Route
+        path="/etCourseTemplate/:id/exams/add"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseTemplateExamAdd
+            fixedParams={{courseTemplateId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/etCourseTemplate/:id/exams/:id/edit"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseTemplateExamEdit
             fixedParams={{courseTemplateId: renderProps.match.params.id}}
           />
           )}

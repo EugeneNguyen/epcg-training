@@ -49,11 +49,20 @@ export default function FormEtCourseTemplateQuestionTagAdd({fixedParams}) {
             idKey="id"
             labelKey="name"
             name="courseTemplateId"
-            displayLabel="Course Template Id"
+            displayLabel="Courese Template"
             value={courseTemplateId}
             onValueChange={(value) => setcourseTemplateId(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../et_course_template_question_mcq/apis').default.ALL}
+          idKey="id"
+          labelKey="questionCode"
+          name="questions"
+          displayLabel="Questions"
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

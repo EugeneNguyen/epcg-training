@@ -45,6 +45,7 @@ input EtCourseTemplateQuestionMcqInput {
   explanation: String
   courseTemplateId: String
   questionSourceId: String
+  tags: [String]
 }
 
 input EtCourseTemplateQuestionMcqPaginationInput {
