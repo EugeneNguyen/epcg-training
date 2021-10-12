@@ -2,7 +2,6 @@ import {useMutation} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
 import {useState} from "react";
 import {toast} from 'react-toastify';
-import { Alert } from 'reactstrap';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
@@ -20,7 +19,8 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
   const [explanation, setexplanation] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
   const [questionSourceId, setquestionSourceId] = useState(null);
-
+          const [tagsRelationship, settagsRelationship] = useState([]);
+  
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
@@ -36,7 +36,6 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
     <Box title="Add new etCourseTemplateQuestionMCQ" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {error && <Alert color="danger">{error}</Alert>}
         {fixedParams && fixedParams.questionCode ? (
           <Input type="HIDDEN" name="questionCode" value={fixedParams.questionCode} />
         ) : (
@@ -160,6 +159,8 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           labelKey="name"
           name="tags"
           displayLabel="Tags"
+          value={tagsRelationship}
+          onValueChange={(value) => settagsRelationship(value)}
           isMulti
         />
         </div>

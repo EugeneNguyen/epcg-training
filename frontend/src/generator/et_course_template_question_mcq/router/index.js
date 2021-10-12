@@ -20,7 +20,7 @@ export default function RouteEtCourseTemplateQuestionMcq() {
       <Route path="/etCourseTemplateQuestionMCQ/:id" exact>
         <ViewEtCourseTemplateQuestionMcqInfo />
       </Route>
-      <Route path="/etCourseTemplateQuestionMCQ/:id/edit" exact>
+      <Route path="/etCourseTemplateQuestionMCQ/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateQuestionMcqEdit />
       </Route>
       <Route

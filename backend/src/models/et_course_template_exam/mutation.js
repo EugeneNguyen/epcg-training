@@ -10,7 +10,7 @@ let mutation = {
   async et_course_template_exam_edit(parent, { id, data }, context, info) {
     const etCourseTemplateExam = await db.etCourseTemplateExam.findByPk(id);
 
-    
+
     await etCourseTemplateExam.update(data);
     await etCourseTemplateExam.reload();
 

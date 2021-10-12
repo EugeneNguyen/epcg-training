@@ -10,7 +10,7 @@ let mutation = {
   async et_education_provider_edit(parent, { id, data }, context, info) {
     const etEducationProvider = await db.etEducationProvider.findByPk(id);
 
-  
+
     await etEducationProvider.update(data);
     await etEducationProvider.reload();
 

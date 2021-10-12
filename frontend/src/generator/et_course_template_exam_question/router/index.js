@@ -17,7 +17,7 @@ export default function RouteEtCourseTemplateExamQuestion() {
       <Route path="/etCourseTemplateExamQuestion/:id" exact>
         <ViewEtCourseTemplateExamQuestionInfo />
       </Route>
-      <Route path="/etCourseTemplateExamQuestion/:id/edit" exact>
+      <Route path="/etCourseTemplateExamQuestion/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateExamQuestionEdit />
       </Route>
     </Switch>

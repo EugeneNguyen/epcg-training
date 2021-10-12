@@ -2,7 +2,6 @@ import {useMutation} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
 import {useState} from "react";
 import {toast} from 'react-toastify';
-import { Alert } from 'reactstrap';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
@@ -13,7 +12,7 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
   const [examId, setexamId] = useState(null);
   const [questionId, setquestionId] = useState(null);
   const [order, setorder] = useState(null);
-
+  
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
@@ -29,7 +28,6 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
     <Box title="Add new etCourseTemplateExamQuestion" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {error && <Alert color="danger">{error}</Alert>}
         {fixedParams && fixedParams.examId ? (
           <Input type="HIDDEN" name="examId" value={fixedParams.examId} />
         ) : (

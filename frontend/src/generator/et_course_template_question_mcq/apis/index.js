@@ -58,27 +58,31 @@ query et_course_template_question_mcq_get_all_with_page($pagination: EtCourseTem
 const GET_BY_ID = gql`
 query et_course_template_question_mcq_get_by_id($id: String) {
   data: et_course_template_question_mcq_get_by_id(id: $id) {
-  id
-  questionCode
-  question
-  answerA
-  answerB
-  answerC
-  answerD
-  correctAnswer
-  explanation
-  courseTemplate {
-  id
-  name
-  }
-  courseTemplateId
-  questionSource {
-  id
-  name
-  }
-  questionSourceId
-  createdAt
-  updatedAt
+    id
+    questionCode
+    question
+    answerA
+    answerB
+    answerC
+    answerD
+    correctAnswer
+    explanation
+    courseTemplate {
+      id
+      name
+    }
+    courseTemplateId
+    questionSource {
+      id
+      name
+    }
+    questionSourceId
+    createdAt
+    updatedAt
+    tags {
+      id
+      name
+    }
   }
 }
 `;

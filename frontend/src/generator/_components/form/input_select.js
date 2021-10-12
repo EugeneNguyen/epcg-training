@@ -1,5 +1,6 @@
 import {useQuery} from '@apollo/client';
 import Select from 'react-select';
+import _ from 'lodash';
 
 export default function InputSelect(props) {
   if (props.query) {
@@ -42,8 +43,16 @@ function InputSelectOption({displayLabel, name, onValueChange, options, isMulti,
       </label>
       <Select
         name={name}
-        value={options.find(v => v.value == props.value)}
-        onChange={(v) => onValueChange && onValueChange(v.value)}
+        value={_.isArray(props.value) ? options.filter(v => props.value.find(value => value == v.value)) : options.find(v => v.value == props.value)}
+        onChange={(v) => {
+          if (onValueChange) {
+            if (_.isArray(v)) {
+              onValueChange(v.map(item => item.value));
+            } else {
+              onValueChange(v.value);
+            }
+          }
+        }}
         options={options}
         defaultValue={options.find(v => v.value == props.defaultValue)}
         menuPortalTarget={document.body}

@@ -20,7 +20,7 @@ export default function RouteEtEducationProvider() {
       <Route path="/etEducationProvider/:id" exact>
         <ViewEtEducationProviderInfo />
       </Route>
-      <Route path="/etEducationProvider/:id/edit" exact>
+      <Route path="/etEducationProvider/:selectedObjectId/edit" exact>
         <FormEtEducationProviderEdit />
       </Route>
       <Route
@@ -43,13 +43,13 @@ export default function RouteEtEducationProvider() {
         )}
       />
       <Route
-        path="/etEducationProvider/:id/courseTemplates/:id/edit"
+        path="/etEducationProvider/:id/courseTemplates/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateEdit
             fixedParams={{educationProviderId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
     </Switch>
   );

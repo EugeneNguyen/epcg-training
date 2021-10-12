@@ -32,10 +32,10 @@ query et_education_provider_get_all_with_page($pagination: EtEducationProviderPa
 const GET_BY_ID = gql`
 query et_education_provider_get_by_id($id: String) {
   data: et_education_provider_get_by_id(id: $id) {
-  id
-  name
-  createdAt
-  updatedAt
+    id
+    name
+    createdAt
+    updatedAt
   }
 }
 `;

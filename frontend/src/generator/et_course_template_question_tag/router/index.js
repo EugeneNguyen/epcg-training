@@ -20,7 +20,7 @@ export default function RouteEtCourseTemplateQuestionTag() {
       <Route path="/etCourseTemplateQuestionTag/:id" exact>
         <ViewEtCourseTemplateQuestionTagInfo />
       </Route>
-      <Route path="/etCourseTemplateQuestionTag/:id/edit" exact>
+      <Route path="/etCourseTemplateQuestionTag/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateQuestionTagEdit />
       </Route>
       <Route

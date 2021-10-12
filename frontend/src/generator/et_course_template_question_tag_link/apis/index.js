@@ -42,19 +42,19 @@ query et_course_template_question_tag_link_get_all_with_page($pagination: EtCour
 const GET_BY_ID = gql`
 query et_course_template_question_tag_link_get_by_id($id: String) {
   data: et_course_template_question_tag_link_get_by_id(id: $id) {
-  id
-  question {
-  id
-  questionCode
-  }
-  questionId
-  tag {
-  id
-  name
-  }
-  questionTagId
-  createdAt
-  updatedAt
+    id
+    question {
+      id
+      questionCode
+    }
+    questionId
+    tag {
+      id
+      name
+    }
+    questionTagId
+    createdAt
+    updatedAt
   }
 }
 `;

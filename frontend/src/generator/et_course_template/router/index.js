@@ -29,7 +29,7 @@ export default function RouteEtCourseTemplate() {
       <Route path="/etCourseTemplate/:id" exact>
         <ViewEtCourseTemplateInfo />
       </Route>
-      <Route path="/etCourseTemplate/:id/edit" exact>
+      <Route path="/etCourseTemplate/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateEdit />
       </Route>
       <Route
@@ -52,13 +52,13 @@ export default function RouteEtCourseTemplate() {
         )}
       />
       <Route
-        path="/etCourseTemplate/:id/questions/:id/edit"
+        path="/etCourseTemplate/:id/questions/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionMcqEdit
             fixedParams={{courseTemplateId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
       <Route
         path="/etCourseTemplate/:id/questionSources"
@@ -80,13 +80,13 @@ export default function RouteEtCourseTemplate() {
         )}
       />
       <Route
-        path="/etCourseTemplate/:id/questionSources/:id/edit"
+        path="/etCourseTemplate/:id/questionSources/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionSourceEdit
             fixedParams={{courseTemplateId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
       <Route
         path="/etCourseTemplate/:id/tags"
@@ -108,13 +108,13 @@ export default function RouteEtCourseTemplate() {
         )}
       />
       <Route
-        path="/etCourseTemplate/:id/tags/:id/edit"
+        path="/etCourseTemplate/:id/tags/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionTagEdit
             fixedParams={{courseTemplateId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
       <Route
         path="/etCourseTemplate/:id/exams"
@@ -136,13 +136,13 @@ export default function RouteEtCourseTemplate() {
         )}
       />
       <Route
-        path="/etCourseTemplate/:id/exams/:id/edit"
+        path="/etCourseTemplate/:id/exams/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateExamEdit
             fixedParams={{courseTemplateId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
     </Switch>
   );

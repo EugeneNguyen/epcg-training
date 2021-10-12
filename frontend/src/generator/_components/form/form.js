@@ -1,9 +1,20 @@
+import _ from 'lodash';
+
 function Form({onSubmitParams, ...props}) {
   const handleSubmit = (e) => {
     const params = {};
     for (const target of e.target) {
       if (target.name.length) {
-        params[target.name] = target.value;
+        console.log(target.name);
+        if (!params[target.name]) {
+          params[target.name] = target.value;
+        } else {
+          if (_.isArray(params[target.name])) {
+            params[target.name].push(target.value);
+          } else {
+            params[target.name] = [params[target.name], target.value];
+          }
+        }
       }
     }
     if (onSubmitParams) {

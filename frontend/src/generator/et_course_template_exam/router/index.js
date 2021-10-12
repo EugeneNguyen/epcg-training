@@ -20,7 +20,7 @@ export default function RouteEtCourseTemplateExam() {
       <Route path="/etCourseTemplateExam/:id" exact>
         <ViewEtCourseTemplateExamInfo />
       </Route>
-      <Route path="/etCourseTemplateExam/:id/edit" exact>
+      <Route path="/etCourseTemplateExam/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateExamEdit />
       </Route>
       <Route
@@ -43,13 +43,13 @@ export default function RouteEtCourseTemplateExam() {
         )}
       />
       <Route
-        path="/etCourseTemplateExam/:id/questions/:id/edit"
+        path="/etCourseTemplateExam/:id/questions/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateExamQuestionEdit
             fixedParams={{examId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
     </Switch>
   );

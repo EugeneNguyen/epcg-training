@@ -40,16 +40,16 @@ query et_course_template_exam_question_get_all_with_page($pagination: EtCourseTe
 const GET_BY_ID = gql`
 query et_course_template_exam_question_get_by_id($id: String) {
   data: et_course_template_exam_question_get_by_id(id: $id) {
-  id
-  examId
-  question {
-  id
-  questionCode
-  }
-  questionId
-  order
-  createdAt
-  updatedAt
+    id
+    examId
+    question {
+      id
+      questionCode
+    }
+    questionId
+    order
+    createdAt
+    updatedAt
   }
 }
 `;

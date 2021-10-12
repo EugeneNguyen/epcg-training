@@ -38,15 +38,15 @@ query et_course_template_exam_get_all_with_page($pagination: EtCourseTemplateExa
 const GET_BY_ID = gql`
 query et_course_template_exam_get_by_id($id: String) {
   data: et_course_template_exam_get_by_id(id: $id) {
-  id
-  name
-  courseTemplate {
-  id
-  name
-  }
-  courseTemplateId
-  createdAt
-  updatedAt
+    id
+    name
+    courseTemplate {
+      id
+      name
+    }
+    courseTemplateId
+    createdAt
+    updatedAt
   }
 }
 `;

@@ -34,11 +34,11 @@ query et_course_template_question_source_get_all_with_page($pagination: EtCourse
 const GET_BY_ID = gql`
 query et_course_template_question_source_get_by_id($id: String) {
   data: et_course_template_question_source_get_by_id(id: $id) {
-  id
-  name
-  courseTemplateId
-  createdAt
-  updatedAt
+    id
+    name
+    courseTemplateId
+    createdAt
+    updatedAt
   }
 }
 `;

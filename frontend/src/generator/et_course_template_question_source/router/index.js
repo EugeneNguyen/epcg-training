@@ -20,7 +20,7 @@ export default function RouteEtCourseTemplateQuestionSource() {
       <Route path="/etCourseTemplateQuestionSource/:id" exact>
         <ViewEtCourseTemplateQuestionSourceInfo />
       </Route>
-      <Route path="/etCourseTemplateQuestionSource/:id/edit" exact>
+      <Route path="/etCourseTemplateQuestionSource/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateQuestionSourceEdit />
       </Route>
       <Route
@@ -43,13 +43,13 @@ export default function RouteEtCourseTemplateQuestionSource() {
         )}
       />
       <Route
-        path="/etCourseTemplateQuestionSource/:id/questions/:id/edit"
+        path="/etCourseTemplateQuestionSource/:id/questions/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionMcqEdit
             fixedParams={{questionSourceId: renderProps.match.params.id}}
           />
-          )}
+        )}
       />
     </Switch>
   );

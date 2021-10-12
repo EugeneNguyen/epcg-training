@@ -17,7 +17,7 @@ export default function RouteEtCourseTemplateQuestionTagLink() {
       <Route path="/etCourseTemplateQuestionTagLink/:id" exact>
         <ViewEtCourseTemplateQuestionTagLinkInfo />
       </Route>
-      <Route path="/etCourseTemplateQuestionTagLink/:id/edit" exact>
+      <Route path="/etCourseTemplateQuestionTagLink/:selectedObjectId/edit" exact>
         <FormEtCourseTemplateQuestionTagLinkEdit />
       </Route>
     </Switch>
