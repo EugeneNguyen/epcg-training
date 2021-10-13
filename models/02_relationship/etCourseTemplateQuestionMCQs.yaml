@@ -8,6 +8,9 @@ relationships:
       name: etCourseTemplateQuestionSources
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: courseTemplateId
   - name: courseTemplate
     label: Course Template
     type: many_to_one
@@ -26,6 +29,9 @@ relationships:
       name: etCourseTemplateQuestionTags
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: courseTemplateId
     link:
       name: etCourseTemplateQuestionTagLinks
       selfId: questionId

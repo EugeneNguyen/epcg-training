@@ -182,12 +182,231 @@ relationships:
           displayLabel: Updated At
   - name: questions
     label: Questions
-    type: one_to_many
+    type: many_to_many
     self:
       key: id
     target:
+      name: etCourseTemplateQuestionMCQs
+      key: id
+      label: questionCode
+      modelName: etCourseTemplateQuestionMCQ
+      modelNameSnake: et_course_template_question_mcq
+      modelNameCapitalCamel: EtCourseTemplateQuestionMcq
+      modelNameUpSnake: ET_COURSE_TEMPLATE_QUESTION_MCQ
+      baseUrl: etCourseTemplateQuestionMCQ
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        questionCode:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionCode
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Code
+        question:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: question
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question
+        answerA:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: answerA
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Answer A
+        answerB:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: answerB
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Answer B
+        answerC:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: answerC
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Answer C
+        answerD:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: answerD
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Answer D
+        correctAnswer:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: correctAnswer
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Correct Answer
+        explanation:
+          type: TEXT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: explanation
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Explanation
+        courseTemplateId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: courseTemplateId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Course Template Id
+        questionSourceId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionSourceId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Source Id
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At
+    link:
       name: etCourseTemplateExamQuestions
-      key: examId
+      selfId: examId
+      targetId: questionId
       modelName: etCourseTemplateExamQuestion
       modelNameSnake: et_course_template_exam_question
       modelNameCapitalCamel: EtCourseTemplateExamQuestion

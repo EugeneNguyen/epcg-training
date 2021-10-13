@@ -37,7 +37,7 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
         {excludeColumns.includes("questionId") || (
           <th
             scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            class="w-3/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
             Question
           </th>
@@ -45,7 +45,7 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
         {excludeColumns.includes("order") || (
           <th
             scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            class="w-2/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
             Order
           </th>

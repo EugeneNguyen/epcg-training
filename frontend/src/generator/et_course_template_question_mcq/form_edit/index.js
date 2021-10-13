@@ -172,6 +172,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             displayLabel="Question Source"
             value={questionSourceId}
             onValueChange={(value) => setquestionSourceId(value)}
+            variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           />
         )}
         <Input
@@ -183,6 +184,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
           displayLabel="Tags"
           value={tagsRelationship}
           onValueChange={(value) => settagsRelationship(value)}
+          variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           isMulti
         />
         </div>

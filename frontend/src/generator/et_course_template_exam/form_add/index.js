@@ -11,7 +11,8 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
 
   const [name, setname] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
-    
+        const [questionsRelationship, setquestionsRelationship] = useState([]);
+  
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
@@ -52,6 +53,17 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
             onValueChange={(value) => setcourseTemplateId(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../et_course_template_question_mcq/apis').default.ALL}
+          idKey="id"
+          labelKey="questionCode"
+          name="questions"
+          displayLabel="Questions"
+          value={questionsRelationship}
+          onValueChange={(value) => setquestionsRelationship(value)}
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

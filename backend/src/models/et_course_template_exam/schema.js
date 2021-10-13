@@ -9,8 +9,9 @@ type EtCourseTemplateExam {
   createdAt: String
   updatedAt: String
   courseTemplate: EtCourseTemplate
-  questions: [EtCourseTemplateExamQuestion]
+  questions: [EtCourseTemplateQuestionMcq]
   questionsCount: Int
+  questionsLink: [EtCourseTemplateExamQuestion]
 }
 
 type EtCourseTemplateExamWithPagination {
@@ -27,6 +28,7 @@ type EtCourseTemplateExamPagination {
 input EtCourseTemplateExamInput {
   name: String
   courseTemplateId: String
+  questions: [String]
 }
 
 input EtCourseTemplateExamPaginationInput {

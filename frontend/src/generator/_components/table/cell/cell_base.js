@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {useMutation} from "@apollo/client";
 import PropTypes from 'prop-types';
-import {Button as ButtonStrap} from 'reactstrap';
 import {toast} from 'react-toastify';
 import Form from '../../form/form';
+import {Button} from '../../button';
 
 CellBase.propTypes = {
   editable: PropTypes.bool,
@@ -40,7 +40,7 @@ export default function CellBase(props) {
       >
         <div className="flex flex-wrap justify-between">
           {props.renderDisplay()}
-          <Button color="primary" icon="bi bi-pencil-square" onClick={() => setEditMode(true)} />
+          <ButtonIcon color="primary" icon="bi bi-pencil-square" onClick={() => setEditMode(true)} />
         </div>
       </td>
     );
@@ -61,26 +61,25 @@ function TDEdit(props) {
     <td
       class="px-6 py-4 whitespace-nowrap"
     >
-      <Form
-        className="flex flex-wrap space-x-1 items-center"
-        onSubmitParams={(params) => edit({ variables: { id: props.id, data: params } })}
-      >
-      <div className="flex-grow">
-        {props.renderInput()}
-      </div>
-      <div className="space-x-1">
-        <Button color="success" icon="bi bi-check2-square" />
-        <Button color="danger" icon="bi bi-x-square" onClick={() => props.setEditMode(false)} />
-      </div>
+      <Form onSubmitParams={(params) => edit({ variables: { id: props.id, data: params } })} >
+        <div className="flex flex-wrap space-x-1 items-center">
+          <div className="flex-grow">
+            {props.renderInput()}
+          </div>
+          <div className="space-x-1">
+            <ButtonIcon color="success" icon="bi bi-check2-square" />
+            <ButtonIcon color="danger" icon="bi bi-x-square" onClick={() => props.setEditMode(false)} />
+          </div>
+        </div>
       </Form>
     </td>
   );
 }
 
-function Button({icon, ...props}) {
+function ButtonIcon({icon, ...props}) {
   return (
-    <ButtonStrap size="sm" {...props}>
+    <Button size="sm" {...props}>
       <i className={icon} />
-    </ButtonStrap>
+    </Button>
   );
 }

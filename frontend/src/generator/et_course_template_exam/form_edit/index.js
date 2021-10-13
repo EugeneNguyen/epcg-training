@@ -12,6 +12,7 @@ export default function FormEtCourseTemplateExamEdit({fixedParams}) {
 
   const [name, setname] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
+  const [questionsRelationship, setquestionsRelationship] = useState([]);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -22,6 +23,7 @@ export default function FormEtCourseTemplateExamEdit({fixedParams}) {
         setname(response.data.name);
         setcourseTemplateId(response.data.courseTemplateId);
 
+        setquestionsRelationship(response.data.questions.map(r => r.id));
       },
     }
   );
@@ -65,6 +67,17 @@ export default function FormEtCourseTemplateExamEdit({fixedParams}) {
             onValueChange={(value) => setcourseTemplateId(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../et_course_template_question_mcq/apis').default.ALL}
+          idKey="id"
+          labelKey="questionCode"
+          name="questions"
+          displayLabel="Questions"
+          value={questionsRelationship}
+          onValueChange={(value) => setquestionsRelationship(value)}
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

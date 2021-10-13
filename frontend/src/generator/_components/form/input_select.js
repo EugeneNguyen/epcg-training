@@ -14,7 +14,7 @@ function InputSelectQuery({query, variables, idKey, labelKey, ...props}) {
   const {data} = useQuery(query, {
     notifyOnNetworkStatusChange: true,
     fetchPolicy: "cache-and-network",
-    variables: variables,
+    variables: {where: variables},
   });
 
   if (!data) return <div>Loading</div>

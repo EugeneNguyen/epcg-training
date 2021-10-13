@@ -19,8 +19,8 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
   const [explanation, setexplanation] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
   const [questionSourceId, setquestionSourceId] = useState(null);
-          const [tagsRelationship, settagsRelationship] = useState([]);
-  
+  const [tagsRelationship, settagsRelationship] = useState([]);
+
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
@@ -150,6 +150,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
             displayLabel="Question Source"
             value={questionSourceId}
             onValueChange={(value) => setquestionSourceId(value)}
+            variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           />
         )}
         <Input
@@ -161,6 +162,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           displayLabel="Tags"
           value={tagsRelationship}
           onValueChange={(value) => settagsRelationship(value)}
+          variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           isMulti
         />
         </div>

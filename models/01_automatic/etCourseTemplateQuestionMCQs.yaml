@@ -222,6 +222,9 @@ relationships:
       name: etCourseTemplateQuestionSources
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: courseTemplateId
       modelName: etCourseTemplateQuestionSource
       modelNameSnake: et_course_template_question_source
       modelNameCapitalCamel: EtCourseTemplateQuestionSource
@@ -412,6 +415,9 @@ relationships:
       name: etCourseTemplateQuestionTags
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: courseTemplateId
       modelName: etCourseTemplateQuestionTag
       modelNameSnake: et_course_template_question_tag
       modelNameCapitalCamel: EtCourseTemplateQuestionTag

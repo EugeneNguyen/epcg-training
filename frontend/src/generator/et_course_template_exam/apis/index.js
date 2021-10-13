@@ -47,22 +47,14 @@ query et_course_template_exam_get_by_id($id: String) {
     courseTemplateId
     createdAt
     updatedAt
+    questions {
+      id
+      questionCode
+    }
   }
 }
 `;
 
-const GET_ET_COURSE_TEMPLATE_EXAM_QUESTION = gql`
-query et_course_template_exam_get_by_id($id: String) {
-  et_course_template_exam_get_by_id(id: $id) {
-    id
-    examId
-    questionId
-    order
-    createdAt
-    updatedAt
-  }
-}
-`;
 
 const ADD = gql`
 mutation et_course_template_exam_add($data: EtCourseTemplateExamInput) {

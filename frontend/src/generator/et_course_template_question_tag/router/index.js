@@ -43,7 +43,7 @@ export default function RouteEtCourseTemplateQuestionTag() {
         )}
       />
       <Route
-        path="/etCourseTemplateQuestionTag/:id/questions/:id/edit"
+        path="/etCourseTemplateQuestionTag/:id/questions/:selectedObjectId/edit"
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateQuestionTagLinkEdit
