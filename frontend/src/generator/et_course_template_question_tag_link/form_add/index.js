@@ -11,7 +11,7 @@ export default function FormEtCourseTemplateQuestionTagLinkAdd({fixedParams}) {
 
   const [questionId, setquestionId] = useState(null);
   const [questionTagId, setquestionTagId] = useState(null);
-    
+
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');

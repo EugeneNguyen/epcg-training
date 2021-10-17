@@ -11,7 +11,7 @@ export default function FormEtCourseTemplateQuestionSourceAdd({fixedParams}) {
 
   const [name, setname] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
-  
+
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');

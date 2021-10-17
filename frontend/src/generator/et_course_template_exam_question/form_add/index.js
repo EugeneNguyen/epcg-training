@@ -12,7 +12,7 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
   const [examId, setexamId] = useState(null);
   const [questionId, setquestionId] = useState(null);
   const [order, setorder] = useState(null);
-  
+
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');

@@ -10,7 +10,7 @@ export default function FormEtEducationProviderAdd({fixedParams}) {
   const history = useHistory();
 
   const [name, setname] = useState(null);
-  
+
   const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
     onCompleted: () => {
       toast.success('Add completed');
