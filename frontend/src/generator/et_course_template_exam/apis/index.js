@@ -5,6 +5,11 @@ query et_course_template_exam_get_all($where: EtCourseTemplateExamWhere) {
   data: et_course_template_exam_get_all(where: $where) {
     id
     name
+    duration
+    numberOfQuestion
+    unlimitedTime
+    randomQuestionOrder
+    randomChoiceOrder
     courseTemplateId
     createdAt
     updatedAt
@@ -18,6 +23,11 @@ query et_course_template_exam_get_all_with_page($pagination: EtCourseTemplateExa
     rows {
       id
       name
+      duration
+      numberOfQuestion
+      unlimitedTime
+      randomQuestionOrder
+      randomChoiceOrder
       courseTemplate {
         id
         name
@@ -40,6 +50,11 @@ query et_course_template_exam_get_by_id($id: String) {
   data: et_course_template_exam_get_by_id(id: $id) {
     id
     name
+    duration
+    numberOfQuestion
+    unlimitedTime
+    randomQuestionOrder
+    randomChoiceOrder
     courseTemplate {
       id
       name
@@ -55,12 +70,31 @@ query et_course_template_exam_get_by_id($id: String) {
 }
 `;
 
+const GET_ET_EXAM_ATTEMPT = gql`
+query et_course_template_exam_get_by_id($id: String) {
+  et_course_template_exam_get_by_id(id: $id) {
+    id
+    userId
+    templateExamId
+    duration
+    startTime
+    endTime
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation et_course_template_exam_add($data: EtCourseTemplateExamInput) {
   et_course_template_exam_add(data: $data) {
     id
     name
+    duration
+    numberOfQuestion
+    unlimitedTime
+    randomQuestionOrder
+    randomChoiceOrder
     courseTemplateId
     createdAt
     updatedAt
@@ -73,6 +107,11 @@ mutation et_course_template_exam_edit($id: String, $data: EtCourseTemplateExamIn
   et_course_template_exam_edit(id: $id, data: $data) {
     id
     name
+    duration
+    numberOfQuestion
+    unlimitedTime
+    randomQuestionOrder
+    randomChoiceOrder
     courseTemplateId
     createdAt
     updatedAt

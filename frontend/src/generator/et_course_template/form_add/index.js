@@ -12,15 +12,16 @@ export default function FormEtCourseTemplateAdd({fixedParams}) {
   const [name, setname] = useState(null);
   const [educationProviderId, seteducationProviderId] = useState(null);
 
-  const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
-    onCompleted: () => {
-      toast.success('Add completed');
-      history.goBack();
-    }
-  });
+  const [apiAdd, { data, loading, error }] = useMutation(API.ADD);
 
   const handleSubmit = (params) => {
-    apiAdd({ variables: { data: params } });
+    console.log(params);
+    return;
+    apiAdd({ variables: { data: params } })
+      .then(() => {
+        toast.success('Add completed');
+        history.goBack();
+      })
   }
 
   return (
@@ -56,9 +57,19 @@ export default function FormEtCourseTemplateAdd({fixedParams}) {
         <div class="flex mt-2">
           <button
             type="submit"
+            name="_submit_type_asdf"
+            value="submit"
             class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           >
             Submit
+          </button>
+          <button
+            type="submit"
+            name="_submit_type_qwer"
+            value="submit_and_add_more"
+            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          >
+            Submit and Add another
           </button>
         </div>
       </Form>

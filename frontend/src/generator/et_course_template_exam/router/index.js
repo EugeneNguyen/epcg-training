@@ -7,6 +7,9 @@ import ViewEtCourseTemplateExamInfo from '../view_info';
 import TableEtCourseTemplateExamQuestionList from '../../et_course_template_exam_question/table_list';
 import FormEtCourseTemplateExamQuestionAdd from '../../et_course_template_exam_question/form_add';
 import FormEtCourseTemplateExamQuestionEdit from '../../et_course_template_exam_question/form_edit';
+import TableEtExamAttemptList from '../../et_exam_attempt/table_list';
+import FormEtExamAttemptAdd from '../../et_exam_attempt/form_add';
+import FormEtExamAttemptEdit from '../../et_exam_attempt/form_edit';
 
 export default function RouteEtCourseTemplateExam() {
   return (
@@ -48,6 +51,34 @@ export default function RouteEtCourseTemplateExam() {
         render={(renderProps) => (
           <FormEtCourseTemplateExamQuestionEdit
             fixedParams={{examId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/etCourseTemplateExam/:id/attempts"
+        exact
+        render={(renderProps) => (
+          <TableEtExamAttemptList
+            where={{templateExamId: renderProps.match.params.id}}
+            excludeColumns={["templateExamId"]}
+          />
+        )}
+      />
+      <Route
+        path="/etCourseTemplateExam/:id/attempts/add"
+        exact
+        render={(renderProps) => (
+          <FormEtExamAttemptAdd
+            fixedParams={{templateExamId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/etCourseTemplateExam/:id/attempts/:selectedObjectId/edit"
+        exact
+        render={(renderProps) => (
+          <FormEtExamAttemptEdit
+            fixedParams={{templateExamId: renderProps.match.params.id}}
           />
         )}
       />

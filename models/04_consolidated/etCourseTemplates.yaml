@@ -621,6 +621,86 @@ relationships:
           edit:
             enable: true
           displayLabel: Name
+        duration:
+          type: INT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: duration
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Duration
+        numberOfQuestion:
+          type: INT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: numberOfQuestion
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Number Of Question
+        unlimitedTime:
+          type: TINYINT(1)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: unlimitedTime
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Unlimited Time
+        randomQuestionOrder:
+          type: TINYINT(1)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: randomQuestionOrder
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Random Question Order
+        randomChoiceOrder:
+          type: TINYINT(1)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: randomChoiceOrder
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Random Choice Order
         courseTemplateId:
           type: CHAR(36)
           allowNull: true

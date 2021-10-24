@@ -1,0 +1,15 @@
+fields:
+  createdAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  updatedAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false

@@ -34,6 +34,46 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
             Name
           </th>
         )}
+        {excludeColumns.includes("duration") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Duration
+          </th>
+        )}
+        {excludeColumns.includes("numberOfQuestion") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Number Of Question
+          </th>
+        )}
+        {excludeColumns.includes("unlimitedTime") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Unlimited Time
+          </th>
+        )}
+        {excludeColumns.includes("randomQuestionOrder") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Random Question Order
+          </th>
+        )}
+        {excludeColumns.includes("randomChoiceOrder") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Random Choice Order
+          </th>
+        )}
         {excludeColumns.includes("courseTemplateId") || (
           <th
             scope="col"
@@ -58,6 +98,36 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
             type="VARCHAR(255)"
             value={_.get(item, 'name')}
             link={`/etCourseTemplateExam/${item.id}`}
+          />
+        )}
+          {excludeColumns.includes("duration") || (
+          <Cell
+            type="INT"
+            value={_.get(item, 'duration')}
+          />
+        )}
+          {excludeColumns.includes("numberOfQuestion") || (
+          <Cell
+            type="INT"
+            value={_.get(item, 'numberOfQuestion')}
+          />
+        )}
+          {excludeColumns.includes("unlimitedTime") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'unlimitedTime')}
+          />
+        )}
+          {excludeColumns.includes("randomQuestionOrder") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'randomQuestionOrder')}
+          />
+        )}
+          {excludeColumns.includes("randomChoiceOrder") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'randomChoiceOrder')}
           />
         )}
           {excludeColumns.includes("courseTemplateId") || (

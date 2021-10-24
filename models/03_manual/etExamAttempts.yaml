@@ -1,0 +1,17 @@
+fields:
+  id:
+    list:
+      link: /etExamAttempt/${item.id}
+  userId:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  createdAt:
+    list:
+      enable: false
+  updatedAt:
+    list:
+      enable: false

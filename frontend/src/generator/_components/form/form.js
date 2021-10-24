@@ -5,7 +5,6 @@ function Form({onSubmitParams, ...props}) {
     const params = {};
     for (const target of e.target) {
       if (target.name.length) {
-        console.log(target.name);
         if (!params[target.name]) {
           params[target.name] = target.value;
         } else {

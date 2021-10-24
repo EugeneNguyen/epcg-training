@@ -5,12 +5,21 @@ const basename = path.basename(__filename);
 let models = [];
 
 fs
-  .readdirSync(__dirname)
+  .readdirSync(path.join(__dirname, 'models'))
   .filter(file => {
     return (file !== basename) && (file.slice(-3) !== '.js');
   })
   .forEach(file => {
-    models.push(require(path.join(__dirname, file)))
+    models.push(require(path.join(__dirname, 'models', file)))
+  });
+
+fs
+  .readdirSync(path.join(__dirname, 'manuals'))
+  .filter(file => {
+    return (file !== basename) && (file.slice(-3) !== '.js');
+  })
+  .forEach(file => {
+    models.push(require(path.join(__dirname, 'manuals', file)))
   });
 
 let resolvers = {

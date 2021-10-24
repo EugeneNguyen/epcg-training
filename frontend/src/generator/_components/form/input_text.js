@@ -1,4 +1,4 @@
-function InputText({displayLabel, name, onValueChange, ...props}) {
+export default function InputText({displayLabel, name, onValueChange, ...props}) {
   return (
     <div>
       <label
@@ -17,4 +17,3 @@ function InputText({displayLabel, name, onValueChange, ...props}) {
   );
 }
 
-export default InputText;

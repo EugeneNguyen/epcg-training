@@ -24,6 +24,21 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING
     },
+    duration: {
+      type: DataTypes.INTEGER
+    },
+    numberOfQuestion: {
+      type: DataTypes.INTEGER
+    },
+    unlimitedTime: {
+      type: DataTypes.BOOLEAN
+    },
+    randomQuestionOrder: {
+      type: DataTypes.BOOLEAN
+    },
+    randomChoiceOrder: {
+      type: DataTypes.BOOLEAN
+    },
     courseTemplateId: {
       type: DataTypes.UUID,
     },

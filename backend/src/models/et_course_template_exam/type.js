@@ -16,6 +16,7 @@ const courseTemplateLoader = new DataLoader(async (keys) => {
 
 
 
+
 let type = {
   EtCourseTemplateExam: {
     courseTemplate(parent, args, context, info) {
@@ -47,6 +48,20 @@ let type = {
       return db.etCourseTemplateExamQuestion.findAll({
         where: {
           examId: parent.id
+        }
+      });
+    },
+    attempts(parent, args, context, info) {
+      return db.etExamAttempt.findAll({
+        where: {
+          templateExamId: parent.id
+        }
+      });
+    },
+    attemptsCount(parent, args, context, info) {
+      return db.etExamAttempt.count({
+        where: {
+          templateExamId: parent.id
         }
       });
     },

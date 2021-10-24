@@ -10,18 +10,24 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
   const history = useHistory();
 
   const [name, setname] = useState(null);
+  const [duration, setduration] = useState(null);
+  const [numberOfQuestion, setnumberOfQuestion] = useState(null);
+  const [unlimitedTime, setunlimitedTime] = useState(null);
+  const [randomQuestionOrder, setrandomQuestionOrder] = useState(null);
+  const [randomChoiceOrder, setrandomChoiceOrder] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
   const [questionsRelationship, setquestionsRelationship] = useState([]);
 
-  const [apiAdd, { data, loading, error }] = useMutation(API.ADD, {
-    onCompleted: () => {
-      toast.success('Add completed');
-      history.goBack();
-    }
-  });
+  const [apiAdd, { data, loading, error }] = useMutation(API.ADD);
 
   const handleSubmit = (params) => {
-    apiAdd({ variables: { data: params } });
+    console.log(params);
+    return;
+    apiAdd({ variables: { data: params } })
+      .then(() => {
+        toast.success('Add completed');
+        history.goBack();
+      })
   }
 
   return (
@@ -37,6 +43,61 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
             displayLabel="Name"
             value={name}
             onValueChange={(value) => setname(value)}
+          />
+        )}
+        {fixedParams && fixedParams.duration ? (
+          <Input type="HIDDEN" name="duration" value={fixedParams.duration} />
+        ) : (
+          <Input
+            type="INT"
+            name="duration"
+            displayLabel="Duration"
+            value={duration}
+            onValueChange={(value) => setduration(value)}
+          />
+        )}
+        {fixedParams && fixedParams.numberOfQuestion ? (
+          <Input type="HIDDEN" name="numberOfQuestion" value={fixedParams.numberOfQuestion} />
+        ) : (
+          <Input
+            type="INT"
+            name="numberOfQuestion"
+            displayLabel="Number Of Question"
+            value={numberOfQuestion}
+            onValueChange={(value) => setnumberOfQuestion(value)}
+          />
+        )}
+        {fixedParams && fixedParams.unlimitedTime ? (
+          <Input type="HIDDEN" name="unlimitedTime" value={fixedParams.unlimitedTime} />
+        ) : (
+          <Input
+            type="TINYINT(1)"
+            name="unlimitedTime"
+            displayLabel="Unlimited Time"
+            value={unlimitedTime}
+            onValueChange={(value) => setunlimitedTime(value)}
+          />
+        )}
+        {fixedParams && fixedParams.randomQuestionOrder ? (
+          <Input type="HIDDEN" name="randomQuestionOrder" value={fixedParams.randomQuestionOrder} />
+        ) : (
+          <Input
+            type="TINYINT(1)"
+            name="randomQuestionOrder"
+            displayLabel="Random Question Order"
+            value={randomQuestionOrder}
+            onValueChange={(value) => setrandomQuestionOrder(value)}
+          />
+        )}
+        {fixedParams && fixedParams.randomChoiceOrder ? (
+          <Input type="HIDDEN" name="randomChoiceOrder" value={fixedParams.randomChoiceOrder} />
+        ) : (
+          <Input
+            type="TINYINT(1)"
+            name="randomChoiceOrder"
+            displayLabel="Random Choice Order"
+            value={randomChoiceOrder}
+            onValueChange={(value) => setrandomChoiceOrder(value)}
           />
         )}
         {fixedParams && fixedParams.courseTemplateId ? (

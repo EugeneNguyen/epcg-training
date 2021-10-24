@@ -1,5 +1,5 @@
 const { ApolloServer } = require('apollo-server-express');
-const models = require('./src/models');
+const models = require('./src');
 const express = require('express');
 
 const port = process.env.PORT || 4000;

@@ -97,6 +97,11 @@ query et_course_template_get_by_id($id: String) {
   et_course_template_get_by_id(id: $id) {
     id
     name
+    duration
+    numberOfQuestion
+    unlimitedTime
+    randomQuestionOrder
+    randomChoiceOrder
     courseTemplateId
     createdAt
     updatedAt

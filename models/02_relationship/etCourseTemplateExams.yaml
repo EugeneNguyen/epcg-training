@@ -21,3 +21,11 @@ relationships:
       name: etCourseTemplateExamQuestions
       selfId: examId
       targetId: questionId
+  - name: attempts
+    label: Attempts
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etExamAttempts
+      key: templateExamId

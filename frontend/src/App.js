@@ -10,6 +10,7 @@ import RouteEtCourseTemplateQuestionMcq from "./generator/et_course_template_que
 import RouteEtCourseTemplateQuestionSource from "./generator/et_course_template_question_source/router";
 import RouteEtCourseTemplateQuestionTag from "./generator/et_course_template_question_tag/router";
 import RouteEtCourseTemplateExam from "./generator/et_course_template_exam/router";
+import RouteEtExamAttempt from "./generator/et_exam_attempt/router";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <RouteEtCourseTemplateQuestionSource/>
             <RouteEtCourseTemplateQuestionTag/>
             <RouteEtCourseTemplateExam/>
+            <RouteEtExamAttempt/>
             <ToastContainer/>
           </div>
         </div>
