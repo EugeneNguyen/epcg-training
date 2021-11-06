@@ -4,7 +4,7 @@ import {useState} from "react";
 
 export default function SideBar() {
   return (
-    <div className="flex flex-col w-2/12 h-screen px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
+    <>
       <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">NXR</h2>
       <NavHr />
       <div className="flex flex-col justify-between flex-1 mt-6">
@@ -18,7 +18,7 @@ export default function SideBar() {
           <h4 className="mx-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">John Doe</h4>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
