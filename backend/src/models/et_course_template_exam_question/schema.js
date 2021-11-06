@@ -6,7 +6,7 @@ type EtCourseTemplateExamQuestion {
   id: String
   examId: String
   questionId: String
-  order: String
+  order: Int
   createdAt: String
   updatedAt: String
   question: EtCourseTemplateQuestionMcq
@@ -26,7 +26,7 @@ type EtCourseTemplateExamQuestionPagination {
 input EtCourseTemplateExamQuestionInput {
   examId: String
   questionId: String
-  order: String
+  order: Int
 }
 
 input EtCourseTemplateExamQuestionPaginationInput {
@@ -38,7 +38,7 @@ input EtCourseTemplateExamQuestionWhere {
   id: String
   examId: String
   questionId: String
-  order: String
+  order: Int
   createdAt: String
   updatedAt: String
 }

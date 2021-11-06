@@ -6,11 +6,13 @@ type EtExamAttemptQuestion {
   id: String
   attemptId: String
   questionId: String
-  order: String
-  questionData: String
+  order: Int
+  displayedQuestionData: String
+  fullQuestionData: String
   answer: String
   rawAnswer: String
-  correct: String
+  correct: Boolean
+  flag: Boolean
   startTime: String
   endTime: String
   createdAt: String
@@ -31,11 +33,13 @@ type EtExamAttemptQuestionPagination {
 input EtExamAttemptQuestionInput {
   attemptId: String
   questionId: String
-  order: String
-  questionData: String
+  order: Int
+  displayedQuestionData: String
+  fullQuestionData: String
   answer: String
   rawAnswer: String
-  correct: String
+  correct: Boolean
+  flag: Boolean
   startTime: String
   endTime: String
 }
@@ -49,11 +53,13 @@ input EtExamAttemptQuestionWhere {
   id: String
   attemptId: String
   questionId: String
-  order: String
-  questionData: String
+  order: Int
+  displayedQuestionData: String
+  fullQuestionData: String
   answer: String
   rawAnswer: String
-  correct: String
+  correct: Boolean
+  flag: Boolean
   startTime: String
   endTime: String
   createdAt: String

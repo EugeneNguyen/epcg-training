@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
     courseTemplateId: {
       type: DataTypes.UUID,
     },
+    isPublic: {
+      type: DataTypes.BOOLEAN
+    },
   }, {
     sequelize,
     modelName: 'etCourseTemplateExam',

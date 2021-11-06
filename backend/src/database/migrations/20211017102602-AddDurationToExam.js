@@ -42,12 +42,22 @@ module.exports = {
         after: "randomQuestionOrder"
       }
     );
+    await queryInterface.addColumn(
+      'etCourseTemplateExams',
+      'isPublic',
+      {
+        type: Sequelize.BOOLEAN,
+        after: "randomChoiceOrder"
+      }
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeColumn('etCourseTemplateExams', 'duration');
     await queryInterface.removeColumn('etCourseTemplateExams', 'numberOfQuestion');
+    await queryInterface.removeColumn('etCourseTemplateExams', 'unlimitedTime');
     await queryInterface.removeColumn('etCourseTemplateExams', 'randomQuestionOrder');
     await queryInterface.removeColumn('etCourseTemplateExams', 'randomChoiceOrder');
+    await queryInterface.removeColumn('etCourseTemplateExams', 'isPublic');
   }
 };

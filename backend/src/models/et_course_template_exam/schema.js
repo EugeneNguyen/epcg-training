@@ -5,11 +5,12 @@ let type = `
 type EtCourseTemplateExam {
   id: String
   name: String
-  duration: String
-  numberOfQuestion: String
-  unlimitedTime: String
-  randomQuestionOrder: String
-  randomChoiceOrder: String
+  duration: Int
+  numberOfQuestion: Int
+  unlimitedTime: Boolean
+  randomQuestionOrder: Boolean
+  randomChoiceOrder: Boolean
+  isPublic: Boolean
   courseTemplateId: String
   createdAt: String
   updatedAt: String
@@ -34,11 +35,12 @@ type EtCourseTemplateExamPagination {
 
 input EtCourseTemplateExamInput {
   name: String
-  duration: String
-  numberOfQuestion: String
-  unlimitedTime: String
-  randomQuestionOrder: String
-  randomChoiceOrder: String
+  duration: Int
+  numberOfQuestion: Int
+  unlimitedTime: Boolean
+  randomQuestionOrder: Boolean
+  randomChoiceOrder: Boolean
+  isPublic: Boolean
   courseTemplateId: String
   questions: [String]
 }
@@ -51,11 +53,12 @@ input EtCourseTemplateExamPaginationInput {
 input EtCourseTemplateExamWhere {
   id: String
   name: String
-  duration: String
-  numberOfQuestion: String
-  unlimitedTime: String
-  randomQuestionOrder: String
-  randomChoiceOrder: String
+  duration: Int
+  numberOfQuestion: Int
+  unlimitedTime: Boolean
+  randomQuestionOrder: Boolean
+  randomChoiceOrder: Boolean
+  isPublic: Boolean
   courseTemplateId: String
   createdAt: String
   updatedAt: String

@@ -6,13 +6,14 @@ type EtExamAttempt {
   id: String
   userId: String
   templateExamId: String
-  duration: String
+  duration: Int
   startTime: String
   endTime: String
   createdAt: String
   updatedAt: String
   questions: [EtExamAttemptQuestion]
   questionsCount: Int
+  templateExam: EtCourseTemplateExam
 }
 
 type EtExamAttemptWithPagination {
@@ -28,7 +29,7 @@ type EtExamAttemptPagination {
 
 input EtExamAttemptInput {
   templateExamId: String
-  duration: String
+  duration: Int
   startTime: String
   endTime: String
   createdAt: String
@@ -44,7 +45,7 @@ input EtExamAttemptWhere {
   id: String
   userId: String
   templateExamId: String
-  duration: String
+  duration: Int
   startTime: String
   endTime: String
   createdAt: String

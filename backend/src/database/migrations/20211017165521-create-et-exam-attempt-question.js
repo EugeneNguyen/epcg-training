@@ -17,7 +17,10 @@ module.exports = {
       order: {
         type: Sequelize.INTEGER,
       },
-      questionData: {
+      displayedQuestionData: {
+        type: Sequelize.TEXT,
+      },
+      fullQuestionData: {
         type: Sequelize.TEXT,
       },
       answer: {
@@ -29,6 +32,9 @@ module.exports = {
         comment: 'If the exam is randomized the order of choice, this is what user input in',
       },
       correct: {
+        type: Sequelize.BOOLEAN,
+      },
+      flag: {
         type: Sequelize.BOOLEAN,
       },
       startTime: {

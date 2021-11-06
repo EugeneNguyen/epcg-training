@@ -30,7 +30,10 @@ module.exports = (sequelize, DataTypes) => {
     order: {
       type: DataTypes.INTEGER,
     },
-    questionData: {
+    displayedQuestionData: {
+      type: DataTypes.TEXT,
+    },
+    fullQuestionData: {
       type: DataTypes.TEXT,
     },
     answer: {
@@ -40,6 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     correct: {
+      type: DataTypes.BOOLEAN,
+    },
+    flag: {
       type: DataTypes.BOOLEAN,
     },
     startTime: {

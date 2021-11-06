@@ -20,7 +20,18 @@ let mutation = {
 
     for (const templateExamQuestion of courseTemplateExamQuestions) {
       const question = await db.etCourseTemplateQuestionMCQ.findByPk(templateExamQuestion.questionId)
-      const questionData = {
+      const displayedQuestionData = {
+        type: 'mcq',
+        question: question.question,
+        choices: [
+          question.answerA,
+          question.answerB,
+          question.answerC,
+          question.answerD,
+        ],
+        choiceOrder: [0, 1, 2, 3],
+      }
+      const fullQuestionData = {
         type: 'mcq',
         question: question.question,
         choices: [
@@ -37,7 +48,8 @@ let mutation = {
         attemptId: attempt.id,
         questionId: templateExamQuestion.id,
         order: templateExamQuestion.order,
-        questionData: JSON.stringify(questionData),
+        displayedQuestionData: JSON.stringify(displayedQuestionData),
+        fullQuestionData: JSON.stringify(fullQuestionData),
       })
     }
 
