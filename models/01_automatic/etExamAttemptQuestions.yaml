@@ -60,7 +60,7 @@ fields:
     autoIncrement: false
     comment: null
     name: order
-    graphType: String
+    graphType: Int
     list:
       enable: true
     add:
@@ -68,14 +68,14 @@ fields:
     edit:
       enable: true
     displayLabel: Order
-  questionData:
+  displayedQuestionData:
     type: TEXT
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: questionData
+    name: displayedQuestionData
     graphType: String
     list:
       enable: true
@@ -83,7 +83,23 @@ fields:
       enable: true
     edit:
       enable: true
-    displayLabel: Question Data
+    displayLabel: Displayed Question Data
+  fullQuestionData:
+    type: TEXT
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: fullQuestionData
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Full Question Data
   answer:
     type: VARCHAR(255)
     allowNull: true
@@ -126,7 +142,7 @@ fields:
     autoIncrement: false
     comment: null
     name: correct
-    graphType: String
+    graphType: Boolean
     list:
       enable: true
     add:
@@ -134,6 +150,22 @@ fields:
     edit:
       enable: true
     displayLabel: Correct
+  flag:
+    type: TINYINT(1)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: flag
+    graphType: Boolean
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Flag
   startTime:
     type: DATETIME
     allowNull: true

@@ -61,7 +61,7 @@ fields:
     autoIncrement: false
     comment: null
     name: order
-    graphType: String
+    graphType: Int
     list:
       enable: true
       size: '2'

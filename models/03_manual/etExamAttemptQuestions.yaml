@@ -1,3 +1,6 @@
+defaultOrder:
+  field: order
+  order: ASC
 fields:
   createdAt:
     list:

@@ -44,7 +44,7 @@ fields:
     autoIncrement: false
     comment: null
     name: duration
-    graphType: String
+    graphType: Int
     list:
       enable: true
     add:
@@ -60,7 +60,7 @@ fields:
     autoIncrement: false
     comment: null
     name: numberOfQuestion
-    graphType: String
+    graphType: Int
     list:
       enable: true
     add:
@@ -76,7 +76,7 @@ fields:
     autoIncrement: false
     comment: null
     name: unlimitedTime
-    graphType: String
+    graphType: Boolean
     list:
       enable: true
     add:
@@ -92,7 +92,7 @@ fields:
     autoIncrement: false
     comment: null
     name: randomQuestionOrder
-    graphType: String
+    graphType: Boolean
     list:
       enable: true
     add:
@@ -108,7 +108,7 @@ fields:
     autoIncrement: false
     comment: null
     name: randomChoiceOrder
-    graphType: String
+    graphType: Boolean
     list:
       enable: true
     add:
@@ -116,6 +116,22 @@ fields:
     edit:
       enable: true
     displayLabel: Random Choice Order
+  isPublic:
+    type: TINYINT(1)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: isPublic
+    graphType: Boolean
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Is Public
   courseTemplateId:
     type: CHAR(36)
     allowNull: true
@@ -549,7 +565,7 @@ relationships:
           autoIncrement: false
           comment: null
           name: order
-          graphType: String
+          graphType: Int
           list:
             enable: true
           add:
@@ -659,7 +675,7 @@ relationships:
           autoIncrement: false
           comment: null
           name: duration
-          graphType: String
+          graphType: Int
           list:
             enable: true
           add:

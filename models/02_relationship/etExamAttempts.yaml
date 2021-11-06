@@ -7,3 +7,12 @@ relationships:
     target:
       name: etExamAttemptQuestions
       key: attemptId
+  - name: templateExam
+    label: Template Exam
+    type: many_to_one
+    self:
+      key: templateExamId
+    target:
+      name: etCourseTemplateExams
+      key: id
+      label: name
