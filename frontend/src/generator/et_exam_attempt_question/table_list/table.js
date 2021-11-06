@@ -58,12 +58,20 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
             Order
           </th>
         )}
-        {excludeColumns.includes("questionData") || (
+        {excludeColumns.includes("displayedQuestionData") || (
           <th
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Question Data
+            Displayed Question Data
+          </th>
+        )}
+        {excludeColumns.includes("fullQuestionData") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Full Question Data
           </th>
         )}
         {excludeColumns.includes("answer") || (
@@ -88,6 +96,14 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
             Correct
+          </th>
+        )}
+        {excludeColumns.includes("flag") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Flag
           </th>
         )}
         {excludeColumns.includes("startTime") || (
@@ -141,10 +157,16 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
             value={_.get(item, 'order')}
           />
         )}
-          {excludeColumns.includes("questionData") || (
+          {excludeColumns.includes("displayedQuestionData") || (
           <Cell
             type="TEXT"
-            value={_.get(item, 'questionData')}
+            value={_.get(item, 'displayedQuestionData')}
+          />
+        )}
+          {excludeColumns.includes("fullQuestionData") || (
+          <Cell
+            type="TEXT"
+            value={_.get(item, 'fullQuestionData')}
           />
         )}
           {excludeColumns.includes("answer") || (
@@ -163,6 +185,12 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
           <Cell
             type="TINYINT(1)"
             value={_.get(item, 'correct')}
+          />
+        )}
+          {excludeColumns.includes("flag") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'flag')}
           />
         )}
           {excludeColumns.includes("startTime") || (

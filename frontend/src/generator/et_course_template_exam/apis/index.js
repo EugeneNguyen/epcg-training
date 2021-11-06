@@ -10,6 +10,7 @@ query et_course_template_exam_get_all($where: EtCourseTemplateExamWhere) {
     unlimitedTime
     randomQuestionOrder
     randomChoiceOrder
+    isPublic
     courseTemplateId
     createdAt
     updatedAt
@@ -28,6 +29,7 @@ query et_course_template_exam_get_all_with_page($pagination: EtCourseTemplateExa
       unlimitedTime
       randomQuestionOrder
       randomChoiceOrder
+      isPublic
       courseTemplate {
         id
         name
@@ -55,6 +57,7 @@ query et_course_template_exam_get_by_id($id: String) {
     unlimitedTime
     randomQuestionOrder
     randomChoiceOrder
+    isPublic
     courseTemplate {
       id
       name
@@ -95,6 +98,7 @@ mutation et_course_template_exam_add($data: EtCourseTemplateExamInput) {
     unlimitedTime
     randomQuestionOrder
     randomChoiceOrder
+    isPublic
     courseTemplateId
     createdAt
     updatedAt
@@ -112,6 +116,7 @@ mutation et_course_template_exam_edit($id: String, $data: EtCourseTemplateExamIn
     unlimitedTime
     randomQuestionOrder
     randomChoiceOrder
+    isPublic
     courseTemplateId
     createdAt
     updatedAt

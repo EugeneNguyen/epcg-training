@@ -6,6 +6,7 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+                          
 export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
@@ -43,24 +44,36 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
       },
     }
   );
-  const [editApi] = useMutation(API.EDIT, {
-    onCompleted: () => {
-      toast.success('Edit completed');
-      history.goBack();
-    }
-  });
+
+  const [editApi] = useMutation(API.EDIT);
 
   const handleSubmit = (params) => {
-    editApi({ variables: { id, data: params } });
+    const data = {
+      questionCode,
+      question,
+      answerA,
+      answerB,
+      answerC,
+      answerD,
+      correctAnswer,
+      explanation,
+      courseTemplateId,
+      questionSourceId,
+      tags: tagsRelationship,
+      ...fixedParams,
+    };
+    editApi({ variables: { id, data } })
+      .then(() => {
+        toast.success('Edit completed');
+        history.goBack();
+      })
   }
 
   return (
     <Box title="Add new etCourseTemplateQuestionMCQ" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.questionCode ? (
-          <Input type="HIDDEN" name="questionCode" value={fixedParams.questionCode} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionCode) && (
           <Input
             type="VARCHAR(255)"
             name="questionCode"
@@ -69,9 +82,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setquestionCode(value)}
           />
         )}
-        {fixedParams && fixedParams.question ? (
-          <Input type="HIDDEN" name="question" value={fixedParams.question} />
-        ) : (
+        {(!fixedParams || !fixedParams.question) && (
           <Input
             type="TEXT"
             name="question"
@@ -80,9 +91,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setquestion(value)}
           />
         )}
-        {fixedParams && fixedParams.answerA ? (
-          <Input type="HIDDEN" name="answerA" value={fixedParams.answerA} />
-        ) : (
+        {(!fixedParams || !fixedParams.answerA) && (
           <Input
             type="TEXT"
             name="answerA"
@@ -91,9 +100,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setanswerA(value)}
           />
         )}
-        {fixedParams && fixedParams.answerB ? (
-          <Input type="HIDDEN" name="answerB" value={fixedParams.answerB} />
-        ) : (
+        {(!fixedParams || !fixedParams.answerB) && (
           <Input
             type="TEXT"
             name="answerB"
@@ -102,9 +109,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setanswerB(value)}
           />
         )}
-        {fixedParams && fixedParams.answerC ? (
-          <Input type="HIDDEN" name="answerC" value={fixedParams.answerC} />
-        ) : (
+        {(!fixedParams || !fixedParams.answerC) && (
           <Input
             type="TEXT"
             name="answerC"
@@ -113,9 +118,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setanswerC(value)}
           />
         )}
-        {fixedParams && fixedParams.answerD ? (
-          <Input type="HIDDEN" name="answerD" value={fixedParams.answerD} />
-        ) : (
+        {(!fixedParams || !fixedParams.answerD) && (
           <Input
             type="TEXT"
             name="answerD"
@@ -124,9 +127,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setanswerD(value)}
           />
         )}
-        {fixedParams && fixedParams.correctAnswer ? (
-          <Input type="HIDDEN" name="correctAnswer" value={fixedParams.correctAnswer} />
-        ) : (
+        {(!fixedParams || !fixedParams.correctAnswer) && (
           <Input
             type="VARCHAR(255)"
             name="correctAnswer"
@@ -135,9 +136,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setcorrectAnswer(value)}
           />
         )}
-        {fixedParams && fixedParams.explanation ? (
-          <Input type="HIDDEN" name="explanation" value={fixedParams.explanation} />
-        ) : (
+        {(!fixedParams || !fixedParams.explanation) && (
           <Input
             type="TEXT"
             name="explanation"
@@ -146,9 +145,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setexplanation(value)}
           />
         )}
-        {fixedParams && fixedParams.courseTemplateId ? (
-          <Input type="HIDDEN" name="courseTemplateId" value={fixedParams.courseTemplateId} />
-        ) : (
+        {(!fixedParams || !fixedParams.courseTemplateId) && (
           <Input
             type="SELECT"
             query={require('../../et_course_template/apis').default.ALL}
@@ -160,9 +157,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
             onValueChange={(value) => setcourseTemplateId(value)}
           />
         )}
-        {fixedParams && fixedParams.questionSourceId ? (
-          <Input type="HIDDEN" name="questionSourceId" value={fixedParams.questionSourceId} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionSourceId) && (
           <Input
             type="SELECT"
             query={require('../../et_course_template_question_source/apis').default.ALL}

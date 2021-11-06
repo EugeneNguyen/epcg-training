@@ -6,25 +6,40 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+
 export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
   const history = useHistory();
 
   const [attemptId, setattemptId] = useState(null);
   const [questionId, setquestionId] = useState(null);
   const [order, setorder] = useState(null);
-  const [questionData, setquestionData] = useState(null);
+  const [displayedQuestionData, setdisplayedQuestionData] = useState(null);
+  const [fullQuestionData, setfullQuestionData] = useState(null);
   const [answer, setanswer] = useState(null);
   const [rawAnswer, setrawAnswer] = useState(null);
   const [correct, setcorrect] = useState(null);
+  const [flag, setflag] = useState(null);
   const [startTime, setstartTime] = useState(null);
   const [endTime, setendTime] = useState(null);
 
-  const [apiAdd, { data, loading, error }] = useMutation(API.ADD);
+  const [apiAdd] = useMutation(API.ADD);
 
-  const handleSubmit = (params) => {
-    console.log(params);
-    return;
-    apiAdd({ variables: { data: params } })
+  const handleSubmit = () => {
+    const data = {
+      attemptId,
+      questionId,
+      order,
+      displayedQuestionData,
+      fullQuestionData,
+      answer,
+      rawAnswer,
+      correct,
+      flag,
+      startTime,
+      endTime,
+      ...fixedParams,
+    };
+    apiAdd({variables: {data}})
       .then(() => {
         toast.success('Add completed');
         history.goBack();
@@ -35,9 +50,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
     <Box title="Add new etExamAttemptQuestion" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.attemptId ? (
-          <Input type="HIDDEN" name="attemptId" value={fixedParams.attemptId} />
-        ) : (
+        {(!fixedParams || !fixedParams.attemptId) && (
           <Input
             type="CHAR(36)"
             name="attemptId"
@@ -46,9 +59,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setattemptId(value)}
           />
         )}
-        {fixedParams && fixedParams.questionId ? (
-          <Input type="HIDDEN" name="questionId" value={fixedParams.questionId} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionId) && (
           <Input
             type="CHAR(36)"
             name="questionId"
@@ -57,9 +68,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setquestionId(value)}
           />
         )}
-        {fixedParams && fixedParams.order ? (
-          <Input type="HIDDEN" name="order" value={fixedParams.order} />
-        ) : (
+        {(!fixedParams || !fixedParams.order) && (
           <Input
             type="INT"
             name="order"
@@ -68,20 +77,25 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setorder(value)}
           />
         )}
-        {fixedParams && fixedParams.questionData ? (
-          <Input type="HIDDEN" name="questionData" value={fixedParams.questionData} />
-        ) : (
+        {(!fixedParams || !fixedParams.displayedQuestionData) && (
           <Input
             type="TEXT"
-            name="questionData"
-            displayLabel="Question Data"
-            value={questionData}
-            onValueChange={(value) => setquestionData(value)}
+            name="displayedQuestionData"
+            displayLabel="Displayed Question Data"
+            value={displayedQuestionData}
+            onValueChange={(value) => setdisplayedQuestionData(value)}
           />
         )}
-        {fixedParams && fixedParams.answer ? (
-          <Input type="HIDDEN" name="answer" value={fixedParams.answer} />
-        ) : (
+        {(!fixedParams || !fixedParams.fullQuestionData) && (
+          <Input
+            type="TEXT"
+            name="fullQuestionData"
+            displayLabel="Full Question Data"
+            value={fullQuestionData}
+            onValueChange={(value) => setfullQuestionData(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.answer) && (
           <Input
             type="VARCHAR(255)"
             name="answer"
@@ -90,9 +104,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setanswer(value)}
           />
         )}
-        {fixedParams && fixedParams.rawAnswer ? (
-          <Input type="HIDDEN" name="rawAnswer" value={fixedParams.rawAnswer} />
-        ) : (
+        {(!fixedParams || !fixedParams.rawAnswer) && (
           <Input
             type="VARCHAR(255)"
             name="rawAnswer"
@@ -101,9 +113,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setrawAnswer(value)}
           />
         )}
-        {fixedParams && fixedParams.correct ? (
-          <Input type="HIDDEN" name="correct" value={fixedParams.correct} />
-        ) : (
+        {(!fixedParams || !fixedParams.correct) && (
           <Input
             type="TINYINT(1)"
             name="correct"
@@ -112,9 +122,16 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setcorrect(value)}
           />
         )}
-        {fixedParams && fixedParams.startTime ? (
-          <Input type="HIDDEN" name="startTime" value={fixedParams.startTime} />
-        ) : (
+        {(!fixedParams || !fixedParams.flag) && (
+          <Input
+            type="TINYINT(1)"
+            name="flag"
+            displayLabel="Flag"
+            value={flag}
+            onValueChange={(value) => setflag(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.startTime) && (
           <Input
             type="DATETIME"
             name="startTime"
@@ -123,9 +140,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
             onValueChange={(value) => setstartTime(value)}
           />
         )}
-        {fixedParams && fixedParams.endTime ? (
-          <Input type="HIDDEN" name="endTime" value={fixedParams.endTime} />
-        ) : (
+        {(!fixedParams || !fixedParams.endTime) && (
           <Input
             type="DATETIME"
             name="endTime"

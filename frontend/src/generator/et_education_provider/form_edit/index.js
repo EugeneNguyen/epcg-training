@@ -6,6 +6,7 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+        
 export default function FormEtEducationProviderEdit({fixedParams}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
@@ -23,24 +24,26 @@ export default function FormEtEducationProviderEdit({fixedParams}) {
       },
     }
   );
-  const [editApi] = useMutation(API.EDIT, {
-    onCompleted: () => {
-      toast.success('Edit completed');
-      history.goBack();
-    }
-  });
+
+  const [editApi] = useMutation(API.EDIT);
 
   const handleSubmit = (params) => {
-    editApi({ variables: { id, data: params } });
+    const data = {
+      name,
+      ...fixedParams,
+    };
+    editApi({ variables: { id, data } })
+      .then(() => {
+        toast.success('Edit completed');
+        history.goBack();
+      })
   }
 
   return (
     <Box title="Add new etEducationProvider" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.name ? (
-          <Input type="HIDDEN" name="name" value={fixedParams.name} />
-        ) : (
+        {(!fixedParams || !fixedParams.name) && (
           <Input
             type="VARCHAR(255)"
             name="name"

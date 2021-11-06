@@ -6,6 +6,7 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+            
 export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
@@ -27,24 +28,28 @@ export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
       },
     }
   );
-  const [editApi] = useMutation(API.EDIT, {
-    onCompleted: () => {
-      toast.success('Edit completed');
-      history.goBack();
-    }
-  });
+
+  const [editApi] = useMutation(API.EDIT);
 
   const handleSubmit = (params) => {
-    editApi({ variables: { id, data: params } });
+    const data = {
+      examId,
+      questionId,
+      order,
+      ...fixedParams,
+    };
+    editApi({ variables: { id, data } })
+      .then(() => {
+        toast.success('Edit completed');
+        history.goBack();
+      })
   }
 
   return (
     <Box title="Add new etCourseTemplateExamQuestion" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.examId ? (
-          <Input type="HIDDEN" name="examId" value={fixedParams.examId} />
-        ) : (
+        {(!fixedParams || !fixedParams.examId) && (
           <Input
             type="CHAR(36)"
             name="examId"
@@ -53,9 +58,7 @@ export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
             onValueChange={(value) => setexamId(value)}
           />
         )}
-        {fixedParams && fixedParams.questionId ? (
-          <Input type="HIDDEN" name="questionId" value={fixedParams.questionId} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionId) && (
           <Input
             type="SELECT"
             query={require('../../et_course_template_question_mcq/apis').default.ALL}
@@ -67,9 +70,7 @@ export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
             onValueChange={(value) => setquestionId(value)}
           />
         )}
-        {fixedParams && fixedParams.order ? (
-          <Input type="HIDDEN" name="order" value={fixedParams.order} />
-        ) : (
+        {(!fixedParams || !fixedParams.order) && (
           <Input
             type="INT"
             name="order"

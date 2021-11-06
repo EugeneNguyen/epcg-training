@@ -102,6 +102,7 @@ query et_course_template_get_by_id($id: String) {
     unlimitedTime
     randomQuestionOrder
     randomChoiceOrder
+    isPublic
     courseTemplateId
     createdAt
     updatedAt

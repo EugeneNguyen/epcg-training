@@ -21,6 +21,10 @@ query et_exam_attempt_get_all_with_page($pagination: EtExamAttemptPaginationInpu
     rows {
       id
       userId
+      templateExam {
+        id
+        name
+      }
       templateExamId
       duration
       startTime
@@ -42,6 +46,10 @@ query et_exam_attempt_get_by_id($id: String) {
   data: et_exam_attempt_get_by_id(id: $id) {
     id
     userId
+    templateExam {
+      id
+      name
+    }
     templateExamId
     duration
     startTime
@@ -59,10 +67,12 @@ query et_exam_attempt_get_by_id($id: String) {
     attemptId
     questionId
     order
-    questionData
+    displayedQuestionData
+    fullQuestionData
     answer
     rawAnswer
     correct
+    flag
     startTime
     endTime
     createdAt

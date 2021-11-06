@@ -74,6 +74,14 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
             Random Choice Order
           </th>
         )}
+        {excludeColumns.includes("isPublic") || (
+          <th
+            scope="col"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Is Public
+          </th>
+        )}
         {excludeColumns.includes("courseTemplateId") || (
           <th
             scope="col"
@@ -128,6 +136,12 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
           <Cell
             type="TINYINT(1)"
             value={_.get(item, 'randomChoiceOrder')}
+          />
+        )}
+          {excludeColumns.includes("isPublic") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'isPublic')}
           />
         )}
           {excludeColumns.includes("courseTemplateId") || (

@@ -6,6 +6,7 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+
 export default function FormEtExamAttemptAdd({fixedParams}) {
   const history = useHistory();
 
@@ -16,12 +17,19 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
   const [createdAt, setcreatedAt] = useState(null);
   const [updatedAt, setupdatedAt] = useState(null);
 
-  const [apiAdd, { data, loading, error }] = useMutation(API.ADD);
+  const [apiAdd] = useMutation(API.ADD);
 
-  const handleSubmit = (params) => {
-    console.log(params);
-    return;
-    apiAdd({ variables: { data: params } })
+  const handleSubmit = () => {
+    const data = {
+      templateExamId,
+      duration,
+      startTime,
+      endTime,
+      createdAt,
+      updatedAt,
+      ...fixedParams,
+    };
+    apiAdd({variables: {data}})
       .then(() => {
         toast.success('Add completed');
         history.goBack();
@@ -32,20 +40,18 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
     <Box title="Add new etExamAttempt" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.templateExamId ? (
-          <Input type="HIDDEN" name="templateExamId" value={fixedParams.templateExamId} />
-        ) : (
+        {(!fixedParams || !fixedParams.templateExamId) && (
           <Input
-            type="CHAR(36)"
-            name="templateExamId"
-            displayLabel="Template Exam Id"
+            type="SELECT"
+            query={require('../../et_course_template_exam/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Template Exam"
             value={templateExamId}
             onValueChange={(value) => settemplateExamId(value)}
           />
         )}
-        {fixedParams && fixedParams.duration ? (
-          <Input type="HIDDEN" name="duration" value={fixedParams.duration} />
-        ) : (
+        {(!fixedParams || !fixedParams.duration) && (
           <Input
             type="INT"
             name="duration"
@@ -54,9 +60,7 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
             onValueChange={(value) => setduration(value)}
           />
         )}
-        {fixedParams && fixedParams.startTime ? (
-          <Input type="HIDDEN" name="startTime" value={fixedParams.startTime} />
-        ) : (
+        {(!fixedParams || !fixedParams.startTime) && (
           <Input
             type="DATETIME"
             name="startTime"
@@ -65,9 +69,7 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
             onValueChange={(value) => setstartTime(value)}
           />
         )}
-        {fixedParams && fixedParams.endTime ? (
-          <Input type="HIDDEN" name="endTime" value={fixedParams.endTime} />
-        ) : (
+        {(!fixedParams || !fixedParams.endTime) && (
           <Input
             type="DATETIME"
             name="endTime"
@@ -76,9 +78,7 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
             onValueChange={(value) => setendTime(value)}
           />
         )}
-        {fixedParams && fixedParams.createdAt ? (
-          <Input type="HIDDEN" name="createdAt" value={fixedParams.createdAt} />
-        ) : (
+        {(!fixedParams || !fixedParams.createdAt) && (
           <Input
             type="DATETIME"
             name="createdAt"
@@ -87,9 +87,7 @@ export default function FormEtExamAttemptAdd({fixedParams}) {
             onValueChange={(value) => setcreatedAt(value)}
           />
         )}
-        {fixedParams && fixedParams.updatedAt ? (
-          <Input type="HIDDEN" name="updatedAt" value={fixedParams.updatedAt} />
-        ) : (
+        {(!fixedParams || !fixedParams.updatedAt) && (
           <Input
             type="DATETIME"
             name="updatedAt"

@@ -6,6 +6,7 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+          
 export default function FormEtCourseTemplateQuestionTagLinkEdit({fixedParams}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
@@ -25,24 +26,27 @@ export default function FormEtCourseTemplateQuestionTagLinkEdit({fixedParams}) {
       },
     }
   );
-  const [editApi] = useMutation(API.EDIT, {
-    onCompleted: () => {
-      toast.success('Edit completed');
-      history.goBack();
-    }
-  });
+
+  const [editApi] = useMutation(API.EDIT);
 
   const handleSubmit = (params) => {
-    editApi({ variables: { id, data: params } });
+    const data = {
+      questionId,
+      questionTagId,
+      ...fixedParams,
+    };
+    editApi({ variables: { id, data } })
+      .then(() => {
+        toast.success('Edit completed');
+        history.goBack();
+      })
   }
 
   return (
     <Box title="Add new etCourseTemplateQuestionTagLink" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.questionId ? (
-          <Input type="HIDDEN" name="questionId" value={fixedParams.questionId} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionId) && (
           <Input
             type="SELECT"
             query={require('../../et_course_template_question_mcq/apis').default.ALL}
@@ -54,9 +58,7 @@ export default function FormEtCourseTemplateQuestionTagLinkEdit({fixedParams}) {
             onValueChange={(value) => setquestionId(value)}
           />
         )}
-        {fixedParams && fixedParams.questionTagId ? (
-          <Input type="HIDDEN" name="questionTagId" value={fixedParams.questionTagId} />
-        ) : (
+        {(!fixedParams || !fixedParams.questionTagId) && (
           <Input
             type="SELECT"
             query={require('../../et_course_template_question_tag/apis').default.ALL}

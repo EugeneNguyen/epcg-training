@@ -6,18 +6,22 @@ import API from '../apis';
 import {Form, Input} from '../../_components/form';
 import {Box} from '../../_components';
 
+
 export default function FormEtCourseTemplateQuestionSourceAdd({fixedParams}) {
   const history = useHistory();
 
   const [name, setname] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
 
-  const [apiAdd, { data, loading, error }] = useMutation(API.ADD);
+  const [apiAdd] = useMutation(API.ADD);
 
-  const handleSubmit = (params) => {
-    console.log(params);
-    return;
-    apiAdd({ variables: { data: params } })
+  const handleSubmit = () => {
+    const data = {
+      name,
+      courseTemplateId,
+      ...fixedParams,
+    };
+    apiAdd({variables: {data}})
       .then(() => {
         toast.success('Add completed');
         history.goBack();
@@ -28,9 +32,7 @@ export default function FormEtCourseTemplateQuestionSourceAdd({fixedParams}) {
     <Box title="Add new etCourseTemplateQuestionSource" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
-        {fixedParams && fixedParams.name ? (
-          <Input type="HIDDEN" name="name" value={fixedParams.name} />
-        ) : (
+        {(!fixedParams || !fixedParams.name) && (
           <Input
             type="VARCHAR(255)"
             name="name"
@@ -39,9 +41,7 @@ export default function FormEtCourseTemplateQuestionSourceAdd({fixedParams}) {
             onValueChange={(value) => setname(value)}
           />
         )}
-        {fixedParams && fixedParams.courseTemplateId ? (
-          <Input type="HIDDEN" name="courseTemplateId" value={fixedParams.courseTemplateId} />
-        ) : (
+        {(!fixedParams || !fixedParams.courseTemplateId) && (
           <Input
             type="CHAR(36)"
             name="courseTemplateId"
@@ -54,19 +54,9 @@ export default function FormEtCourseTemplateQuestionSourceAdd({fixedParams}) {
         <div class="flex mt-2">
           <button
             type="submit"
-            name="_submit_type_asdf"
-            value="submit"
             class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           >
             Submit
-          </button>
-          <button
-            type="submit"
-            name="_submit_type_qwer"
-            value="submit_and_add_more"
-            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-          >
-            Submit and Add another
           </button>
         </div>
       </Form>

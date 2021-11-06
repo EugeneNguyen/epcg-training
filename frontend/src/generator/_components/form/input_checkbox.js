@@ -1,4 +1,4 @@
-export default function InputCheckbox({displayLabel, name, onValueChange, ...props}) {
+export default function InputCheckbox({displayLabel, name, onValueChange, value, ...props}) {
   return (
     <div class="flex items-start">
       <div class="flex items-center h-5">
@@ -6,7 +6,8 @@ export default function InputCheckbox({displayLabel, name, onValueChange, ...pro
           {...props}
           type="checkbox"
           name={name}
-          onChange={(event) => onValueChange && onValueChange(event.target.value)}
+          checked={value}
+          onChange={(event) => onValueChange && onValueChange(event.currentTarget.checked)}
           class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
         />
       </div>

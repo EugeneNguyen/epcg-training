@@ -39,7 +39,7 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Template Exam Id
+            Template Exam
           </th>
         )}
         {excludeColumns.includes("duration") || (
@@ -87,13 +87,14 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
           {excludeColumns.includes("templateExamId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'templateExamId')}
+            value={_.get(item, 'templateExam.name')}
           />
         )}
           {excludeColumns.includes("duration") || (
           <Cell
             type="INT"
             value={_.get(item, 'duration')}
+            link={`http://localhost:4000/#/exam/attempts/${item.id}`}
           />
         )}
           {excludeColumns.includes("startTime") || (

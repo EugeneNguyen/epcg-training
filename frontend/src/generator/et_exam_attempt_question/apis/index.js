@@ -7,10 +7,12 @@ query et_exam_attempt_question_get_all($where: EtExamAttemptQuestionWhere) {
     attemptId
     questionId
     order
-    questionData
+    displayedQuestionData
+    fullQuestionData
     answer
     rawAnswer
     correct
+    flag
     startTime
     endTime
     createdAt
@@ -27,10 +29,12 @@ query et_exam_attempt_question_get_all_with_page($pagination: EtExamAttemptQuest
       attemptId
       questionId
       order
-      questionData
+      displayedQuestionData
+      fullQuestionData
       answer
       rawAnswer
       correct
+      flag
       startTime
       endTime
       createdAt
@@ -52,10 +56,12 @@ query et_exam_attempt_question_get_by_id($id: String) {
     attemptId
     questionId
     order
-    questionData
+    displayedQuestionData
+    fullQuestionData
     answer
     rawAnswer
     correct
+    flag
     startTime
     endTime
     createdAt
@@ -72,10 +78,12 @@ mutation et_exam_attempt_question_add($data: EtExamAttemptQuestionInput) {
     attemptId
     questionId
     order
-    questionData
+    displayedQuestionData
+    fullQuestionData
     answer
     rawAnswer
     correct
+    flag
     startTime
     endTime
     createdAt
@@ -91,10 +99,12 @@ mutation et_exam_attempt_question_edit($id: String, $data: EtExamAttemptQuestion
     attemptId
     questionId
     order
-    questionData
+    displayedQuestionData
+    fullQuestionData
     answer
     rawAnswer
     correct
+    flag
     startTime
     endTime
     createdAt

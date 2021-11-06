@@ -76,14 +76,23 @@ export default function ViewEtExamAttemptQuestionGeneral({objectId}) {
 
                 <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
-                    Question Data
+                    Displayed Question Data
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.questionData', 'N/A')}
+                    {_.get(data, 'data.displayedQuestionData', 'N/A')}
                   </dd>
                 </div>
 
                 <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">
+                    Full Question Data
+                  </dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {_.get(data, 'data.fullQuestionData', 'N/A')}
+                  </dd>
+                </div>
+
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     Answer
                   </dt>
@@ -92,7 +101,7 @@ export default function ViewEtExamAttemptQuestionGeneral({objectId}) {
                   </dd>
                 </div>
 
-                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     Raw Answer
                   </dt>
@@ -101,12 +110,21 @@ export default function ViewEtExamAttemptQuestionGeneral({objectId}) {
                   </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     Correct
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                     {_.get(data, 'data.correct', 'N/A')}
+                  </dd>
+                </div>
+
+                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">
+                    Flag
+                  </dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {_.get(data, 'data.flag', 'N/A')}
                   </dd>
                 </div>
 
