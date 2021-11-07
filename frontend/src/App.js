@@ -1,16 +1,15 @@
-import {HashRouter} from "react-router-dom";
-
-import Header from './components/header';
+import {HashRouter} from 'react-router-dom';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import RouteEtEducationProvider from "./generator/et_education_provider/router";
-import SideBar from "./components/sidebar";
-import RouteEtCourseTemplate from "./generator/et_course_template/router";
-import RouteEtCourseTemplateQuestionMcq from "./generator/et_course_template_question_mcq/router";
-import RouteEtCourseTemplateQuestionSource from "./generator/et_course_template_question_source/router";
-import RouteEtCourseTemplateQuestionTag from "./generator/et_course_template_question_tag/router";
-import RouteEtCourseTemplateExam from "./generator/et_course_template_exam/router";
-import RouteEtExamAttempt from "./generator/et_exam_attempt/router";
+
+import {Header, SideBar} from './components';
+import RouteEtEducationProvider from './generator/et_education_provider/router';
+import RouteEtCourseTemplate from './generator/et_course_template/router';
+import RouteEtCourseTemplateQuestionMcq from './generator/et_course_template_question_mcq/router';
+import RouteEtCourseTemplateQuestionSource from './generator/et_course_template_question_source/router';
+import RouteEtCourseTemplateQuestionTag from './generator/et_course_template_question_tag/router';
+import RouteEtCourseTemplateExam from './generator/et_course_template_exam/router';
+import RouteEtExamAttempt from './generator/et_exam_attempt/router';
 
 function App() {
   return (

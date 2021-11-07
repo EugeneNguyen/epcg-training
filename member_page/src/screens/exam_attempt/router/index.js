@@ -2,6 +2,7 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 import ScreenExamAttemptInfo from "../info";
 import ScreenExamAttemptTake from "../take";
+import ScreenExamAttemptResult from "../result";
 
 export default function RouteExamAttempt() {
   return (
@@ -11,6 +12,9 @@ export default function RouteExamAttempt() {
       </Route>
       <Route path="/exam/attempt/:id/take" exact>
         <ScreenExamAttemptTake />
+      </Route>
+      <Route path="/exam/attempt/:id/result" exact>
+        <ScreenExamAttemptResult />
       </Route>
     </Switch>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {ApolloProvider} from '@apollo/client';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import {ApolloProvider} from '@apollo/client';
 import client from "./graph/apollo";
 
 ReactDOM.render(

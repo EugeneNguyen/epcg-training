@@ -54,7 +54,36 @@ let mutation = {
     }
 
     return attempt;
-  }
+  },
+  async manual_exam_attempt_answer(parent, { id, rawAnswer }, context, info) {
+    const question = await db.etExamAttemptQuestion.findByPk(id);
+    question.rawAnswer = rawAnswer;
+    question.answer = rawAnswer;
+
+    const questionData = JSON.parse(question.fullQuestionData);
+    question.correct = questionData.correctAnswer == rawAnswer;
+
+    await question.save();
+    return question;
+  },
+  async manual_exam_attempt_start(parent, { id }, context, info) {
+    const attempt = await db.etExamAttempt.findByPk(id);
+    if (attempt.startTime) {
+      throw new Error('Exam started');
+    }
+    attempt.startTime = db.sequelize.fn('NOW');
+    await attempt.save();
+    return attempt;
+  },
+  async manual_exam_attempt_end(parent, { id }, context, info) {
+    const attempt = await db.etExamAttempt.findByPk(id);
+    if (attempt.endTime) {
+      throw new Error('Exam ended');
+    }
+    attempt.endTime = db.sequelize.fn('NOW');
+    await attempt.save();
+    return attempt;
+  },
 };
 
 module.exports = mutation;

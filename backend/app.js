@@ -8,7 +8,7 @@ const server = new ApolloServer(models);
 server.start().then(() => {
   const app = express();
   app.use('/admin', express.static('public/admin'))
-  app.use('/', express.static('public/member_page'))
+  app.use('/', express.static('public/app'))
 
   server.applyMiddleware({ app, path: '/api' });
 

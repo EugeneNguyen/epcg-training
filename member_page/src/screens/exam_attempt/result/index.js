@@ -4,11 +4,11 @@ import {useMutation, useQuery} from "@apollo/client";
 import {Box} from "../../../components";
 import _ from "lodash";
 
-export default function ScreenExamAttemptTake() {
+export default function ScreenExamAttemptResult() {
   const id = useParams().id;
 
   const {data} = useQuery(
-    API.GET_BY_ID_WITH_QUESTION,
+    API.GET_RESULT,
     {
       ...API.DEFAULT_OPTIONS,
       variables: {
@@ -25,6 +25,10 @@ export default function ScreenExamAttemptTake() {
     ['order']
   );
 
+  const total = questions.length;
+  const correct = questions.filter(q => q.correct).length;
+  const empty = questions.filter(q => q.rawAnswer.length === 0).length;
+
   return questions ? (
     <div className="flex flex-row space-x-8">
       <div className="space-y-8 w-8/12">
@@ -36,10 +40,10 @@ export default function ScreenExamAttemptTake() {
         ))}
       </div>
       <div className="w-4/12">
-        <Box title="Question List">
+        <Box title={`Result: ${parseInt(correct * 100 / total)}% (${correct}/${total})`}>
           <div className="grid grid-cols-5">
             {questions.map((question, index) => (
-              <div className="bg-gray-50 border p-4 text-center hover:bg-gray-200 cursor-pointer">
+              <div className={`${question.correct ? 'bg-green-50' : 'bg-gray-50'} border p-4 text-center hover:bg-gray-200 cursor-pointer`}>
                 {index + 1}
               </div>
             ))}
@@ -51,7 +55,7 @@ export default function ScreenExamAttemptTake() {
 }
 
 function QuestionBox({question, index}) {
-  const questionData = JSON.parse(question.displayedQuestionData);
+  const questionData = JSON.parse(question.fullQuestionData);
   const [answerApi, { loading }] = useMutation(API.ANSWER_WITH_ID);
 
   const handleAnswer = async (choiceIndex) => {
@@ -59,7 +63,7 @@ function QuestionBox({question, index}) {
     await answerApi({variables: {id: question.id, rawAnswer: answer}});
   }
   return (
-    <Box title={`Question ${index + 1}`} padding>
+    <Box title={`Question ${index + 1} ${question.correct ? "[Correct]" : "[Incorrect]"}`} padding>
       <div className="space-y-4">
         <div>
           {questionData.question}
@@ -73,11 +77,20 @@ function QuestionBox({question, index}) {
                 name={`question_${index}`}
                 checked={['A', 'B', 'C', 'D'][choiceIndex] == question.rawAnswer}
                 onChange={() => handleAnswer(choiceIndex)}
-                disabled={loading}
+                disabled={true}
               />
-              <span className="ml-2">{choice}</span>
+              <span className="ml-2">
+                {['A', 'B', 'C', 'D'][choiceIndex] == questionData.correctAnswer ? (
+                  "[Correct Answer] "
+                ) : null}
+                {choice}
+              </span>
             </label>
           ))}
+        </div>
+        <div>
+          <p>Correct Answer: {questionData.correctAnswer}</p>
+          <p>Explanation: {questionData.explanation}</p>
         </div>
       </div>
     </Box>
