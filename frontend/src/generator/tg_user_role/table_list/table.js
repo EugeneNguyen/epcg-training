@@ -31,7 +31,7 @@ export default function TgUserRoleTable({limit, offset, didLoadData, onRefRefetc
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            User Id
+            User
           </th>
         )}
         {excludeColumns.includes("roleId") || (
@@ -39,7 +39,7 @@ export default function TgUserRoleTable({limit, offset, didLoadData, onRefRefetc
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Role Id
+            Role
           </th>
         )}
         <th
@@ -56,13 +56,13 @@ export default function TgUserRoleTable({limit, offset, didLoadData, onRefRefetc
           {excludeColumns.includes("userId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'userId')}
+            value={_.get(item, 'user.username')}
           />
         )}
           {excludeColumns.includes("roleId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'roleId')}
+            value={_.get(item, 'role.name')}
           />
         )}
         <td>

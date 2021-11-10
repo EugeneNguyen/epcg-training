@@ -12,6 +12,8 @@ export default function FormTgUserEdit({fixedParams}) {
   const history = useHistory();
 
   const [username, setusername] = useState(null);
+  const [permissionsRelationship, setpermissionsRelationship] = useState([]);
+  const [rolesRelationship, setrolesRelationship] = useState([]);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -21,6 +23,8 @@ export default function FormTgUserEdit({fixedParams}) {
       onCompleted: (response) => {
         setusername(response.data.username);
 
+        setpermissionsRelationship(response.data.permissions.map(r => r.id));
+        setrolesRelationship(response.data.roles.map(r => r.id));
       },
     }
   );
@@ -30,6 +34,8 @@ export default function FormTgUserEdit({fixedParams}) {
   const handleSubmit = (params) => {
     const data = {
       username,
+      permissions: permissionsRelationship,
+      roles: rolesRelationship,
       ...fixedParams,
     };
     editApi({ variables: { id, data } })
@@ -52,6 +58,28 @@ export default function FormTgUserEdit({fixedParams}) {
             onValueChange={(value) => setusername(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../tg_permission/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="permissions"
+          displayLabel="Permissions"
+          value={permissionsRelationship}
+          onValueChange={(value) => setpermissionsRelationship(value)}
+          isMulti
+        />
+        <Input
+          type="SELECT"
+          query={require('../../tg_role/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="roles"
+          displayLabel="Roles"
+          value={rolesRelationship}
+          onValueChange={(value) => setrolesRelationship(value)}
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

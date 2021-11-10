@@ -8,6 +8,8 @@ type TgUserPermission {
   permissionId: String
   createdAt: String
   updatedAt: String
+  permission: TgPermission
+  user: TgUser
 }
 
 type TgUserPermissionWithPagination {

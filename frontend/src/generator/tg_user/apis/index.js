@@ -39,10 +39,28 @@ query tg_user_get_by_id($id: String) {
     password
     createdAt
     updatedAt
+    permissions {
+      id
+      name
+    }
+    roles {
+      id
+      name
+    }
   }
 }
 `;
 
+const GET_TG_USER_TOKEN = gql`
+query tg_user_get_by_id($id: String) {
+  tg_user_get_by_id(id: $id) {
+    id
+    userId
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation tg_user_add($data: TgUserInput) {

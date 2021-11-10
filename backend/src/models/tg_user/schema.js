@@ -8,6 +8,14 @@ type TgUser {
   password: String
   createdAt: String
   updatedAt: String
+  tokens: [TgUserToken]
+  tokensCount: Int
+  permissions: [TgPermission]
+  permissionsCount: Int
+  permissionsLink: [TgUserPermission]
+  roles: [TgRole]
+  rolesCount: Int
+  rolesLink: [TgUserRole]
 }
 
 type TgUserWithPagination {
@@ -24,6 +32,8 @@ type TgUserPagination {
 input TgUserInput {
   username: String
   password: String
+  permissions: [String]
+  roles: [String]
 }
 
 input TgUserPaginationInput {

@@ -17,7 +17,15 @@ query tg_user_role_get_all_with_page($pagination: TgUserRolePaginationInput, $wh
   data: tg_user_role_get_all_with_page(pagination: $pagination, where: $where) {
     rows {
       id
+      user {
+        id
+        username
+      }
       userId
+      role {
+        id
+        name
+      }
       roleId
       createdAt
       updatedAt
@@ -35,7 +43,15 @@ const GET_BY_ID = gql`
 query tg_user_role_get_by_id($id: String) {
   data: tg_user_role_get_by_id(id: $id) {
     id
+    user {
+      id
+      username
+    }
     userId
+    role {
+      id
+      name
+    }
     roleId
     createdAt
     updatedAt

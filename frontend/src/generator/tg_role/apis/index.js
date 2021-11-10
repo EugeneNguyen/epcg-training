@@ -39,6 +39,14 @@ query tg_role_get_by_id($id: String) {
     description
     createdAt
     updatedAt
+    members {
+      id
+      username
+    }
+    permission {
+      id
+      name
+    }
   }
 }
 `;

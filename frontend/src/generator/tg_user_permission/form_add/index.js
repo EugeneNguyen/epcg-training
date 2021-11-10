@@ -34,18 +34,22 @@ export default function FormTgUserPermissionAdd({fixedParams}) {
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.userId) && (
           <Input
-            type="CHAR(36)"
-            name="userId"
-            displayLabel="User Id"
+            type="SELECT"
+            query={require('../../tg_user/apis').default.ALL}
+            idKey="id"
+            labelKey="username"
+            displayLabel="User"
             value={userId}
             onValueChange={(value) => setuserId(value)}
           />
         )}
         {(!fixedParams || !fixedParams.permissionId) && (
           <Input
-            type="CHAR(36)"
-            name="permissionId"
-            displayLabel="Permission Id"
+            type="SELECT"
+            query={require('../../tg_permission/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Permission"
             value={permissionId}
             onValueChange={(value) => setpermissionId(value)}
           />

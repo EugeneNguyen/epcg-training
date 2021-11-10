@@ -38,18 +38,22 @@ export default function FormTgRolePermissionAdd({fixedParams}) {
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.roleId) && (
           <Input
-            type="CHAR(36)"
-            name="roleId"
-            displayLabel="Role Id"
+            type="SELECT"
+            query={require('../../tg_role/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Role"
             value={roleId}
             onValueChange={(value) => setroleId(value)}
           />
         )}
         {(!fixedParams || !fixedParams.permissionId) && (
           <Input
-            type="CHAR(36)"
-            name="permissionId"
-            displayLabel="Permission Id"
+            type="SELECT"
+            query={require('../../tg_permission/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Permission"
             value={permissionId}
             onValueChange={(value) => setpermissionId(value)}
           />

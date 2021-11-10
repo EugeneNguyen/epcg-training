@@ -9,6 +9,10 @@ type TgPermission {
   groupId: String
   createdAt: String
   updatedAt: String
+  group: TgPermissionGroup
+  roles: [TgRole]
+  rolesCount: Int
+  rolesLink: [TgRolePermission]
 }
 
 type TgPermissionWithPagination {
@@ -26,6 +30,7 @@ input TgPermissionInput {
   name: String
   description: String
   groupId: String
+  roles: [String]
 }
 
 input TgPermissionPaginationInput {

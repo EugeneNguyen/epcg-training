@@ -8,6 +8,8 @@ type TgUserRole {
   roleId: String
   createdAt: String
   updatedAt: String
+  role: TgRole
+  user: TgUser
 }
 
 type TgUserRoleWithPagination {

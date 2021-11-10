@@ -39,7 +39,7 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Group Id
+            Group
           </th>
         )}
         <th
@@ -63,7 +63,7 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
           {excludeColumns.includes("groupId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'groupId')}
+            value={_.get(item, 'group.name')}
           />
         )}
         <td>

@@ -20,6 +20,10 @@ query tg_permission_get_all_with_page($pagination: TgPermissionPaginationInput, 
       id
       name
       description
+      group {
+        id
+        name
+      }
       groupId
       createdAt
       updatedAt
@@ -39,9 +43,17 @@ query tg_permission_get_by_id($id: String) {
     id
     name
     description
+    group {
+      id
+      name
+    }
     groupId
     createdAt
     updatedAt
+    roles {
+      id
+      name
+    }
   }
 }
 `;

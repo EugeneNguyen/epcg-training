@@ -8,6 +8,12 @@ type TgRole {
   description: String
   createdAt: String
   updatedAt: String
+  members: [TgUser]
+  membersCount: Int
+  membersLink: [TgUserRole]
+  permission: [TgPermission]
+  permissionCount: Int
+  permissionLink: [TgRolePermission]
 }
 
 type TgRoleWithPagination {
@@ -24,6 +30,8 @@ type TgRolePagination {
 input TgRoleInput {
   name: String
   description: String
+  members: [String]
+  permission: [String]
 }
 
 input TgRolePaginationInput {

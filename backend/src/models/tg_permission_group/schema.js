@@ -8,6 +8,8 @@ type TgPermissionGroup {
   description: String
   createdAt: String
   updatedAt: String
+  permissions: [TgPermission]
+  permissionsCount: Int
 }
 
 type TgPermissionGroupWithPagination {

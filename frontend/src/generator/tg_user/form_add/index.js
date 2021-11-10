@@ -12,6 +12,8 @@ export default function FormTgUserAdd({fixedParams}) {
 
   const [username, setusername] = useState(null);
   const [password, setpassword] = useState(null);
+  const [permissionsRelationship, setpermissionsRelationship] = useState([]);
+  const [rolesRelationship, setrolesRelationship] = useState([]);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -19,6 +21,8 @@ export default function FormTgUserAdd({fixedParams}) {
     const data = {
       username,
       password,
+      permissions: permissionsRelationship,
+      roles: rolesRelationship,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -50,6 +54,28 @@ export default function FormTgUserAdd({fixedParams}) {
             onValueChange={(value) => setpassword(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../tg_permission/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="permissions"
+          displayLabel="Permissions"
+          value={permissionsRelationship}
+          onValueChange={(value) => setpermissionsRelationship(value)}
+          isMulti
+        />
+        <Input
+          type="SELECT"
+          query={require('../../tg_role/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="roles"
+          displayLabel="Roles"
+          value={rolesRelationship}
+          onValueChange={(value) => setrolesRelationship(value)}
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

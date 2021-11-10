@@ -13,6 +13,7 @@ export default function FormTgPermissionAdd({fixedParams}) {
   const [name, setname] = useState(null);
   const [description, setdescription] = useState(null);
   const [groupId, setgroupId] = useState(null);
+  const [rolesRelationship, setrolesRelationship] = useState([]);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -21,6 +22,7 @@ export default function FormTgPermissionAdd({fixedParams}) {
       name,
       description,
       groupId,
+      roles: rolesRelationship,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -54,13 +56,26 @@ export default function FormTgPermissionAdd({fixedParams}) {
         )}
         {(!fixedParams || !fixedParams.groupId) && (
           <Input
-            type="CHAR(36)"
-            name="groupId"
-            displayLabel="Group Id"
+            type="SELECT"
+            query={require('../../tg_permission_group/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Group"
             value={groupId}
             onValueChange={(value) => setgroupId(value)}
           />
         )}
+        <Input
+          type="SELECT"
+          query={require('../../tg_role/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="roles"
+          displayLabel="Roles"
+          value={rolesRelationship}
+          onValueChange={(value) => setrolesRelationship(value)}
+          isMulti
+        />
         </div>
         <div class="flex mt-2">
           <button

@@ -34,18 +34,22 @@ export default function FormTgUserRoleAdd({fixedParams}) {
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.userId) && (
           <Input
-            type="CHAR(36)"
-            name="userId"
-            displayLabel="User Id"
+            type="SELECT"
+            query={require('../../tg_user/apis').default.ALL}
+            idKey="id"
+            labelKey="username"
+            displayLabel="User"
             value={userId}
             onValueChange={(value) => setuserId(value)}
           />
         )}
         {(!fixedParams || !fixedParams.roleId) && (
           <Input
-            type="CHAR(36)"
-            name="roleId"
-            displayLabel="Role Id"
+            type="SELECT"
+            query={require('../../tg_role/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Role"
             value={roleId}
             onValueChange={(value) => setroleId(value)}
           />

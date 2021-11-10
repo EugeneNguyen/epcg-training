@@ -31,7 +31,7 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Role Id
+            Role
           </th>
         )}
         {excludeColumns.includes("permissionId") || (
@@ -39,7 +39,7 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Permission Id
+            Permission
           </th>
         )}
         <th
@@ -56,13 +56,13 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
           {excludeColumns.includes("roleId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'roleId')}
+            value={_.get(item, 'role.name')}
           />
         )}
           {excludeColumns.includes("permissionId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'permissionId')}
+            value={_.get(item, 'permission.name')}
           />
         )}
         <td>

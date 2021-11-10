@@ -43,6 +43,18 @@ query tg_permission_group_get_by_id($id: String) {
 }
 `;
 
+const GET_TG_PERMISSION = gql`
+query tg_permission_group_get_by_id($id: String) {
+  tg_permission_group_get_by_id(id: $id) {
+    id
+    name
+    description
+    groupId
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation tg_permission_group_add($data: TgPermissionGroupInput) {

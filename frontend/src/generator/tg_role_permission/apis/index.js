@@ -17,7 +17,15 @@ query tg_role_permission_get_all_with_page($pagination: TgRolePermissionPaginati
   data: tg_role_permission_get_all_with_page(pagination: $pagination, where: $where) {
     rows {
       id
+      role {
+        id
+        name
+      }
       roleId
+      permission {
+        id
+        name
+      }
       permissionId
       createdAt
       updatedAt
@@ -35,7 +43,15 @@ const GET_BY_ID = gql`
 query tg_role_permission_get_by_id($id: String) {
   data: tg_role_permission_get_by_id(id: $id) {
     id
+    role {
+      id
+      name
+    }
     roleId
+    permission {
+      id
+      name
+    }
     permissionId
     createdAt
     updatedAt
