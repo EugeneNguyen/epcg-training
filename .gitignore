@@ -105,3 +105,4 @@ dist
 .idea
 backend/public/admin
 backend/public/member_page
+backend/public/app
