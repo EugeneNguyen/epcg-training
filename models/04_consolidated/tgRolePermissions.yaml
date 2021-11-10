@@ -1,0 +1,87 @@
+modelName: tgRolePermission
+modelNameSnake: tg_role_permission
+modelNameCapitalCamel: TgRolePermission
+modelNameUpSnake: TG_ROLE_PERMISSION
+baseUrl: tgRolePermission
+fields:
+  id:
+    type: CHAR(36)
+    allowNull: false
+    defaultValue: null
+    primaryKey: true
+    autoIncrement: false
+    comment: null
+    name: id
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: false
+    edit:
+      enable: false
+    displayLabel: Id
+  roleId:
+    type: CHAR(36)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: roleId
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Role Id
+  permissionId:
+    type: CHAR(36)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: permissionId
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Permission Id
+  createdAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: createdAt
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Created At
+  updatedAt:
+    type: DATETIME
+    allowNull: false
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: updatedAt
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Updated At
+relationships: []

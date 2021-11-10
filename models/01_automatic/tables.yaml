@@ -10,3 +10,11 @@ tables:
   - etEducationProviders
   - etExamAttemptQuestions
   - etExamAttempts
+  - tgPermissionGroups
+  - tgPermissions
+  - tgRolePermissions
+  - tgRoles
+  - tgUserPermissions
+  - tgUserRoles
+  - tgUserTokens
+  - tgUsers
