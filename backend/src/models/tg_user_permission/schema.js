@@ -24,8 +24,6 @@ type TgUserPermissionPagination {
 input TgUserPermissionInput {
   userId: String
   permissionId: String
-  createdAt: String
-  updatedAt: String
 }
 
 input TgUserPermissionPaginationInput {

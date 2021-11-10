@@ -24,8 +24,6 @@ type TgRolePagination {
 input TgRoleInput {
   name: String
   description: String
-  createdAt: String
-  updatedAt: String
 }
 
 input TgRolePaginationInput {

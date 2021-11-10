@@ -1,0 +1,37 @@
+fields:
+  id:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  username:
+    list:
+      enable: true
+      link: /tgUser/${item.id}
+    add:
+      enable: true
+    edit:
+      enable: true
+  password:
+    list:
+      enable: false
+    add:
+      enable: true
+    edit:
+      enable: false
+  createdAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  updatedAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false

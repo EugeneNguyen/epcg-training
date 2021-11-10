@@ -1,0 +1,23 @@
+relationships:
+  - name: group
+    label: Group
+    type: many_to_one
+    self:
+      key: groupId
+    target:
+      name: tgPermissionGroups
+      key: id
+      label: name
+  - name: roles
+    label: Roles
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: tgRoles
+      key: id
+      label: name
+    link:
+      name: tgRolePermissions
+      selfId: permissionId
+      targetId: roleId

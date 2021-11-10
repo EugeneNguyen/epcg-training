@@ -12,8 +12,6 @@ export default function FormTgRoleAdd({fixedParams}) {
 
   const [name, setname] = useState(null);
   const [description, setdescription] = useState(null);
-  const [createdAt, setcreatedAt] = useState(null);
-  const [updatedAt, setupdatedAt] = useState(null);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -21,8 +19,6 @@ export default function FormTgRoleAdd({fixedParams}) {
     const data = {
       name,
       description,
-      createdAt,
-      updatedAt,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -52,24 +48,6 @@ export default function FormTgRoleAdd({fixedParams}) {
             displayLabel="Description"
             value={description}
             onValueChange={(value) => setdescription(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.createdAt) && (
-          <Input
-            type="DATETIME"
-            name="createdAt"
-            displayLabel="Created At"
-            value={createdAt}
-            onValueChange={(value) => setcreatedAt(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.updatedAt) && (
-          <Input
-            type="DATETIME"
-            name="updatedAt"
-            displayLabel="Updated At"
-            value={updatedAt}
-            onValueChange={(value) => setupdatedAt(value)}
           />
         )}
         </div>

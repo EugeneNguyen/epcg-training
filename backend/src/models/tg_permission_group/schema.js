@@ -24,8 +24,6 @@ type TgPermissionGroupPagination {
 input TgPermissionGroupInput {
   name: String
   description: String
-  createdAt: String
-  updatedAt: String
 }
 
 input TgPermissionGroupPaginationInput {

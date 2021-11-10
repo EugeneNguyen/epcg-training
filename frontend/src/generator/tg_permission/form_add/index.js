@@ -13,8 +13,6 @@ export default function FormTgPermissionAdd({fixedParams}) {
   const [name, setname] = useState(null);
   const [description, setdescription] = useState(null);
   const [groupId, setgroupId] = useState(null);
-  const [createdAt, setcreatedAt] = useState(null);
-  const [updatedAt, setupdatedAt] = useState(null);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -23,8 +21,6 @@ export default function FormTgPermissionAdd({fixedParams}) {
       name,
       description,
       groupId,
-      createdAt,
-      updatedAt,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -63,24 +59,6 @@ export default function FormTgPermissionAdd({fixedParams}) {
             displayLabel="Group Id"
             value={groupId}
             onValueChange={(value) => setgroupId(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.createdAt) && (
-          <Input
-            type="DATETIME"
-            name="createdAt"
-            displayLabel="Created At"
-            value={createdAt}
-            onValueChange={(value) => setcreatedAt(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.updatedAt) && (
-          <Input
-            type="DATETIME"
-            name="updatedAt"
-            displayLabel="Updated At"
-            value={updatedAt}
-            onValueChange={(value) => setupdatedAt(value)}
           />
         )}
         </div>

@@ -26,14 +26,6 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
       <tr>
-        {excludeColumns.includes("id") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Id
-          </th>
-        )}
         {excludeColumns.includes("name") || (
           <th
             scope="col"
@@ -42,36 +34,12 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
             Name
           </th>
         )}
-        {excludeColumns.includes("description") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Description
-          </th>
-        )}
         {excludeColumns.includes("groupId") || (
           <th
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
             Group Id
-          </th>
-        )}
-        {excludeColumns.includes("createdAt") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Created At
-          </th>
-        )}
-        {excludeColumns.includes("updatedAt") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Updated At
           </th>
         )}
         <th
@@ -85,40 +53,17 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
-          {excludeColumns.includes("id") || (
-          <Cell
-            type="CHAR(36)"
-            value={_.get(item, 'id')}
-          />
-        )}
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
             value={_.get(item, 'name')}
-          />
-        )}
-          {excludeColumns.includes("description") || (
-          <Cell
-            type="VARCHAR(255)"
-            value={_.get(item, 'description')}
+            link={`/tgPermission/${item.id}`}
           />
         )}
           {excludeColumns.includes("groupId") || (
           <Cell
             type="CHAR(36)"
             value={_.get(item, 'groupId')}
-          />
-        )}
-          {excludeColumns.includes("createdAt") || (
-          <Cell
-            type="DATETIME"
-            value={_.get(item, 'createdAt')}
-          />
-        )}
-          {excludeColumns.includes("updatedAt") || (
-          <Cell
-            type="DATETIME"
-            value={_.get(item, 'updatedAt')}
           />
         )}
         <td>

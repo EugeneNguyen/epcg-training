@@ -1,0 +1,10 @@
+relationships:
+  - name: permissions
+    label: Permissions
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: tgPermissions
+      key: groupId
+      label: name

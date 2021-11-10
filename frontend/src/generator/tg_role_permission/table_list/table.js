@@ -26,14 +26,6 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
       <tr>
-        {excludeColumns.includes("id") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Id
-          </th>
-        )}
         {excludeColumns.includes("roleId") || (
           <th
             scope="col"
@@ -50,22 +42,6 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
             Permission Id
           </th>
         )}
-        {excludeColumns.includes("createdAt") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Created At
-          </th>
-        )}
-        {excludeColumns.includes("updatedAt") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Updated At
-          </th>
-        )}
         <th
           scope="col"
           class="w-24 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -77,12 +53,6 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
-          {excludeColumns.includes("id") || (
-          <Cell
-            type="CHAR(36)"
-            value={_.get(item, 'id')}
-          />
-        )}
           {excludeColumns.includes("roleId") || (
           <Cell
             type="CHAR(36)"
@@ -93,18 +63,6 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
           <Cell
             type="CHAR(36)"
             value={_.get(item, 'permissionId')}
-          />
-        )}
-          {excludeColumns.includes("createdAt") || (
-          <Cell
-            type="DATETIME"
-            value={_.get(item, 'createdAt')}
-          />
-        )}
-          {excludeColumns.includes("updatedAt") || (
-          <Cell
-            type="DATETIME"
-            value={_.get(item, 'updatedAt')}
           />
         )}
         <td>

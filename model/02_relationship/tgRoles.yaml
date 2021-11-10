@@ -1,0 +1,27 @@
+relationships:
+  - name: members
+    label: Members
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: tgUsers
+      key: id
+      label: username
+    link:
+      name: tgUserRoles
+      selfId: roleId
+      targetId: userId
+  - name: permission
+    label: Permissions
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: tgPermissions
+      key: id
+      label: name
+    link:
+      name: tgRolePermissions
+      selfId: roleId
+      targetId: permissionId

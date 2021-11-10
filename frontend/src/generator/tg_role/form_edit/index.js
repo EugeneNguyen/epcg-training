@@ -13,8 +13,6 @@ export default function FormTgRoleEdit({fixedParams}) {
 
   const [name, setname] = useState(null);
   const [description, setdescription] = useState(null);
-  const [createdAt, setcreatedAt] = useState(null);
-  const [updatedAt, setupdatedAt] = useState(null);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -24,8 +22,6 @@ export default function FormTgRoleEdit({fixedParams}) {
       onCompleted: (response) => {
         setname(response.data.name);
         setdescription(response.data.description);
-        setcreatedAt(response.data.createdAt);
-        setupdatedAt(response.data.updatedAt);
 
       },
     }
@@ -37,8 +33,6 @@ export default function FormTgRoleEdit({fixedParams}) {
     const data = {
       name,
       description,
-      createdAt,
-      updatedAt,
       ...fixedParams,
     };
     editApi({ variables: { id, data } })
@@ -68,24 +62,6 @@ export default function FormTgRoleEdit({fixedParams}) {
             displayLabel="Description"
             value={description}
             onValueChange={(value) => setdescription(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.createdAt) && (
-          <Input
-            type="DATETIME"
-            name="createdAt"
-            displayLabel="Created At"
-            value={createdAt}
-            onValueChange={(value) => setcreatedAt(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.updatedAt) && (
-          <Input
-            type="DATETIME"
-            name="updatedAt"
-            displayLabel="Updated At"
-            value={updatedAt}
-            onValueChange={(value) => setupdatedAt(value)}
           />
         )}
         </div>

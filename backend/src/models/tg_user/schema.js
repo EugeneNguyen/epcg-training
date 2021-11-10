@@ -24,8 +24,6 @@ type TgUserPagination {
 input TgUserInput {
   username: String
   password: String
-  createdAt: String
-  updatedAt: String
 }
 
 input TgUserPaginationInput {

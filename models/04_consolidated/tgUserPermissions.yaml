@@ -14,7 +14,7 @@ fields:
     name: id
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
       enable: false
     edit:
@@ -62,11 +62,11 @@ fields:
     name: createdAt
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
-      enable: true
+      enable: false
     edit:
-      enable: true
+      enable: false
     displayLabel: Created At
   updatedAt:
     type: DATETIME
@@ -78,10 +78,10 @@ fields:
     name: updatedAt
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
-      enable: true
+      enable: false
     edit:
-      enable: true
+      enable: false
     displayLabel: Updated At
 relationships: []

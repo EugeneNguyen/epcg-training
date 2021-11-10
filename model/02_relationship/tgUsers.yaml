@@ -1,0 +1,35 @@
+relationships:
+  - name: tokens
+    label: Tokens
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: tgUserTokens
+      key: userId
+  - name: permissions
+    label: Permissions
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: tgPermissions
+      key: id
+      label: name
+    link:
+      name: tgUserPermissions
+      selfId: userId
+      targetId: permissionId
+  - name: roles
+    label: Roles
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: tgRoles
+      key: id
+      label: name
+    link:
+      name: tgUserRoles
+      selfId: userId
+      targetId: roleId

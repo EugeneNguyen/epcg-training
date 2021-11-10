@@ -26,8 +26,6 @@ input TgPermissionInput {
   name: String
   description: String
   groupId: String
-  createdAt: String
-  updatedAt: String
 }
 
 input TgPermissionPaginationInput {

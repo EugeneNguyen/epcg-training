@@ -12,8 +12,6 @@ export default function FormTgUserAdd({fixedParams}) {
 
   const [username, setusername] = useState(null);
   const [password, setpassword] = useState(null);
-  const [createdAt, setcreatedAt] = useState(null);
-  const [updatedAt, setupdatedAt] = useState(null);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -21,8 +19,6 @@ export default function FormTgUserAdd({fixedParams}) {
     const data = {
       username,
       password,
-      createdAt,
-      updatedAt,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -52,24 +48,6 @@ export default function FormTgUserAdd({fixedParams}) {
             displayLabel="Password"
             value={password}
             onValueChange={(value) => setpassword(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.createdAt) && (
-          <Input
-            type="DATETIME"
-            name="createdAt"
-            displayLabel="Created At"
-            value={createdAt}
-            onValueChange={(value) => setcreatedAt(value)}
-          />
-        )}
-        {(!fixedParams || !fixedParams.updatedAt) && (
-          <Input
-            type="DATETIME"
-            name="updatedAt"
-            displayLabel="Updated At"
-            value={updatedAt}
-            onValueChange={(value) => setupdatedAt(value)}
           />
         )}
         </div>

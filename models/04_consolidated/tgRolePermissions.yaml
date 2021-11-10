@@ -14,7 +14,7 @@ fields:
     name: id
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
       enable: false
     edit:
@@ -62,7 +62,7 @@ fields:
     name: createdAt
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
       enable: true
     edit:
@@ -78,7 +78,7 @@ fields:
     name: updatedAt
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
       enable: true
     edit:
