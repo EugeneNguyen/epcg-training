@@ -4,6 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
+import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
 
@@ -60,13 +61,10 @@ export default function FormTgUserPermissionAdd({fixedParams}) {
         </div>
         <input type="submit" class="invisible" />
       </Form>
-      <div class="flex mt-2">
-        <button
-          onClick={handleSubmit(false)}
-          class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-        >
+      <div class="flex space-x-2">
+        <Button onClick={handleSubmit(false)}>
           Submit
-        </button>
+        </Button>
       </div>
     </Box>
   );
