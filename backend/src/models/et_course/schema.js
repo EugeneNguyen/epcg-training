@@ -14,6 +14,8 @@ type EtCourse {
   educationProvider: EtEducationProvider
   enrolls: [EtCourseEnroll]
   enrollsCount: Int
+  exams: [EtCourseExam]
+  examsCount: Int
 }
 
 type EtCourseWithPagination {

@@ -28,3 +28,11 @@ relationships:
     target:
       name: etCourseEnrolls
       key: courseId
+  - name: exams
+    label: Exams
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseExams
+      key: courseId

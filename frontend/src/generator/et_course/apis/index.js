@@ -77,6 +77,18 @@ query et_course_get_by_id($id: String) {
   }
 }
 `;
+const GET_ET_COURSE_EXAM = gql`
+query et_course_get_by_id($id: String) {
+  et_course_get_by_id(id: $id) {
+    id
+    name
+    courseId
+    courseTemplateExamId
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation et_course_add($data: EtCourseInput) {

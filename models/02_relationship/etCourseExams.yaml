@@ -1,0 +1,19 @@
+relationships:
+  - name: course
+    label: Course
+    type: many_to_one
+    self:
+      key: courseId
+    target:
+      name: etCourses
+      key: id
+      label: name
+  - name: courseTemplateExam
+    label: Course Template Exam
+    type: many_to_one
+    self:
+      key: courseTemplateExamId
+    target:
+      name: etCourseTemplateExams
+      key: id
+      label: name

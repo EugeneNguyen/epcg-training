@@ -27,6 +27,7 @@ const educationProviderLoader = new DataLoader(async (keys) => {
 
 
 
+
 let type = {
   EtCourse: {
     courseTemplate(parent, args, context, info) {
@@ -44,6 +45,20 @@ let type = {
     },
     enrollsCount(parent, args, context, info) {
       return db.etCourseEnroll.count({
+        where: {
+          courseId: parent.id
+        }
+      });
+    },
+    exams(parent, args, context, info) {
+      return db.etCourseExam.findAll({
+        where: {
+          courseId: parent.id
+        }
+      });
+    },
+    examsCount(parent, args, context, info) {
+      return db.etCourseExam.count({
         where: {
           courseId: parent.id
         }
