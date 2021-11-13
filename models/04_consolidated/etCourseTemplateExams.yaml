@@ -748,3 +748,7 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+defaultOrder:
+  field: name
+  order: ASC
+formAdd: {}

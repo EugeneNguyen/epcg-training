@@ -1,3 +1,7 @@
+defaultOrder:
+  field: name
+  order: ASC
+formAdd: {}
 fields:
   id:
     list:

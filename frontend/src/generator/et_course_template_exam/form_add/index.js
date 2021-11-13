@@ -22,7 +22,8 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
 
   const [apiAdd] = useMutation(API.ADD);
 
-  const handleSubmit = () => {
+  const handleSubmit = (addAnother) => () => {
+    console.log(addAnother);
     const data = {
       name,
       duration,
@@ -38,13 +39,15 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
     apiAdd({variables: {data}})
       .then(() => {
         toast.success('Add completed');
-        history.goBack();
+        if (!addAnother) {
+          history.goBack();
+        }
       })
   }
 
   return (
     <Box title="Add new etCourseTemplateExam" padding>
-      <Form onSubmitParams={handleSubmit}>
+      <Form onSubmitParams={handleSubmit(false)}>
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.name) && (
           <Input
@@ -132,15 +135,16 @@ export default function FormEtCourseTemplateExamAdd({fixedParams}) {
           isMulti
         />
         </div>
-        <div class="flex mt-2">
-          <button
-            type="submit"
-            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-          >
-            Submit
-          </button>
-        </div>
+        <input type="submit" class="invisible" />
       </Form>
+      <div class="flex mt-2">
+        <button
+          onClick={handleSubmit(false)}
+          class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+        >
+          Submit
+        </button>
+      </div>
     </Box>
   );
 }

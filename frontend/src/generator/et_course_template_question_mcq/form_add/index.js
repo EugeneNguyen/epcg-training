@@ -24,7 +24,8 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
 
   const [apiAdd] = useMutation(API.ADD);
 
-  const handleSubmit = () => {
+  const handleSubmit = (addAnother) => () => {
+    console.log(addAnother);
     const data = {
       questionCode,
       question,
@@ -42,13 +43,15 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
     apiAdd({variables: {data}})
       .then(() => {
         toast.success('Add completed');
-        history.goBack();
+        if (!addAnother) {
+          history.goBack();
+        }
       })
   }
 
   return (
     <Box title="Add new etCourseTemplateQuestionMCQ" padding>
-      <Form onSubmitParams={handleSubmit}>
+      <Form onSubmitParams={handleSubmit(false)}>
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.questionCode) && (
           <Input
@@ -158,15 +161,22 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           isMulti
         />
         </div>
-        <div class="flex mt-2">
+        <input type="submit" class="invisible" />
+      </Form>
+      <div class="flex mt-2">
+        <button
+          onClick={handleSubmit(false)}
+          class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+        >
+          Submit
+        </button>
           <button
-            type="submit"
+            onClick={handleSubmit(true)}
             class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
           >
-            Submit
+            Save and add another
           </button>
-        </div>
-      </Form>
+      </div>
     </Box>
   );
 }

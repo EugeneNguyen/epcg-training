@@ -598,3 +598,5 @@ relationships:
 defaultOrder:
   field: questionCode
   order: ASC
+formAdd:
+  saveAndAddAnother: true

@@ -1,6 +1,8 @@
 defaultOrder:
   field: questionCode
   order: ASC
+formAdd:
+  saveAndAddAnother: true
 fields:
   id:
     list:
