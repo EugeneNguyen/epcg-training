@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     educationProviderId: DataTypes.UUID,
     courseTemplateId: DataTypes.UUID,
+    isPrivateCourse: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'etCourse',

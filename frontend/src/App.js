@@ -27,6 +27,7 @@ function App() {
             <RouteEtCourseTemplateQuestionTag/>
             <RouteEtCourseTemplateExam/>
             <RouteEtExamAttempt/>
+            <RouteEtCourseTemplate/>
             <RouteTgUser/>
             <ToastContainer/>
           </div>

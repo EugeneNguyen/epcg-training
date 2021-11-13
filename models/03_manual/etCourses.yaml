@@ -2,3 +2,20 @@ fields:
   id:
     list:
       enable: false
+  name:
+    list:
+      link: /etCourseTemplate/${item.id}
+  createdAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false
+  updatedAt:
+    list:
+      enable: false
+    add:
+      enable: false
+    edit:
+      enable: false

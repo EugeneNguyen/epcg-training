@@ -26,14 +26,6 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
       <tr>
-        {excludeColumns.includes("id") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Id
-          </th>
-        )}
         {excludeColumns.includes("name") || (
           <th
             scope="col"
@@ -77,16 +69,11 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
-          {excludeColumns.includes("id") || (
-          <Cell
-            type="CHAR(36)"
-            value={_.get(item, 'id')}
-          />
-        )}
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
             value={_.get(item, 'name')}
+            link={`/etCourseTemplate/${item.id}`}
           />
         )}
           {excludeColumns.includes("educationProviderId") || (

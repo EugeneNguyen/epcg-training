@@ -14,7 +14,7 @@ fields:
     name: id
     graphType: String
     list:
-      enable: true
+      enable: false
     add:
       enable: false
     edit:
@@ -31,6 +31,7 @@ fields:
     graphType: String
     list:
       enable: true
+      link: /etCourseTemplate/${item.id}
     add:
       enable: true
     edit:
