@@ -20,6 +20,10 @@ query et_course_get_all_with_page($pagination: EtCoursePaginationInput, $where: 
     rows {
       id
       name
+      educationProvider {
+        id
+        name
+      }
       educationProviderId
       courseTemplate {
         id
@@ -44,6 +48,10 @@ query et_course_get_by_id($id: String) {
   data: et_course_get_by_id(id: $id) {
     id
     name
+    educationProvider {
+      id
+      name
+    }
     educationProviderId
     courseTemplate {
       id
@@ -57,6 +65,18 @@ query et_course_get_by_id($id: String) {
 }
 `;
 
+const GET_ET_COURSE_ENROLL = gql`
+query et_course_get_by_id($id: String) {
+  et_course_get_by_id(id: $id) {
+    id
+    courseId
+    userId
+    isActive
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation et_course_add($data: EtCourseInput) {

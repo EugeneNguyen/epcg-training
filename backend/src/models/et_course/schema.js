@@ -11,6 +11,9 @@ type EtCourse {
   createdAt: String
   updatedAt: String
   courseTemplate: EtCourseTemplate
+  educationProvider: EtEducationProvider
+  enrolls: [EtCourseEnroll]
+  enrollsCount: Int
 }
 
 type EtCourseWithPagination {

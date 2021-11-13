@@ -7,11 +7,11 @@ import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
 
-EtCourseTable.defaultProps = {
+EtCourseEnrollTable.defaultProps = {
   excludeColumns: [],
 };
 
-export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName}) {
+export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName}) {
   const {loading, error, data, refetch} = useQuery(API.ALL_WITH_PAGE, {
     ...API.DEFAULT_OPTIONS,
     variables: {
@@ -26,36 +26,28 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-50">
       <tr>
-        {excludeColumns.includes("name") || (
+        {excludeColumns.includes("courseId") || (
           <th
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Name
+            Course
           </th>
         )}
-        {excludeColumns.includes("educationProviderId") || (
+        {excludeColumns.includes("userId") || (
           <th
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Education Provider
+            User
           </th>
         )}
-        {excludeColumns.includes("courseTemplateId") || (
+        {excludeColumns.includes("isActive") || (
           <th
             scope="col"
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Course Template
-          </th>
-        )}
-        {excludeColumns.includes("isPrivateCourse") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
-            Is Private Course
+            Is Active
           </th>
         )}
         <th
@@ -69,29 +61,22 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
-          {excludeColumns.includes("name") || (
-          <Cell
-            type="VARCHAR(255)"
-            value={_.get(item, 'name')}
-            link={`/etCourse/${item.id}`}
-          />
-        )}
-          {excludeColumns.includes("educationProviderId") || (
+          {excludeColumns.includes("courseId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'educationProvider.name')}
+            value={_.get(item, 'course.name')}
           />
         )}
-          {excludeColumns.includes("courseTemplateId") || (
+          {excludeColumns.includes("userId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'courseTemplate.name')}
+            value={_.get(item, 'user.username')}
           />
         )}
-          {excludeColumns.includes("isPrivateCourse") || (
+          {excludeColumns.includes("isActive") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'isPrivateCourse')}
+            value={_.get(item, 'isActive')}
           />
         )}
         <td>

@@ -1,0 +1,19 @@
+relationships:
+  - name: course
+    label: Course
+    type: many_to_one
+    self:
+      key: courseId
+    target:
+      name: etCourses
+      key: id
+      label: name
+  - name: user
+    label: User
+    type: many_to_one
+    self:
+      key: userId
+    target:
+      name: tgUsers
+      key: id
+      label: username

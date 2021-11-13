@@ -11,3 +11,20 @@ relationships:
       filter:
         key: educationProviderId
         value: educationProviderId
+  - name: educationProvider
+    label: Education Provider
+    type: many_to_one
+    self:
+      key: educationProviderId
+    target:
+      name: etEducationProviders
+      key: id
+      label: name
+  - name: enrolls
+    label: Enrolls
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourseEnrolls
+      key: courseId

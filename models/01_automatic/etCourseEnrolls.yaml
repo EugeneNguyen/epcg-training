@@ -1,8 +1,8 @@
-modelName: etCourse
-modelNameSnake: et_course
-modelNameCapitalCamel: EtCourse
-modelNameUpSnake: ET_COURSE
-baseUrl: etCourse
+modelName: etCourseEnroll
+modelNameSnake: et_course_enroll
+modelNameCapitalCamel: EtCourseEnroll
+modelNameUpSnake: ET_COURSE_ENROLL
+baseUrl: etCourseEnroll
 fields:
   id:
     type: CHAR(36)
@@ -14,37 +14,20 @@ fields:
     name: id
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
       enable: false
     edit:
       enable: false
     displayLabel: Id
-  name:
-    type: VARCHAR(255)
-    allowNull: true
-    defaultValue: null
-    primaryKey: false
-    autoIncrement: false
-    comment: null
-    name: name
-    graphType: String
-    list:
-      enable: true
-      link: /etCourse/${item.id}
-    add:
-      enable: true
-    edit:
-      enable: true
-    displayLabel: Name
-  educationProviderId:
+  courseId:
     type: CHAR(36)
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: educationProviderId
+    name: courseId
     graphType: String
     list:
       enable: true
@@ -52,15 +35,15 @@ fields:
       enable: true
     edit:
       enable: true
-    displayLabel: Education Provider Id
-  courseTemplateId:
+    displayLabel: Course Id
+  userId:
     type: CHAR(36)
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: courseTemplateId
+    name: userId
     graphType: String
     list:
       enable: true
@@ -68,15 +51,15 @@ fields:
       enable: true
     edit:
       enable: true
-    displayLabel: Course Template Id
-  isPrivateCourse:
+    displayLabel: User Id
+  isActive:
     type: TINYINT(1)
     allowNull: true
     defaultValue: null
     primaryKey: false
     autoIncrement: false
     comment: null
-    name: isPrivateCourse
+    name: isActive
     graphType: Boolean
     list:
       enable: true
@@ -84,7 +67,7 @@ fields:
       enable: true
     edit:
       enable: true
-    displayLabel: Is Private Course
+    displayLabel: Is Active
   createdAt:
     type: DATETIME
     allowNull: false
@@ -95,11 +78,11 @@ fields:
     name: createdAt
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
-      enable: false
+      enable: true
     edit:
-      enable: false
+      enable: true
     displayLabel: Created At
   updatedAt:
     type: DATETIME
@@ -111,30 +94,27 @@ fields:
     name: updatedAt
     graphType: String
     list:
-      enable: false
+      enable: true
     add:
-      enable: false
+      enable: true
     edit:
-      enable: false
+      enable: true
     displayLabel: Updated At
 relationships:
-  - name: courseTemplate
-    label: Course Template
+  - name: course
+    label: Course
     type: many_to_one
     self:
-      key: courseTemplateId
+      key: courseId
     target:
-      name: etCourseTemplates
+      name: etCourses
       key: id
       label: name
-      filter:
-        key: educationProviderId
-        value: educationProviderId
-      modelName: etCourseTemplate
-      modelNameSnake: et_course_template
-      modelNameCapitalCamel: EtCourseTemplate
-      modelNameUpSnake: ET_COURSE_TEMPLATE
-      baseUrl: etCourseTemplate
+      modelName: etCourse
+      modelNameSnake: et_course
+      modelNameCapitalCamel: EtCourse
+      modelNameUpSnake: ET_COURSE
+      baseUrl: etCourse
       fields:
         id:
           type: CHAR(36)
@@ -184,155 +164,14 @@ relationships:
           edit:
             enable: true
           displayLabel: Education Provider Id
-        createdAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: createdAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Created At
-        updatedAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: updatedAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Updated At
-  - name: educationProvider
-    label: Education Provider
-    type: many_to_one
-    self:
-      key: educationProviderId
-    target:
-      name: etEducationProviders
-      key: id
-      label: name
-      modelName: etEducationProvider
-      modelNameSnake: et_education_provider
-      modelNameCapitalCamel: EtEducationProvider
-      modelNameUpSnake: ET_EDUCATION_PROVIDER
-      baseUrl: etEducationProvider
-      fields:
-        id:
-          type: CHAR(36)
-          allowNull: false
-          defaultValue: null
-          primaryKey: true
-          autoIncrement: false
-          comment: null
-          name: id
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: false
-          edit:
-            enable: false
-          displayLabel: Id
-        name:
-          type: VARCHAR(255)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: name
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Name
-        createdAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: createdAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Created At
-        updatedAt:
-          type: DATETIME
-          allowNull: false
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: updatedAt
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: Updated At
-  - name: enrolls
-    label: Enrolls
-    type: one_to_many
-    self:
-      key: id
-    target:
-      name: etCourseEnrolls
-      key: courseId
-      modelName: etCourseEnroll
-      modelNameSnake: et_course_enroll
-      modelNameCapitalCamel: EtCourseEnroll
-      modelNameUpSnake: ET_COURSE_ENROLL
-      baseUrl: etCourseEnroll
-      fields:
-        id:
-          type: CHAR(36)
-          allowNull: false
-          defaultValue: null
-          primaryKey: true
-          autoIncrement: false
-          comment: null
-          name: id
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: false
-          edit:
-            enable: false
-          displayLabel: Id
-        courseId:
+        courseTemplateId:
           type: CHAR(36)
           allowNull: true
           defaultValue: null
           primaryKey: false
           autoIncrement: false
           comment: null
-          name: courseId
+          name: courseTemplateId
           graphType: String
           list:
             enable: true
@@ -340,31 +179,15 @@ relationships:
             enable: true
           edit:
             enable: true
-          displayLabel: Course Id
-        userId:
-          type: CHAR(36)
-          allowNull: true
-          defaultValue: null
-          primaryKey: false
-          autoIncrement: false
-          comment: null
-          name: userId
-          graphType: String
-          list:
-            enable: true
-          add:
-            enable: true
-          edit:
-            enable: true
-          displayLabel: User Id
-        isActive:
+          displayLabel: Course Template Id
+        isPrivateCourse:
           type: TINYINT(1)
           allowNull: true
           defaultValue: null
           primaryKey: false
           autoIncrement: false
           comment: null
-          name: isActive
+          name: isPrivateCourse
           graphType: Boolean
           list:
             enable: true
@@ -372,7 +195,102 @@ relationships:
             enable: true
           edit:
             enable: true
-          displayLabel: Is Active
+          displayLabel: Is Private Course
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At
+  - name: user
+    label: User
+    type: many_to_one
+    self:
+      key: userId
+    target:
+      name: tgUsers
+      key: id
+      label: username
+      modelName: tgUser
+      modelNameSnake: tg_user
+      modelNameCapitalCamel: TgUser
+      modelNameUpSnake: TG_USER
+      baseUrl: tgUser
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        username:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: username
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Username
+        password:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: password
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Password
         createdAt:
           type: DATETIME
           allowNull: false

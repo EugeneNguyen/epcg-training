@@ -47,9 +47,11 @@ export default function FormEtCourseAdd({fixedParams}) {
         )}
         {(!fixedParams || !fixedParams.educationProviderId) && (
           <Input
-            type="CHAR(36)"
-            name="educationProviderId"
-            displayLabel="Education Provider Id"
+            type="SELECT"
+            query={require('../../et_education_provider/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Education Provider"
             value={educationProviderId}
             onValueChange={(value) => seteducationProviderId(value)}
           />

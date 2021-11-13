@@ -11,6 +11,7 @@ import RouteEtCourseTemplateQuestionTag from './generator/et_course_template_que
 import RouteEtCourseTemplateExam from './generator/et_course_template_exam/router';
 import RouteEtExamAttempt from './generator/et_exam_attempt/router';
 import RouteTgUser from "./generator/tg_user/router";
+import RouteEtCourse from "./generator/et_course/router";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             <RouteEtCourseTemplateQuestionTag/>
             <RouteEtCourseTemplateExam/>
             <RouteEtExamAttempt/>
-            <RouteEtCourseTemplate/>
+            <RouteEtCourse/>
             <RouteTgUser/>
             <ToastContainer/>
           </div>
