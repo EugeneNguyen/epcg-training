@@ -9,6 +9,8 @@ type EtEducationProvider {
   updatedAt: String
   courseTemplates: [EtCourseTemplate]
   courseTemplatesCount: Int
+  courses: [EtCourse]
+  coursesCount: Int
 }
 
 type EtEducationProviderWithPagination {

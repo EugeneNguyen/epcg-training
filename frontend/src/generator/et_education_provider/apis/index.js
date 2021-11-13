@@ -51,6 +51,19 @@ query et_education_provider_get_by_id($id: String) {
   }
 }
 `;
+const GET_ET_COURSE = gql`
+query et_education_provider_get_by_id($id: String) {
+  et_education_provider_get_by_id(id: $id) {
+    id
+    name
+    educationProviderId
+    courseTemplateId
+    isPrivateCourse
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation et_education_provider_add($data: EtEducationProviderInput) {

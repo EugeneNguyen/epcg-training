@@ -8,7 +8,7 @@ let query = `
 `;
 
 let mutation = `
-  z_user_login(username: String, password: String): String
+  tg_user_login(username: String, password: String): String
 `;
 
 module.exports = {

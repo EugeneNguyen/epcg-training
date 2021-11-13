@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const SALT_ROUND = 10;
 
 let mutation = {
-  async z_user_login(parent, data, context, info) {
+  async tg_user_login(parent, data, context, info) {
     const user = await db.tgUser.findOne({
       where: {
         username: data.username,

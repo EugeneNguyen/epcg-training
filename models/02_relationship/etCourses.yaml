@@ -1,0 +1,13 @@
+relationships:
+  - name: courseTemplate
+    label: Course Template
+    type: many_to_one
+    self:
+      key: courseTemplateId
+    target:
+      name: etCourseTemplates
+      key: id
+      label: name
+      filter:
+        key: educationProviderId
+        value: educationProviderId

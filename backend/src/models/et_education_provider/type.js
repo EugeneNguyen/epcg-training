@@ -5,6 +5,7 @@ const _ = require('lodash');
 
 
 
+
 let type = {
   EtEducationProvider: {
     courseTemplates(parent, args, context, info) {
@@ -16,6 +17,20 @@ let type = {
     },
     courseTemplatesCount(parent, args, context, info) {
       return db.etCourseTemplate.count({
+        where: {
+          educationProviderId: parent.id
+        }
+      });
+    },
+    courses(parent, args, context, info) {
+      return db.etCourse.findAll({
+        where: {
+          educationProviderId: parent.id
+        }
+      });
+    },
+    coursesCount(parent, args, context, info) {
+      return db.etCourse.count({
         where: {
           educationProviderId: parent.id
         }

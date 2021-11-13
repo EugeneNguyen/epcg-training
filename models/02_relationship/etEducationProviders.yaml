@@ -7,3 +7,11 @@ relationships:
     target:
       name: etCourseTemplates
       key: educationProviderId
+  - name: courses
+    label: Courses
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etCourses
+      key: educationProviderId

@@ -7,6 +7,9 @@ import ViewEtEducationProviderInfo from '../view_info';
 import TableEtCourseTemplateList from '../../et_course_template/table_list';
 import FormEtCourseTemplateAdd from '../../et_course_template/form_add';
 import FormEtCourseTemplateEdit from '../../et_course_template/form_edit';
+import TableEtCourseList from '../../et_course/table_list';
+import FormEtCourseAdd from '../../et_course/form_add';
+import FormEtCourseEdit from '../../et_course/form_edit';
 
 export default function RouteEtEducationProvider() {
   return (
@@ -47,6 +50,34 @@ export default function RouteEtEducationProvider() {
         exact
         render={(renderProps) => (
           <FormEtCourseTemplateEdit
+            fixedParams={{educationProviderId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/etEducationProvider/:id/courses"
+        exact
+        render={(renderProps) => (
+          <TableEtCourseList
+            where={{educationProviderId: renderProps.match.params.id}}
+            excludeColumns={["educationProviderId"]}
+          />
+        )}
+      />
+      <Route
+        path="/etEducationProvider/:id/courses/add"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseAdd
+            fixedParams={{educationProviderId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/etEducationProvider/:id/courses/:selectedObjectId/edit"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseEdit
             fixedParams={{educationProviderId: renderProps.match.params.id}}
           />
         )}
