@@ -7,6 +7,7 @@ import AuthHelper from "./screens/auth/helper";
 import {ToastContainer} from "react-toastify";
 import RouteDashboard from "./screens/dashboard/router";
 import RouteCourse from "./screens/course/router";
+import RouteExam from "./screens/exam/router";
 
 function App() {
   const token = AuthHelper.useToken();
@@ -28,6 +29,7 @@ function App() {
               <RouteExamAttempt/>
               <RouteDashboard/>
               <RouteCourse/>
+              <RouteExam/>
               <ToastContainer/>
             </div>
           </div>

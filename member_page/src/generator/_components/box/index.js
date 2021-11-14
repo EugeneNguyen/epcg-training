@@ -1,8 +1,8 @@
-export default function Box({children, title, subtitle, padding}) {
+export default function Box({children, title, subtitle, padding, footer}) {
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       {(title || subtitle) && (
-        <div className="px-4 py-5 sm:px-6">
+        <div className="p-4">
           {title && (
             <h3 className="text-lg leading-6 font-medium text-gray-900">
               {title}
@@ -18,6 +18,11 @@ export default function Box({children, title, subtitle, padding}) {
       <div className={`border-t border-gray-200 ${padding ? 'p-4' : ''}`}>
         {children}
       </div>
+      {footer && (
+        <div className="p-4 border-t border-gray-200">
+          {footer}
+        </div>
+      )}
     </div>
   )
 }

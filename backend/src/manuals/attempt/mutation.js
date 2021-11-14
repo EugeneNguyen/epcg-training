@@ -1,7 +1,9 @@
 let db = require('../../database/models');
+const {AuthService} = require("../../services");
 
 let mutation = {
-  async manual_create_attempt_from_course_template_exam(parent, { course_template_exam_id }, context, info) {
+  async manual_create_attempt_from_course_template_exam(parent, { course_template_exam_id, token }, context, info) {
+    const user = await AuthService.getUserFromToken(token);
     const courseTemplateExam = await db.etCourseTemplateExam.findByPk(course_template_exam_id);
     if (!courseTemplateExam) {
       throw new Error("Cannot find Course Template Exam");
@@ -14,6 +16,7 @@ let mutation = {
     });
 
     const attempt = await db.etExamAttempt.create({
+      userId: user.id,
       templateExamId: courseTemplateExam.id,
       duration: courseTemplateExam.duration,
     });

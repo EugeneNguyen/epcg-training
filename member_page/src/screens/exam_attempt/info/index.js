@@ -17,22 +17,45 @@ export default function ScreenExamAttemptInfo() {
     },
   );
 
-  return data ? (
+  if (!data) {
+    return "Loading ...";
+  }
+
+  return (
     <div className="space-y-2">
-      <Box title="Exam Attempt Information" padding>
+      <Box title="Exam Attempt Information" padding footer={<ButtonStart id={id} data={data}/>}>
         <dl className="m-0">
           <InfoItem title="Exam" value={_.get(data, 'data.templateExam.name', 'N/A')}/>
           <InfoItem title="Number of Questions" value={_.get(data, 'data.templateExam.numberOfQuestion', 'N/A')} odd/>
           <InfoItem title="Duration (min)" value={_.get(data, 'data.duration', 'N/A')}/>
         </dl>
       </Box>
-      <div>
-        <ButtonLink to={`/exam/attempt/${id}/take`}>
-          Start test
-        </ButtonLink>
-      </div>
     </div>
-  ) : null;
+  );
+}
+
+function ButtonStart({id, data}) {
+  if (data.startTime == null) {
+    return (
+      <ButtonLink to={`/exam/attempt/${id}/take`}>
+        Start attempt
+      </ButtonLink>
+    )
+  }
+
+  if (data.endTime == null) {
+    return (
+      <ButtonLink to={`/exam/attempt/${id}/take`}>
+        Continue attempt
+      </ButtonLink>
+    )
+  }
+
+  return (
+    <ButtonLink to={`/exam/attempt/${id}/result`}>
+      Result
+    </ButtonLink>
+  )
 }
 
 function InfoItem({title, value, odd}) {

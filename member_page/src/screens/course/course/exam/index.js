@@ -58,7 +58,7 @@ export default function CourseExamBox() {
                 <tbody className="bg-white divide-y divide-gray-200">
                 {data.data.map(exam => (
                   <tr>
-                    <CellLink link={`/course/${exam.id}`} value={exam.name}/>
+                    <CellLink link={`/exam/${exam.id}`} value={exam.name}/>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {exam.courseTemplateExam.duration}
                     </td>
