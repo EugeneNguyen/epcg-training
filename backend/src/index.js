@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const _ = require('lodash');
 const basename = path.basename(__filename);
 
 let models = [];
@@ -34,12 +35,12 @@ let typeDefsObject = {
 }
 
 for (const model of models) {
-  resolvers.Query = Object.assign(resolvers.Query, model.query);
-  resolvers.Mutation = Object.assign(resolvers.Mutation, model.mutation);
+  resolvers.Query = _.merge(resolvers.Query, model.query);
+  resolvers.Mutation = _.merge(resolvers.Mutation, model.mutation);
   typeDefsObject.type += model.schema.type;
   typeDefsObject.query += model.schema.query;
   typeDefsObject.mutation += model.schema.mutation;
-  resolvers = Object.assign(resolvers, model.type);
+  resolvers = _.merge(resolvers, model.type);
 }
 
 let typeDefs = `

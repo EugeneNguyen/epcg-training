@@ -18,6 +18,13 @@ let mutation = {
         roleId: rolesId,
       });
     }
+    const coursesIds = data.courses;
+    for (const coursesId of coursesIds) {
+      await db.etCourseEnroll.create({
+        userId: newObject.id,
+        courseId: coursesId,
+      });
+    }
 
     return newObject;
   },
@@ -76,6 +83,34 @@ let mutation = {
           where: {
             userId: id,
             roleId: rmvId,
+          }
+        });
+      }
+    }
+    if (data.courses) {
+      const coursesIds = data.courses;
+      const coursesLinks = await db.etCourseEnroll.findAll({
+        where: {
+          userId: tgUser.id
+        }
+      });
+      const coursesOldIds = coursesLinks.map(link => link.courseId);
+
+      const addIds = coursesIds.filter(x => !coursesOldIds.includes(x));
+      const rmvIds = coursesOldIds.filter(x => !coursesIds.includes(x));
+
+      for (const addId of addIds) {
+        await db.etCourseEnroll.create({
+          userId: id,
+          courseId: addId,
+        });
+      }
+
+      for (const rmvId of rmvIds) {
+        await db.etCourseEnroll.destroy({
+          where: {
+            userId: id,
+            courseId: rmvId,
           }
         });
       }

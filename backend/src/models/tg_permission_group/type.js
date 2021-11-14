@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op;
 const _ = require('lodash');
 
 
-
 let type = {
   TgPermissionGroup: {
     permissions(parent, args, context, info) {

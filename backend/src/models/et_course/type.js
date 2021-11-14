@@ -13,7 +13,6 @@ const courseTemplateLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 const educationProviderLoader = new DataLoader(async (keys) => {
   const items = await db.etEducationProvider.findAll({
     where: {
@@ -24,9 +23,6 @@ const educationProviderLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
-
-
 
 let type = {
   EtCourse: {

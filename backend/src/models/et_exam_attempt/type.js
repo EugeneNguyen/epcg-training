@@ -3,7 +3,6 @@ const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
 const _ = require('lodash');
 
-
 const templateExamLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplateExam.findAll({
     where: {
@@ -14,7 +13,6 @@ const templateExamLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 
 let type = {
   EtExamAttempt: {

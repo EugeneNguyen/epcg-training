@@ -33,3 +33,16 @@ relationships:
       name: tgUserRoles
       selfId: userId
       targetId: roleId
+  - name: courses
+    label: Courses
+    type: many_to_many
+    self:
+      key: id
+    target:
+      name: etCourses
+      key: id
+      label: name
+    link:
+      name: etCourseEnrolls
+      selfId: userId
+      targetId: courseId

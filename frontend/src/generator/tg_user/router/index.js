@@ -13,6 +13,9 @@ import FormTgUserPermissionEdit from '../../tg_user_permission/form_edit';
 import TableTgUserRoleList from '../../tg_user_role/table_list';
 import FormTgUserRoleAdd from '../../tg_user_role/form_add';
 import FormTgUserRoleEdit from '../../tg_user_role/form_edit';
+import TableEtCourseEnrollList from '../../et_course_enroll/table_list';
+import FormEtCourseEnrollAdd from '../../et_course_enroll/form_add';
+import FormEtCourseEnrollEdit from '../../et_course_enroll/form_edit';
 
 export default function RouteTgUser() {
   return (
@@ -109,6 +112,34 @@ export default function RouteTgUser() {
         exact
         render={(renderProps) => (
           <FormTgUserRoleEdit
+            fixedParams={{userId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/tgUser/:id/courses"
+        exact
+        render={(renderProps) => (
+          <TableEtCourseEnrollList
+            where={{userId: renderProps.match.params.id}}
+            excludeColumns={["userId"]}
+          />
+        )}
+      />
+      <Route
+        path="/tgUser/:id/courses/add"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseEnrollAdd
+            fixedParams={{userId: renderProps.match.params.id}}
+          />
+        )}
+      />
+      <Route
+        path="/tgUser/:id/courses/:selectedObjectId/edit"
+        exact
+        render={(renderProps) => (
+          <FormEtCourseEnrollEdit
             fixedParams={{userId: renderProps.match.params.id}}
           />
         )}

@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op;
 const _ = require('lodash');
 
 
-
 let type = {
   EtCourseTemplateQuestionSource: {
     questions(parent, args, context, info) {

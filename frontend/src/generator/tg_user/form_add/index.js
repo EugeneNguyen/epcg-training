@@ -15,6 +15,7 @@ export default function FormTgUserAdd({fixedParams}) {
   const [password, setpassword] = useState(null);
   const [permissionsRelationship, setpermissionsRelationship] = useState([]);
   const [rolesRelationship, setrolesRelationship] = useState([]);
+  const [coursesRelationship, setcoursesRelationship] = useState([]);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -25,6 +26,7 @@ export default function FormTgUserAdd({fixedParams}) {
       password,
       permissions: permissionsRelationship,
       roles: rolesRelationship,
+      courses: coursesRelationship,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -78,6 +80,17 @@ export default function FormTgUserAdd({fixedParams}) {
           displayLabel="Roles"
           value={rolesRelationship}
           onValueChange={(value) => setrolesRelationship(value)}
+          isMulti
+        />
+        <Input
+          type="SELECT"
+          query={require('../../et_course/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="courses"
+          displayLabel="Courses"
+          value={coursesRelationship}
+          onValueChange={(value) => setcoursesRelationship(value)}
           isMulti
         />
         </div>

@@ -47,6 +47,10 @@ query tg_user_get_by_id($id: String) {
       id
       name
     }
+    courses {
+      id
+      name
+    }
   }
 }
 `;

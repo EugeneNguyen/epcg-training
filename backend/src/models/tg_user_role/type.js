@@ -13,7 +13,6 @@ const roleLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 const userLoader = new DataLoader(async (keys) => {
   const items = await db.tgUser.findAll({
     where: {
@@ -24,7 +23,6 @@ const userLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 
 let type = {
   TgUserRole: {

@@ -5,6 +5,7 @@ let type = `
 `;
 
 let query = `
+  me(token: String): TgUser
 `;
 
 let mutation = `

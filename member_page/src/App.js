@@ -5,9 +5,14 @@ import RouteExamAttempt from "./screens/exam_attempt/router";
 import RouteTgAuth from "./screens/auth/router";
 import AuthHelper from "./screens/auth/helper";
 import {ToastContainer} from "react-toastify";
+import RouteDashboard from "./screens/dashboard/router";
+import RouteCourse from "./screens/course/router";
 
 function App() {
   const token = AuthHelper.useToken();
+  if (token === null) {
+    return null;
+  }
 
   if (token) {
     return (
@@ -21,6 +26,8 @@ function App() {
             <Header/>
             <div className="w-full mx-auto py-6 sm:px-6 lg:px-8 overflow-y-scroll">
               <RouteExamAttempt/>
+              <RouteDashboard/>
+              <RouteCourse/>
               <ToastContainer/>
             </div>
           </div>

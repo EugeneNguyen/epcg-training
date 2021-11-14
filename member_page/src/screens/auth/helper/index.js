@@ -55,7 +55,7 @@ const useToken = () => {
   return _token;
 }
 
-export default {
+const AuthHelper = {
   saveToken,
   removeToken,
   loadToken,
@@ -64,3 +64,5 @@ export default {
   addListener,
   useToken
 };
+
+export default AuthHelper;

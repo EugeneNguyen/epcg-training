@@ -16,6 +16,9 @@ type TgUser {
   roles: [TgRole]
   rolesCount: Int
   rolesLink: [TgUserRole]
+  courses: [EtCourse]
+  coursesCount: Int
+  coursesLink: [EtCourseEnroll]
 }
 
 type TgUserWithPagination {
@@ -34,6 +37,7 @@ input TgUserInput {
   password: String
   permissions: [String]
   roles: [String]
+  courses: [String]
 }
 
 input TgUserPaginationInput {

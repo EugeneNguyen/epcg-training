@@ -4,8 +4,6 @@ const Op = db.Sequelize.Op;
 const _ = require('lodash');
 
 
-
-
 let type = {
   TgRole: {
     async members(parent, args, context, info) {

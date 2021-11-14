@@ -14,8 +14,6 @@ const groupLoader = new DataLoader(async (keys) => {
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
 
-
-
 let type = {
   TgPermission: {
     group(parent, args, context, info) {

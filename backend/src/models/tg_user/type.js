@@ -4,9 +4,6 @@ const Op = db.Sequelize.Op;
 const _ = require('lodash');
 
 
-
-
-
 let type = {
   TgUser: {
     tokens(parent, args, context, info) {
@@ -76,6 +73,36 @@ let type = {
     },
     rolesLink(parent, args, context, info) {
       return db.tgUserRole.findAll({
+        where: {
+          userId: parent.id
+        }
+      });
+    },
+    async courses(parent, args, context, info) {
+      console.log("test");
+      const links = await db.etCourseEnroll.findAll({
+        where: {
+          userId: parent.id
+        }
+      });
+      const ids = links.map(link => link.courseId);
+      return db.etCourse.findAll({
+        where: {
+          id: {
+            [Op.in]: ids,
+          }
+        }
+      });
+    },
+    coursesCount(parent, args, context, info) {
+      return db.etCourseEnroll.count({
+        where: {
+          userId: parent.id
+        }
+      });
+    },
+    coursesLink(parent, args, context, info) {
+      return db.etCourseEnroll.findAll({
         where: {
           userId: parent.id
         }

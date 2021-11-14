@@ -13,7 +13,6 @@ const questionSourceLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 const courseTemplateLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplate.findAll({
     where: {
@@ -24,8 +23,6 @@ const courseTemplateLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
-
 
 let type = {
   EtCourseTemplateQuestionMcq: {

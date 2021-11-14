@@ -14,6 +14,7 @@ export default function FormTgUserEdit({fixedParams}) {
   const [username, setusername] = useState(null);
   const [permissionsRelationship, setpermissionsRelationship] = useState([]);
   const [rolesRelationship, setrolesRelationship] = useState([]);
+  const [coursesRelationship, setcoursesRelationship] = useState([]);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -25,6 +26,7 @@ export default function FormTgUserEdit({fixedParams}) {
 
         setpermissionsRelationship(response.data.permissions.map(r => r.id));
         setrolesRelationship(response.data.roles.map(r => r.id));
+        setcoursesRelationship(response.data.courses.map(r => r.id));
       },
     }
   );
@@ -36,6 +38,7 @@ export default function FormTgUserEdit({fixedParams}) {
       username,
       permissions: permissionsRelationship,
       roles: rolesRelationship,
+      courses: coursesRelationship,
       ...fixedParams,
     };
     editApi({ variables: { id, data } })
@@ -78,6 +81,17 @@ export default function FormTgUserEdit({fixedParams}) {
           displayLabel="Roles"
           value={rolesRelationship}
           onValueChange={(value) => setrolesRelationship(value)}
+          isMulti
+        />
+        <Input
+          type="SELECT"
+          query={require('../../et_course/apis').default.ALL}
+          idKey="id"
+          labelKey="name"
+          name="courses"
+          displayLabel="Courses"
+          value={coursesRelationship}
+          onValueChange={(value) => setcoursesRelationship(value)}
           isMulti
         />
         </div>

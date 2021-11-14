@@ -13,7 +13,6 @@ const roleLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 const permissionLoader = new DataLoader(async (keys) => {
   const items = await db.tgPermission.findAll({
     where: {
@@ -24,7 +23,6 @@ const permissionLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
 
 let type = {
   TgRolePermission: {

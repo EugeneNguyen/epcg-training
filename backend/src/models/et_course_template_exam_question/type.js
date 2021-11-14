@@ -14,7 +14,6 @@ const questionLoader = new DataLoader(async (keys) => {
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
 
-
 let type = {
   EtCourseTemplateExamQuestion: {
     question(parent, args, context, info) {

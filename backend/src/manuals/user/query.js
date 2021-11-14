@@ -1,4 +1,5 @@
 const db = require('../../database/models');
+const {AuthService} = require("../../services");
 
 const query = {
   async tg_user_get_all_with_page(parent, {pagination, where}, context, info) {
@@ -23,6 +24,9 @@ const query = {
   },
   tg_user_get_by_id(parent, {id}, context, info) {
     return db.tgUser.findByPk(id);
+  },
+  me(parent, {token}, context, info) {
+    return AuthService.getUserFromToken(token);
   },
 };
 
