@@ -15,14 +15,6 @@ query Et_course_exam_get_by_id($id: String) {
 }
 `;
 
-const CREATE_ATTEMPT = gql`
-mutation Mutation($id: String, $token: String) {
-  data: manual_create_attempt_from_course_template_exam(course_template_exam_id: $id, token: $token) {
-    id
-  }
-}
-`;
-
 const DEFAULT_OPTIONS = {
   notifyOnNetworkStatusChange: true,
   fetchPolicy: 'cache-and-network',
@@ -31,6 +23,5 @@ const DEFAULT_OPTIONS = {
 
 export default {
   GET_EXAM,
-  CREATE_ATTEMPT,
   DEFAULT_OPTIONS,
 };

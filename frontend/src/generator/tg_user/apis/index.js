@@ -65,6 +65,20 @@ query tg_user_get_by_id($id: String) {
   }
 }
 `;
+const GET_ET_EXAM_ATTEMPT = gql`
+query tg_user_get_by_id($id: String) {
+  tg_user_get_by_id(id: $id) {
+    id
+    userId
+    templateExamId
+    duration
+    startTime
+    endTime
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 const ADD = gql`
 mutation tg_user_add($data: TgUserInput) {

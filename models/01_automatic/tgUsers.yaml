@@ -782,3 +782,145 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+  - name: examAttempts
+    label: Exam Attempts
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etExamAttempts
+      key: userId
+      modelName: etExamAttempt
+      modelNameSnake: et_exam_attempt
+      modelNameCapitalCamel: EtExamAttempt
+      modelNameUpSnake: ET_EXAM_ATTEMPT
+      baseUrl: etExamAttempt
+      fields:
+        id:
+          type: CHAR(36)
+          allowNull: false
+          defaultValue: null
+          primaryKey: true
+          autoIncrement: false
+          comment: null
+          name: id
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: false
+          edit:
+            enable: false
+          displayLabel: Id
+        userId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: userId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: User Id
+        templateExamId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: templateExamId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Template Exam Id
+        duration:
+          type: INT
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: duration
+          graphType: Int
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Duration
+        startTime:
+          type: DATETIME
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: startTime
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Start Time
+        endTime:
+          type: DATETIME
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: endTime
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: End Time
+        createdAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: createdAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Created At
+        updatedAt:
+          type: DATETIME
+          allowNull: false
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: updatedAt
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Updated At

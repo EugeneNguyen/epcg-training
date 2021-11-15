@@ -46,3 +46,11 @@ relationships:
       name: etCourseEnrolls
       selfId: userId
       targetId: courseId
+  - name: examAttempts
+    label: Exam Attempts
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etExamAttempts
+      key: userId

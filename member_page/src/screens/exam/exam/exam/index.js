@@ -1,10 +1,8 @@
 import {Box} from "../../../../generator/_components";
-import {useMutation, useQuery} from "@apollo/client";
+import {useQuery} from "@apollo/client";
 import {useHistory, useParams} from "react-router-dom";
 import API from "./api";
 import _ from "lodash";
-import {Button} from "../../../../generator/_components/button";
-import AuthHelper from "../../../auth/helper";
 
 export default function ExamInfoBox() {
   const {id} = useParams();
@@ -16,8 +14,6 @@ export default function ExamInfoBox() {
       variables: {id},
     },
   );
-
-  const [createAttempt] = useMutation(API.CREATE_ATTEMPT);
 
   if (loading) {
     return <Box title="Exam Information" padding>Loading</Box>;
@@ -33,19 +29,7 @@ export default function ExamInfoBox() {
 
   return (
     <div className="space-y-2">
-      <Box
-        title="Exam Information"
-        footer={
-          <Button
-            onClick={() => {
-              createAttempt({variables: {token: AuthHelper.token(), id: _.get(data, 'data.courseTemplateExam.id')}})
-                .then(({data}) => history.push(`/exam/attempt/${data.data.id}`));
-            }}
-          >
-            Start new Attempt
-          </Button>
-        }
-      >
+      <Box title="Exam Information">
         <Item label="Name" value={_.get(data, 'data.name')}/>
         <Item label="Duration (min)" value={_.get(data, 'data.courseTemplateExam.duration')}/>
         <Item label="Number of Question" value={_.get(data, 'data.courseTemplateExam.numberOfQuestion')}/>

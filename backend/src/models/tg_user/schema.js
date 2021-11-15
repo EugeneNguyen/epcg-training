@@ -19,6 +19,8 @@ type TgUser {
   courses: [EtCourse]
   coursesCount: Int
   coursesLink: [EtCourseEnroll]
+  examAttempts: [EtExamAttempt]
+  examAttemptsCount: Int
 }
 
 type TgUserWithPagination {

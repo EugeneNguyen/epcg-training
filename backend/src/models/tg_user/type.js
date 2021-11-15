@@ -79,7 +79,6 @@ let type = {
       });
     },
     async courses(parent, args, context, info) {
-      console.log("test");
       const links = await db.etCourseEnroll.findAll({
         where: {
           userId: parent.id
@@ -103,6 +102,20 @@ let type = {
     },
     coursesLink(parent, args, context, info) {
       return db.etCourseEnroll.findAll({
+        where: {
+          userId: parent.id
+        }
+      });
+    },
+    examAttempts(parent, args, context, info) {
+      return db.etExamAttempt.findAll({
+        where: {
+          userId: parent.id
+        }
+      });
+    },
+    examAttemptsCount(parent, args, context, info) {
+      return db.etExamAttempt.count({
         where: {
           userId: parent.id
         }

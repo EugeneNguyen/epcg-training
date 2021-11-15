@@ -5,6 +5,7 @@ import TableTgUserTokenList from '../../tg_user_token/table_list';
 import TableTgUserPermissionList from '../../tg_user_permission/table_list';
 import TableTgUserRoleList from '../../tg_user_role/table_list';
 import TableEtCourseEnrollList from '../../et_course_enroll/table_list';
+import TableEtExamAttemptList from '../../et_exam_attempt/table_list';
 
 export default function ViewTgUserInfo() {
   const { id: objectId } = useParams();
@@ -45,6 +46,15 @@ export default function ViewTgUserInfo() {
           <div className="mt-3">
             <TableEtCourseEnrollList
               relationshipName="courses"
+              where={{userId: objectId}}
+              excludeColumns={["userId"]}
+            />
+          </div>
+        )},
+        {id: 'examAttempts', label: 'Exam Attempts', content: (
+          <div className="mt-3">
+            <TableEtExamAttemptList
+              relationshipName="examAttempts"
               where={{userId: objectId}}
               excludeColumns={["userId"]}
             />
