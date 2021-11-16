@@ -19,7 +19,7 @@ let type = {
     group(parent, args, context, info) {
       return groupLoader.load(parent.groupId);
     },
-    async roles(parent, args, context, info) {
+    async roles(parent, {where}, context, info) {
       const links = await db.tgRolePermission.findAll({
         where: {
           permissionId: parent.id
@@ -30,21 +30,24 @@ let type = {
         where: {
           id: {
             [Op.in]: ids,
-          }
+          },
+          ...where,
         }
       });
     },
-    rolesCount(parent, args, context, info) {
+    rolesCount(parent, {where}, context, info) {
       return db.tgRolePermission.count({
         where: {
-          permissionId: parent.id
+          permissionId: parent.id,
+          ...where,
         }
       });
     },
-    rolesLink(parent, args, context, info) {
+    rolesLink(parent, {where}, context, info) {
       return db.tgRolePermission.findAll({
         where: {
-          permissionId: parent.id
+          permissionId: parent.id,
+          ...where,
         }
       });
     },

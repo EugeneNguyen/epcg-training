@@ -1,8 +1,9 @@
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import API from "../api";
-import {useQuery} from "@apollo/client";
+import {useMutation, useQuery} from "@apollo/client";
 import {Box, ButtonLink} from "../../../components";
 import _ from "lodash";
+import {Button} from "../../../generator/_components/button";
 
 export default function ScreenExamAttemptInfo() {
   const id = useParams().id;
@@ -35,11 +36,13 @@ export default function ScreenExamAttemptInfo() {
 }
 
 function ButtonStart({id, data}) {
+  const [startAttempt] = useMutation(API.START_ATTEMPT);
+  const history = useHistory();
   if (data.startTime == null) {
     return (
-      <ButtonLink to={`/exam/attempt/${id}/take`}>
+      <Button onClick={() => startAttempt({variables: {id}}).then(() => history.push(`/exam/attempt/${id}/take`))}>
         Start attempt
-      </ButtonLink>
+      </Button>
     )
   }
 

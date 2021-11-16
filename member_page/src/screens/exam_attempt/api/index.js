@@ -75,12 +75,16 @@ mutation manual_exam_attempt_answer($id: String, $rawAnswer: String) {
 
 const START_ATTEMPT = gql`
 mutation manual_exam_attempt_start($id: String) {
-  data: manual_exam_attempt_start(id: $id)
+  data: manual_exam_attempt_start(id: $id) {
+    id
+  }
 }
 `;
 const END_ATTEMPT = gql`
-mutation manual_exam_attempt_answer($id: String) {
-  data: manual_exam_attempt_answer(id: $id)
+mutation manual_exam_attempt_end($id: String) {
+  data: manual_exam_attempt_end(id: $id) {
+    id
+  }
 }
 `;
 

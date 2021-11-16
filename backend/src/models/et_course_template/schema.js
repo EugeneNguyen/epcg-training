@@ -9,14 +9,14 @@ type EtCourseTemplate {
   createdAt: String
   updatedAt: String
   educationProvider: EtEducationProvider
-  questions: [EtCourseTemplateQuestionMcq]
-  questionsCount: Int
-  questionSources: [EtCourseTemplateQuestionSource]
-  questionSourcesCount: Int
-  tags: [EtCourseTemplateQuestionTag]
-  tagsCount: Int
-  exams: [EtCourseTemplateExam]
-  examsCount: Int
+  questions(where: EtCourseTemplateQuestionMcqWhere): [EtCourseTemplateQuestionMcq]
+  questionsCount(where: EtCourseTemplateQuestionMcqWhere): Int
+  questionSources(where: EtCourseTemplateQuestionSourceWhere): [EtCourseTemplateQuestionSource]
+  questionSourcesCount(where: EtCourseTemplateQuestionSourceWhere): Int
+  tags(where: EtCourseTemplateQuestionTagWhere): [EtCourseTemplateQuestionTag]
+  tagsCount(where: EtCourseTemplateQuestionTagWhere): Int
+  exams(where: EtCourseTemplateExamWhere): [EtCourseTemplateExam]
+  examsCount(where: EtCourseTemplateExamWhere): Int
 }
 
 type EtCourseTemplateWithPagination {

@@ -8,19 +8,19 @@ type TgUser {
   password: String
   createdAt: String
   updatedAt: String
-  tokens: [TgUserToken]
-  tokensCount: Int
-  permissions: [TgPermission]
-  permissionsCount: Int
-  permissionsLink: [TgUserPermission]
-  roles: [TgRole]
-  rolesCount: Int
-  rolesLink: [TgUserRole]
-  courses: [EtCourse]
-  coursesCount: Int
-  coursesLink: [EtCourseEnroll]
-  examAttempts: [EtExamAttempt]
-  examAttemptsCount: Int
+  tokens(where: TgUserTokenWhere): [TgUserToken]
+  tokensCount(where: TgUserTokenWhere): Int
+  permissions(where: TgPermissionWhere): [TgPermission]
+  permissionsCount(where: TgPermissionWhere): Int
+  permissionsLink(where: TgUserPermissionWhere): [TgUserPermission]
+  roles(where: TgRoleWhere): [TgRole]
+  rolesCount(where: TgRoleWhere): Int
+  rolesLink(where: TgUserRoleWhere): [TgUserRole]
+  courses(where: EtCourseWhere): [EtCourse]
+  coursesCount(where: EtCourseWhere): Int
+  coursesLink(where: EtCourseEnrollWhere): [EtCourseEnroll]
+  examAttempts(where: EtExamAttemptWhere): [EtExamAttempt]
+  examAttemptsCount(where: EtExamAttemptWhere): Int
 }
 
 type TgUserWithPagination {

@@ -1,16 +1,11 @@
 import {gql} from "@apollo/client";
 
-const GET_COURSE = gql`
-query me($token: String) {
-  data: me(token: $token) {
+const GET_EXAM_BY_ID = gql`
+query Query($id: String) {
+  data: et_course_exam_get_by_id(id: $id) {
     id
-    coursesLink {
-      id
-      course {
-        id
-        name
-      }
-    }
+    name
+    courseTemplateExamId
   }
 }
 `;
@@ -22,6 +17,6 @@ const DEFAULT_OPTIONS = {
 }
 
 export default {
-  GET_COURSE,
+  GET_EXAM_BY_ID,
   DEFAULT_OPTIONS,
 };

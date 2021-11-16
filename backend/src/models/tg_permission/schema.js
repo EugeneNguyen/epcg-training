@@ -10,9 +10,9 @@ type TgPermission {
   createdAt: String
   updatedAt: String
   group: TgPermissionGroup
-  roles: [TgRole]
-  rolesCount: Int
-  rolesLink: [TgRolePermission]
+  roles(where: TgRoleWhere): [TgRole]
+  rolesCount(where: TgRoleWhere): Int
+  rolesLink(where: TgRolePermissionWhere): [TgRolePermission]
 }
 
 type TgPermissionWithPagination {

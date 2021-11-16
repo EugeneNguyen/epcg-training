@@ -6,7 +6,7 @@ const _ = require('lodash');
 
 let type = {
   TgRole: {
-    async members(parent, args, context, info) {
+    async members(parent, {where}, context, info) {
       const links = await db.tgUserRole.findAll({
         where: {
           roleId: parent.id
@@ -17,25 +17,28 @@ let type = {
         where: {
           id: {
             [Op.in]: ids,
-          }
+          },
+          ...where,
         }
       });
     },
-    membersCount(parent, args, context, info) {
+    membersCount(parent, {where}, context, info) {
       return db.tgUserRole.count({
         where: {
-          roleId: parent.id
+          roleId: parent.id,
+          ...where,
         }
       });
     },
-    membersLink(parent, args, context, info) {
+    membersLink(parent, {where}, context, info) {
       return db.tgUserRole.findAll({
         where: {
-          roleId: parent.id
+          roleId: parent.id,
+          ...where,
         }
       });
     },
-    async permission(parent, args, context, info) {
+    async permission(parent, {where}, context, info) {
       const links = await db.tgRolePermission.findAll({
         where: {
           roleId: parent.id
@@ -46,21 +49,24 @@ let type = {
         where: {
           id: {
             [Op.in]: ids,
-          }
+          },
+          ...where,
         }
       });
     },
-    permissionCount(parent, args, context, info) {
+    permissionCount(parent, {where}, context, info) {
       return db.tgRolePermission.count({
         where: {
-          roleId: parent.id
+          roleId: parent.id,
+          ...where,
         }
       });
     },
-    permissionLink(parent, args, context, info) {
+    permissionLink(parent, {where}, context, info) {
       return db.tgRolePermission.findAll({
         where: {
-          roleId: parent.id
+          roleId: parent.id,
+          ...where,
         }
       });
     },

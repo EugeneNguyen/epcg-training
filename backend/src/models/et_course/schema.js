@@ -12,10 +12,10 @@ type EtCourse {
   updatedAt: String
   courseTemplate: EtCourseTemplate
   educationProvider: EtEducationProvider
-  enrolls: [EtCourseEnroll]
-  enrollsCount: Int
-  exams: [EtCourseExam]
-  examsCount: Int
+  enrolls(where: EtCourseEnrollWhere): [EtCourseEnroll]
+  enrollsCount(where: EtCourseEnrollWhere): Int
+  exams(where: EtCourseExamWhere): [EtCourseExam]
+  examsCount(where: EtCourseExamWhere): Int
 }
 
 type EtCourseWithPagination {

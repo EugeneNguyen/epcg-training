@@ -1,10 +1,10 @@
 import {gql} from "@apollo/client";
 
 const GET_ATTEMPTS = gql`
-query Me($token: String) {
+query Me($token: String, $where: EtExamAttemptWhere) {
   data: me(token: $token) {
     id
-    examAttempts {
+    examAttempts(where: $where) {
       id
       startTime
       endTime

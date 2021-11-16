@@ -19,59 +19,67 @@ let type = {
     educationProvider(parent, args, context, info) {
       return educationProviderLoader.load(parent.educationProviderId);
     },
-    questions(parent, args, context, info) {
+    questions(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionMCQ.findAll({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    questionsCount(parent, args, context, info) {
+    questionsCount(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionMCQ.count({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    questionSources(parent, args, context, info) {
+    questionSources(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionSource.findAll({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    questionSourcesCount(parent, args, context, info) {
+    questionSourcesCount(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionSource.count({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    tags(parent, args, context, info) {
+    tags(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionTag.findAll({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    tagsCount(parent, args, context, info) {
+    tagsCount(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionTag.count({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    exams(parent, args, context, info) {
+    exams(parent, {where}, context, info) {
       return db.etCourseTemplateExam.findAll({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },
-    examsCount(parent, args, context, info) {
+    examsCount(parent, {where}, context, info) {
       return db.etCourseTemplateExam.count({
         where: {
-          courseTemplateId: parent.id
+          courseTemplateId: parent.id,
+          ...where,
         }
       });
     },

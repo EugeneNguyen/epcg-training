@@ -18,9 +18,9 @@ type EtCourseTemplateQuestionMcq {
   updatedAt: String
   questionSource: EtCourseTemplateQuestionSource
   courseTemplate: EtCourseTemplate
-  tags: [EtCourseTemplateQuestionTag]
-  tagsCount: Int
-  tagsLink: [EtCourseTemplateQuestionTagLink]
+  tags(where: EtCourseTemplateQuestionTagWhere): [EtCourseTemplateQuestionTag]
+  tagsCount(where: EtCourseTemplateQuestionTagWhere): Int
+  tagsLink(where: EtCourseTemplateQuestionTagLinkWhere): [EtCourseTemplateQuestionTagLink]
 }
 
 type EtCourseTemplateQuestionMcqWithPagination {

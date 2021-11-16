@@ -9,9 +9,9 @@ type EtCourseTemplateQuestionTag {
   createdAt: String
   updatedAt: String
   courseTemplate: EtCourseTemplate
-  questions: [EtCourseTemplateQuestionMcq]
-  questionsCount: Int
-  questionsLink: [EtCourseTemplateQuestionTagLink]
+  questions(where: EtCourseTemplateQuestionMcqWhere): [EtCourseTemplateQuestionMcq]
+  questionsCount(where: EtCourseTemplateQuestionMcqWhere): Int
+  questionsLink(where: EtCourseTemplateQuestionTagLinkWhere): [EtCourseTemplateQuestionTagLink]
 }
 
 type EtCourseTemplateQuestionTagWithPagination {

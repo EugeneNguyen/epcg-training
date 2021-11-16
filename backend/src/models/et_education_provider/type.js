@@ -6,31 +6,35 @@ const _ = require('lodash');
 
 let type = {
   EtEducationProvider: {
-    courseTemplates(parent, args, context, info) {
+    courseTemplates(parent, {where}, context, info) {
       return db.etCourseTemplate.findAll({
         where: {
-          educationProviderId: parent.id
+          educationProviderId: parent.id,
+          ...where,
         }
       });
     },
-    courseTemplatesCount(parent, args, context, info) {
+    courseTemplatesCount(parent, {where}, context, info) {
       return db.etCourseTemplate.count({
         where: {
-          educationProviderId: parent.id
+          educationProviderId: parent.id,
+          ...where,
         }
       });
     },
-    courses(parent, args, context, info) {
+    courses(parent, {where}, context, info) {
       return db.etCourse.findAll({
         where: {
-          educationProviderId: parent.id
+          educationProviderId: parent.id,
+          ...where,
         }
       });
     },
-    coursesCount(parent, args, context, info) {
+    coursesCount(parent, {where}, context, info) {
       return db.etCourse.count({
         where: {
-          educationProviderId: parent.id
+          educationProviderId: parent.id,
+          ...where,
         }
       });
     },

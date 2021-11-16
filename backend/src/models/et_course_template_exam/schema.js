@@ -15,11 +15,11 @@ type EtCourseTemplateExam {
   createdAt: String
   updatedAt: String
   courseTemplate: EtCourseTemplate
-  questions: [EtCourseTemplateQuestionMcq]
-  questionsCount: Int
-  questionsLink: [EtCourseTemplateExamQuestion]
-  attempts: [EtExamAttempt]
-  attemptsCount: Int
+  questions(where: EtCourseTemplateQuestionMcqWhere): [EtCourseTemplateQuestionMcq]
+  questionsCount(where: EtCourseTemplateQuestionMcqWhere): Int
+  questionsLink(where: EtCourseTemplateExamQuestionWhere): [EtCourseTemplateExamQuestion]
+  attempts(where: EtExamAttemptWhere): [EtExamAttempt]
+  attemptsCount(where: EtExamAttemptWhere): Int
 }
 
 type EtCourseTemplateExamWithPagination {

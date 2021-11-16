@@ -19,7 +19,7 @@ let type = {
     courseTemplate(parent, args, context, info) {
       return courseTemplateLoader.load(parent.courseTemplateId);
     },
-    async questions(parent, args, context, info) {
+    async questions(parent, {where}, context, info) {
       const links = await db.etCourseTemplateExamQuestion.findAll({
         where: {
           examId: parent.id
@@ -30,35 +30,40 @@ let type = {
         where: {
           id: {
             [Op.in]: ids,
-          }
+          },
+          ...where,
         }
       });
     },
-    questionsCount(parent, args, context, info) {
+    questionsCount(parent, {where}, context, info) {
       return db.etCourseTemplateExamQuestion.count({
         where: {
-          examId: parent.id
+          examId: parent.id,
+          ...where,
         }
       });
     },
-    questionsLink(parent, args, context, info) {
+    questionsLink(parent, {where}, context, info) {
       return db.etCourseTemplateExamQuestion.findAll({
         where: {
-          examId: parent.id
+          examId: parent.id,
+          ...where,
         }
       });
     },
-    attempts(parent, args, context, info) {
+    attempts(parent, {where}, context, info) {
       return db.etExamAttempt.findAll({
         where: {
-          templateExamId: parent.id
+          templateExamId: parent.id,
+          ...where,
         }
       });
     },
-    attemptsCount(parent, args, context, info) {
+    attemptsCount(parent, {where}, context, info) {
       return db.etExamAttempt.count({
         where: {
-          templateExamId: parent.id
+          templateExamId: parent.id,
+          ...where,
         }
       });
     },

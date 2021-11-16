@@ -32,31 +32,35 @@ let type = {
     educationProvider(parent, args, context, info) {
       return educationProviderLoader.load(parent.educationProviderId);
     },
-    enrolls(parent, args, context, info) {
+    enrolls(parent, {where}, context, info) {
       return db.etCourseEnroll.findAll({
         where: {
-          courseId: parent.id
+          courseId: parent.id,
+          ...where,
         }
       });
     },
-    enrollsCount(parent, args, context, info) {
+    enrollsCount(parent, {where}, context, info) {
       return db.etCourseEnroll.count({
         where: {
-          courseId: parent.id
+          courseId: parent.id,
+          ...where,
         }
       });
     },
-    exams(parent, args, context, info) {
+    exams(parent, {where}, context, info) {
       return db.etCourseExam.findAll({
         where: {
-          courseId: parent.id
+          courseId: parent.id,
+          ...where,
         }
       });
     },
-    examsCount(parent, args, context, info) {
+    examsCount(parent, {where}, context, info) {
       return db.etCourseExam.count({
         where: {
-          courseId: parent.id
+          courseId: parent.id,
+          ...where,
         }
       });
     },

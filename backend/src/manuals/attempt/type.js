@@ -14,11 +14,6 @@ const educationProviderLoader = new DataLoader(async (keys) => {
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
 
-
-
-
-
-
 let type = {
   EtCourseTemplate: {
     educationProvider(parent, args, context, info) {

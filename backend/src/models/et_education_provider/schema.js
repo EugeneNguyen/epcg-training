@@ -7,10 +7,10 @@ type EtEducationProvider {
   name: String
   createdAt: String
   updatedAt: String
-  courseTemplates: [EtCourseTemplate]
-  courseTemplatesCount: Int
-  courses: [EtCourse]
-  coursesCount: Int
+  courseTemplates(where: EtCourseTemplateWhere): [EtCourseTemplate]
+  courseTemplatesCount(where: EtCourseTemplateWhere): Int
+  courses(where: EtCourseWhere): [EtCourse]
+  coursesCount(where: EtCourseWhere): Int
 }
 
 type EtEducationProviderWithPagination {

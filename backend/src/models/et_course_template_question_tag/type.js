@@ -19,7 +19,7 @@ let type = {
     courseTemplate(parent, args, context, info) {
       return courseTemplateLoader.load(parent.courseTemplateId);
     },
-    async questions(parent, args, context, info) {
+    async questions(parent, {where}, context, info) {
       const links = await db.etCourseTemplateQuestionTagLink.findAll({
         where: {
           questionTagId: parent.id
@@ -30,21 +30,24 @@ let type = {
         where: {
           id: {
             [Op.in]: ids,
-          }
+          },
+          ...where,
         }
       });
     },
-    questionsCount(parent, args, context, info) {
+    questionsCount(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionTagLink.count({
         where: {
-          questionTagId: parent.id
+          questionTagId: parent.id,
+          ...where,
         }
       });
     },
-    questionsLink(parent, args, context, info) {
+    questionsLink(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionTagLink.findAll({
         where: {
-          questionTagId: parent.id
+          questionTagId: parent.id,
+          ...where,
         }
       });
     },

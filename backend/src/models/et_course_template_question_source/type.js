@@ -6,17 +6,19 @@ const _ = require('lodash');
 
 let type = {
   EtCourseTemplateQuestionSource: {
-    questions(parent, args, context, info) {
+    questions(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionMCQ.findAll({
         where: {
-          questionSourceId: parent.id
+          questionSourceId: parent.id,
+          ...where,
         }
       });
     },
-    questionsCount(parent, args, context, info) {
+    questionsCount(parent, {where}, context, info) {
       return db.etCourseTemplateQuestionMCQ.count({
         where: {
-          questionSourceId: parent.id
+          questionSourceId: parent.id,
+          ...where,
         }
       });
     },

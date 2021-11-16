@@ -8,12 +8,12 @@ type TgRole {
   description: String
   createdAt: String
   updatedAt: String
-  members: [TgUser]
-  membersCount: Int
-  membersLink: [TgUserRole]
-  permission: [TgPermission]
-  permissionCount: Int
-  permissionLink: [TgRolePermission]
+  members(where: TgUserWhere): [TgUser]
+  membersCount(where: TgUserWhere): Int
+  membersLink(where: TgUserRoleWhere): [TgUserRole]
+  permission(where: TgPermissionWhere): [TgPermission]
+  permissionCount(where: TgPermissionWhere): Int
+  permissionLink(where: TgRolePermissionWhere): [TgRolePermission]
 }
 
 type TgRoleWithPagination {

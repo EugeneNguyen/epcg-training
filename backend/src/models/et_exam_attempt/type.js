@@ -16,17 +16,19 @@ const templateExamLoader = new DataLoader(async (keys) => {
 
 let type = {
   EtExamAttempt: {
-    questions(parent, args, context, info) {
+    questions(parent, {where}, context, info) {
       return db.etExamAttemptQuestion.findAll({
         where: {
-          attemptId: parent.id
+          attemptId: parent.id,
+          ...where,
         }
       });
     },
-    questionsCount(parent, args, context, info) {
+    questionsCount(parent, {where}, context, info) {
       return db.etExamAttemptQuestion.count({
         where: {
-          attemptId: parent.id
+          attemptId: parent.id,
+          ...where,
         }
       });
     },

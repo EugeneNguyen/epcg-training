@@ -8,8 +8,8 @@ type EtCourseTemplateQuestionSource {
   courseTemplateId: String
   createdAt: String
   updatedAt: String
-  questions: [EtCourseTemplateQuestionMcq]
-  questionsCount: Int
+  questions(where: EtCourseTemplateQuestionMcqWhere): [EtCourseTemplateQuestionMcq]
+  questionsCount(where: EtCourseTemplateQuestionMcqWhere): Int
 }
 
 type EtCourseTemplateQuestionSourceWithPagination {

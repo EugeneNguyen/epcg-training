@@ -6,17 +6,19 @@ const _ = require('lodash');
 
 let type = {
   TgPermissionGroup: {
-    permissions(parent, args, context, info) {
+    permissions(parent, {where}, context, info) {
       return db.tgPermission.findAll({
         where: {
-          groupId: parent.id
+          groupId: parent.id,
+          ...where,
         }
       });
     },
-    permissionsCount(parent, args, context, info) {
+    permissionsCount(parent, {where}, context, info) {
       return db.tgPermission.count({
         where: {
-          groupId: parent.id
+          groupId: parent.id,
+          ...where,
         }
       });
     },

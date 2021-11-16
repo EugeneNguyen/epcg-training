@@ -11,8 +11,8 @@ type EtExamAttempt {
   endTime: String
   createdAt: String
   updatedAt: String
-  questions: [EtExamAttemptQuestion]
-  questionsCount: Int
+  questions(where: EtExamAttemptQuestionWhere): [EtExamAttemptQuestion]
+  questionsCount(where: EtExamAttemptQuestionWhere): Int
   templateExam: EtCourseTemplateExam
 }
 
