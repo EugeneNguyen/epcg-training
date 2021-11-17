@@ -27,7 +27,6 @@ export default function ScreenExamAttemptResult() {
 
   const total = questions.length;
   const correct = questions.filter(q => q.correct).length;
-  const empty = questions.filter(q => q.rawAnswer.length === 0).length;
 
   return questions ? (
     <div className="flex flex-row space-x-8">

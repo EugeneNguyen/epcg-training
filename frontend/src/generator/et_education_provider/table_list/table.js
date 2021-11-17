@@ -36,7 +36,7 @@ export default function EtEducationProviderTable({limit, offset, didLoadData, on
         )}
         <th
           scope="col"
-          class="w-24 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          class="w-30 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
         >
           Action
         </th>
