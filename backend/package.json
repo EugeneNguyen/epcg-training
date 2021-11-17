@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "npm uninstall bcrypt && npm install bcrypt && node app.js",
     "sql": "./node_modules/.bin/sequelize --migrations-path=src/database/migrations --seeders-path=src/database/seeders --models-path=src/database/models ----config=src/database/config/config.json"
   },
   "dependencies": {
     "apollo-server": "^3.0.2",
     "apollo-server-express": "^3.3.0",
-    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "dataloader": "^2.0.0",
     "debug": "~2.6.9",
