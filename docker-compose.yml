@@ -6,7 +6,7 @@
       container_name: db
       environment:
         MYSQL_ROOT_PASSWORD: my_secret_password
-        MYSQL_DATABASE: nexus_resource
+        MYSQL_DATABASE: epcg_training
         MYSQL_USER: db_user
         MYSQL_PASSWORD: db_user_pass
       ports:

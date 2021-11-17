@@ -1,6 +1,8 @@
 defaultOrder:
   field: order
   order: ASC
+formAdd:
+  saveAndAddAnother: true
 fields:
   id:
     list:

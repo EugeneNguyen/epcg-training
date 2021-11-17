@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {useMutation} from "@apollo/client";
-import {Modal, ModalHeader, ModalBody, ModalFooter} from "reactstrap";
-import API from '../apis';
 import {toast} from 'react-toastify';
+import API from '../apis';
 import {Button} from '../../_components/button';
+import {Modal} from '../../_components';
 
 export default function ButtonDelete({id, didDelete, children, ...props}) {
   const [modal, setModal] = useState(false);
@@ -19,16 +19,15 @@ export default function ButtonDelete({id, didDelete, children, ...props}) {
   return (
     <>
       <Button onClick={() => setModal(true)} {...props}>{children}</Button>
-      <Modal isOpen={modal} toggle={() => setModal(false)}>
-        <ModalHeader toggle={() => setModal(false)}>Warning</ModalHeader>
-        <ModalBody>
-          This action cannot be undone. Are you sure to delete it?
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={apiDelete}>Yes, delete it</Button>{' '}
-          <Button color="secondary" onClick={() => setModal(false)}>No, cancel</Button>
-        </ModalFooter>
-      </Modal>
+      <Modal
+        show={modal}
+        title="Warning"
+        description="This action cannot be undone. Are you sure to delete it?"
+        buttons={[
+          {title: "Yes, delete it", onClick: () => apiDelete(), color: "danger"},
+          {title: "No, cancel", onClick: () => setModal(false), outline: true},
+        ]}
+      />
     </>
   );
 }

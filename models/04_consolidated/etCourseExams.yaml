@@ -82,7 +82,7 @@ fields:
     add:
       enable: false
     edit:
-      enable: true
+      enable: false
     displayLabel: Created At
   updatedAt:
     type: DATETIME
@@ -98,7 +98,7 @@ fields:
     add:
       enable: false
     edit:
-      enable: true
+      enable: false
     displayLabel: Updated At
 relationships:
   - name: course
@@ -419,3 +419,7 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+defaultOrder:
+  field: name
+  order: ASC
+formAdd: {}

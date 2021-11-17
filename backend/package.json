@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "apollo-server": "^3.0.2",
+    "apollo-server-core": "^3.5.0",
     "apollo-server-express": "^3.3.0",
+    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "dataloader": "^2.0.0",
     "debug": "~2.6.9",

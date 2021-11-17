@@ -74,6 +74,9 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
         <Button onClick={handleSubmit(false)}>
           Submit
         </Button>
+          <Button onClick={handleSubmit(true)}>
+            Save and add another
+          </Button>
       </div>
     </Box>
   );

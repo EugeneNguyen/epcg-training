@@ -329,3 +329,5 @@ relationships:
 defaultOrder:
   field: order
   order: ASC
+formAdd:
+  saveAndAddAnother: true
