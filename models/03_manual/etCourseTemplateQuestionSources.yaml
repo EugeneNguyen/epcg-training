@@ -1,3 +1,7 @@
+defaultOrder: {}
+formAdd: {}
+tableList:
+  searchBy: name
 fields:
   id:
     list:

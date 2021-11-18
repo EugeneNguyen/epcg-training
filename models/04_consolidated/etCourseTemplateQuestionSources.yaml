@@ -308,3 +308,7 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+defaultOrder: {}
+formAdd: {}
+tableList:
+  searchBy: name

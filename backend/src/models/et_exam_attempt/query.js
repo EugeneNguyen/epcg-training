@@ -2,7 +2,7 @@ const db = require('../../database/models');
 const Op = db.Sequelize.Op;
 
 const query = {
-  async et_exam_attempt_get_all_with_page(parent, {pagination, where}, context, info) {
+  async et_exam_attempt_get_all_with_page(parent, {pagination, where={}}, context, info) {
     const result = await db.etExamAttempt.findAndCountAll({
       where,
       offset: pagination.offset,

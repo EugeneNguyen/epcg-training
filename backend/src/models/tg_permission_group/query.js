@@ -2,7 +2,7 @@ const db = require('../../database/models');
 const Op = db.Sequelize.Op;
 
 const query = {
-  async tg_permission_group_get_all_with_page(parent, {pagination, where}, context, info) {
+  async tg_permission_group_get_all_with_page(parent, {pagination, where={}}, context, info) {
     const result = await db.tgPermissionGroup.findAndCountAll({
       where,
       offset: pagination.offset,
