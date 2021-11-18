@@ -17,7 +17,6 @@ export default function FormTgPermissionGroupAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       name,
       description,
@@ -30,6 +29,7 @@ export default function FormTgPermissionGroupAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

@@ -26,7 +26,6 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       questionCode,
       question,
@@ -48,6 +47,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

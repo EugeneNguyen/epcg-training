@@ -18,7 +18,6 @@ export default function FormTgUserTokenAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       userId,
       createdAt,
@@ -32,6 +31,7 @@ export default function FormTgUserTokenAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

@@ -18,7 +18,6 @@ export default function FormEtCourseExamAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       name,
       courseId,
@@ -32,6 +31,7 @@ export default function FormEtCourseExamAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

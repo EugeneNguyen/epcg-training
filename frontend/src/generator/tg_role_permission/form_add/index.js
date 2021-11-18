@@ -19,7 +19,6 @@ export default function FormTgRolePermissionAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       roleId,
       permissionId,
@@ -34,6 +33,7 @@ export default function FormTgRolePermissionAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

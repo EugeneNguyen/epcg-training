@@ -26,7 +26,6 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       attemptId,
       questionId,
@@ -48,6 +47,7 @@ export default function FormEtExamAttemptQuestionAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (

@@ -4,6 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
+import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
                 
@@ -37,7 +38,7 @@ export default function FormEtExamAttemptEdit({fixedParams}) {
 
   const [editApi] = useMutation(API.EDIT);
 
-  const handleSubmit = (params) => {
+  const handleSubmit = () => {
     const data = {
       templateExamId,
       duration,
@@ -52,10 +53,11 @@ export default function FormEtExamAttemptEdit({fixedParams}) {
         toast.success('Edit completed');
         history.goBack();
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (
-    <Box title="Add new etExamAttempt" padding>
+    <Box title="Edit etExamAttempt" padding>
       <Form onSubmitParams={handleSubmit}>
         <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.templateExamId) && (
@@ -116,15 +118,13 @@ export default function FormEtExamAttemptEdit({fixedParams}) {
           />
         )}
         </div>
-        <div class="flex mt-2">
-          <button
-            type="submit"
-            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-          >
-            Submit
-          </button>
-        </div>
+        <input type="submit" class="invisible" />
       </Form>
+      <div class="flex space-x-2">
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      </div>
     </Box>
   );
 }

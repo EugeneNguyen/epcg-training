@@ -20,7 +20,6 @@ export default function FormTgUserAdd({fixedParams}) {
   const [apiAdd] = useMutation(API.ADD);
 
   const handleSubmit = (addAnother) => () => {
-    console.log(addAnother);
     const data = {
       username,
       password,
@@ -36,6 +35,7 @@ export default function FormTgUserAdd({fixedParams}) {
           history.goBack();
         }
       })
+      .catch(error => toast.error(error.message));
   }
 
   return (
