@@ -3,6 +3,8 @@ defaultOrder:
   order: ASC
 formAdd:
   saveAndAddAnother: true
+tableList:
+  searchBy: questionCode
 fields:
   id:
     list:

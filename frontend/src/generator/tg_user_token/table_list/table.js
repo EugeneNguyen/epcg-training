@@ -2,7 +2,7 @@ import {useQuery} from "@apollo/client";
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
-import {Table, THead, TH} from '../../_components';
+import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -25,7 +25,7 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
   return (
     <Table>
       <THead>
-      <tr>
+      <TR>
         {excludeColumns.includes("id") || (
           <TH className="">
             Id
@@ -49,11 +49,11 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
         <TH className="w-30">
           Action
         </TH>
-      </tr>
+      </TR>
       </THead>
-      <tbody class="bg-white divide-y divide-gray-200">
+      <TBody>
       {data && data.data.rows.map(item => (
-      <tr key={item.id}>
+      <TR key={item.id} hover>
           {excludeColumns.includes("id") || (
           <Cell
             type="CHAR(36)"
@@ -91,9 +91,9 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
             </svg>
           </ButtonDelete>
         </td>
-      </tr>
+      </TR>
       ))}
-      </tbody>
+      </TBody>
     </Table>
   );
 }

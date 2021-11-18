@@ -72,7 +72,7 @@ input EtCourseTemplateQuestionMcqWhere {
 
 let query = `
   et_course_template_question_mcq_get_all(where: EtCourseTemplateQuestionMcqWhere): [EtCourseTemplateQuestionMcq]
-  et_course_template_question_mcq_get_all_with_page(pagination: EtCourseTemplateQuestionMcqPaginationInput, where: EtCourseTemplateQuestionMcqWhere): EtCourseTemplateQuestionMcqWithPagination
+  et_course_template_question_mcq_get_all_with_page(pagination: EtCourseTemplateQuestionMcqPaginationInput, where: EtCourseTemplateQuestionMcqWhere, searchBy: String): EtCourseTemplateQuestionMcqWithPagination
   et_course_template_question_mcq_get_by_id(id: String): EtCourseTemplateQuestionMcq
 `;
 

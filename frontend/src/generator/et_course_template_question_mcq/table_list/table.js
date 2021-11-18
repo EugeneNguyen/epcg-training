@@ -2,7 +2,7 @@ import {useQuery} from "@apollo/client";
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
-import {Table, THead, TH} from '../../_components';
+import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -11,12 +11,13 @@ EtCourseTemplateQuestionMcqTable.defaultProps = {
   excludeColumns: [],
 };
 
-export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName}) {
+export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName, searchBy}) {
   const {loading, error, data, refetch} = useQuery(API.ALL_WITH_PAGE, {
     ...API.DEFAULT_OPTIONS,
     variables: {
       pagination: {limit, offset},
       where,
+      searchBy,
     },
     onCompleted: didLoadData,
   });
@@ -25,7 +26,7 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
   return (
     <Table>
       <THead>
-      <tr>
+      <TR>
         {excludeColumns.includes("questionCode") || (
           <TH className="">
             Question Code
@@ -44,11 +45,11 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
         <TH className="w-30">
           Action
         </TH>
-      </tr>
+      </TR>
       </THead>
-      <tbody class="bg-white divide-y divide-gray-200">
+      <TBody>
       {data && data.data.rows.map(item => (
-      <tr key={item.id}>
+      <TR key={item.id} hover>
           {excludeColumns.includes("questionCode") || (
           <Cell
             type="VARCHAR(255)"
@@ -81,9 +82,9 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             </svg>
           </ButtonDelete>
         </td>
-      </tr>
+      </TR>
       ))}
-      </tbody>
+      </TBody>
     </Table>
   );
 }

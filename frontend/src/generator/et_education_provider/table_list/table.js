@@ -2,7 +2,7 @@ import {useQuery} from "@apollo/client";
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
-import {Table, THead, TH} from '../../_components';
+import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -25,7 +25,7 @@ export default function EtEducationProviderTable({limit, offset, didLoadData, on
   return (
     <Table>
       <THead>
-      <tr>
+      <TR>
         {excludeColumns.includes("name") || (
           <TH className="">
             Name
@@ -34,11 +34,11 @@ export default function EtEducationProviderTable({limit, offset, didLoadData, on
         <TH className="w-30">
           Action
         </TH>
-      </tr>
+      </TR>
       </THead>
-      <tbody class="bg-white divide-y divide-gray-200">
+      <TBody>
       {data && data.data.rows.map(item => (
-      <tr key={item.id}>
+      <TR key={item.id} hover>
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
@@ -59,9 +59,9 @@ export default function EtEducationProviderTable({limit, offset, didLoadData, on
             </svg>
           </ButtonDelete>
         </td>
-      </tr>
+      </TR>
       ))}
-      </tbody>
+      </TBody>
     </Table>
   );
 }

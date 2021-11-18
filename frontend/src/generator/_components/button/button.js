@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-export default function Button({color="primary", outline=false, ...props}) {
+export default function Button({color="primary", outline=false, className, ...props}) {
   return (
     <button
       {...props}
@@ -18,6 +18,7 @@ export default function Button({color="primary", outline=false, ...props}) {
         {'bg-green-600 hover:bg-green-700 focus:ring-green-500': color === "success" && outline === false},
         {'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500': color === "warning" && outline === false},
         {'bg-red-600 hover:bg-red-700 focus:ring-red-500': color === "danger" && outline === false},
+        className,
       )}
     />
   );

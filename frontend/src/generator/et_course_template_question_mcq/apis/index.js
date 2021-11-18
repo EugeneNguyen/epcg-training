@@ -21,8 +21,8 @@ query et_course_template_question_mcq_get_all($where: EtCourseTemplateQuestionMc
 `;
 
 const ALL_WITH_PAGE = gql`
-query et_course_template_question_mcq_get_all_with_page($pagination: EtCourseTemplateQuestionMcqPaginationInput, $where: EtCourseTemplateQuestionMcqWhere) {
-  data: et_course_template_question_mcq_get_all_with_page(pagination: $pagination, where: $where) {
+query et_course_template_question_mcq_get_all_with_page($pagination: EtCourseTemplateQuestionMcqPaginationInput, $where: EtCourseTemplateQuestionMcqWhere, $searchBy: String) {
+  data: et_course_template_question_mcq_get_all_with_page(pagination: $pagination, where: $where, searchBy: $searchBy) {
     rows {
       id
       questionCode
