@@ -1,4 +1,5 @@
 const db = require('../../database/models');
+const Op = db.Sequelize.Op;
 
 const query = {
   async tg_role_get_all_with_page(parent, {pagination, where}, context, info) {
