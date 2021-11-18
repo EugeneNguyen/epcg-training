@@ -1,8 +1,8 @@
 import {useQuery} from "@apollo/client";
-import {Table} from 'reactstrap';
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
+import {Table, THead, TH} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -23,113 +23,74 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
   onRefRefetch(refetch);
 
   return (
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
+    <Table>
+      <THead>
       <tr>
         {excludeColumns.includes("id") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Id
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("attemptId") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Attempt Id
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("questionId") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Question Id
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("order") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Order
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("displayedQuestionData") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Displayed Question Data
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("fullQuestionData") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Full Question Data
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("answer") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Answer
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("rawAnswer") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Raw Answer
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("correct") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Correct
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("flag") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Flag
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("startTime") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Start Time
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("endTime") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             End Time
-          </th>
+          </TH>
         )}
-        <th
-          scope="col"
-          class="w-30 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        >
+        <TH className="w-30">
           Action
-        </th>
+        </TH>
       </tr>
-      </thead>
+      </THead>
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
@@ -221,6 +182,6 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
       </tr>
       ))}
       </tbody>
-    </table>
+    </Table>
   );
 }

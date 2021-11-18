@@ -1,8 +1,8 @@
 import {useQuery} from "@apollo/client";
-import {Table} from 'reactstrap';
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
+import {Table, THead, TH} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -23,81 +23,54 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
   onRefRefetch(refetch);
 
   return (
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
+    <Table>
+      <THead>
       <tr>
         {excludeColumns.includes("name") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Name
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("duration") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Duration
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("numberOfQuestion") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Number Of Question
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("unlimitedTime") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Unlimited Time
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("randomQuestionOrder") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Random Question Order
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("randomChoiceOrder") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Random Choice Order
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("isPublic") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Is Public
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("courseTemplateId") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Course Template
-          </th>
+          </TH>
         )}
-        <th
-          scope="col"
-          class="w-30 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        >
+        <TH className="w-30">
           Action
-        </th>
+        </TH>
       </tr>
-      </thead>
+      </THead>
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
@@ -166,6 +139,6 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
       </tr>
       ))}
       </tbody>
-    </table>
+    </Table>
   );
 }

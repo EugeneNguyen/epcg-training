@@ -1,8 +1,8 @@
 import {useQuery} from "@apollo/client";
-import {Table} from 'reactstrap';
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
+import {Table, THead, TH} from '../../_components';
 import ButtonDelete from './button_delete';
 import _ from 'lodash';
 import path from 'path';
@@ -23,57 +23,39 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
   onRefRefetch(refetch);
 
   return (
-    <table class="min-w-full divide-y divide-gray-200">
-      <thead class="bg-gray-50">
+    <Table>
+      <THead>
       <tr>
         {excludeColumns.includes("id") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Id
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("templateExamId") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Template Exam
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("duration") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Duration
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("startTime") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             Start Time
-          </th>
+          </TH>
         )}
         {excludeColumns.includes("endTime") || (
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-          >
+          <TH className="">
             End Time
-          </th>
+          </TH>
         )}
-        <th
-          scope="col"
-          class="w-30 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        >
+        <TH className="w-30">
           Action
-        </th>
+        </TH>
       </tr>
-      </thead>
+      </THead>
       <tbody class="bg-white divide-y divide-gray-200">
       {data && data.data.rows.map(item => (
       <tr key={item.id}>
@@ -125,6 +107,6 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
       </tr>
       ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
