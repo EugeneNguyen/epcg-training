@@ -8,7 +8,6 @@ const query = {
       where,
       offset: pagination.offset,
       limit: pagination.limit,
-      order: [['', '']],
     });
     return {
       rows: result.rows,

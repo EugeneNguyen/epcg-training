@@ -19,8 +19,8 @@ query et_course_template_exam_get_all($where: EtCourseTemplateExamWhere) {
 `;
 
 const ALL_WITH_PAGE = gql`
-query et_course_template_exam_get_all_with_page($pagination: EtCourseTemplateExamPaginationInput, $where: EtCourseTemplateExamWhere) {
-  data: et_course_template_exam_get_all_with_page(pagination: $pagination, where: $where) {
+query et_course_template_exam_get_all_with_page($pagination: EtCourseTemplateExamPaginationInput, $where: EtCourseTemplateExamWhere, $searchBy: String) {
+  data: et_course_template_exam_get_all_with_page(pagination: $pagination, where: $where, searchBy: $searchBy) {
     rows {
       id
       name

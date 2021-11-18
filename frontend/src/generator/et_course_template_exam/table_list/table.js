@@ -11,12 +11,13 @@ EtCourseTemplateExamTable.defaultProps = {
   excludeColumns: [],
 };
 
-export default function EtCourseTemplateExamTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName}) {
+export default function EtCourseTemplateExamTable({limit, offset, didLoadData, onRefRefetch, where, excludeColumns, pathname, relationshipName, searchBy}) {
   const {loading, error, data, refetch} = useQuery(API.ALL_WITH_PAGE, {
     ...API.DEFAULT_OPTIONS,
     variables: {
       pagination: {limit, offset},
       where,
+      searchBy,
     },
     onCompleted: didLoadData,
   });

@@ -13,8 +13,8 @@ query et_course_template_question_tag_get_all($where: EtCourseTemplateQuestionTa
 `;
 
 const ALL_WITH_PAGE = gql`
-query et_course_template_question_tag_get_all_with_page($pagination: EtCourseTemplateQuestionTagPaginationInput, $where: EtCourseTemplateQuestionTagWhere) {
-  data: et_course_template_question_tag_get_all_with_page(pagination: $pagination, where: $where) {
+query et_course_template_question_tag_get_all_with_page($pagination: EtCourseTemplateQuestionTagPaginationInput, $where: EtCourseTemplateQuestionTagWhere, $searchBy: String) {
+  data: et_course_template_question_tag_get_all_with_page(pagination: $pagination, where: $where, searchBy: $searchBy) {
     rows {
       id
       name

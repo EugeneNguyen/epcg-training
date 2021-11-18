@@ -67,7 +67,7 @@ input EtCourseTemplateExamWhere {
 
 let query = `
   et_course_template_exam_get_all(where: EtCourseTemplateExamWhere): [EtCourseTemplateExam]
-  et_course_template_exam_get_all_with_page(pagination: EtCourseTemplateExamPaginationInput, where: EtCourseTemplateExamWhere): EtCourseTemplateExamWithPagination
+  et_course_template_exam_get_all_with_page(pagination: EtCourseTemplateExamPaginationInput, where: EtCourseTemplateExamWhere, searchBy: String): EtCourseTemplateExamWithPagination
   et_course_template_exam_get_by_id(id: String): EtCourseTemplateExam
 `;
 

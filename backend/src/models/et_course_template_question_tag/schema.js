@@ -47,7 +47,7 @@ input EtCourseTemplateQuestionTagWhere {
 
 let query = `
   et_course_template_question_tag_get_all(where: EtCourseTemplateQuestionTagWhere): [EtCourseTemplateQuestionTag]
-  et_course_template_question_tag_get_all_with_page(pagination: EtCourseTemplateQuestionTagPaginationInput, where: EtCourseTemplateQuestionTagWhere): EtCourseTemplateQuestionTagWithPagination
+  et_course_template_question_tag_get_all_with_page(pagination: EtCourseTemplateQuestionTagPaginationInput, where: EtCourseTemplateQuestionTagWhere, searchBy: String): EtCourseTemplateQuestionTagWithPagination
   et_course_template_question_tag_get_by_id(id: String): EtCourseTemplateQuestionTag
 `;
 

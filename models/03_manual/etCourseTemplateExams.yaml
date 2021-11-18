@@ -2,6 +2,8 @@ defaultOrder:
   field: name
   order: ASC
 formAdd: {}
+tableList:
+  searchBy: name
 fields:
   id:
     list:
