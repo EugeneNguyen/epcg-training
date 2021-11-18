@@ -925,3 +925,9 @@ relationships:
           edit:
             enable: true
           displayLabel: Updated At
+defaultOrder:
+  field: username
+  order: ASC
+formAdd: {}
+tableList:
+  searchBy: username

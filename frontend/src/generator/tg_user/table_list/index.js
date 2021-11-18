@@ -10,10 +10,20 @@ export default function TableTgUserList({where, excludeColumns, relationshipName
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [searchBy, setSearchBy] = useState();
   const location = useLocation();
   let refetch = null;
   return (
     <div className="space-y-4">
+      <div className="flex flex-row-reverse">
+        <div className="w-4/12">
+          <Input
+            value={searchBy}
+            onValueChange={(v) => setSearchBy(v)}
+            placeholder="Search by username"
+          />
+        </div>
+      </div>
       <Box>
         <TgUserTable
           limit={limit}
@@ -24,6 +34,7 @@ export default function TableTgUserList({where, excludeColumns, relationshipName
           excludeColumns={excludeColumns}
           onRefRefetch={ref => refetch = ref}
           didLoadData={result => setTotal(result.data.pagination.total)}
+          searchBy={searchBy || undefined}
         />
         <Paginator
           total={total}

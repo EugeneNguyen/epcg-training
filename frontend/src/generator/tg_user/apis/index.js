@@ -13,8 +13,8 @@ query tg_user_get_all($where: TgUserWhere) {
 `;
 
 const ALL_WITH_PAGE = gql`
-query tg_user_get_all_with_page($pagination: TgUserPaginationInput, $where: TgUserWhere) {
-  data: tg_user_get_all_with_page(pagination: $pagination, where: $where) {
+query tg_user_get_all_with_page($pagination: TgUserPaginationInput, $where: TgUserWhere, $searchBy: String) {
+  data: tg_user_get_all_with_page(pagination: $pagination, where: $where, searchBy: $searchBy) {
     rows {
       id
       username

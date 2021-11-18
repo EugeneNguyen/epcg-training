@@ -1,3 +1,9 @@
+defaultOrder:
+  field: username
+  order: ASC
+formAdd: {}
+tableList:
+  searchBy: username
 fields:
   id:
     list:

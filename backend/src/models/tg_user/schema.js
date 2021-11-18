@@ -58,7 +58,7 @@ input TgUserWhere {
 
 let query = `
   tg_user_get_all(where: TgUserWhere): [TgUser]
-  tg_user_get_all_with_page(pagination: TgUserPaginationInput, where: TgUserWhere): TgUserWithPagination
+  tg_user_get_all_with_page(pagination: TgUserPaginationInput, where: TgUserWhere, searchBy: String): TgUserWithPagination
   tg_user_get_by_id(id: String): TgUser
 `;
 
