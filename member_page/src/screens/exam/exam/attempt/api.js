@@ -12,6 +12,10 @@ query Me($token: String, $where: EtExamAttemptWhere) {
         id
         name
       }
+      questions {
+        id
+        correct
+      }
     }
   }
 }

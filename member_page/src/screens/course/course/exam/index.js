@@ -1,8 +1,9 @@
-import {Box} from "../../../../generator/_components";
+import {Box, Cell, Table, TBody, TH, THead} from "../../../../generator/_components";
 import {useQuery} from "@apollo/client";
 import {useParams} from "react-router-dom";
 import API from "./api";
 import CellLink from "../../../../generator/_components/table/cell/cell_link";
+import AuthHelper from "../../../auth/helper";
 
 export default function CourseExamBox() {
   const {id} = useParams();
@@ -13,12 +14,11 @@ export default function CourseExamBox() {
       variables: {
         where: {
           courseId: id,
+          token: AuthHelper.token(),
         }
       },
     },
   );
-
-  console.log(data);
 
   if (loading) {
     return <Box title="Exams" padding>Loading</Box>;
@@ -32,47 +32,45 @@ export default function CourseExamBox() {
     return <Box title="Exams" padding>No Data</Box>;
   }
 
+  data.data.map(exam => {
+    const bestAttempt = exam.attempts.find((prev, current) => {
+      return (prev.questions.filter(q => q.corect).length > current.questions.filter(q => q.corect).length) ? prev : current
+    });
+    if (bestAttempt.endTime !== null) {
+      exam.bestAttempt = bestAttempt;
+      exam.correct = bestAttempt.questions.filter(q => q.correct).length;
+      exam.numQuestion = bestAttempt.questions.length;
+      exam.score = parseInt(exam.correct * 100 / exam.numQuestion);
+    }
+  })
+
   return (
     <Box title="Exams">
-      <div className="flex flex-col">
-        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                <tr>
-                  <th scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Duration (mins)
-                  </th>
-                  <th scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    # of Questions
-                  </th>
-                </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                {data.data.map(exam => (
-                  <tr>
-                    <CellLink link={`/exam/${exam.id}`} value={exam.name}/>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {exam.courseTemplateExam.duration}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      {exam.courseTemplateExam.numberOfQuestion}
-                    </td>
-                  </tr>
-                ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Table>
+        <THead>
+          <tr>
+            <TH>Name</TH>
+            <TH>Duration (mins)</TH>
+            <TH># of Questions</TH>
+            <TH>Result</TH>
+          </tr>
+        </THead>
+        <TBody>
+          {data.data.map(exam => (
+            <tr>
+              <CellLink link={`/exam/${exam.id}`} value={exam.name}/>
+              <Cell value={exam.courseTemplateExam.duration} />
+              <Cell value={exam.courseTemplateExam.numberOfQuestion} />
+              <Cell value={exam.courseTemplateExam.numberOfQuestion} />
+              {exam.bestAttempt ? (
+                <Cell value={`${exam.score}% (${exam.correct}/${exam.numQuestion})`}/>
+              ) : (
+                <Cell value=""/>
+              )}
+            </tr>
+          ))}
+        </TBody>
+      </Table>
     </Box>
   );
 }

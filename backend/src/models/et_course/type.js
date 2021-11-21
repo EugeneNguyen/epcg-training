@@ -27,10 +27,16 @@ const educationProviderLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourse: {
     courseTemplate(parent, args, context, info) {
-      return courseTemplateLoader.load(parent.courseTemplateId);
+      if (parent.courseTemplateId) {
+        return courseTemplateLoader.load(parent.courseTemplateId);
+      }
+      return null;
     },
     educationProvider(parent, args, context, info) {
-      return educationProviderLoader.load(parent.educationProviderId);
+      if (parent.educationProviderId) {
+        return educationProviderLoader.load(parent.educationProviderId);
+      }
+      return null;
     },
     enrolls(parent, {where}, context, info) {
       return db.etCourseEnroll.findAll({

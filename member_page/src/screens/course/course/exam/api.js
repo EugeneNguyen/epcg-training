@@ -1,7 +1,7 @@
 import {gql} from "@apollo/client";
 
 const GET_EXAM = gql`
-query Et_course_exam_get_all($where: EtCourseExamWhere) {
+query Et_course_exam_get_all($where: EtCourseExamWhere, $token) {
   data: et_course_exam_get_all(where: $where) {
     name
     id
@@ -10,6 +10,17 @@ query Et_course_exam_get_all($where: EtCourseExamWhere) {
       duration
       numberOfQuestion
       unlimitedTime
+    }
+  }
+  me(token: $token) {
+    id
+    examAttempts {
+      id
+      templateExamId
+      questions {
+        id
+        correct
+      }
     }
   }
 }

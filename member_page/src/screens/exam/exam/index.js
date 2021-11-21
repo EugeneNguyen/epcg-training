@@ -2,11 +2,11 @@ import ExamInfoBox from "./exam";
 import ExamAttemptBox from "./attempt";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@apollo/client";
-import API from '../api';
+import API from './exam/api';
 
 export default function ExamScreen() {
   const {id} = useParams();
-  const {data, loading, error} = useQuery(API.GET_EXAM_BY_ID, {
+  const {data, loading, error} = useQuery(API.GET_EXAM, {
     variables: {id}
   })
 
@@ -17,7 +17,7 @@ export default function ExamScreen() {
   return (
     <div className="flex space-x-4">
       <div className="w-8/12">
-        <ExamAttemptBox templateExamId={data.data.courseTemplateExamId}/>
+        <ExamAttemptBox templateExamId={data.data.courseTemplateExam.id}/>
       </div>
       <div className="w-4/12">
         <ExamInfoBox/>

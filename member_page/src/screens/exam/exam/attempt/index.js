@@ -1,4 +1,4 @@
-import {Box} from "../../../../generator/_components";
+import {Box, Table, TBody, TH, THead} from "../../../../generator/_components";
 import {useMutation, useQuery} from "@apollo/client";
 import {useHistory} from "react-router-dom";
 import API from "./api";
@@ -23,10 +23,16 @@ export default function ExamAttemptBox({templateExamId}) {
   if (error) return <Box title="Attempts" padding>{error.message}</Box>;
   if (!data) return <Box title="Attempts" padding>No Data</Box>;
 
+  data.data.examAttempts.map(attempt => {
+    attempt.correct = attempt.questions.filter(q => q.correct).length;
+    attempt.numQuestion = attempt.questions.length;
+    attempt.score = parseInt(attempt.correct * 100 / attempt.numQuestion);
+  });
+
   return (
     <Box
       title="Attempts"
-      footer={
+      footer={data.data.examAttempts && data.data.examAttempts.length == 0 && (
         <Button
           onClick={() => {
             createAttempt({variables: {token: AuthHelper.token(), id: templateExamId}})
@@ -35,23 +41,25 @@ export default function ExamAttemptBox({templateExamId}) {
         >
           Start new Attempt
         </Button>
-      }
+      )}
     >
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+      <Table>
+        <THead>
         <tr>
-          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Name
-          </th>
-          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Action
-          </th>
+          <TH>Name</TH>
+          <TH>Result</TH>
+          <TH>Action</TH>
         </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        </THead>
+        <TBody>
         {data.data.examAttempts.map(attempt => (
           <tr>
             <Cell value={attempt.templateExam.name}/>
+            {attempt.endTime ? (
+              <Cell value={`${attempt.score}% (${attempt.correct}/${attempt.numQuestion})`}/>
+            ) : (
+              <Cell value=""/>
+            )}
             {!attempt.startTime ? (
               <CellLink link={`/exam/attempt/${attempt.id}`} value="Start"/>
             ) : !attempt.endTime ? (
@@ -61,8 +69,8 @@ export default function ExamAttemptBox({templateExamId}) {
             )}
           </tr>
         ))}
-        </tbody>
-      </table>
+        </TBody>
+      </Table>
     </Box>
   );
 }

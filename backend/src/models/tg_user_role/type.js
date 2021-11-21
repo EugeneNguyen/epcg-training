@@ -27,10 +27,16 @@ const userLoader = new DataLoader(async (keys) => {
 let type = {
   TgUserRole: {
     role(parent, args, context, info) {
-      return roleLoader.load(parent.roleId);
+      if (parent.roleId) {
+        return roleLoader.load(parent.roleId);
+      }
+      return null;
     },
     user(parent, args, context, info) {
-      return userLoader.load(parent.userId);
+      if (parent.userId) {
+        return userLoader.load(parent.userId);
+      }
+      return null;
     },
   },
 };

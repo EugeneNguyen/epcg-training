@@ -27,10 +27,16 @@ const userLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseEnroll: {
     course(parent, args, context, info) {
-      return courseLoader.load(parent.courseId);
+      if (parent.courseId) {
+        return courseLoader.load(parent.courseId);
+      }
+      return null;
     },
     user(parent, args, context, info) {
-      return userLoader.load(parent.userId);
+      if (parent.userId) {
+        return userLoader.load(parent.userId);
+      }
+      return null;
     },
   },
 };

@@ -17,7 +17,10 @@ const questionLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseTemplateExamQuestion: {
     question(parent, args, context, info) {
-      return questionLoader.load(parent.questionId);
+      if (parent.questionId) {
+        return questionLoader.load(parent.questionId);
+      }
+      return null;
     },
   },
 };

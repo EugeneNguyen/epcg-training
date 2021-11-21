@@ -1,4 +1,6 @@
-defaultOrder: {}
+defaultOrder:
+  field: ''
+  order: ''
 formAdd: {}
 tableList:
   searchBy: name

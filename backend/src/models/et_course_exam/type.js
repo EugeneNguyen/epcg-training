@@ -27,10 +27,16 @@ const courseTemplateExamLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseExam: {
     course(parent, args, context, info) {
-      return courseLoader.load(parent.courseId);
+      if (parent.courseId) {
+        return courseLoader.load(parent.courseId);
+      }
+      return null;
     },
     courseTemplateExam(parent, args, context, info) {
-      return courseTemplateExamLoader.load(parent.courseTemplateExamId);
+      if (parent.courseTemplateExamId) {
+        return courseTemplateExamLoader.load(parent.courseTemplateExamId);
+      }
+      return null;
     },
   },
 };

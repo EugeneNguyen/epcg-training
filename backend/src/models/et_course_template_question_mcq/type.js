@@ -27,10 +27,16 @@ const courseTemplateLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseTemplateQuestionMcq: {
     questionSource(parent, args, context, info) {
-      return questionSourceLoader.load(parent.questionSourceId);
+      if (parent.questionSourceId) {
+        return questionSourceLoader.load(parent.questionSourceId);
+      }
+      return null;
     },
     courseTemplate(parent, args, context, info) {
-      return courseTemplateLoader.load(parent.courseTemplateId);
+      if (parent.courseTemplateId) {
+        return courseTemplateLoader.load(parent.courseTemplateId);
+      }
+      return null;
     },
     async tags(parent, {where}, context, info) {
       const links = await db.etCourseTemplateQuestionTagLink.findAll({

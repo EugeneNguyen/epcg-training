@@ -33,7 +33,10 @@ let type = {
       });
     },
     templateExam(parent, args, context, info) {
-      return templateExamLoader.load(parent.templateExamId);
+      if (parent.templateExamId) {
+        return templateExamLoader.load(parent.templateExamId);
+      }
+      return null;
     },
   },
 };

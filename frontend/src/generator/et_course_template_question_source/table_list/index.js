@@ -16,13 +16,12 @@ export default function TableEtCourseTemplateQuestionSourceList({where, excludeC
   return (
     <div className="space-y-4">
       <div className="flex flex-row-reverse">
-        <div className="w-4/12">
+        <Form className="w-4/12" onSubmitParams={({searchBy}) => setSearchBy(searchBy)}>
           <Input
-            value={searchBy}
-            onValueChange={(v) => setSearchBy(v)}
+            name="searchBy"
             placeholder="Search by name"
           />
-        </div>
+        </Form>
       </div>
       <Box>
         <EtCourseTemplateQuestionSourceTable

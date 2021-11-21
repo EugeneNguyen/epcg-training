@@ -21,7 +21,6 @@ const query = {
   et_course_template_question_tag_get_all(parent, {where}, context, info) {
     return db.etCourseTemplateQuestionTag.findAll({
       where,
-      order: [['', '']],
     });
   },
   et_course_template_question_tag_get_by_id(parent, {id}, context, info) {

@@ -17,7 +17,10 @@ const groupLoader = new DataLoader(async (keys) => {
 let type = {
   TgPermission: {
     group(parent, args, context, info) {
-      return groupLoader.load(parent.groupId);
+      if (parent.groupId) {
+        return groupLoader.load(parent.groupId);
+      }
+      return null;
     },
     async roles(parent, {where}, context, info) {
       const links = await db.tgRolePermission.findAll({
