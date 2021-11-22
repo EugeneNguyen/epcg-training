@@ -14,8 +14,8 @@ export default function CourseExamBox() {
       variables: {
         where: {
           courseId: id,
-          token: AuthHelper.token(),
-        }
+        },
+        token: AuthHelper.token(),
       },
     },
   );
@@ -33,15 +33,16 @@ export default function CourseExamBox() {
   }
 
   data.data.map(exam => {
-    const bestAttempt = exam.attempts.find((prev, current) => {
-      return (prev.questions.filter(q => q.corect).length > current.questions.filter(q => q.corect).length) ? prev : current
-    });
-    if (bestAttempt.endTime !== null) {
-      exam.bestAttempt = bestAttempt;
-      exam.correct = bestAttempt.questions.filter(q => q.correct).length;
-      exam.numQuestion = bestAttempt.questions.length;
-      exam.score = parseInt(exam.correct * 100 / exam.numQuestion);
-    }
+    const attempts = data.me.examAttempts.filter(attempt => attempt.templateExamId == exam.courseTemplateExam.id);
+    if (attempts.length == 0) return;
+
+    const bestAttempt = attempts.reduce((a, b) => (a.questions.filter(q => q.correct).length > b.questions.filter(q => q.correct).length) ? a : b);
+    if (bestAttempt.endTime === null) return
+
+    exam.bestAttempt = bestAttempt;
+    exam.correct = bestAttempt.questions.filter(q => q.correct).length;
+    exam.numQuestion = bestAttempt.questions.length;
+    exam.score = parseInt(exam.correct * 100 / exam.numQuestion);
   })
 
   return (
@@ -59,13 +60,12 @@ export default function CourseExamBox() {
           {data.data.map(exam => (
             <tr>
               <CellLink link={`/exam/${exam.id}`} value={exam.name}/>
-              <Cell value={exam.courseTemplateExam.duration} />
-              <Cell value={exam.courseTemplateExam.numberOfQuestion} />
-              <Cell value={exam.courseTemplateExam.numberOfQuestion} />
+              <Cell value={exam.courseTemplateExam.duration}/>
+              <Cell value={exam.courseTemplateExam.numberOfQuestion}/>
               {exam.bestAttempt ? (
                 <Cell value={`${exam.score}% (${exam.correct}/${exam.numQuestion})`}/>
               ) : (
-                <Cell value=""/>
+                <Cell value="N/A"/>
               )}
             </tr>
           ))}
