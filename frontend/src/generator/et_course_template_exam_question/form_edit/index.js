@@ -48,9 +48,16 @@ export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etCourseTemplateExamQuestion" padding>
+    <Box
+      title="Edit etCourseTemplateExamQuestion"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.examId) && (
           <Input
             type="CHAR(36)"
@@ -81,14 +88,7 @@ export default function FormEtCourseTemplateExamQuestionEdit({fixedParams}) {
             onValueChange={(value) => setorder(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

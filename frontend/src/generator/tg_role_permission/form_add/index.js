@@ -4,8 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
-import {Button} from '../../_components/button';
-import {Box} from '../../_components';
+import {Box, Button} from '../../_components';
 
 
 export default function FormTgRolePermissionAdd({fixedParams}) {
@@ -37,9 +36,18 @@ export default function FormTgRolePermissionAdd({fixedParams}) {
   }
 
   return (
-    <Box title="Add new tgRolePermission" padding>
+    <Box
+      title="Add new tgRolePermission"
+      padding
+      footer={(
+        <div class="flex space-x-2">
+          <Button onClick={handleSubmit(false)}>
+            Submit
+          </Button>
+        </div>
+      )}
+    >
       <Form onSubmitParams={handleSubmit(false)}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.roleId) && (
           <Input
             type="SELECT"
@@ -80,14 +88,7 @@ export default function FormTgRolePermissionAdd({fixedParams}) {
             onValueChange={(value) => setupdatedAt(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit(false)}>
-          Submit
-        </Button>
-      </div>
     </Box>
   );
 }

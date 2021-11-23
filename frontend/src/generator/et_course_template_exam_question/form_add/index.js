@@ -4,8 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
-import {Button} from '../../_components/button';
-import {Box} from '../../_components';
+import {Box, Button} from '../../_components';
 
 
 export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
@@ -35,9 +34,21 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
   }
 
   return (
-    <Box title="Add new etCourseTemplateExamQuestion" padding>
+    <Box
+      title="Add new etCourseTemplateExamQuestion"
+      padding
+      footer={(
+        <div class="flex space-x-2">
+          <Button onClick={handleSubmit(false)}>
+            Submit
+          </Button>
+          <Button onClick={handleSubmit(true)}>
+            Save and add another
+          </Button>
+        </div>
+      )}
+    >
       <Form onSubmitParams={handleSubmit(false)}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.examId) && (
           <Input
             type="CHAR(36)"
@@ -67,17 +78,7 @@ export default function FormEtCourseTemplateExamQuestionAdd({fixedParams}) {
             onValueChange={(value) => setorder(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit(false)}>
-          Submit
-        </Button>
-          <Button onClick={handleSubmit(true)}>
-            Save and add another
-          </Button>
-      </div>
     </Box>
   );
 }

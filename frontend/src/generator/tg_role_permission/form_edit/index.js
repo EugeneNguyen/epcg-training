@@ -51,9 +51,16 @@ export default function FormTgRolePermissionEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit tgRolePermission" padding>
+    <Box
+      title="Edit tgRolePermission"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.roleId) && (
           <Input
             type="SELECT"
@@ -96,14 +103,7 @@ export default function FormTgRolePermissionEdit({fixedParams}) {
             onValueChange={(value) => setupdatedAt(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

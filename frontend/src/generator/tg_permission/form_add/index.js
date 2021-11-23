@@ -4,8 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
-import {Button} from '../../_components/button';
-import {Box} from '../../_components';
+import {Box, Button} from '../../_components';
 
 
 export default function FormTgPermissionAdd({fixedParams}) {
@@ -37,9 +36,18 @@ export default function FormTgPermissionAdd({fixedParams}) {
   }
 
   return (
-    <Box title="Add new tgPermission" padding>
+    <Box
+      title="Add new tgPermission"
+      padding
+      footer={(
+        <div class="flex space-x-2">
+          <Button onClick={handleSubmit(false)}>
+            Submit
+          </Button>
+        </div>
+      )}
+    >
       <Form onSubmitParams={handleSubmit(false)}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.name) && (
           <Input
             type="VARCHAR(255)"
@@ -80,14 +88,7 @@ export default function FormTgPermissionAdd({fixedParams}) {
           onValueChange={(value) => setrolesRelationship(value)}
           isMulti
         />
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit(false)}>
-          Submit
-        </Button>
-      </div>
     </Box>
   );
 }

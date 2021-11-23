@@ -72,9 +72,16 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etCourseTemplateQuestionMCQ" padding>
+    <Box
+      title="Edit etCourseTemplateQuestionMCQ"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.questionCode) && (
           <Input
             type="VARCHAR(255)"
@@ -184,14 +191,7 @@ export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams}) {
           variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           isMulti
         />
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

@@ -45,9 +45,16 @@ export default function FormEtCourseTemplateQuestionSourceEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etCourseTemplateQuestionSource" padding>
+    <Box
+      title="Edit etCourseTemplateQuestionSource"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.name) && (
           <Input
             type="VARCHAR(255)"
@@ -66,14 +73,7 @@ export default function FormEtCourseTemplateQuestionSourceEdit({fixedParams}) {
             onValueChange={(value) => setcourseTemplateId(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

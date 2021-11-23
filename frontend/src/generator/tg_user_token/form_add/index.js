@@ -66,7 +66,6 @@ export default function FormTgUserTokenAdd({fixedParams}) {
           />
         )}
         </div>
-        <input type="submit" class="invisible" />
       </Form>
       <div class="flex space-x-2">
         <Button onClick={handleSubmit(false)}>

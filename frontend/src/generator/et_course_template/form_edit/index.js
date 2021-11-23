@@ -45,9 +45,16 @@ export default function FormEtCourseTemplateEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etCourseTemplate" padding>
+    <Box
+      title="Edit etCourseTemplate"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.name) && (
           <Input
             type="VARCHAR(255)"
@@ -69,14 +76,7 @@ export default function FormEtCourseTemplateEdit({fixedParams}) {
             onValueChange={(value) => seteducationProviderId(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

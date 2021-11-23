@@ -57,9 +57,16 @@ export default function FormEtExamAttemptEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etExamAttempt" padding>
+    <Box
+      title="Edit etExamAttempt"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.templateExamId) && (
           <Input
             type="SELECT"
@@ -117,14 +124,7 @@ export default function FormEtExamAttemptEdit({fixedParams}) {
             onValueChange={(value) => setupdatedAt(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

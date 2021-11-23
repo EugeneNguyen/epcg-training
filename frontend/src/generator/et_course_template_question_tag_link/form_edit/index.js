@@ -45,9 +45,16 @@ export default function FormEtCourseTemplateQuestionTagLinkEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit etCourseTemplateQuestionTagLink" padding>
+    <Box
+      title="Edit etCourseTemplateQuestionTagLink"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.questionId) && (
           <Input
             type="SELECT"
@@ -72,14 +79,7 @@ export default function FormEtCourseTemplateQuestionTagLinkEdit({fixedParams}) {
             onValueChange={(value) => setquestionTagId(value)}
           />
         )}
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

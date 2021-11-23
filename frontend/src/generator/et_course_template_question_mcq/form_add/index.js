@@ -4,8 +4,7 @@ import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
-import {Button} from '../../_components/button';
-import {Box} from '../../_components';
+import {Box, Button} from '../../_components';
 
 
 export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
@@ -51,9 +50,21 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
   }
 
   return (
-    <Box title="Add new etCourseTemplateQuestionMCQ" padding>
+    <Box
+      title="Add new etCourseTemplateQuestionMCQ"
+      padding
+      footer={(
+        <div class="flex space-x-2">
+          <Button onClick={handleSubmit(false)}>
+            Submit
+          </Button>
+          <Button onClick={handleSubmit(true)}>
+            Save and add another
+          </Button>
+        </div>
+      )}
+    >
       <Form onSubmitParams={handleSubmit(false)}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.questionCode) && (
           <Input
             type="VARCHAR(255)"
@@ -161,17 +172,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
           isMulti
         />
-        </div>
-        <input type="submit" class="invisible" />
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit(false)}>
-          Submit
-        </Button>
-          <Button onClick={handleSubmit(true)}>
-            Save and add another
-          </Button>
-      </div>
     </Box>
   );
 }
