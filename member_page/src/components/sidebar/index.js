@@ -11,6 +11,7 @@ export default function SideBar() {
       <div className="flex flex-col justify-between flex-1 mt-6">
         <nav className="space-y-5">
           <NavItem to="/" label="Dashboard" />
+          <NavItem to="/profile/changePassword" label="Change Password" />
         </nav>
         <div className="flex items-center px-4 -mx-2" onClick={() => AuthHelper.removeToken()}>
           <h4 className="mx-2 font-medium text-gray-800">Logout</h4>

@@ -27,6 +27,7 @@ function Form({onSubmitParams, ...props}) {
       <div class="grid grid-cols-1 gap-6 mt-4">
         {props.children}
       </div>
+      <input type="submit" class="invisible" />
     </form>
   )
 }

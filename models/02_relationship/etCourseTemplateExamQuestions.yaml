@@ -8,3 +8,6 @@ relationships:
       name: etCourseTemplateQuestionMCQs
       key: id
       label: questionCode
+      filter:
+        key: courseTemplateId
+        value: parent.courseTemplateId

@@ -4,6 +4,7 @@ import TableEtCourseExamList from '../table_list';
 import FormEtCourseExamAdd from '../form_add';
 import FormEtCourseExamEdit from '../form_edit';
 import ViewEtCourseExamInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteEtCourseExam() {
   return (

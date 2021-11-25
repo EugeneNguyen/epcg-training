@@ -8,7 +8,23 @@ import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
         
-export default function FormTgUserTokenEdit({fixedParams}) {
+export default function FormTgUserTokenEdit({fixedParams, parent={}}) {
+  if (parent.query) {
+    return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
+  }
+  return <FormEdit fixedParams={fixedParams}/>
+}
+
+function FormEditWithParent({fixedParams, parent}) {
+  const {data, error, loading} = useQuery(parent.query, {variables: parent.variables});
+  if (loading) return null;
+  if (error) return null;
+  return (
+    <FormEdit fixedParams={fixedParams} parent={data.data}/>
+  );
+}
+
+function FormEdit({fixedParams, parent={}}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
 
@@ -48,9 +64,16 @@ export default function FormTgUserTokenEdit({fixedParams}) {
   }
 
   return (
-    <Box title="Edit tgUserToken" padding>
+    <Box
+      title="Edit tgUserToken"
+      padding
+      footer={(
+        <Button onClick={handleSubmit}>
+          Update
+        </Button>
+      )}
+    >
       <Form onSubmitParams={handleSubmit}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.userId) && (
           <Input
             type="CHAR(36)"
@@ -78,13 +101,7 @@ export default function FormTgUserTokenEdit({fixedParams}) {
             onValueChange={(value) => setupdatedAt(value)}
           />
         )}
-        </div>
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit}>
-          Update
-        </Button>
-      </div>
     </Box>
   );
 }

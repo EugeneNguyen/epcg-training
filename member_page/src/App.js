@@ -11,7 +11,7 @@ import RouteExam from "./screens/exam/router";
 
 function App() {
   const token = AuthHelper.useToken();
-  if (token === null) {
+  if (token === false) {
     return null;
   }
 
@@ -30,6 +30,7 @@ function App() {
               <RouteDashboard/>
               <RouteCourse/>
               <RouteExam/>
+              <RouteTgAuth loggedIn={true}/>
               <ToastContainer/>
             </div>
           </div>
@@ -39,7 +40,7 @@ function App() {
   } else {
     return (
       <HashRouter>
-        <RouteTgAuth/>
+        <RouteTgAuth loggedIn={false}/>
         <ToastContainer/>
       </HashRouter>
     )

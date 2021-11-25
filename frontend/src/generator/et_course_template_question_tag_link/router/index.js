@@ -4,6 +4,7 @@ import TableEtCourseTemplateQuestionTagLinkList from '../table_list';
 import FormEtCourseTemplateQuestionTagLinkAdd from '../form_add';
 import FormEtCourseTemplateQuestionTagLinkEdit from '../form_edit';
 import ViewEtCourseTemplateQuestionTagLinkInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteEtCourseTemplateQuestionTagLink() {
   return (

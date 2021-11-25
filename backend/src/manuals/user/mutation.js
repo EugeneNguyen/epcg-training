@@ -1,5 +1,6 @@
 let db = require('../../database/models');
 const bcrypt = require('bcrypt');
+const {AuthService} = require("../../services");
 
 const SALT_ROUND = 10;
 
@@ -25,6 +26,16 @@ let mutation = {
       ...data,
       password: bcrypt.hashSync(data.password, SALT_ROUND),
     });
+  },
+  async tg_user_change_password(parent, { token, currentPassword, newPassword }, context, info) {
+    const user = await AuthService.getUserFromToken(token);
+    const match = bcrypt.compareSync(currentPassword, user.password);
+    if (!match) throw new Error("Invalid Current Password");
+
+    await user.update({
+      password: bcrypt.hashSync(newPassword, SALT_ROUND),
+    });
+    return user;
   },
 };
 

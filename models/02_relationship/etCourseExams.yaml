@@ -17,3 +17,6 @@ relationships:
       name: etCourseTemplateExams
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: parent.courseTemplateId

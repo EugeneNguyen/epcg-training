@@ -10,7 +10,7 @@ relationships:
       label: name
       filter:
         key: courseTemplateId
-        value: courseTemplateId
+        value: 'fixedParams.courseTemplateId'
   - name: courseTemplate
     label: Course Template
     type: many_to_one
@@ -31,7 +31,7 @@ relationships:
       label: name
       filter:
         key: courseTemplateId
-        value: courseTemplateId
+        value: 'fixedParams.courseTemplateId'
     link:
       name: etCourseTemplateQuestionTagLinks
       selfId: questionId

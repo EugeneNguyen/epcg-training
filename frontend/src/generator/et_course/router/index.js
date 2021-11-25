@@ -4,6 +4,7 @@ import TableEtCourseList from '../table_list';
 import FormEtCourseAdd from '../form_add';
 import FormEtCourseEdit from '../form_edit';
 import ViewEtCourseInfo from '../view_info';
+import API from '../apis';
 import TableEtCourseEnrollList from '../../et_course_enroll/table_list';
 import FormEtCourseEnrollAdd from '../../et_course_enroll/form_add';
 import FormEtCourseEnrollEdit from '../../et_course_enroll/form_edit';
@@ -42,6 +43,10 @@ export default function RouteEtCourse() {
         render={(renderProps) => (
           <FormEtCourseEnrollAdd
             fixedParams={{courseId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -51,6 +56,10 @@ export default function RouteEtCourse() {
         render={(renderProps) => (
           <FormEtCourseEnrollEdit
             fixedParams={{courseId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -70,6 +79,10 @@ export default function RouteEtCourse() {
         render={(renderProps) => (
           <FormEtCourseExamAdd
             fixedParams={{courseId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -79,6 +92,10 @@ export default function RouteEtCourse() {
         render={(renderProps) => (
           <FormEtCourseExamEdit
             fixedParams={{courseId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

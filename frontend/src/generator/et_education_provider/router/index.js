@@ -4,6 +4,7 @@ import TableEtEducationProviderList from '../table_list';
 import FormEtEducationProviderAdd from '../form_add';
 import FormEtEducationProviderEdit from '../form_edit';
 import ViewEtEducationProviderInfo from '../view_info';
+import API from '../apis';
 import TableEtCourseTemplateList from '../../et_course_template/table_list';
 import FormEtCourseTemplateAdd from '../../et_course_template/form_add';
 import FormEtCourseTemplateEdit from '../../et_course_template/form_edit';
@@ -42,6 +43,10 @@ export default function RouteEtEducationProvider() {
         render={(renderProps) => (
           <FormEtCourseTemplateAdd
             fixedParams={{educationProviderId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -51,6 +56,10 @@ export default function RouteEtEducationProvider() {
         render={(renderProps) => (
           <FormEtCourseTemplateEdit
             fixedParams={{educationProviderId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -70,6 +79,10 @@ export default function RouteEtEducationProvider() {
         render={(renderProps) => (
           <FormEtCourseAdd
             fixedParams={{educationProviderId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -79,6 +92,10 @@ export default function RouteEtEducationProvider() {
         render={(renderProps) => (
           <FormEtCourseEdit
             fixedParams={{educationProviderId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

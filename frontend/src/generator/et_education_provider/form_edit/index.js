@@ -8,7 +8,23 @@ import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
         
-export default function FormEtEducationProviderEdit({fixedParams}) {
+export default function FormEtEducationProviderEdit({fixedParams, parent={}}) {
+  if (parent.query) {
+    return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
+  }
+  return <FormEdit fixedParams={fixedParams}/>
+}
+
+function FormEditWithParent({fixedParams, parent}) {
+  const {data, error, loading} = useQuery(parent.query, {variables: parent.variables});
+  if (loading) return null;
+  if (error) return null;
+  return (
+    <FormEdit fixedParams={fixedParams} parent={data.data}/>
+  );
+}
+
+function FormEdit({fixedParams, parent={}}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
 

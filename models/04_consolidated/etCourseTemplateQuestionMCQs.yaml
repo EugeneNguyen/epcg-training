@@ -31,6 +31,7 @@ fields:
     graphType: String
     list:
       enable: true
+      editable: true
       link: /etCourseTemplateQuestionMCQ/${item.id}
     add:
       enable: true
@@ -128,6 +129,7 @@ fields:
     graphType: String
     list:
       enable: true
+      editable: true
     add:
       enable: true
     edit:
@@ -225,7 +227,7 @@ relationships:
       label: name
       filter:
         key: courseTemplateId
-        value: courseTemplateId
+        value: fixedParams.courseTemplateId
       modelName: etCourseTemplateQuestionSource
       modelNameSnake: et_course_template_question_source
       modelNameCapitalCamel: EtCourseTemplateQuestionSource
@@ -418,7 +420,7 @@ relationships:
       label: name
       filter:
         key: courseTemplateId
-        value: courseTemplateId
+        value: fixedParams.courseTemplateId
       modelName: etCourseTemplateQuestionTag
       modelNameSnake: et_course_template_question_tag
       modelNameCapitalCamel: EtCourseTemplateQuestionTag

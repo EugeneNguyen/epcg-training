@@ -3,9 +3,13 @@ import API from "../api";
 import {useMutation, useQuery} from "@apollo/client";
 import {Box} from "../../../components";
 import _ from "lodash";
+import {useState} from "react";
+import {Button} from "../../../generator/_components";
+import classNames from "classnames";
 
 export default function ScreenExamAttemptResult() {
   const id = useParams().id;
+  const [qIndex, setQIndex] = useState(0);
 
   const {data} = useQuery(
     API.GET_RESULT,
@@ -16,6 +20,8 @@ export default function ScreenExamAttemptResult() {
       },
     },
   );
+
+  if (!data) return null;
 
   const questions = _.orderBy(
     _.get(data, 'data.questions', []).map(item => {
@@ -31,18 +37,26 @@ export default function ScreenExamAttemptResult() {
   return questions ? (
     <div className="flex flex-row space-x-8">
       <div className="space-y-8 w-8/12">
-        {questions.map((question, index) => (
-          <QuestionBox
-            question={question}
-            index={index}
-          />
-        ))}
+        <QuestionBox
+          question={questions[qIndex]}
+          index={qIndex}
+        />
+        <div className="space-x-2">
+          {qIndex > 0 && <Button onClick={() => setQIndex(qIndex - 1)}>Back</Button>}
+          {qIndex < questions.length - 1 && <Button onClick={() => setQIndex(qIndex + 1)}>Next</Button>}
+        </div>
       </div>
       <div className="w-4/12">
         <Box title={`Result: ${parseInt(correct * 100 / total)}% (${correct}/${total})`}>
           <div className="grid grid-cols-5">
             {questions.map((question, index) => (
-              <div className={`${question.correct ? 'bg-green-50' : 'bg-gray-50'} border p-4 text-center hover:bg-gray-200 cursor-pointer`}>
+              <div
+                onClick={() => setQIndex(index)}
+                className={classNames(
+                  'border p-4 text-center hover:bg-gray-200 cursor-pointer',
+                  {'bg-green-50': question.correct},
+                  {'bg-red-50': !question.correct},
+                )}>
                 {index + 1}
               </div>
             ))}
@@ -55,12 +69,7 @@ export default function ScreenExamAttemptResult() {
 
 function QuestionBox({question, index}) {
   const questionData = JSON.parse(question.fullQuestionData);
-  const [answerApi, { loading }] = useMutation(API.ANSWER_WITH_ID);
 
-  const handleAnswer = async (choiceIndex) => {
-    const answer = ['A', 'B', 'C', 'D'][choiceIndex];
-    await answerApi({variables: {id: question.id, rawAnswer: answer}});
-  }
   return (
     <Box title={`Question ${index + 1} ${question.correct ? "[Correct]" : "[Incorrect]"}`} padding>
       <div className="space-y-4">
@@ -75,8 +84,7 @@ function QuestionBox({question, index}) {
                 className="form-radio"
                 name={`question_${index}`}
                 checked={['A', 'B', 'C', 'D'][choiceIndex] == question.rawAnswer}
-                onChange={() => handleAnswer(choiceIndex)}
-                disabled={true}
+                disabled
               />
               <span className="ml-2">
                 {['A', 'B', 'C', 'D'][choiceIndex] == questionData.correctAnswer ? (

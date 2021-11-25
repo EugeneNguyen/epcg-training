@@ -4,6 +4,7 @@ import TableEtCourseTemplateExamList from '../table_list';
 import FormEtCourseTemplateExamAdd from '../form_add';
 import FormEtCourseTemplateExamEdit from '../form_edit';
 import ViewEtCourseTemplateExamInfo from '../view_info';
+import API from '../apis';
 import TableEtCourseTemplateExamQuestionList from '../../et_course_template_exam_question/table_list';
 import FormEtCourseTemplateExamQuestionAdd from '../../et_course_template_exam_question/form_add';
 import FormEtCourseTemplateExamQuestionEdit from '../../et_course_template_exam_question/form_edit';
@@ -42,6 +43,10 @@ export default function RouteEtCourseTemplateExam() {
         render={(renderProps) => (
           <FormEtCourseTemplateExamQuestionAdd
             fixedParams={{examId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -51,6 +56,10 @@ export default function RouteEtCourseTemplateExam() {
         render={(renderProps) => (
           <FormEtCourseTemplateExamQuestionEdit
             fixedParams={{examId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -70,6 +79,10 @@ export default function RouteEtCourseTemplateExam() {
         render={(renderProps) => (
           <FormEtExamAttemptAdd
             fixedParams={{templateExamId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -79,6 +92,10 @@ export default function RouteEtCourseTemplateExam() {
         render={(renderProps) => (
           <FormEtExamAttemptEdit
             fixedParams={{templateExamId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

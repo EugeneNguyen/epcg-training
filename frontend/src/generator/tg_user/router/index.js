@@ -4,6 +4,7 @@ import TableTgUserList from '../table_list';
 import FormTgUserAdd from '../form_add';
 import FormTgUserEdit from '../form_edit';
 import ViewTgUserInfo from '../view_info';
+import API from '../apis';
 import TableTgUserTokenList from '../../tg_user_token/table_list';
 import FormTgUserTokenAdd from '../../tg_user_token/form_add';
 import FormTgUserTokenEdit from '../../tg_user_token/form_edit';
@@ -51,6 +52,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserTokenAdd
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -60,6 +65,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserTokenEdit
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -79,6 +88,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserPermissionAdd
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -88,6 +101,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserPermissionEdit
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -107,6 +124,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserRoleAdd
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -116,6 +137,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormTgUserRoleEdit
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -135,6 +160,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormEtCourseEnrollAdd
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -144,6 +173,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormEtCourseEnrollEdit
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -163,6 +196,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormEtExamAttemptAdd
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -172,6 +209,10 @@ export default function RouteTgUser() {
         render={(renderProps) => (
           <FormEtExamAttemptEdit
             fixedParams={{userId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

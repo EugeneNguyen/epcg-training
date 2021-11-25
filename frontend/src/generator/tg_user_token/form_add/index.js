@@ -1,14 +1,29 @@
-import {useMutation} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
 import {useState} from "react";
 import {toast} from 'react-toastify';
 import API from '../apis';
 import {Form, Input} from '../../_components/form';
-import {Button} from '../../_components/button';
-import {Box} from '../../_components';
+import {Box, Button} from '../../_components';
 
 
-export default function FormTgUserTokenAdd({fixedParams}) {
+export default function FormTgUserTokenAdd({fixedParams, parent={}}) {
+  if (parent.query) {
+    return <FormAddWithParent fixedParams={fixedParams} parent={parent}/>
+  }
+  return <FormAdd fixedParams={fixedParams}/>
+}
+
+function FormAddWithParent({fixedParams, parent}) {
+  const {data, error, loading} = useQuery(parent.query, {variables: parent.variables});
+  if (loading) return null;
+  if (error) return null;
+  return (
+    <FormAdd fixedParams={fixedParams} parent={data.data}/>
+  );
+}
+
+function FormAdd({fixedParams, parent={}}) {
   const history = useHistory();
 
   const [userId, setuserId] = useState(null);
@@ -35,9 +50,18 @@ export default function FormTgUserTokenAdd({fixedParams}) {
   }
 
   return (
-    <Box title="Add new tgUserToken" padding>
+    <Box
+      title="Add new tgUserToken"
+      padding
+      footer={(
+        <div class="flex space-x-2">
+          <Button onClick={handleSubmit(false)}>
+            Submit
+          </Button>
+        </div>
+      )}
+    >
       <Form onSubmitParams={handleSubmit(false)}>
-        <div class="grid grid-cols-1 gap-2">
         {(!fixedParams || !fixedParams.userId) && (
           <Input
             type="CHAR(36)"
@@ -65,13 +89,7 @@ export default function FormTgUserTokenAdd({fixedParams}) {
             onValueChange={(value) => setupdatedAt(value)}
           />
         )}
-        </div>
       </Form>
-      <div class="flex space-x-2">
-        <Button onClick={handleSubmit(false)}>
-          Submit
-        </Button>
-      </div>
     </Box>
   );
 }

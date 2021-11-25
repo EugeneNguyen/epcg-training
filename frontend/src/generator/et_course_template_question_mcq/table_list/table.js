@@ -55,12 +55,22 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             type="VARCHAR(255)"
             value={_.get(item, 'questionCode')}
             link={`/etCourseTemplateQuestionMCQ/${item.id}`}
+            id={item.id}
+            valueKey="questionCode"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("correctAnswer") || (
           <Cell
             type="VARCHAR(255)"
             value={_.get(item, 'correctAnswer')}
+            id={item.id}
+            valueKey="correctAnswer"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("questionSourceId") || (

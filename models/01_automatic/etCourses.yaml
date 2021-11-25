@@ -128,7 +128,7 @@ relationships:
       label: name
       filter:
         key: educationProviderId
-        value: educationProviderId
+        value: fixedParams.educationProviderId
       modelName: etCourseTemplate
       modelNameSnake: et_course_template
       modelNameCapitalCamel: EtCourseTemplate
@@ -412,6 +412,9 @@ relationships:
     target:
       name: etCourseExams
       key: courseId
+      filter:
+        key: courseId
+        value: parent.id
       modelName: etCourseExam
       modelNameSnake: et_course_exam
       modelNameCapitalCamel: EtCourseExam

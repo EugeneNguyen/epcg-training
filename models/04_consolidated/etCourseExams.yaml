@@ -237,6 +237,9 @@ relationships:
       name: etCourseTemplateExams
       key: id
       label: name
+      filter:
+        key: courseTemplateId
+        value: parent.courseTemplateId
       modelName: etCourseTemplateExam
       modelNameSnake: et_course_template_exam
       modelNameCapitalCamel: EtCourseTemplateExam

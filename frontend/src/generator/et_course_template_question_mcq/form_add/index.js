@@ -1,4 +1,4 @@
-import {useMutation} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
 import {useState} from "react";
 import {toast} from 'react-toastify';
@@ -7,7 +7,23 @@ import {Form, Input} from '../../_components/form';
 import {Box, Button} from '../../_components';
 
 
-export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
+export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams, parent={}}) {
+  if (parent.query) {
+    return <FormAddWithParent fixedParams={fixedParams} parent={parent}/>
+  }
+  return <FormAdd fixedParams={fixedParams}/>
+}
+
+function FormAddWithParent({fixedParams, parent}) {
+  const {data, error, loading} = useQuery(parent.query, {variables: parent.variables});
+  if (loading) return null;
+  if (error) return null;
+  return (
+    <FormAdd fixedParams={fixedParams} parent={data.data}/>
+  );
+}
+
+function FormAdd({fixedParams, parent={}}) {
   const history = useHistory();
 
   const [questionCode, setquestionCode] = useState(null);
@@ -157,7 +173,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
             displayLabel="Question Source"
             value={questionSourceId}
             onValueChange={(value) => setquestionSourceId(value)}
-            variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
+            variables={{courseTemplateId: fixedParams.courseTemplateId}}
           />
         )}
         <Input
@@ -169,7 +185,7 @@ export default function FormEtCourseTemplateQuestionMcqAdd({fixedParams}) {
           displayLabel="Tags"
           value={tagsRelationship}
           onValueChange={(value) => settagsRelationship(value)}
-          variables={{courseTemplateId: fixedParams.courseTemplateId || courseTemplateId}}
+          variables={{courseTemplateId: fixedParams.courseTemplateId}}
           isMulti
         />
       </Form>

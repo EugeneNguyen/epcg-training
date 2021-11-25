@@ -4,6 +4,7 @@ import TableTgUserRoleList from '../table_list';
 import FormTgUserRoleAdd from '../form_add';
 import FormTgUserRoleEdit from '../form_edit';
 import ViewTgUserRoleInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteTgUserRole() {
   return (

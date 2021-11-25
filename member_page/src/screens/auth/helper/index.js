@@ -6,6 +6,7 @@ const TOKEN_KEY = "@nexus_resource/auth/token";
 
 const saveToken = (token) => {
   localStorage.setItem(TOKEN_KEY, token);
+  _auth.token = token;
   _listeners.map(l => l());
 };
 
@@ -16,21 +17,12 @@ const removeToken = () => {
 }
 
 const loadToken = () => {
-  try {
-    const token = localStorage.getItem(TOKEN_KEY);
-    _auth.token = token;
-    _listeners.map(l => l());
-  }
-  catch (error) {
-    _auth.token = false;
-  }
+  const token = localStorage.getItem(TOKEN_KEY);
+  _auth.token = token;
+  _listeners.map(l => l());
 }
 
 const token = () => {
-  if (!_auth.token) {
-    loadToken();
-  }
-
   return _auth.token;
 }
 
@@ -46,8 +38,8 @@ const addListener = (listener) => {
 }
 
 const useToken = () => {
-  const [_token, _setToken] = useState(null);
-  useEffect(() =>  {
+  const [_token, _setToken] = useState(false);
+  useEffect(() => {
     const unsub = addListener(() => _setToken(token()));
     loadToken();
     return unsub;

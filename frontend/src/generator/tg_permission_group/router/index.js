@@ -4,6 +4,7 @@ import TableTgPermissionGroupList from '../table_list';
 import FormTgPermissionGroupAdd from '../form_add';
 import FormTgPermissionGroupEdit from '../form_edit';
 import ViewTgPermissionGroupInfo from '../view_info';
+import API from '../apis';
 import TableTgPermissionList from '../../tg_permission/table_list';
 import FormTgPermissionAdd from '../../tg_permission/form_add';
 import FormTgPermissionEdit from '../../tg_permission/form_edit';
@@ -39,6 +40,10 @@ export default function RouteTgPermissionGroup() {
         render={(renderProps) => (
           <FormTgPermissionAdd
             fixedParams={{groupId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -48,6 +53,10 @@ export default function RouteTgPermissionGroup() {
         render={(renderProps) => (
           <FormTgPermissionEdit
             fixedParams={{groupId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

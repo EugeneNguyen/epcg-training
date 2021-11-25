@@ -1,4 +1,4 @@
-import {useMutation} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/client';
 import {useHistory} from 'react-router-dom';
 import {useState} from "react";
 import {toast} from 'react-toastify';
@@ -7,7 +7,23 @@ import {Form, Input} from '../../_components/form';
 import {Box, Button} from '../../_components';
 
 
-export default function FormEtCourseAdd({fixedParams}) {
+export default function FormEtCourseAdd({fixedParams, parent={}}) {
+  if (parent.query) {
+    return <FormAddWithParent fixedParams={fixedParams} parent={parent}/>
+  }
+  return <FormAdd fixedParams={fixedParams}/>
+}
+
+function FormAddWithParent({fixedParams, parent}) {
+  const {data, error, loading} = useQuery(parent.query, {variables: parent.variables});
+  if (loading) return null;
+  if (error) return null;
+  return (
+    <FormAdd fixedParams={fixedParams} parent={data.data}/>
+  );
+}
+
+function FormAdd({fixedParams, parent={}}) {
   const history = useHistory();
 
   const [name, setname] = useState(null);
@@ -77,7 +93,7 @@ export default function FormEtCourseAdd({fixedParams}) {
             displayLabel="Course Template"
             value={courseTemplateId}
             onValueChange={(value) => setcourseTemplateId(value)}
-            variables={{educationProviderId: fixedParams.educationProviderId || educationProviderId}}
+            variables={{educationProviderId: fixedParams.educationProviderId}}
           />
         )}
         {(!fixedParams || !fixedParams.isPrivateCourse) && (

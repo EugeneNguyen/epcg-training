@@ -4,6 +4,7 @@ import TableTgRoleList from '../table_list';
 import FormTgRoleAdd from '../form_add';
 import FormTgRoleEdit from '../form_edit';
 import ViewTgRoleInfo from '../view_info';
+import API from '../apis';
 import TableTgUserRoleList from '../../tg_user_role/table_list';
 import FormTgUserRoleAdd from '../../tg_user_role/form_add';
 import FormTgUserRoleEdit from '../../tg_user_role/form_edit';
@@ -42,6 +43,10 @@ export default function RouteTgRole() {
         render={(renderProps) => (
           <FormTgUserRoleAdd
             fixedParams={{roleId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -51,6 +56,10 @@ export default function RouteTgRole() {
         render={(renderProps) => (
           <FormTgUserRoleEdit
             fixedParams={{roleId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -70,6 +79,10 @@ export default function RouteTgRole() {
         render={(renderProps) => (
           <FormTgRolePermissionAdd
             fixedParams={{roleId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />
@@ -79,6 +92,10 @@ export default function RouteTgRole() {
         render={(renderProps) => (
           <FormTgRolePermissionEdit
             fixedParams={{roleId: renderProps.match.params.id}}
+            parent={{
+              query: API.GET_BY_ID,
+              variables: { id: renderProps.match.params.id},
+            }}
           />
         )}
       />

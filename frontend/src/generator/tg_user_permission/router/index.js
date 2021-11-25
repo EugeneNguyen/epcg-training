@@ -4,6 +4,7 @@ import TableTgUserPermissionList from '../table_list';
 import FormTgUserPermissionAdd from '../form_add';
 import FormTgUserPermissionEdit from '../form_edit';
 import ViewTgUserPermissionInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteTgUserPermission() {
   return (

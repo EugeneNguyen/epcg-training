@@ -10,7 +10,7 @@ relationships:
       label: name
       filter:
         key: educationProviderId
-        value: educationProviderId
+        value: fixedParams.educationProviderId
   - name: educationProvider
     label: Education Provider
     type: many_to_one
@@ -36,3 +36,6 @@ relationships:
     target:
       name: etCourseExams
       key: courseId
+      filter:
+        key: courseId
+        value: parent.id

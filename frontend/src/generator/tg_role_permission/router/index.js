@@ -4,6 +4,7 @@ import TableTgRolePermissionList from '../table_list';
 import FormTgRolePermissionAdd from '../form_add';
 import FormTgRolePermissionEdit from '../form_edit';
 import ViewTgRolePermissionInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteTgRolePermission() {
   return (

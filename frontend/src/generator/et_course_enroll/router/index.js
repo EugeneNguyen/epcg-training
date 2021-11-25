@@ -4,6 +4,7 @@ import TableEtCourseEnrollList from '../table_list';
 import FormEtCourseEnrollAdd from '../form_add';
 import FormEtCourseEnrollEdit from '../form_edit';
 import ViewEtCourseEnrollInfo from '../view_info';
+import API from '../apis';
 
 export default function RouteEtCourseEnroll() {
   return (
