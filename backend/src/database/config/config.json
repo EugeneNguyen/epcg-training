@@ -1,9 +1,6 @@
 {
   "development": {
-    "username": "root",
-    "password": "Libreteam259!!",
-    "database": "epcg-training",
-    "host": "database-1.c0vo06onkxid.ap-southeast-1.rds.amazonaws.com",
+    "use_env_variable": true,
     "dialect": "mysql"
   },
   "test": {
