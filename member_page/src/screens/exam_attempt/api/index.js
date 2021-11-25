@@ -26,6 +26,7 @@ query et_exam_attempt_get_by_id($id: String) {
       id
       name
       numberOfQuestion
+      unlimitedTime
     }
     questions {
       id

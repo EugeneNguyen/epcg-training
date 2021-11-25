@@ -9,22 +9,19 @@ import moment from "moment";
 export default function QuestionListBox({questions, attemptId, setIndex, data}) {
   const history = useHistory();
   const [endAttempt] = useMutation(API.END_ATTEMPT, {variables: {id: attemptId}});
-  const [time, setTime] = useState(moment());
+
   const endTime = moment(parseFloat(data.data.startTime)).add(data.data.duration, 'minute');
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setTime(moment());
-      const diffSec = endTime.diff(time, 'seconds');
-      if (diffSec < 0) {
-        endAttempt().then(() => history.push(`/exam/attempt/${attemptId}/result`));
-      }
-    }, 1000);
-    return () => clearInterval(timerId);
-  });
-  const diffSec = endTime.diff(time, 'seconds');
+  const unlimitedTime = data.data.templateExam.unlimitedTime;
+
+  const tick = useTick();
+  const diffSec = endTime.diff(tick, 'seconds');
+  if (diffSec < 0 && !unlimitedTime) {
+    endAttempt().then(() => history.push(`/exam/attempt/${attemptId}/result`));
+  }
+
   return (
     <Box
-      title={`Time left: ${moment.utc(diffSec * 1000).format("HH:mm:ss")}`}
+      title={unlimitedTime ? "Questions" : `Time left: ${moment.utc(diffSec * 1000).format("HH:mm:ss")}`}
       footer={
         <Button onClick={() => endAttempt().then(() => history.push(`/exam/attempt/${attemptId}/result`))}>
           Submit
@@ -43,4 +40,15 @@ export default function QuestionListBox({questions, attemptId, setIndex, data}) 
       </div>
     </Box>
   );
+}
+
+function useTick() {
+  const [_sec, _setSec] = useState(moment());
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      _setSec(moment());
+    }, 1000);
+    return () => clearInterval(timerId);
+  });
+  return _sec;
 }

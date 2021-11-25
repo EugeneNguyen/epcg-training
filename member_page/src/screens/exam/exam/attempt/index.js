@@ -17,7 +17,7 @@ export default function ExamAttemptBox({templateExamId}) {
     },
   );
 
-  const [createAttempt] = useMutation(API.CREATE_ATTEMPT);
+  const [createAttempt, {loading: createLoading}] = useMutation(API.CREATE_ATTEMPT);
 
   if (loading) return <Box title="Attempts" padding>Loading</Box>;
   if (error) return <Box title="Attempts" padding>{error.message}</Box>;
@@ -38,8 +38,9 @@ export default function ExamAttemptBox({templateExamId}) {
             createAttempt({variables: {token: AuthHelper.token(), id: templateExamId}})
               .then(({data}) => history.push(`/exam/attempt/${data.data.id}`));
           }}
+          disabled={createLoading}
         >
-          Start new Attempt
+          {createLoading ? "Preparing new attempt ..." : "Start new Attempt"}
         </Button>
       )}
     >
