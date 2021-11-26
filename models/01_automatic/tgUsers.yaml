@@ -52,6 +52,22 @@ fields:
     edit:
       enable: true
     displayLabel: Password
+  name:
+    type: VARCHAR(255)
+    allowNull: true
+    defaultValue: null
+    primaryKey: false
+    autoIncrement: false
+    comment: null
+    name: name
+    graphType: String
+    list:
+      enable: true
+    add:
+      enable: true
+    edit:
+      enable: true
+    displayLabel: Name
   createdAt:
     type: DATETIME
     allowNull: false

@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-          
+            
 export default function FormTgUserEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -29,6 +29,7 @@ function FormEdit({fixedParams, parent={}}) {
   const history = useHistory();
 
   const [username, setusername] = useState(null);
+  const [name, setname] = useState(null);
   const [permissionsRelationship, setpermissionsRelationship] = useState([]);
   const [rolesRelationship, setrolesRelationship] = useState([]);
   const [coursesRelationship, setcoursesRelationship] = useState([]);
@@ -40,6 +41,7 @@ function FormEdit({fixedParams, parent={}}) {
       variables: { id },
       onCompleted: (response) => {
         setusername(response.data.username);
+        setname(response.data.name);
 
         setpermissionsRelationship(response.data.permissions.map(r => r.id));
         setrolesRelationship(response.data.roles.map(r => r.id));
@@ -53,6 +55,7 @@ function FormEdit({fixedParams, parent={}}) {
   const handleSubmit = () => {
     const data = {
       username,
+      name,
       permissions: permissionsRelationship,
       roles: rolesRelationship,
       courses: coursesRelationship,
@@ -84,6 +87,15 @@ function FormEdit({fixedParams, parent={}}) {
             displayLabel="Username"
             value={username}
             onValueChange={(value) => setusername(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.name) && (
+          <Input
+            type="VARCHAR(255)"
+            name="name"
+            displayLabel="Name"
+            value={name}
+            onValueChange={(value) => setname(value)}
           />
         )}
         <Input

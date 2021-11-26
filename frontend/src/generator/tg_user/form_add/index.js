@@ -28,6 +28,7 @@ function FormAdd({fixedParams, parent={}}) {
 
   const [username, setusername] = useState(null);
   const [password, setpassword] = useState(null);
+  const [name, setname] = useState(null);
   const [permissionsRelationship, setpermissionsRelationship] = useState([]);
   const [rolesRelationship, setrolesRelationship] = useState([]);
   const [coursesRelationship, setcoursesRelationship] = useState([]);
@@ -38,6 +39,7 @@ function FormAdd({fixedParams, parent={}}) {
     const data = {
       username,
       password,
+      name,
       permissions: permissionsRelationship,
       roles: rolesRelationship,
       courses: coursesRelationship,
@@ -82,6 +84,15 @@ function FormAdd({fixedParams, parent={}}) {
             displayLabel="Password"
             value={password}
             onValueChange={(value) => setpassword(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.name) && (
+          <Input
+            type="VARCHAR(255)"
+            name="name"
+            displayLabel="Name"
+            value={name}
+            onValueChange={(value) => setname(value)}
           />
         )}
         <Input

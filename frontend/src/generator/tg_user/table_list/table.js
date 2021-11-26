@@ -32,6 +32,11 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
             Username
           </TH>
         )}
+        {excludeColumns.includes("name") || (
+          <TH className="">
+            Name
+          </TH>
+        )}
         <TH className="w-30">
           Action
         </TH>
@@ -45,6 +50,17 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
             type="VARCHAR(255)"
             value={_.get(item, 'username')}
             link={`/tgUser/${item.id}`}
+          />
+        )}
+          {excludeColumns.includes("name") || (
+          <Cell
+            type="VARCHAR(255)"
+            value={_.get(item, 'name')}
+            id={item.id}
+            valueKey="name"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
         <td>

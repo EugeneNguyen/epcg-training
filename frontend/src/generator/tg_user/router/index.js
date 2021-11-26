@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableTgUserList from '../table_list';
 import FormTgUserAdd from '../form_add';
 import FormTgUserEdit from '../form_edit';
 import ViewTgUserInfo from '../view_info';
-import API from '../apis';
 import TableTgUserTokenList from '../../tg_user_token/table_list';
 import FormTgUserTokenAdd from '../../tg_user_token/form_add';
 import FormTgUserTokenEdit from '../../tg_user_token/form_edit';

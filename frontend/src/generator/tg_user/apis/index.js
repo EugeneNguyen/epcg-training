@@ -6,6 +6,7 @@ query tg_user_get_all($where: TgUserWhere) {
     id
     username
     password
+    name
     createdAt
     updatedAt
   }
@@ -19,6 +20,7 @@ query tg_user_get_all_with_page($pagination: TgUserPaginationInput, $where: TgUs
       id
       username
       password
+      name
       createdAt
       updatedAt
     }
@@ -37,6 +39,7 @@ query tg_user_get_by_id($id: String) {
     id
     username
     password
+    name
     createdAt
     updatedAt
     permissions {
@@ -86,6 +89,7 @@ mutation tg_user_add($data: TgUserInput) {
     id
     username
     password
+    name
     createdAt
     updatedAt
   }
@@ -98,6 +102,7 @@ mutation tg_user_edit($id: String, $data: TgUserInput) {
     id
     username
     password
+    name
     createdAt
     updatedAt
   }

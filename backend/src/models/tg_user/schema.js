@@ -6,6 +6,7 @@ type TgUser {
   id: String
   username: String
   password: String
+  name: String
   createdAt: String
   updatedAt: String
   tokens(where: TgUserTokenWhere): [TgUserToken]
@@ -37,6 +38,7 @@ type TgUserPagination {
 input TgUserInput {
   username: String
   password: String
+  name: String
   permissions: [String]
   roles: [String]
   courses: [String]
@@ -51,6 +53,7 @@ input TgUserWhere {
   id: String
   username: String
   password: String
+  name: String
   createdAt: String
   updatedAt: String
 }

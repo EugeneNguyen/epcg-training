@@ -40,7 +40,11 @@ export default function CellBase(props) {
       >
         <div className="flex flex-wrap justify-between">
           {props.renderDisplay()}
-          <ButtonIcon color="primary" icon="bi bi-pencil-square" onClick={() => setEditMode(true)} />
+          <Button onClick={() => setEditMode(true)}>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </Button>
         </div>
       </td>
     );
@@ -58,17 +62,23 @@ function TDEdit(props) {
   });
 
   return (
-    <td
-      class="px-6 py-4 whitespace-nowrap"
-    >
+    <td class="px-6 py-4 whitespace-nowrap">
       <Form onSubmitParams={(params) => edit({ variables: { id: props.id, data: params } })} >
         <div className="flex flex-wrap space-x-1 items-center">
           <div className="flex-grow">
             {props.renderInput()}
           </div>
           <div className="space-x-1">
-            <ButtonIcon color="success" icon="bi bi-check2-square" />
-            <ButtonIcon color="danger" icon="bi bi-x-square" onClick={() => props.setEditMode(false)} />
+            <Button color="success">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </Button>
+            <Button color="danger" onClick={() => props.setEditMode(false)}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </Button>
           </div>
         </div>
       </Form>

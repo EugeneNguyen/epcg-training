@@ -27,6 +27,9 @@ fields:
       enable: true
     edit:
       enable: false
+  name:
+    list:
+      editable: true
   createdAt:
     list:
       enable: false
