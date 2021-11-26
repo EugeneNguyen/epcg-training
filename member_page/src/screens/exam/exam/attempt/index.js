@@ -31,7 +31,7 @@ export default function ExamAttemptBox({templateExamId}) {
 
   return (
     <Box
-      title="Attempts"
+      title="My Attempts"
       footer={data.data.examAttempts && data.data.examAttempts.length == 0 && (
         <Button
           onClick={() => {

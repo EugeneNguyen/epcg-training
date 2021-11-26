@@ -2,6 +2,7 @@ import {Box, Cell, Table, TBody, TH, THead, useQuery} from "../../../../../gener
 import API from './api';
 import _ from "lodash";
 import CellDatetime from "../../../../../generator/_components/table/cell/cell_datetime";
+import classNames from "classnames";
 
 export default function CourseAnalyticBox({examId}) {
   const {data: examData} = useQuery(API.GET_EXAM_BY_ID, {variables: {id: examId}});
@@ -60,7 +61,7 @@ function CellEnroll({enroll}) {
 
   if (!bestAttempt.endTime) {
     return (
-      <tr>
+      <tr className="bg-yellow-50">
         <Cell>{name}</Cell>
         <Cell>---</Cell>
         <Cell>In Progress</Cell>
@@ -68,11 +69,16 @@ function CellEnroll({enroll}) {
     )
   }
 
+  const percentage = bestAttempt.questions.filter(q => q.correct).length * 100 / bestAttempt.questions.length;
+
   return (
-    <tr>
+    <tr className={classNames(
+      {'bg-green-50': percentage >= 70},
+      {'bg-red-50': percentage < 70},
+    )}>
       <Cell>{name}</Cell>
       <Cell>
-        {parseInt(bestAttempt.questions.filter(q => q.correct).length * 100 / bestAttempt.questions.length)}%
+        {percentage}%
       </Cell>
       <CellDatetime value={bestAttempt.endTime} dateFormat="lll" />
     </tr>
