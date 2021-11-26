@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm uninstall bcrypt && npm install bcrypt && yarn sql db:migrate && node app.js",
+    "start": "npm uninstall bcrypt && npm install bcrypt && node app.js",
     "sql": "./node_modules/.bin/sequelize --migrations-path=src/database/migrations --seeders-path=src/database/seeders --models-path=src/database/models ----config=src/database/config/config.json"
   },
   "dependencies": {
