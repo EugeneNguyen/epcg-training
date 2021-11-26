@@ -15,7 +15,7 @@ export default function CourseAnalyticBox({examId}) {
   });
 
   return courseData ? (
-    <Box title="Course Analytics">
+    <Box title="Members in my course">
       <Table>
         <THead>
           <tr>
@@ -61,7 +61,7 @@ function CellEnroll({enroll}) {
 
   if (!bestAttempt.endTime) {
     return (
-      <tr className="bg-yellow-50">
+      <tr className="bg-yellow-100">
         <Cell>{name}</Cell>
         <Cell>---</Cell>
         <Cell>In Progress</Cell>
@@ -73,8 +73,8 @@ function CellEnroll({enroll}) {
 
   return (
     <tr className={classNames(
-      {'bg-green-50': percentage >= 70},
-      {'bg-red-50': percentage < 70},
+      {'bg-green-100': percentage >= 70},
+      {'bg-red-100': percentage < 70},
     )}>
       <Cell>{name}</Cell>
       <Cell>
