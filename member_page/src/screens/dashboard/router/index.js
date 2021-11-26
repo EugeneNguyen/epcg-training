@@ -5,7 +5,7 @@ import DashboardScreen from "../dashboard";
 export default function RouteDashboard() {
   return (
     <Switch>
-      <Route path="/" exact>
+      <Route path="/dashboard" exact>
         <DashboardScreen />
       </Route>
     </Switch>

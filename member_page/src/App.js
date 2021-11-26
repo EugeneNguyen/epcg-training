@@ -1,4 +1,4 @@
-import {HashRouter} from "react-router-dom";
+import {HashRouter, Redirect} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import {Header, SideBar} from "./components";
 import RouteExamAttempt from "./screens/exam_attempt/router";
@@ -31,6 +31,7 @@ function App() {
               <RouteCourse/>
               <RouteExam/>
               <RouteTgAuth loggedIn={true}/>
+              <Redirect to="/dashboard" />
               <ToastContainer/>
             </div>
           </div>

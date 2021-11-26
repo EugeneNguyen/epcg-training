@@ -6,11 +6,11 @@ import AuthHelper from '../../screens/auth/helper';
 export default function SideBar() {
   return (
     <>
-      <h2 className="text-3xl font-semibold text-gray-800 dark:text-white">EPCG</h2>
+      <h2 className="text-3xl font-semibold text-gray-800 dark:text-white"></h2>
       <NavHr />
       <div className="flex flex-col justify-between flex-1 mt-6">
         <nav className="space-y-5">
-          <NavItem to="/" label="Dashboard" />
+          <NavItem to="/dashboard" label="Dashboard" />
           <NavItem to="/profile/changePassword" label="Change Password" />
         </nav>
         <div className="flex items-center px-4 -mx-2" onClick={() => AuthHelper.removeToken()}>
