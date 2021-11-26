@@ -48,12 +48,31 @@ function CellEnroll({enroll}) {
 
   const bestAttempt = examAttempts.reduce((a, b) => a.questions.filter(q => q.correct).length > b.questions.filter(q => q.correct).length ? a : b);
 
+  if (!bestAttempt.startTime) {
+    return (
+      <tr>
+        <Cell>{name}</Cell>
+        <Cell>---</Cell>
+        <Cell>---</Cell>
+      </tr>
+    )
+  }
+
+  if (!bestAttempt.endTime) {
+    return (
+      <tr>
+        <Cell>{name}</Cell>
+        <Cell>---</Cell>
+        <Cell>In Progress</Cell>
+      </tr>
+    )
+  }
+
   return (
     <tr>
       <Cell>{name}</Cell>
       <Cell>
         {parseInt(bestAttempt.questions.filter(q => q.correct).length * 100 / bestAttempt.questions.length)}%
-        ({bestAttempt.questions.filter(q => q.correct).length}/{bestAttempt.questions.length})
       </Cell>
       <CellDatetime value={bestAttempt.endTime} dateFormat="lll" />
     </tr>
