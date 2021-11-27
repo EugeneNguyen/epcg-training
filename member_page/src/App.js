@@ -1,13 +1,13 @@
-import {HashRouter, Redirect} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import {Header, SideBar} from "./components";
-import RouteExamAttempt from "./screens/exam_attempt/router";
 import RouteTgAuth from "./screens/auth/router";
 import AuthHelper from "./screens/auth/helper";
 import {ToastContainer} from "react-toastify";
 import RouteDashboard from "./screens/dashboard/router";
 import RouteCourse from "./screens/course/router";
 import RouteExam from "./screens/exam/router";
+import RouteExamAttempt from "./screens/exam_attempt/router";
 
 function App() {
   const token = AuthHelper.useToken();
@@ -26,12 +26,22 @@ function App() {
           <div className="w-10/12 h-screen flex flex-col bg-gray-200">
             <Header/>
             <div className="w-full mx-auto py-6 sm:px-6 lg:px-8 overflow-y-scroll">
-              <RouteExamAttempt/>
-              <RouteDashboard/>
-              <RouteCourse/>
-              <RouteExam/>
-              <RouteTgAuth loggedIn={true}/>
-              <Redirect to="/dashboard" />
+              <Switch>
+                <Route path="/dashboard">
+                  <RouteDashboard/>
+                </Route>
+                <Route path="/course">
+                  <RouteCourse/>
+                </Route>
+                <Route path="/exam">
+                  <RouteExam/>
+                  <RouteExamAttempt/>
+                </Route>
+                <Route path="/profile">
+                  <RouteTgAuth loggedIn={true}/>
+                </Route>
+                <Redirect to="/dashboard" />
+              </Switch>
               <ToastContainer/>
             </div>
           </div>

@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server-express');
 const models = require('./src');
 const express = require('express');
+const env = process.env.NODE_ENV || 'development';
 const ApolloServerPluginLandingPageDisabled = require("apollo-server-core").ApolloServerPluginLandingPageDisabled;
 
 const port = process.env.PORT || 4000;
@@ -8,13 +9,15 @@ const port = process.env.PORT || 4000;
 const server = new ApolloServer({
   ...models,
   plugins: [
-    ApolloServerPluginLandingPageDisabled(),
+    ...(env !== 'development' ? [ApolloServerPluginLandingPageDisabled()] : []),
   ],
 });
 
 server.start().then(() => {
   const app = express();
-  app.use('/admin', express.static('public/admin'));
+  if (env === 'development') {
+    app.use('/admin', express.static('public/admin'));
+  }
   app.use('/', express.static('public/app'));
 
   server.applyMiddleware({ app, path: '/api' });

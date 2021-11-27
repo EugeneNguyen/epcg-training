@@ -22,10 +22,8 @@ query Et_course_get_by_id($courseId: String, $courseTemplateExamId: String) {
         name
         examAttempts(where: {templateExamId: $courseTemplateExamId}) {
           id
-          questions {
-            id
-            correct
-          }
+          numCorrect: questionsCount(where: {correct: true})
+          numQuestion: questionsCount
           startTime
           endTime
         }

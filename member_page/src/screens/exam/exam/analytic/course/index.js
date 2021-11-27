@@ -47,7 +47,7 @@ function CellEnroll({enroll}) {
     )
   }
 
-  const bestAttempt = examAttempts.reduce((a, b) => a.questions.filter(q => q.correct).length > b.questions.filter(q => q.correct).length ? a : b);
+  const bestAttempt = examAttempts.reduce((a, b) => a.numCorrect > b.numCorrect ? a : b);
 
   if (!bestAttempt.startTime) {
     return (
@@ -69,7 +69,7 @@ function CellEnroll({enroll}) {
     )
   }
 
-  const percentage = bestAttempt.questions.filter(q => q.correct).length * 100 / bestAttempt.questions.length;
+  const percentage = bestAttempt.numCorrect * 100 / bestAttempt.numQuestion;
 
   return (
     <tr className={classNames(
