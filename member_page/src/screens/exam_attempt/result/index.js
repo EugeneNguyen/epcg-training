@@ -6,6 +6,7 @@ import {useState} from "react";
 import classNames from "classnames";
 import QuestionBox from "./question_box";
 import {useQuery} from "../../../generator/_components";
+import CourseMateAnalytic from "./analytic/course";
 
 export default function ScreenExamAttemptResult() {
   const {id} = useParams();
@@ -27,6 +28,10 @@ export default function ScreenExamAttemptResult() {
         <QuestionBox
           question={questions[qIndex]}
           index={qIndex}
+        />
+        <CourseMateAnalytic
+          attemptId={id}
+          qOrder={questions[qIndex].order}
         />
       </div>
       <div className="w-4/12">

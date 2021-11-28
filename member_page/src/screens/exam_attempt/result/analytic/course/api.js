@@ -1,31 +1,32 @@
 import {gql} from "@apollo/client";
 
 const GET_ATTEMPT_BY_ID = gql`
-query Et_course_exam_get_by_id($id: String) {
-  data: et_course_exam_get_by_id(id: $id) {
+query Et_exam_attempt_get_by_id($id: String) {
+  data: et_exam_attempt_get_by_id(id: $id) {
     id
-    courseId
-    courseTemplateExamId
-  }
-}
-`;
-
-const GET_COURSE_BY_ID = gql`
-query Et_course_get_by_id($courseId: String, $courseTemplateExamId: String) {
-  data: et_course_get_by_id(id: $courseId) {
-    id
-    enrolls {
+    exam {
       id
-      user {
+      course {
         id
-        username
-        name
-        examAttempts(where: {templateExamId: $courseTemplateExamId}) {
+        enrolls {
           id
-          numCorrect: questionsCount(where: {correct: true})
-          numQuestion: questionsCount
-          startTime
-          endTime
+          user {
+            id
+            username
+            name
+            examAttempts {
+              id
+              examId
+              startTime
+              endTime
+              questions {
+                id
+                order
+                answer
+                correct
+              }
+            }
+          }
         }
       }
     }
@@ -35,5 +36,4 @@ query Et_course_get_by_id($courseId: String, $courseTemplateExamId: String) {
 
 export default {
   GET_ATTEMPT_BY_ID,
-  GET_COURSE_BY_ID,
 };
