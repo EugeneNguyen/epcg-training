@@ -3,7 +3,7 @@ import ExamAttemptBox from "./attempt";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@apollo/client";
 import API from './exam/api';
-import CourseAnalyticBox from "./analytic/course";
+import CourseMateBox from "./analytic/course";
 
 export default function ExamScreen() {
   const {id} = useParams();
@@ -19,7 +19,7 @@ export default function ExamScreen() {
     <div className="flex space-x-4">
       <div className="w-8/12 space-y-4">
         <ExamAttemptBox examId={id}/>
-        <CourseAnalyticBox examId={id}/>
+        <CourseMateBox examId={id}/>
       </div>
       <div className="w-4/12">
         <ExamInfoBox/>
