@@ -13,6 +13,26 @@ const templateExamLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
+const userLoader = new DataLoader(async (keys) => {
+  const items = await db.tgUser.findAll({
+    where: {
+      id: {
+        [Op.in]: _.uniq(keys),
+      },
+    },
+  });
+  return keys.map(key => items.find(item => item.id === key));
+}, { cache: false });
+const examLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseExam.findAll({
+    where: {
+      id: {
+        [Op.in]: _.uniq(keys),
+      },
+    },
+  });
+  return keys.map(key => items.find(item => item.id === key));
+}, { cache: false });
 
 let type = {
   EtExamAttempt: {
@@ -35,6 +55,18 @@ let type = {
     templateExam(parent, args, context, info) {
       if (parent.templateExamId) {
         return templateExamLoader.load(parent.templateExamId);
+      }
+      return null;
+    },
+    user(parent, args, context, info) {
+      if (parent.userId) {
+        return userLoader.load(parent.userId);
+      }
+      return null;
+    },
+    exam(parent, args, context, info) {
+      if (parent.examId) {
+        return examLoader.load(parent.examId);
       }
       return null;
     },

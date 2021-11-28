@@ -16,3 +16,21 @@ relationships:
       name: etCourseTemplateExams
       key: id
       label: name
+  - name: user
+    label: User
+    type: many_to_one
+    self:
+      key: userId
+    target:
+      name: tgUsers
+      key: id
+      label: username
+  - name: exam
+    label: Exam
+    type: many_to_one
+    self:
+      key: examId
+    target:
+      name: etCourseExams
+      key: id
+      label: name

@@ -20,3 +20,11 @@ relationships:
       filter:
         key: courseTemplateId
         value: parent.courseTemplateId
+  - name: attempts
+    label: Attempts
+    type: one_to_many
+    self:
+      key: id
+    target:
+      name: etExamAttempts
+      key: examId

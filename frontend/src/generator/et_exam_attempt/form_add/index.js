@@ -72,9 +72,11 @@ function FormAdd({fixedParams, parent={}}) {
       <Form onSubmitParams={handleSubmit(false)}>
         {(!fixedParams || !fixedParams.examId) && (
           <Input
-            type="VARCHAR(255)"
-            name="examId"
-            displayLabel="Exam Id"
+            type="SELECT"
+            query={require('../../et_course_exam/apis').default.ALL}
+            idKey="id"
+            labelKey="name"
+            displayLabel="Exam"
             value={examId}
             onValueChange={(value) => setexamId(value)}
           />

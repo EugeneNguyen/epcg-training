@@ -38,6 +38,22 @@ let type = {
       }
       return null;
     },
+    attempts(parent, {where}, context, info) {
+      return db.etExamAttempt.findAll({
+        where: {
+          examId: parent.id,
+          ...where,
+        }
+      });
+    },
+    attemptsCount(parent, {where}, context, info) {
+      return db.etExamAttempt.count({
+        where: {
+          examId: parent.id,
+          ...where,
+        }
+      });
+    },
   },
 };
 

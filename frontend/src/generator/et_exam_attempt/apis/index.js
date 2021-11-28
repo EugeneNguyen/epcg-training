@@ -21,7 +21,15 @@ query et_exam_attempt_get_all_with_page($pagination: EtExamAttemptPaginationInpu
   data: et_exam_attempt_get_all_with_page(pagination: $pagination, where: $where) {
     rows {
       id
+      user {
+        id
+        username
+      }
       userId
+      exam {
+        id
+        name
+      }
       examId
       templateExam {
         id
@@ -47,7 +55,15 @@ const GET_BY_ID = gql`
 query et_exam_attempt_get_by_id($id: String) {
   data: et_exam_attempt_get_by_id(id: $id) {
     id
+    user {
+      id
+      username
+    }
     userId
+    exam {
+      id
+      name
+    }
     examId
     templateExam {
       id

@@ -15,6 +15,8 @@ type EtExamAttempt {
   questions(where: EtExamAttemptQuestionWhere): [EtExamAttemptQuestion]
   questionsCount(where: EtExamAttemptQuestionWhere): Int
   templateExam: EtCourseTemplateExam
+  user: TgUser
+  exam: EtCourseExam
 }
 
 type EtExamAttemptWithPagination {

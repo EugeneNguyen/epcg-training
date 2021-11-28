@@ -11,6 +11,8 @@ type EtCourseExam {
   updatedAt: String
   course: EtCourse
   courseTemplateExam: EtCourseTemplateExam
+  attempts(where: EtExamAttemptWhere): [EtExamAttempt]
+  attemptsCount(where: EtExamAttemptWhere): Int
 }
 
 type EtCourseExamWithPagination {

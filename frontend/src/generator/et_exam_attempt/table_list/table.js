@@ -33,7 +33,7 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
         )}
         {excludeColumns.includes("examId") || (
           <TH className="">
-            Exam Id
+            Exam
           </TH>
         )}
         {excludeColumns.includes("templateExamId") || (
@@ -74,7 +74,7 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
           {excludeColumns.includes("examId") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'examId')}
+            value={_.get(item, 'exam.name')}
           />
         )}
           {excludeColumns.includes("templateExamId") || (
