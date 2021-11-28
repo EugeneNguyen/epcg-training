@@ -5,6 +5,7 @@ import API from '../api';
 import {useHistory} from "react-router-dom";
 import {useEffect, useState} from "react";
 import moment from "moment";
+import classNames from "classnames";
 
 export default function QuestionListBox({questions, attemptId, setIndex, data}) {
   const history = useHistory();
@@ -32,7 +33,11 @@ export default function QuestionListBox({questions, attemptId, setIndex, data}) 
         {questions.map((question, index) => (
           <div
             onClick={() => setIndex(index)}
-            className={`${question.rawAnswer ? 'bg-green-50' : 'bg-gray-50'} border p-4 text-center hover:bg-gray-200 cursor-pointer`}
+            className={classNames(
+              'border p-4 text-center hover:bg-gray-200 cursor-pointer',
+              {'bg-green-50': question.rawAnswer},
+              {'bg-gray-50': !question.rawAnswer},
+            )}
           >
             {index + 1}
           </div>

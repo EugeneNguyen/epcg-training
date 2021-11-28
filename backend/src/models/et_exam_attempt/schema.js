@@ -5,6 +5,7 @@ let type = `
 type EtExamAttempt {
   id: String
   userId: String
+  examId: String
   templateExamId: String
   duration: Int
   startTime: String
@@ -28,6 +29,7 @@ type EtExamAttemptPagination {
 }
 
 input EtExamAttemptInput {
+  examId: String
   templateExamId: String
   duration: Int
   startTime: String
@@ -44,6 +46,7 @@ input EtExamAttemptPaginationInput {
 input EtExamAttemptWhere {
   id: String
   userId: String
+  examId: String
   templateExamId: String
   duration: Int
   startTime: String

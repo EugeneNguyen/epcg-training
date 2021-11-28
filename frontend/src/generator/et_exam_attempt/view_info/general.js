@@ -49,6 +49,15 @@ export default function ViewEtExamAttemptGeneral({objectId}) {
 
                 <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
+                    Exam Id
+                  </dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {_.get(data, 'data.examId', 'N/A')}
+                  </dd>
+                </div>
+
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">
                     Template Exam
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -56,7 +65,7 @@ export default function ViewEtExamAttemptGeneral({objectId}) {
                   </dd>
                 </div>
 
-                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     Duration
                   </dt>
@@ -65,7 +74,7 @@ export default function ViewEtExamAttemptGeneral({objectId}) {
                   </dd>
                 </div>
 
-                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     Start Time
                   </dt>
@@ -74,7 +83,7 @@ export default function ViewEtExamAttemptGeneral({objectId}) {
                   </dd>
                 </div>
 
-                <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                   <dt class="text-sm font-medium text-gray-500">
                     End Time
                   </dt>

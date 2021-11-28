@@ -18,7 +18,7 @@ export default function ExamScreen() {
   return (
     <div className="flex space-x-4">
       <div className="w-8/12 space-y-4">
-        <ExamAttemptBox templateExamId={data.data.courseTemplateExam.id}/>
+        <ExamAttemptBox examId={id}/>
         <CourseAnalyticBox examId={id}/>
       </div>
       <div className="w-4/12">

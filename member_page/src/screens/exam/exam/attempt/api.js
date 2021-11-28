@@ -22,8 +22,8 @@ query Me($token: String, $where: EtExamAttemptWhere) {
 `;
 
 const CREATE_ATTEMPT = gql`
-mutation Mutation($id: String, $token: String) {
-  data: manual_create_attempt_from_course_template_exam(course_template_exam_id: $id, token: $token) {
+mutation Mutation($examId: String, $token: String) {
+  data: manual_create_attempt_from_course_template_exam(examId: $examId, token: $token) {
     id
   }
 }

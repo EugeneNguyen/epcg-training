@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableEtExamAttemptList from '../table_list';
 import FormEtExamAttemptAdd from '../form_add';
 import FormEtExamAttemptEdit from '../form_edit';
 import ViewEtExamAttemptInfo from '../view_info';
-import API from '../apis';
 import TableEtExamAttemptQuestionList from '../../et_exam_attempt_question/table_list';
 import FormEtExamAttemptQuestionAdd from '../../et_exam_attempt_question/form_add';
 import FormEtExamAttemptQuestionEdit from '../../et_exam_attempt_question/form_edit';

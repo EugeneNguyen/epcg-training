@@ -31,6 +31,11 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
             Id
           </TH>
         )}
+        {excludeColumns.includes("examId") || (
+          <TH className="">
+            Exam Id
+          </TH>
+        )}
         {excludeColumns.includes("templateExamId") || (
           <TH className="">
             Template Exam
@@ -64,6 +69,12 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
             type="CHAR(36)"
             value={_.get(item, 'id')}
             link={`/etExamAttempt/${item.id}`}
+          />
+        )}
+          {excludeColumns.includes("examId") || (
+          <Cell
+            type="VARCHAR(255)"
+            value={_.get(item, 'examId')}
           />
         )}
           {excludeColumns.includes("templateExamId") || (

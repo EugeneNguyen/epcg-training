@@ -89,12 +89,6 @@ mutation manual_exam_attempt_end($id: String) {
 }
 `;
 
-const DEFAULT_OPTIONS = {
-  notifyOnNetworkStatusChange: true,
-  fetchPolicy: 'cache-and-network',
-  errorPolicy: 'all',
-}
-
 export default {
   GET_BY_ID,
   GET_BY_ID_WITH_QUESTION,
@@ -102,5 +96,4 @@ export default {
   START_ATTEMPT,
   END_ATTEMPT,
   ANSWER_WITH_ID,
-  DEFAULT_OPTIONS,
 };

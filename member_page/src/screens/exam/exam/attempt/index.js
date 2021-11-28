@@ -1,5 +1,5 @@
-import {Box, Table, TBody, TH, THead} from "../../../../generator/_components";
-import {useMutation, useQuery} from "@apollo/client";
+import {Box, Table, TBody, TH, THead, useQuery} from "../../../../generator/_components";
+import {useMutation} from "@apollo/client";
 import {useHistory} from "react-router-dom";
 import API from "./api";
 import {Button} from "../../../../generator/_components/button";
@@ -7,21 +7,18 @@ import AuthHelper from "../../../auth/helper";
 import Cell from "../../../../generator/_components/table/cell";
 import CellLink from "../../../../generator/_components/table/cell/cell_link";
 
-export default function ExamAttemptBox({templateExamId}) {
+export default function ExamAttemptBox({examId}) {
   const history = useHistory();
-  const {data, loading, error} = useQuery(
-    API.GET_ATTEMPTS,
-    {
-      ...API.DEFAULT_OPTIONS,
-      variables: {token: AuthHelper.token(), where: {templateExamId}},
-    },
-  );
+  const token = AuthHelper.token();
+  const {data, loading, error} = useQuery(API.GET_ATTEMPTS, {
+    variables: {token, where: {examId}},
+  });
 
   const [createAttempt, {loading: createLoading}] = useMutation(API.CREATE_ATTEMPT);
 
-  if (loading) return <Box title="Attempts" padding>Loading</Box>;
-  if (error) return <Box title="Attempts" padding>{error.message}</Box>;
-  if (!data) return <Box title="Attempts" padding>No Data</Box>;
+  if (loading) return <Box title="My Attempts" padding>Loading</Box>;
+  if (error) return <Box title="My Attempts" padding>{error.message}</Box>;
+  if (!data) return <Box title="My Attempts" padding>No Data</Box>;
 
   data.data.examAttempts.map(attempt => {
     attempt.correct = attempt.questions.filter(q => q.correct).length;
@@ -35,7 +32,7 @@ export default function ExamAttemptBox({templateExamId}) {
       footer={data.data.examAttempts && data.data.examAttempts.length == 0 && (
         <Button
           onClick={() => {
-            createAttempt({variables: {token: AuthHelper.token(), id: templateExamId}})
+            createAttempt({variables: {token, examId}})
               .then(({data}) => history.push(`/exam/attempt/${data.data.id}`));
           }}
           disabled={createLoading}
@@ -46,30 +43,30 @@ export default function ExamAttemptBox({templateExamId}) {
     >
       <Table>
         <THead>
-        <tr>
-          <TH>Name</TH>
-          <TH>Result</TH>
-          <TH>Action</TH>
-        </tr>
+          <tr>
+            <TH>Name</TH>
+            <TH>Result</TH>
+            <TH>Action</TH>
+          </tr>
         </THead>
         <TBody>
-        {data.data.examAttempts.map(attempt => (
-          <tr>
-            <Cell value={attempt.templateExam.name}/>
-            {attempt.endTime ? (
-              <Cell value={`${attempt.score}% (${attempt.correct}/${attempt.numQuestion})`}/>
-            ) : (
-              <Cell value=""/>
-            )}
-            {!attempt.startTime ? (
-              <CellLink link={`/exam/attempt/${attempt.id}`} value="Start"/>
-            ) : !attempt.endTime ? (
-              <CellLink link={`/exam/attempt/${attempt.id}/take`} value="Continue"/>
-            ) : (
-              <CellLink link={`/exam/attempt/${attempt.id}/result`} value="Check Result"/>
-            )}
-          </tr>
-        ))}
+          {data.data.examAttempts.map(attempt => (
+            <tr>
+              <Cell value={attempt.templateExam.name}/>
+              {attempt.endTime ? (
+                <Cell value={`${attempt.score}% (${attempt.correct}/${attempt.numQuestion})`}/>
+              ) : (
+                <Cell value=""/>
+              )}
+              {!attempt.startTime ? (
+                <CellLink link={`/exam/attempt/${attempt.id}`} value="Start"/>
+              ) : !attempt.endTime ? (
+                <CellLink link={`/exam/attempt/${attempt.id}/take`} value="Continue"/>
+              ) : (
+                <CellLink link={`/exam/attempt/${attempt.id}/result`} value="Check Result"/>
+              )}
+            </tr>
+          ))}
         </TBody>
       </Table>
     </Box>

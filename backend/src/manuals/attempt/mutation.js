@@ -1,13 +1,16 @@
 let db = require('../../database/models');
 const {AuthService} = require("../../services");
+const {Op} = require("sequelize");
 
 let mutation = {
-  async manual_create_attempt_from_course_template_exam(parent, { course_template_exam_id, token }, context, info) {
+  async manual_create_attempt_from_course_template_exam(parent, { examId, token }, context, info) {
     const user = await AuthService.getUserFromToken(token);
-    const courseTemplateExam = await db.etCourseTemplateExam.findByPk(course_template_exam_id);
-    if (!courseTemplateExam) {
-      throw new Error("Cannot find Course Template Exam");
-    }
+
+    const exam = await db.etCourseExam.findByPk(examId);
+    if (!exam) throw new Error("Cannot find Exam");
+
+    const courseTemplateExam = await db.etCourseTemplateExam.findByPk(exam.courseTemplateExamId);
+    if (!courseTemplateExam) throw new Error("Cannot find Course Template Exam");
 
     const courseTemplateExamQuestions = await db.etCourseTemplateExamQuestion.findAll({
       where: {
@@ -17,6 +20,7 @@ let mutation = {
 
     const attempt = await db.etExamAttempt.create({
       userId: user.id,
+      examId: exam.id,
       templateExamId: courseTemplateExam.id,
       duration: courseTemplateExam.duration,
     });
@@ -87,6 +91,21 @@ let mutation = {
     await attempt.save();
     return attempt;
   },
+  async manual_adhoc() {
+    const attempts = await db.etExamAttempt.findAll({where: {examId: {[Op.eq] : null}}});
+    for (const attempt of attempts) {
+      const user = await db.tgUser.findByPk(attempt.userId);
+      const enrolls = await db.etCourseEnroll.findAll({where: {userId: user.id}});
+      for (const enroll of enrolls) {
+        const exams = await db.etCourseExam.findAll({where: {courseId: enroll.courseId, courseTemplateExamId: attempt.templateExamId}});
+        if (exams.length === 1) {
+          const exam = exams[0];
+          await attempt.update({examId: exam.id});
+        }
+      }
+    }
+    return true;
+  }
 };
 
 module.exports = mutation;

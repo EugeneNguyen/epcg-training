@@ -8,21 +8,16 @@ import QuestionBox from "./question_box";
 import {useQuery} from "../../../generator/_components";
 
 export default function ScreenExamAttemptResult() {
-  const id = useParams().id;
+  const {id} = useParams();
   const [qIndex, setQIndex] = useState(0);
 
-  const {data} = useQuery(API.GET_RESULT, {variables: { id }});
+  const {data, loading, error} = useQuery(API.GET_RESULT, {variables: {id}});
 
-  if (!data) return null;
+  if (loading && !data) return "Loading ...";
+  if (error) return "Error ...";
+  if (!data) return "No Data ...";
 
-  const questions = _.orderBy(
-    _.get(data, 'data.questions', []).map(item => {
-      item.order = parseInt(item.order);
-      return item;
-    }),
-    ['order']
-  );
-
+  const questions = _.orderBy(_.get(data, 'data.questions', []), ['order']);
   const total = questions.length;
   const correct = questions.filter(q => q.correct).length;
 
@@ -42,8 +37,8 @@ export default function ScreenExamAttemptResult() {
                 onClick={() => setQIndex(index)}
                 className={classNames(
                   'border p-4 text-center hover:bg-gray-200 cursor-pointer',
-                  {'bg-green-50': question.correct},
-                  {'bg-red-50': !question.correct},
+                  {'bg-green-100': question.correct},
+                  {'bg-red-100': !question.correct},
                 )}>
                 {index + 1}
               </div>

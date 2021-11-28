@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-                
+                  
 export default function FormEtExamAttemptEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -28,6 +28,7 @@ function FormEdit({fixedParams, parent={}}) {
   const id = useParams().selectedObjectId;
   const history = useHistory();
 
+  const [examId, setexamId] = useState(null);
   const [templateExamId, settemplateExamId] = useState(null);
   const [duration, setduration] = useState(null);
   const [startTime, setstartTime] = useState(null);
@@ -41,6 +42,7 @@ function FormEdit({fixedParams, parent={}}) {
       ...API.DEFAULT_OPTIONS,
       variables: { id },
       onCompleted: (response) => {
+        setexamId(response.data.examId);
         settemplateExamId(response.data.templateExamId);
         setduration(response.data.duration);
         setstartTime(response.data.startTime);
@@ -56,6 +58,7 @@ function FormEdit({fixedParams, parent={}}) {
 
   const handleSubmit = () => {
     const data = {
+      examId,
       templateExamId,
       duration,
       startTime,
@@ -83,6 +86,15 @@ function FormEdit({fixedParams, parent={}}) {
       )}
     >
       <Form onSubmitParams={handleSubmit}>
+        {(!fixedParams || !fixedParams.examId) && (
+          <Input
+            type="VARCHAR(255)"
+            name="examId"
+            displayLabel="Exam Id"
+            value={examId}
+            onValueChange={(value) => setexamId(value)}
+          />
+        )}
         {(!fixedParams || !fixedParams.templateExamId) && (
           <Input
             type="SELECT"

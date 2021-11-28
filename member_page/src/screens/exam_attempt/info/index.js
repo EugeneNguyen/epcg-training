@@ -5,11 +5,13 @@ import {Box, ButtonLink} from "../../../components";
 import _ from "lodash";
 import {Button} from "../../../generator/_components/button";
 import {useQuery} from "../../../generator/_components";
+import classNames from "classnames";
 
 export default function ScreenExamAttemptInfo() {
   const id = useParams().id;
 
-  const {data} = useQuery(API.GET_BY_ID, {variables: {id}});
+  const {data, loading, error} = useQuery(API.GET_BY_ID, {variables: {id}});
+
 
   if (!data) {
     return "Loading ...";
@@ -17,7 +19,7 @@ export default function ScreenExamAttemptInfo() {
 
   return (
     <div className="space-y-2">
-      <Box title="Exam Attempt Information" padding footer={<ButtonStart id={id} data={data}/>}>
+      <Box title="Exam Attempt Information" footer={<ButtonStart id={id} data={data}/>}>
         <dl className="m-0">
           <InfoItem title="Exam" value={_.get(data, 'data.templateExam.name', 'N/A')}/>
           <InfoItem title="Number of Questions" value={_.get(data, 'data.templateExam.numberOfQuestion', 'N/A')} odd/>
@@ -56,7 +58,11 @@ function ButtonStart({id, data}) {
 
 function InfoItem({title, value, odd}) {
   return (
-    <div className={`${odd == true ? 'bg-gray-50' : 'bg-white'} px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
+    <div className={classNames(
+      'px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6',
+      {'bg-gray-50': odd},
+      {'bg-white': !odd},
+    )}>
       <dt className="text-sm font-medium text-gray-500">
         {title}
       </dt>

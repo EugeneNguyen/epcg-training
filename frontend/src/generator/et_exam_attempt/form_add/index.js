@@ -26,6 +26,7 @@ function FormAddWithParent({fixedParams, parent}) {
 function FormAdd({fixedParams, parent={}}) {
   const history = useHistory();
 
+  const [examId, setexamId] = useState(null);
   const [templateExamId, settemplateExamId] = useState(null);
   const [duration, setduration] = useState(null);
   const [startTime, setstartTime] = useState(null);
@@ -37,6 +38,7 @@ function FormAdd({fixedParams, parent={}}) {
 
   const handleSubmit = (addAnother) => () => {
     const data = {
+      examId,
       templateExamId,
       duration,
       startTime,
@@ -68,6 +70,15 @@ function FormAdd({fixedParams, parent={}}) {
       )}
     >
       <Form onSubmitParams={handleSubmit(false)}>
+        {(!fixedParams || !fixedParams.examId) && (
+          <Input
+            type="VARCHAR(255)"
+            name="examId"
+            displayLabel="Exam Id"
+            value={examId}
+            onValueChange={(value) => setexamId(value)}
+          />
+        )}
         {(!fixedParams || !fixedParams.templateExamId) && (
           <Input
             type="SELECT"

@@ -11,23 +11,13 @@ export default function ScreenExamAttemptTake() {
   const id = useParams().id;
   const [qIndex, setQIndex] = useState(0);
 
-  const {data, loading, error} = useQuery(API.GET_BY_ID_WITH_QUESTION, {where: {variables: id}});
+  const {data, loading, error} = useQuery(API.GET_BY_ID_WITH_QUESTION, {variables: {id}});
 
   if (loading && !data) return "Loading ...";
   if (error) return "Error ...";
   if (!data) return "No Data ...";
 
-  const questions = _.orderBy(
-    _.get(data, 'data.questions', []).map(item => {
-      item.order = parseInt(item.order);
-      return item;
-    }),
-    ['order']
-  );
-
-  if (!questions) {
-    return "Loading ...";
-  }
+  const questions = _.orderBy(_.get(data, 'data.questions', []), ['order']);
 
   return (
     <div className="flex flex-row space-x-8">

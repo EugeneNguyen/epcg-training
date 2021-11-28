@@ -5,6 +5,7 @@ query et_exam_attempt_get_all($where: EtExamAttemptWhere) {
   data: et_exam_attempt_get_all(where: $where) {
     id
     userId
+    examId
     templateExamId
     duration
     startTime
@@ -21,6 +22,7 @@ query et_exam_attempt_get_all_with_page($pagination: EtExamAttemptPaginationInpu
     rows {
       id
       userId
+      examId
       templateExam {
         id
         name
@@ -46,6 +48,7 @@ query et_exam_attempt_get_by_id($id: String) {
   data: et_exam_attempt_get_by_id(id: $id) {
     id
     userId
+    examId
     templateExam {
       id
       name
@@ -86,6 +89,7 @@ mutation et_exam_attempt_add($data: EtExamAttemptInput) {
   et_exam_attempt_add(data: $data) {
     id
     userId
+    examId
     templateExamId
     duration
     startTime
@@ -101,6 +105,7 @@ mutation et_exam_attempt_edit($id: String, $data: EtExamAttemptInput) {
   et_exam_attempt_edit(id: $id, data: $data) {
     id
     userId
+    examId
     templateExamId
     duration
     startTime
