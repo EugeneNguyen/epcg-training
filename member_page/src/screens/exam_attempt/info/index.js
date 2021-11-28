@@ -1,22 +1,15 @@
 import {useHistory, useParams} from "react-router-dom";
 import API from "../api";
-import {useMutation, useQuery} from "@apollo/client";
+import {useMutation} from "@apollo/client";
 import {Box, ButtonLink} from "../../../components";
 import _ from "lodash";
 import {Button} from "../../../generator/_components/button";
+import {useQuery} from "../../../generator/_components";
 
 export default function ScreenExamAttemptInfo() {
   const id = useParams().id;
 
-  const {data} = useQuery(
-    API.GET_BY_ID,
-    {
-      ...API.DEFAULT_OPTIONS,
-      variables: {
-        id,
-      },
-    },
-  );
+  const {data} = useQuery(API.GET_BY_ID, {variables: {id}});
 
   if (!data) {
     return "Loading ...";

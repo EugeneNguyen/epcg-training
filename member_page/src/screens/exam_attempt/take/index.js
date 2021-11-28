@@ -1,25 +1,17 @@
 import {useParams} from "react-router-dom";
 import API from "../api";
-import {useQuery} from "@apollo/client";
 import _ from "lodash";
 import QuestionBox from "./question_box";
 import QuestionListBox from "./question_list_box";
 import {useState} from "react";
 import {Button} from "../../../generator/_components/button";
+import {useQuery} from "../../../generator/_components";
 
 export default function ScreenExamAttemptTake() {
   const id = useParams().id;
   const [qIndex, setQIndex] = useState(0);
 
-  const {data, loading, error} = useQuery(
-    API.GET_BY_ID_WITH_QUESTION,
-    {
-      ...API.DEFAULT_OPTIONS,
-      variables: {
-        id,
-      },
-    },
-  );
+  const {data, loading, error} = useQuery(API.GET_BY_ID_WITH_QUESTION, {where: {variables: id}});
 
   if (loading && !data) return "Loading ...";
   if (error) return "Error ...";
