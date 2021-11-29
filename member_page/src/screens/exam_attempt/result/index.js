@@ -7,6 +7,8 @@ import classNames from "classnames";
 import QuestionBox from "./question_box";
 import {useQuery} from "../../../generator/_components";
 import CourseMateAnalytic from "./analytic/course";
+import GeneralAnalyticBox from "./analytic/general";
+import AnalyticBox from "./analytic";
 
 export default function ScreenExamAttemptResult() {
   const {id} = useParams();
@@ -29,7 +31,7 @@ export default function ScreenExamAttemptResult() {
           question={questions[qIndex]}
           index={qIndex}
         />
-        <CourseMateAnalytic
+        <AnalyticBox
           attemptId={id}
           qOrder={questions[qIndex].order}
         />

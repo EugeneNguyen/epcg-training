@@ -1,4 +1,4 @@
-import {Box, Cell, Table, TBody, TH, THead, useQuery} from "../../../../../generator/_components";
+import {Cell, Table, TBody, TH, THead, useQuery} from "../../../../../generator/_components";
 import API from './api';
 import classNames from "classnames";
 
@@ -11,27 +11,25 @@ export default function CourseMateAnalytic({attemptId, qOrder}) {
   const {enrolls} = data.data.exam.course;
 
   return (
-    <Box title="Members in my course">
-      <Table>
-        <THead>
-          <tr>
-            <TH>Member</TH>
-            <TH>Result</TH>
-          </tr>
-        </THead>
-        <TBody>
-          {enrolls.map((enroll, index) => (
-            <CourseMateCell
-              key={enroll.id}
-              index={index}
-              enroll={enroll}
-              qOrder={qOrder}
-              examId={data.data.exam.id}
-            />
-          ))}
-        </TBody>
-      </Table>
-    </Box>
+    <Table>
+      <THead>
+        <tr>
+          <TH>Member</TH>
+          <TH>Result</TH>
+        </tr>
+      </THead>
+      <TBody>
+        {enrolls.map((enroll, index) => (
+          <CourseMateCell
+            key={enroll.id}
+            index={index}
+            enroll={enroll}
+            qOrder={qOrder}
+            examId={data.data.exam.id}
+          />
+        ))}
+      </TBody>
+    </Table>
   );
 }
 
