@@ -10,10 +10,10 @@ export default function GeneralAnalyticBox({attemptId, qOrder}) {
 
   const {enrolls} = data.data.exam.course;
   const questions = [
-    {answer: 'A', number: 0},
-    {answer: 'B', number: 0},
-    {answer: 'C', number: 0},
-    {answer: 'D', number: 0},
+    {answer: 'A', number: 0, correct: 0},
+    {answer: 'B', number: 0, correct: 0},
+    {answer: 'C', number: 0, correct: 0},
+    {answer: 'D', number: 0, correct: 0},
   ];
   for (const enroll of enrolls) {
     for (const attempt of enroll.user.examAttempts) {
@@ -21,7 +21,11 @@ export default function GeneralAnalyticBox({attemptId, qOrder}) {
       if (question && question.answer) {
         const answer = question.answer;
         const record = questions.find(q => q.answer == answer);
-        record.number = record.number + 1;
+        if (question.correct) {
+          record.correct = record.correct + 1;
+        } else {
+          record.number = record.number + 1;
+        }
       }
     }
   }
@@ -34,7 +38,8 @@ export default function GeneralAnalyticBox({attemptId, qOrder}) {
             <XAxis dataKey="answer"/>
             <YAxis/>
             <Tooltip/>
-            <Bar dataKey="number" fill="#8884d8"/>
+            <Bar stackId="a" dataKey="number" fill="#f87171"/>
+            <Bar stackId="a" dataKey="correct" fill="#34d399"/>
           </BarChart>
         </ResponsiveContainer>
       </div>
