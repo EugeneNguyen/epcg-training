@@ -6,8 +6,6 @@ import {useState} from "react";
 import classNames from "classnames";
 import QuestionBox from "./question_box";
 import {useQuery} from "../../../generator/_components";
-import CourseMateAnalytic from "./analytic/course";
-import GeneralAnalyticBox from "./analytic/general";
 import AnalyticBox from "./analytic";
 
 export default function ScreenExamAttemptResult() {
@@ -32,8 +30,7 @@ export default function ScreenExamAttemptResult() {
           index={qIndex}
         />
         <AnalyticBox
-          attemptId={id}
-          qOrder={questions[qIndex].order}
+          question={questions[qIndex]}
         />
       </div>
       <div className="w-4/12">

@@ -53,6 +53,8 @@ query et_exam_attempt_get_by_id($id: String) {
     }
     questions {
       id
+      attemptId
+      questionId
       order
       fullQuestionData
       rawAnswer
