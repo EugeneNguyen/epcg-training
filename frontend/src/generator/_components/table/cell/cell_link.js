@@ -23,7 +23,7 @@ export default function CellLink(props) {
       editable={props.editable}
       renderDisplay={() => (
         <Link to={props.link} className="underline text-blue-500">
-          {props.value}
+          {props.value || props.children}
         </Link>
       )}
       renderInput={() => (
