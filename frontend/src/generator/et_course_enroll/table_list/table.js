@@ -41,6 +41,11 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
             Is Active
           </TH>
         )}
+        {excludeColumns.includes("isCourseAdmin") || (
+          <TH className="">
+            Is Course Admin
+          </TH>
+        )}
         <TH className="w-30">
           Action
         </TH>
@@ -65,6 +70,12 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
           <Cell
             type="TINYINT(1)"
             value={_.get(item, 'isActive')}
+          />
+        )}
+          {excludeColumns.includes("isCourseAdmin") || (
+          <Cell
+            type="TINYINT(1)"
+            value={_.get(item, 'isCourseAdmin')}
           />
         )}
         <td>

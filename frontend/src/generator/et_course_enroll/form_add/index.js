@@ -29,6 +29,7 @@ function FormAdd({fixedParams, parent={}}) {
   const [courseId, setcourseId] = useState(null);
   const [userId, setuserId] = useState(null);
   const [isActive, setisActive] = useState(null);
+  const [isCourseAdmin, setisCourseAdmin] = useState(null);
 
   const [apiAdd] = useMutation(API.ADD);
 
@@ -37,6 +38,7 @@ function FormAdd({fixedParams, parent={}}) {
       courseId,
       userId,
       isActive,
+      isCourseAdmin,
       ...fixedParams,
     };
     apiAdd({variables: {data}})
@@ -91,6 +93,15 @@ function FormAdd({fixedParams, parent={}}) {
             displayLabel="Is Active"
             value={isActive}
             onValueChange={(value) => setisActive(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.isCourseAdmin) && (
+          <Input
+            type="TINYINT(1)"
+            name="isCourseAdmin"
+            displayLabel="Is Course Admin"
+            value={isCourseAdmin}
+            onValueChange={(value) => setisCourseAdmin(value)}
           />
         )}
       </Form>

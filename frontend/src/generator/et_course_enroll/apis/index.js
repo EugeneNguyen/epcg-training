@@ -7,6 +7,7 @@ query et_course_enroll_get_all($where: EtCourseEnrollWhere) {
     courseId
     userId
     isActive
+    isCourseAdmin
     createdAt
     updatedAt
   }
@@ -29,6 +30,7 @@ query et_course_enroll_get_all_with_page($pagination: EtCourseEnrollPaginationIn
       }
       userId
       isActive
+      isCourseAdmin
       createdAt
       updatedAt
     }
@@ -56,6 +58,7 @@ query et_course_enroll_get_by_id($id: String) {
     }
     userId
     isActive
+    isCourseAdmin
     createdAt
     updatedAt
   }
@@ -70,6 +73,7 @@ mutation et_course_enroll_add($data: EtCourseEnrollInput) {
     courseId
     userId
     isActive
+    isCourseAdmin
     createdAt
     updatedAt
   }
@@ -83,6 +87,7 @@ mutation et_course_enroll_edit($id: String, $data: EtCourseEnrollInput) {
     courseId
     userId
     isActive
+    isCourseAdmin
     createdAt
     updatedAt
   }

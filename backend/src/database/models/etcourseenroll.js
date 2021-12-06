@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     courseId: DataTypes.UUID,
     userId: DataTypes.UUID,
-    isActive: DataTypes.BOOLEAN
+    isActive: DataTypes.BOOLEAN,
+    isCourseAdmin: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'etCourseEnroll',

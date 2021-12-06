@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-            
+              
 export default function FormEtCourseEnrollEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -31,6 +31,7 @@ function FormEdit({fixedParams, parent={}}) {
   const [courseId, setcourseId] = useState(null);
   const [userId, setuserId] = useState(null);
   const [isActive, setisActive] = useState(null);
+  const [isCourseAdmin, setisCourseAdmin] = useState(null);
 
   const { loading, error, data, refetch } = useQuery(
     API.GET_BY_ID,
@@ -41,6 +42,7 @@ function FormEdit({fixedParams, parent={}}) {
         setcourseId(response.data.courseId);
         setuserId(response.data.userId);
         setisActive(response.data.isActive);
+        setisCourseAdmin(response.data.isCourseAdmin);
 
       },
     }
@@ -53,6 +55,7 @@ function FormEdit({fixedParams, parent={}}) {
       courseId,
       userId,
       isActive,
+      isCourseAdmin,
       ...fixedParams,
     };
     editApi({ variables: { id, data } })
@@ -105,6 +108,15 @@ function FormEdit({fixedParams, parent={}}) {
             displayLabel="Is Active"
             value={isActive}
             onValueChange={(value) => setisActive(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.isCourseAdmin) && (
+          <Input
+            type="TINYINT(1)"
+            name="isCourseAdmin"
+            displayLabel="Is Course Admin"
+            value={isCourseAdmin}
+            onValueChange={(value) => setisCourseAdmin(value)}
           />
         )}
       </Form>

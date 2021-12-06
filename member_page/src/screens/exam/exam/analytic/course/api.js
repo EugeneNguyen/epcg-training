@@ -6,7 +6,7 @@ query Et_course_exam_get_by_id($id: String) {
     id
     course {
       id
-      enrolls {
+      enrolls(where: {isCourseAdmin: false}) {
         id
         user {
           id

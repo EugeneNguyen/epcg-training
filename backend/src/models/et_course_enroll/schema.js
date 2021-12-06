@@ -7,6 +7,7 @@ type EtCourseEnroll {
   courseId: String
   userId: String
   isActive: Boolean
+  isCourseAdmin: Boolean
   createdAt: String
   updatedAt: String
   course: EtCourse
@@ -28,6 +29,7 @@ input EtCourseEnrollInput {
   courseId: String
   userId: String
   isActive: Boolean
+  isCourseAdmin: Boolean
 }
 
 input EtCourseEnrollPaginationInput {
@@ -40,6 +42,7 @@ input EtCourseEnrollWhere {
   courseId: String
   userId: String
   isActive: Boolean
+  isCourseAdmin: Boolean
   createdAt: String
   updatedAt: String
 }
