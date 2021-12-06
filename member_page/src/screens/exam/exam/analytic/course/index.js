@@ -68,7 +68,7 @@ function CellEnroll({enroll, index}) {
     )
   }
 
-  const percentage = bestAttempt.numCorrect * 100 / bestAttempt.numQuestion;
+  const percentage = parseInt(bestAttempt.numCorrect * 100 / bestAttempt.numQuestion);
 
   return (
     <tr className={classNames(

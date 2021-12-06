@@ -2,8 +2,8 @@ import {Cell, Table, TBody, TH, THead, useQuery} from "../../../../../generator/
 import API from './api';
 import classNames from "classnames";
 
-export default function CourseMateAnalytic({attemptId, qOrder}) {
-  const {data, error, loading} = useQuery(API.GET_ATTEMPT_BY_ID, {variables: {id: attemptId}});
+export default function CourseMateAnalytic({question}) {
+  const {data, error, loading} = useQuery(API.GET_ATTEMPT_BY_ID, {variables: {id: question.attemptId}});
 
   if (loading) return "Loading";
   if (error) return "Error";
@@ -24,7 +24,7 @@ export default function CourseMateAnalytic({attemptId, qOrder}) {
             key={enroll.id}
             index={index}
             enroll={enroll}
-            qOrder={qOrder}
+            qOrder={question.order}
             examId={data.data.exam.id}
           />
         ))}
@@ -34,7 +34,6 @@ export default function CourseMateAnalytic({attemptId, qOrder}) {
 }
 
 function CourseMateCell({enroll, index, qOrder, examId}) {
-  console.log(qOrder);
   const {examAttempts} = enroll.user;
   const name = enroll.user.name || enroll.user.username;
   const attempts = examAttempts.filter(a => a.examId === examId);
