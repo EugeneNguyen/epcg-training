@@ -1,4 +1,4 @@
-const { ApolloServer } = require('apollo-server-express');
+const {ApolloServer} = require('apollo-server-express');
 const models = require('./src');
 const express = require('express');
 const env = process.env.NODE_ENV || 'development';
@@ -15,14 +15,12 @@ const server = new ApolloServer({
 
 server.start().then(() => {
   const app = express();
-  if (env === 'development') {
-    app.use('/admin', express.static('public/admin'));
-  }
+  app.use('/admin', express.static('public/admin'));
   app.use('/', express.static('public/app'));
 
-  server.applyMiddleware({ app, path: '/api' });
+  server.applyMiddleware({app, path: '/api'});
 
-  app.listen({ port }, () => {
+  app.listen({port}, () => {
     console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
     console.log(`🚀 Admin ready at http://localhost:${port}/admin`);
     console.log(`🚀 App ready at http://localhost:${port}/`);
