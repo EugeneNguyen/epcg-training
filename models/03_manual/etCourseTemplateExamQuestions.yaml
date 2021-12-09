@@ -12,6 +12,7 @@ fields:
       size: '3'
   order:
     list:
+      editable: true
       size: '2'
   createdAt:
     list:

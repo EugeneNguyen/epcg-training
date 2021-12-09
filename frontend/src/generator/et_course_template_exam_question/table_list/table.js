@@ -65,6 +65,11 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
           <Cell
             type="INT"
             value={_.get(item, 'order')}
+            id={item.id}
+            valueKey="order"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
         <td>

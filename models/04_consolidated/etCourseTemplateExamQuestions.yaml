@@ -64,6 +64,7 @@ fields:
     graphType: Int
     list:
       enable: true
+      editable: true
       size: '2'
     add:
       enable: true
