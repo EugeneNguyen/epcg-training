@@ -16,6 +16,12 @@ export default function QuestionBox({question, index}) {
         <div>
           {questionData.question}
         </div>
+        {questionData.questionImage && (
+          <img
+            className="max-w-lg"
+            src={questionData.questionImage}
+          />
+        )}
         <div className="flex flex-col space-y-2">
           {questionData.choices.map((choice, choiceIndex) => (
             <label className="inline-flex items-center">

@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-                          
+                            
 export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -30,6 +30,7 @@ function FormEdit({fixedParams, parent={}}) {
 
   const [questionCode, setquestionCode] = useState(null);
   const [question, setquestion] = useState(null);
+  const [questionImageId, setquestionImageId] = useState(null);
   const [answerA, setanswerA] = useState(null);
   const [answerB, setanswerB] = useState(null);
   const [answerC, setanswerC] = useState(null);
@@ -48,6 +49,7 @@ function FormEdit({fixedParams, parent={}}) {
       onCompleted: (response) => {
         setquestionCode(response.data.questionCode);
         setquestion(response.data.question);
+        setquestionImageId(response.data.questionImageId);
         setanswerA(response.data.answerA);
         setanswerB(response.data.answerB);
         setanswerC(response.data.answerC);
@@ -68,6 +70,7 @@ function FormEdit({fixedParams, parent={}}) {
     const data = {
       questionCode,
       question,
+      questionImageId,
       answerA,
       answerB,
       answerC,
@@ -114,6 +117,18 @@ function FormEdit({fixedParams, parent={}}) {
             displayLabel="Question"
             value={question}
             onValueChange={(value) => setquestion(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.questionImageId) && (
+          <Input
+            type="SELECT"
+            query={require('../../tg_file/apis').default.ALL}
+            idKey="id"
+            labelKey="originalName"
+            name="questionImageId"
+            displayLabel="Question Image"
+            value={questionImageId}
+            onValueChange={(value) => setquestionImageId(value)}
           />
         )}
         {(!fixedParams || !fixedParams.answerA) && (

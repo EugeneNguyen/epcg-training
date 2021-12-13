@@ -12,6 +12,8 @@ import RouteEtCourseTemplateExam from './generator/et_course_template_exam/route
 import RouteEtExamAttempt from './generator/et_exam_attempt/router';
 import RouteTgUser from "./generator/tg_user/router";
 import RouteEtCourse from "./generator/et_course/router";
+import RouteTgFile from "./generator/tg_file/router";
+import RouteFile from "./manuals/files/router";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
             <RouteEtExamAttempt/>
             <RouteEtCourse/>
             <RouteTgUser/>
+            <RouteTgFile/>
+            <RouteFile/>
             <ToastContainer/>
           </div>
         </div>

@@ -9,7 +9,7 @@ export default function Cell({type, link, ...props}) {
     return <CellDatetime {...props} />;
   }
   if (type === 'FLOAT' || type === 'INT') {
-    return <CellNumber {...args} />
+    return <CellNumber {...props} />
   }
   if (type === 'TINYINT(1)') {
     return <CellCheckbox {...props} />;

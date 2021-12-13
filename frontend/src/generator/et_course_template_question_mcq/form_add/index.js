@@ -28,6 +28,7 @@ function FormAdd({fixedParams, parent={}}) {
 
   const [questionCode, setquestionCode] = useState(null);
   const [question, setquestion] = useState(null);
+  const [questionImageId, setquestionImageId] = useState(null);
   const [answerA, setanswerA] = useState(null);
   const [answerB, setanswerB] = useState(null);
   const [answerC, setanswerC] = useState(null);
@@ -44,6 +45,7 @@ function FormAdd({fixedParams, parent={}}) {
     const data = {
       questionCode,
       question,
+      questionImageId,
       answerA,
       answerB,
       answerC,
@@ -97,6 +99,17 @@ function FormAdd({fixedParams, parent={}}) {
             displayLabel="Question"
             value={question}
             onValueChange={(value) => setquestion(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.questionImageId) && (
+          <Input
+            type="SELECT"
+            query={require('../../tg_file/apis').default.ALL}
+            idKey="id"
+            labelKey="originalName"
+            displayLabel="Question Image"
+            value={questionImageId}
+            onValueChange={(value) => setquestionImageId(value)}
           />
         )}
         {(!fixedParams || !fixedParams.answerA) && (

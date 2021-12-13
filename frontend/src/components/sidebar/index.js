@@ -10,6 +10,9 @@ export default function SideBar() {
         <nav className="space-y-5">
           <NavItem to="/etEducationProvider" label="Education Provider"/>
           <NavHr/>
+          <NavItem to="/tgFile" label="File"/>
+          <NavItem to="/upload" label="Upload File"/>
+          <NavHr/>
           <NavItem to="/tgUser" label="User"/>
         </nav>
         <div className="flex items-center px-4 -mx-2">

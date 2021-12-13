@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import CellBase from './cell_base';
 
-CellText.propTypes = {
+CellNumber.propTypes = {
   editable: PropTypes.bool,
   value: PropTypes.any,
 

@@ -6,6 +6,7 @@ query et_course_template_question_mcq_get_all($where: EtCourseTemplateQuestionMc
     id
     questionCode
     question
+    questionImageId
     answerA
     answerB
     answerC
@@ -27,6 +28,11 @@ query et_course_template_question_mcq_get_all_with_page($pagination: EtCourseTem
       id
       questionCode
       question
+      questionImage {
+        id
+        originalName
+      }
+      questionImageId
       answerA
       answerB
       answerC
@@ -61,6 +67,11 @@ query et_course_template_question_mcq_get_by_id($id: String) {
     id
     questionCode
     question
+    questionImage {
+      id
+      originalName
+    }
+    questionImageId
     answerA
     answerB
     answerC
@@ -94,6 +105,7 @@ mutation et_course_template_question_mcq_add($data: EtCourseTemplateQuestionMcqI
     id
     questionCode
     question
+    questionImageId
     answerA
     answerB
     answerC
@@ -114,6 +126,7 @@ mutation et_course_template_question_mcq_edit($id: String, $data: EtCourseTempla
     id
     questionCode
     question
+    questionImageId
     answerA
     answerB
     answerC

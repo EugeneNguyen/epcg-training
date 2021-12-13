@@ -26,10 +26,12 @@ let mutation = {
     });
 
     for (const templateExamQuestion of courseTemplateExamQuestions) {
-      const question = await db.etCourseTemplateQuestionMCQ.findByPk(templateExamQuestion.questionId)
+      const question = await db.etCourseTemplateQuestionMCQ.findByPk(templateExamQuestion.questionId);
+      const questionImage = question.questionImageId ? await db.tgFile.findByPk(question.questionImageId) : null;
       const displayedQuestionData = {
         type: 'mcq',
         question: question.question,
+        questionImage: questionImage ? questionImage.key : null,
         choices: [
           question.answerA,
           question.answerB,

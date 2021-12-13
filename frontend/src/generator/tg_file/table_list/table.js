@@ -93,6 +93,7 @@ export default function TgFileTable({limit, offset, didLoadData, onRefRefetch, w
           <Cell
             type="CHAR(36)"
             value={_.get(item, 'id')}
+            link={`/tgFile/${item.id}`}
           />
         )}
           {excludeColumns.includes("service") || (

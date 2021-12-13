@@ -16,6 +16,9 @@ fields:
   question:
     list:
       enable: false
+  questionImageId:
+    list:
+      enable: false
   answerA:
     list:
       enable: false

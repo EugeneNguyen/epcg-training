@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     questionCode: DataTypes.STRING,
     question: DataTypes.TEXT,
+    questionImageId: DataTypes.UUID,
     answerA: DataTypes.TEXT,
     answerB: DataTypes.TEXT,
     answerC: DataTypes.TEXT,

@@ -34,6 +34,7 @@ yarn sql init
 
 ```
 yarn sql model:generate --name=etEducationProvider --attributes=name:String
+yarn sql migration:generate --name=AddImageToQuestion
 ```
 
 7. Update UUID

@@ -6,6 +6,7 @@ type EtCourseTemplateQuestionMcq {
   id: String
   questionCode: String
   question: String
+  questionImageId: String
   answerA: String
   answerB: String
   answerC: String
@@ -21,6 +22,7 @@ type EtCourseTemplateQuestionMcq {
   tags(where: EtCourseTemplateQuestionTagWhere): [EtCourseTemplateQuestionTag]
   tagsCount(where: EtCourseTemplateQuestionTagWhere): Int
   tagsLink(where: EtCourseTemplateQuestionTagLinkWhere): [EtCourseTemplateQuestionTagLink]
+  questionImage: TgFile
 }
 
 type EtCourseTemplateQuestionMcqWithPagination {
@@ -37,6 +39,7 @@ type EtCourseTemplateQuestionMcqPagination {
 input EtCourseTemplateQuestionMcqInput {
   questionCode: String
   question: String
+  questionImageId: String
   answerA: String
   answerB: String
   answerC: String
@@ -57,6 +60,7 @@ input EtCourseTemplateQuestionMcqWhere {
   id: String
   questionCode: String
   question: String
+  questionImageId: String
   answerA: String
   answerB: String
   answerC: String

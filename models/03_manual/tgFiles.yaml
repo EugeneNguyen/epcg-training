@@ -1,0 +1,4 @@
+fields:
+  id:
+    list:
+      link: /tgFile/${item.id}

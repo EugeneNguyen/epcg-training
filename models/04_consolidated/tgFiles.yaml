@@ -15,6 +15,7 @@ fields:
     graphType: String
     list:
       enable: true
+      link: /tgFile/${item.id}
     add:
       enable: false
     edit:
