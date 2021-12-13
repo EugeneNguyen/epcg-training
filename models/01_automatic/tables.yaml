@@ -13,6 +13,7 @@ tables:
   - etEducationProviders
   - etExamAttemptQuestions
   - etExamAttempts
+  - tgFiles
   - tgPermissionGroups
   - tgPermissions
   - tgRolePermissions

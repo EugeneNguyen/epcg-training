@@ -29,6 +29,9 @@ module.exports = {
       meta: {
         type: Sequelize.TEXT,
       },
+      ownerUserId: {
+        type: Sequelize.UUID,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

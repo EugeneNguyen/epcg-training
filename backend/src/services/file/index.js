@@ -32,10 +32,6 @@ const getUrl = async (key) => {
   return `https://${process.env.AWS_S3_BUCKET_NAME}.s3.amazonaws.com/${key}`;
 }
 
-const createFileRecord = async (file) => {
-
-}
-
 module.exports = {
   upload,
   getUrl,
