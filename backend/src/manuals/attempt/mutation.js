@@ -43,6 +43,7 @@ let mutation = {
       const fullQuestionData = {
         type: 'mcq',
         question: question.question,
+        questionImage: questionImage ? questionImage.key : null,
         choices: [
           question.answerA,
           question.answerB,
