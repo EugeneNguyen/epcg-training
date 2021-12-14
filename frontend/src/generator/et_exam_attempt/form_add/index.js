@@ -28,6 +28,7 @@ function FormAdd({fixedParams, parent={}}) {
 
   const [examId, setexamId] = useState(null);
   const [templateExamId, settemplateExamId] = useState(null);
+  const [score, setscore] = useState(null);
   const [duration, setduration] = useState(null);
   const [startTime, setstartTime] = useState(null);
   const [endTime, setendTime] = useState(null);
@@ -40,6 +41,7 @@ function FormAdd({fixedParams, parent={}}) {
     const data = {
       examId,
       templateExamId,
+      score,
       duration,
       startTime,
       endTime,
@@ -90,6 +92,15 @@ function FormAdd({fixedParams, parent={}}) {
             displayLabel="Template Exam"
             value={templateExamId}
             onValueChange={(value) => settemplateExamId(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.score) && (
+          <Input
+            type="INT"
+            name="score"
+            displayLabel="Score"
+            value={score}
+            onValueChange={(value) => setscore(value)}
           />
         )}
         {(!fixedParams || !fixedParams.duration) && (

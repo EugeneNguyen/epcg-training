@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     answerD: DataTypes.TEXT,
     correctAnswer: DataTypes.STRING,
     explanation: DataTypes.TEXT,
+    score: {
+      type: DataTypes.INTEGER
+    },
     courseTemplateId: DataTypes.UUID,
     questionSourceId: DataTypes.UUID,
   }, {

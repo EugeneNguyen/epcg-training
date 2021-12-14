@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     templateExamId: {
       type: DataTypes.UUID
     },
+    score: {
+      type: DataTypes.INTEGER
+    },
     duration: {
       type: DataTypes.INTEGER
     },

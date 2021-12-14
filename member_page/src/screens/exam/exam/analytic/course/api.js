@@ -14,8 +14,7 @@ query Et_course_exam_get_by_id($id: String, $token: String) {
           name
           examAttempts(where: {examId: $id}) {
             id
-            numCorrect: questionsCount(where: {correct: true})
-            numQuestion: questionsCount
+            score
             startTime
             endTime
           }

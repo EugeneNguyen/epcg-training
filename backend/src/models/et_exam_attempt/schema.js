@@ -7,6 +7,7 @@ type EtExamAttempt {
   userId: String
   examId: String
   templateExamId: String
+  score: Int
   duration: Int
   startTime: String
   endTime: String
@@ -33,6 +34,7 @@ type EtExamAttemptPagination {
 input EtExamAttemptInput {
   examId: String
   templateExamId: String
+  score: Int
   duration: Int
   startTime: String
   endTime: String
@@ -50,6 +52,7 @@ input EtExamAttemptWhere {
   userId: String
   examId: String
   templateExamId: String
+  score: Int
   duration: Int
   startTime: String
   endTime: String

@@ -49,7 +49,7 @@ function CellEnroll({enroll, index, isCourseAdmin}) {
     )
   }
 
-  const bestAttempt = examAttempts.reduce((a, b) => a.numCorrect > b.numCorrect ? a : b);
+  const bestAttempt = examAttempts.reduce((a, b) => a.score > b.score ? a : b);
 
   if (!bestAttempt.startTime) {
     return (
@@ -73,12 +73,10 @@ function CellEnroll({enroll, index, isCourseAdmin}) {
     )
   }
 
-  const percentage = parseInt(bestAttempt.numCorrect * 100 / bestAttempt.numQuestion);
-
   return (
     <tr className={classNames(
-      {'bg-green-100': percentage >= 70},
-      {'bg-red-100': percentage < 70},
+      {'bg-green-100': bestAttempt.score >= 70},
+      {'bg-red-100': bestAttempt.score < 70},
     )}>
       <Cell>{index + 1}</Cell>
       {isCourseAdmin ? (
@@ -87,7 +85,7 @@ function CellEnroll({enroll, index, isCourseAdmin}) {
         <Cell>{name}</Cell>
       )}
       <Cell>
-        {percentage}%
+        {bestAttempt.score}%
       </Cell>
       <CellDatetime value={bestAttempt.endTime} dateFormat="lll" />
     </tr>

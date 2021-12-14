@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableEtExamAttemptQuestionList from '../table_list';
 import FormEtExamAttemptQuestionAdd from '../form_add';
 import FormEtExamAttemptQuestionEdit from '../form_edit';
 import ViewEtExamAttemptQuestionInfo from '../view_info';
-import API from '../apis';
 
 export default function RouteEtExamAttemptQuestion() {
   return (

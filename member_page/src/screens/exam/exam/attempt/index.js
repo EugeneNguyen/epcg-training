@@ -20,12 +20,6 @@ export default function ExamAttemptBox({examId}) {
   if (error) return <Box title="My Attempts" padding>{error.message}</Box>;
   if (!data) return <Box title="My Attempts" padding>No Data</Box>;
 
-  data.data.examAttempts.map(attempt => {
-    attempt.correct = attempt.questions.filter(q => q.correct).length;
-    attempt.numQuestion = attempt.questions.length;
-    attempt.score = parseInt(attempt.correct * 100 / attempt.numQuestion);
-  });
-
   return (
     <Box
       title="My Attempts"
@@ -54,7 +48,7 @@ export default function ExamAttemptBox({examId}) {
             <tr>
               <Cell value={attempt.templateExam.name}/>
               {attempt.endTime ? (
-                <Cell value={`${attempt.score}% (${attempt.correct}/${attempt.numQuestion})`}/>
+                <Cell value={`${attempt.score}%`}/>
               ) : (
                 <Cell value=""/>
               )}

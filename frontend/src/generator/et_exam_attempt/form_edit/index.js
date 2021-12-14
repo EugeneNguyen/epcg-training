@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-                  
+                    
 export default function FormEtExamAttemptEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -30,6 +30,7 @@ function FormEdit({fixedParams, parent={}}) {
 
   const [examId, setexamId] = useState(null);
   const [templateExamId, settemplateExamId] = useState(null);
+  const [score, setscore] = useState(null);
   const [duration, setduration] = useState(null);
   const [startTime, setstartTime] = useState(null);
   const [endTime, setendTime] = useState(null);
@@ -44,6 +45,7 @@ function FormEdit({fixedParams, parent={}}) {
       onCompleted: (response) => {
         setexamId(response.data.examId);
         settemplateExamId(response.data.templateExamId);
+        setscore(response.data.score);
         setduration(response.data.duration);
         setstartTime(response.data.startTime);
         setendTime(response.data.endTime);
@@ -60,6 +62,7 @@ function FormEdit({fixedParams, parent={}}) {
     const data = {
       examId,
       templateExamId,
+      score,
       duration,
       startTime,
       endTime,
@@ -108,6 +111,15 @@ function FormEdit({fixedParams, parent={}}) {
             displayLabel="Template Exam"
             value={templateExamId}
             onValueChange={(value) => settemplateExamId(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.score) && (
+          <Input
+            type="INT"
+            name="score"
+            displayLabel="Score"
+            value={score}
+            onValueChange={(value) => setscore(value)}
           />
         )}
         {(!fixedParams || !fixedParams.duration) && (

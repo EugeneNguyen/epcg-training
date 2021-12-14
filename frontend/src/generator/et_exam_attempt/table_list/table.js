@@ -41,6 +41,11 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
             Template Exam
           </TH>
         )}
+        {excludeColumns.includes("score") || (
+          <TH className="">
+            Score
+          </TH>
+        )}
         {excludeColumns.includes("duration") || (
           <TH className="">
             Duration
@@ -81,6 +86,12 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
           <Cell
             type="CHAR(36)"
             value={_.get(item, 'templateExam.name')}
+          />
+        )}
+          {excludeColumns.includes("score") || (
+          <Cell
+            type="INT"
+            value={_.get(item, 'score')}
           />
         )}
           {excludeColumns.includes("duration") || (

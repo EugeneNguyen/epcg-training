@@ -90,22 +90,21 @@ let mutation = {
     if (attempt.endTime) {
       throw new Error('Exam ended');
     }
+    const numQuestion = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id }});
+    const numCorrect = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id, correct: true }});
     attempt.endTime = db.sequelize.fn('NOW');
+    attempt.score = parseInt(numCorrect * 100 / numQuestion);
     await attempt.save();
     return attempt;
   },
   async manual_adhoc() {
-    const attempts = await db.etExamAttempt.findAll({where: {examId: {[Op.eq] : null}}});
+    const attempts = await db.etExamAttempt.findAll();
     for (const attempt of attempts) {
-      const user = await db.tgUser.findByPk(attempt.userId);
-      const enrolls = await db.etCourseEnroll.findAll({where: {userId: user.id}});
-      for (const enroll of enrolls) {
-        const exams = await db.etCourseExam.findAll({where: {courseId: enroll.courseId, courseTemplateExamId: attempt.templateExamId}});
-        if (exams.length === 1) {
-          const exam = exams[0];
-          await attempt.update({examId: exam.id});
-        }
-      }
+      const numQuestion = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id }});
+      const numCorrect = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id, correct: true }});
+      console.log(numCorrect, numQuestion);
+      attempt.score = parseInt(numCorrect * 100 / numQuestion);
+      await attempt.save();
     }
     return true;
   }
