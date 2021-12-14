@@ -102,7 +102,6 @@ let mutation = {
     for (const attempt of attempts) {
       const numQuestion = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id }});
       const numCorrect = await db.etExamAttemptQuestion.count({where: { attemptId: attempt.id, correct: true }});
-      console.log(numCorrect, numQuestion);
       attempt.score = parseInt(numCorrect * 100 / numQuestion);
       await attempt.save();
     }
