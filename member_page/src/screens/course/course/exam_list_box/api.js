@@ -17,23 +17,13 @@ query Et_course_exam_get_all($where: EtCourseExamWhere, $token: String) {
     examAttempts {
       id
       templateExamId
-      questions {
-        id
-        correct
-      }
+      score
       endTime
     }
   }
 }
 `;
 
-const DEFAULT_OPTIONS = {
-  notifyOnNetworkStatusChange: true,
-  fetchPolicy: 'cache-and-network',
-  errorPolicy: 'all',
-}
-
 export default {
   GET_EXAM,
-  DEFAULT_OPTIONS,
 };

@@ -15,13 +15,6 @@ query me($token: String) {
 }
 `;
 
-const DEFAULT_OPTIONS = {
-  notifyOnNetworkStatusChange: true,
-  fetchPolicy: 'cache-and-network',
-  errorPolicy: 'all',
-}
-
 export default {
   GET_COURSE,
-  DEFAULT_OPTIONS,
 };
