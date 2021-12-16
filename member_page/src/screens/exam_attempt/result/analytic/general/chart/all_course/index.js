@@ -32,10 +32,8 @@ export default function AllCourseChart({question}) {
     <div>
       <ResponsiveContainer width="100%" aspect={2}>
         <BarChart data={questions}>
-          <CartesianGrid strokeDasharray="3 3"/>
           <XAxis dataKey="answer"/>
           <YAxis/>
-          <Tooltip/>
           <Bar stackId="a" dataKey="number" fill="#f87171"/>
           <Bar stackId="a" dataKey="correct" fill="#34d399"/>
         </BarChart>
