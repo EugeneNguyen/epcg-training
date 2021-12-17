@@ -1,13 +1,16 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import {Route, Switch} from "react-router-dom";
-import CourseScreen from "../course";
+
+const CourseScreen = lazy(() => import('../course'));
 
 export default function RouteCourse() {
   return (
-    <Switch>
-      <Route path="/course/:id" exact>
-        <CourseScreen/>
-      </Route>
-    </Switch>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route path="/course/:id" exact>
+          <CourseScreen/>
+        </Route>
+      </Switch>
+    </Suspense>
   );
 }

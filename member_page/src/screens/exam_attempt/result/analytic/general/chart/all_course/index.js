@@ -33,7 +33,7 @@ export default function AllCourseChart({question}) {
       <ResponsiveContainer width="100%" aspect={2}>
         <BarChart data={questions}>
           <XAxis dataKey="answer"/>
-          <YAxis/>
+          <Tooltip/>
           <Bar stackId="a" dataKey="number" fill="#f87171"/>
           <Bar stackId="a" dataKey="correct" fill="#34d399"/>
         </BarChart>
