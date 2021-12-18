@@ -1,0 +1,3 @@
+[submodule "ter-generator"]
+	path = ter-generator
+	url = https://EugeneNguyen@github.com/EugeneNguyen/ter-generator.git
