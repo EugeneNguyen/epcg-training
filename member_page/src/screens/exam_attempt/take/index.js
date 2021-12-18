@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import API from "../api";
-import _ from "lodash";
+import get from "lodash/get";
+import orderBy from "lodash/orderBy";
 import QuestionBox from "./question_box";
 import QuestionListBox from "./question_list_box";
 import {useState} from "react";
@@ -17,7 +18,7 @@ export default function ScreenExamAttemptTake() {
   if (error) return "Error ...";
   if (!data) return "No Data ...";
 
-  const questions = _.orderBy(_.get(data, 'data.questions', []), ['order']);
+  const questions = orderBy(get(data, 'data.questions', []), ['order']);
 
   return (
     <div className="flex flex-row space-x-8">

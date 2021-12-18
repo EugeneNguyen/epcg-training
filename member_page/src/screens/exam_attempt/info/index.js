@@ -2,7 +2,7 @@ import {useHistory, useParams} from "react-router-dom";
 import API from "../api";
 import {useMutation} from "@apollo/client";
 import {Box, ButtonLink} from "../../../components";
-import _ from "lodash";
+import get from "lodash/get";
 import {Button} from "../../../generator/_components/button";
 import {useQuery} from "../../../generator/_components";
 import classNames from "classnames";
@@ -21,9 +21,9 @@ export default function ScreenExamAttemptInfo() {
     <div className="space-y-2">
       <Box title="Exam Attempt Information" footer={<ButtonStart id={id} data={data}/>}>
         <dl className="m-0">
-          <InfoItem title="Exam" value={_.get(data, 'data.templateExam.name', 'N/A')}/>
-          <InfoItem title="Number of Questions" value={_.get(data, 'data.templateExam.numberOfQuestion', 'N/A')} odd/>
-          <InfoItem title="Duration (min)" value={_.get(data, 'data.duration', 'N/A')}/>
+          <InfoItem title="Exam" value={get(data, 'data.templateExam.name', 'N/A')}/>
+          <InfoItem title="Number of Questions" value={get(data, 'data.templateExam.numberOfQuestion', 'N/A')} odd/>
+          <InfoItem title="Duration (min)" value={get(data, 'data.duration', 'N/A')}/>
         </dl>
       </Box>
     </div>

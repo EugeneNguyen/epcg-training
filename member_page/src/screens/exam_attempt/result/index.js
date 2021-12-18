@@ -1,7 +1,8 @@
 import {useParams} from "react-router-dom";
 import API from "../api";
 import {Box} from "../../../components";
-import _ from "lodash";
+import orderBy from "lodash/orderBy";
+import get from "lodash/get";
 import {useState} from "react";
 import classNames from "classnames";
 import QuestionBox from "./question_box";
@@ -18,7 +19,7 @@ export default function ScreenExamAttemptResult() {
   if (error) return "Error ...";
   if (!data) return "No Data ...";
 
-  const questions = _.orderBy(_.get(data, 'data.questions', []), ['order']);
+  const questions = orderBy(get(data, 'data.questions', []), ['order']);
   const total = questions.length;
   const correct = questions.filter(q => q.correct).length;
 

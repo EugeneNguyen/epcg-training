@@ -1,7 +1,7 @@
 import {Box, useQuery} from "../../../../generator/_components";
 import {useParams} from "react-router-dom";
 import API from "./api";
-import _ from "lodash";
+import get from "lodash/get";
 import ScoreDistributionChart from "../chart/score_distribution";
 import classNames from "classnames";
 
@@ -15,11 +15,11 @@ export default function ExamInfoBox() {
 
   return (
     <Box title="Exam Information">
-      <Item label="Name" value={_.get(data, 'data.name')}/>
-      <Item label="Duration (min)" value={_.get(data, 'data.courseTemplateExam.duration')}/>
-      <Item label="Number of Question" value={_.get(data, 'data.courseTemplateExam.numberOfQuestion')}/>
+      <Item label="Name" value={get(data, 'data.name')}/>
+      <Item label="Duration (min)" value={get(data, 'data.courseTemplateExam.duration')}/>
+      <Item label="Number of Question" value={get(data, 'data.courseTemplateExam.numberOfQuestion')}/>
       <div className={classNames('m-4')}>
-      <ScoreDistributionChart examId={id} />
+        <ScoreDistributionChart examId={id}/>
       </div>
     </Box>
   );

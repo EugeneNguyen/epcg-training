@@ -1,9 +1,9 @@
 import {useQuery} from "../../../../../generator/_components";
 import API from './api';
 import AuthHelper from "../../../../auth/helper";
-import {Area, AreaChart, CartesianGrid, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis} from "recharts";
+import {Area, AreaChart, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import classNames from "classnames";
-import _ from 'lodash';
+import round from 'lodash/round';
 
 export default function ScoreDistributionChart({examId}) {
   const {data, error, loading} = useQuery(API.GET_EXAM_BY_ID, {variables: {id: examId, token: AuthHelper.token()}});
@@ -29,10 +29,12 @@ export default function ScoreDistributionChart({examId}) {
             </linearGradient>
           </defs>
           <XAxis dataKey="score" type="number" tickCount={11}/>
-          <Area name="All Classes" type="monotone" dataKey="allCourseCount" unit="%" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)"/>
-          <Area name="My Class" type="monotone" dataKey="count" unit="%" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
+          <Area name="All Classes" type="monotone" dataKey="allCourseCount" unit="%" stroke="#82ca9d" fillOpacity={1}
+                fill="url(#colorPv)"/>
+          <Area name="My Class" type="monotone" dataKey="count" unit="%" stroke="#8884d8" fillOpacity={1}
+                fill="url(#colorUv)"/>
           <Legend verticalAlign="top" height={36}/>
-          <Tooltip />
+          <Tooltip/>
           {myAttempts.map(attempt => (
             <ReferenceLine x={attempt.score} stroke="green" label="You're here"/>
           ))}
@@ -51,7 +53,7 @@ function getChartData(data) {
     const courseAttempts = data.data.attempts;
     const allCourseAttempts = data.allAttempts.courseTemplateExam.attempts;
     const percentage = (attempts) => {
-      return _.round(attempts.filter(a => a.score >= i && a.score < i + 10).length * 100 / attempts.length);
+      return round(attempts.filter(a => a.score >= i && a.score < i + 10).length * 100 / attempts.length);
     }
     result.push({
       score: i,

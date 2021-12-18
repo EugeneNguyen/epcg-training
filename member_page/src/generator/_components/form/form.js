@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import isArray from 'lodash/isArray';
 
 function Form({onSubmitParams, ...props}) {
   const handleSubmit = (e) => {
@@ -8,7 +8,7 @@ function Form({onSubmitParams, ...props}) {
         if (!params[target.name]) {
           params[target.name] = target.value;
         } else {
-          if (_.isArray(params[target.name])) {
+          if (isArray(params[target.name])) {
             params[target.name].push(target.value);
           } else {
             params[target.name] = [params[target.name], target.value];
