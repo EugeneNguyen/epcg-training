@@ -1,7 +1,7 @@
 import {Box, useQuery} from "../../../../generator/_components";
 import {useParams} from "react-router-dom";
 import API from "./api";
-import get from "lodash/get";
+import {get} from "lodash";
 import ScoreDistributionChart from "../chart/score_distribution";
 import classNames from "classnames";
 

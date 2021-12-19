@@ -1,7 +1,6 @@
 import {useParams} from "react-router-dom";
 import API from "../api";
-import get from "lodash/get";
-import orderBy from "lodash/orderBy";
+import {get, orderBy} from 'lodash';
 import QuestionBox from "./question_box";
 import QuestionListBox from "./question_list_box";
 import {useState} from "react";

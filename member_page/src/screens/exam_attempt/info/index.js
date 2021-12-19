@@ -2,7 +2,7 @@ import {useHistory, useParams} from "react-router-dom";
 import API from "../api";
 import {useMutation} from "@apollo/client";
 import {Box, ButtonLink} from "../../../components";
-import get from "lodash/get";
+import {get} from "lodash";
 import {Button} from "../../../generator/_components/button";
 import {useQuery} from "../../../generator/_components";
 import classNames from "classnames";

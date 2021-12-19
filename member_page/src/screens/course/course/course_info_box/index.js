@@ -3,9 +3,7 @@ import {useParams} from "react-router-dom";
 import API from "./api";
 import AuthHelper from "../../../auth/helper";
 import classNames from "classnames";
-import round from "lodash/round";
-import meanBy from "lodash/meanBy";
-import sum from "lodash/sum";
+import {round, meanBy, sum} from "lodash";
 
 export default function CourseInfoBox() {
   const {id} = useParams();

@@ -3,7 +3,8 @@ import API from './api';
 import AuthHelper from "../../../../auth/helper";
 import {Area, AreaChart, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import classNames from "classnames";
-import round from 'lodash/round';
+
+import {round} from 'lodash';
 
 export default function ScoreDistributionChart({examId}) {
   const {data, error, loading} = useQuery(API.GET_EXAM_BY_ID, {variables: {id: examId, token: AuthHelper.token()}});

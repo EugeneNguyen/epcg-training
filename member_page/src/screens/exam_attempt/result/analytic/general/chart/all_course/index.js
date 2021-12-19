@@ -1,4 +1,4 @@
-import {Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import {useQuery} from "../../../../../../../generator/_components";
 import API from "./api";
 

@@ -1,12 +1,16 @@
 import {gql} from "@apollo/client";
 
 const GET_EXAM = gql`
-query Et_course_exam_get_all($token: String, $id: String) {
+query Et_course_exam_get_all($token: String) {
   me(token: $token) {
     id
-    examAttempts(where: {examId: $id}) {
+    examAttempts {
       id
       templateExamId
+      exam {
+        id
+        courseId
+      }
       score
       endTime
       questionsCount
