@@ -31,6 +31,8 @@ fields:
     graphType: String
     list:
       enable: true
+      editable: true
+      size: '4'
     add:
       enable: true
     edit:
@@ -63,6 +65,7 @@ fields:
     graphType: String
     list:
       enable: true
+      size: '4'
     add:
       enable: true
     edit:

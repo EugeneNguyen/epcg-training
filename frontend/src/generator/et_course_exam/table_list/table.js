@@ -27,7 +27,7 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
       <THead>
       <TR>
         {excludeColumns.includes("name") || (
-          <TH className="">
+          <TH className="w-4/12">
             Name
           </TH>
         )}
@@ -37,7 +37,7 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
           </TH>
         )}
         {excludeColumns.includes("courseTemplateExamId") || (
-          <TH className="">
+          <TH className="w-4/12">
             Course Template Exam
           </TH>
         )}
@@ -53,6 +53,11 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'name')}
+            id={item.id}
+            valueKey="name"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("courseId") || (

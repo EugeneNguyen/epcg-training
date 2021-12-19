@@ -6,6 +6,13 @@ fields:
   id:
     list:
       enable: false
+  name:
+    list:
+      editable: true
+      size: '4'
+  courseTemplateExamId:
+    list:
+      size: '4'
   createdAt:
     list:
       enable: false

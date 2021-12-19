@@ -85,11 +85,3 @@ function TDEdit(props) {
     </td>
   );
 }
-
-function ButtonIcon({icon, ...props}) {
-  return (
-    <Button size="sm" {...props}>
-      <i className={icon} />
-    </Button>
-  );
-}
