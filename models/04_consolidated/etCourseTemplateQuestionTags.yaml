@@ -31,6 +31,8 @@ fields:
     graphType: String
     list:
       enable: true
+      editable: true
+      size: '6'
       link: /etCourseTemplateQuestionTag/${item.id}
     add:
       enable: true
@@ -527,8 +529,8 @@ relationships:
             enable: true
           displayLabel: Updated At
 defaultOrder:
-  field: ''
-  order: ''
+  field: name
+  order: ASC
 formAdd: {}
 tableList:
   searchBy: name

@@ -28,7 +28,7 @@ export default function EtCourseTemplateQuestionTagTable({limit, offset, didLoad
       <THead>
       <TR>
         {excludeColumns.includes("name") || (
-          <TH className="">
+          <TH className="w-6/12">
             Name
           </TH>
         )}
@@ -50,6 +50,11 @@ export default function EtCourseTemplateQuestionTagTable({limit, offset, didLoad
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourseTemplateQuestionTag/${item.id}`}
+            id={item.id}
+            valueKey="name"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("courseTemplateId") || (

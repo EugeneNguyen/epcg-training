@@ -28,18 +28,13 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
       <THead>
       <TR>
         {excludeColumns.includes("questionCode") || (
-          <TH className="">
+          <TH className="w-4/12">
             Question Code
           </TH>
         )}
         {excludeColumns.includes("correctAnswer") || (
-          <TH className="">
+          <TH className="w-2/12">
             Correct Answer
-          </TH>
-        )}
-        {excludeColumns.includes("score") || (
-          <TH className="">
-            Score
           </TH>
         )}
         {excludeColumns.includes("questionSourceId") || (
@@ -76,12 +71,6 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             mutation={API.EDIT}
             onCompleted={() => refetch()}
             editable
-          />
-        )}
-          {excludeColumns.includes("score") || (
-          <Cell
-            type="INT"
-            value={get(item, 'score')}
           />
         )}
           {excludeColumns.includes("questionSourceId") || (

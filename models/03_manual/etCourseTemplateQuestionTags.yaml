@@ -1,6 +1,6 @@
 defaultOrder:
-  field: ''
-  order: ''
+  field: name
+  order: ASC
 formAdd: {}
 tableList:
   searchBy: name
@@ -10,6 +10,8 @@ fields:
       enable: false
   name:
     list:
+      editable: true
+      size: '6'
       link: /etCourseTemplateQuestionTag/${item.id}
   createdAt:
     list:
