@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 TgUserTokenTable.defaultProps = {
@@ -57,25 +57,25 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
           {excludeColumns.includes("id") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'id')}
+            value={get(item, 'id')}
           />
         )}
           {excludeColumns.includes("userId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'userId')}
+            value={get(item, 'userId')}
           />
         )}
           {excludeColumns.includes("createdAt") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'createdAt')}
+            value={get(item, 'createdAt')}
           />
         )}
           {excludeColumns.includes("updatedAt") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'updatedAt')}
+            value={get(item, 'updatedAt')}
           />
         )}
         <td>

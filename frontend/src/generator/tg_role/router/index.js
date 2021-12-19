@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableTgRoleList from '../table_list';
 import FormTgRoleAdd from '../form_add';
 import FormTgRoleEdit from '../form_edit';
 import ViewTgRoleInfo from '../view_info';
-import API from '../apis';
 import TableTgUserRoleList from '../../tg_user_role/table_list';
 import FormTgUserRoleAdd from '../../tg_user_role/form_add';
 import FormTgUserRoleEdit from '../../tg_user_role/form_edit';

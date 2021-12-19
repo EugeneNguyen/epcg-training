@@ -1,14 +1,10 @@
 import {useQuery} from '@apollo/client';
-import {useState} from 'react';
-import {Row, Col} from 'reactstrap';
 import {useLocation} from 'react-router-dom';
 import path from 'path';
-import moment from 'moment';
-import _ from 'lodash';
+import {get} from 'lodash';
 
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
-import {Form, Input} from '../../_components/form';
 
 export default function ViewTgFileGeneral({objectId}) {
   const { loading, error, data } = useQuery(
@@ -43,7 +39,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Id
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.id', 'N/A')}
+                    {get(data, 'data.id', 'N/A')}
                   </dd>
                 </div>
 
@@ -52,7 +48,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Service
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.service', 'N/A')}
+                    {get(data, 'data.service', 'N/A')}
                   </dd>
                 </div>
 
@@ -61,7 +57,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Key
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.key', 'N/A')}
+                    {get(data, 'data.key', 'N/A')}
                   </dd>
                 </div>
 
@@ -70,7 +66,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Original Name
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.originalName', 'N/A')}
+                    {get(data, 'data.originalName', 'N/A')}
                   </dd>
                 </div>
 
@@ -79,7 +75,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Extension
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.extension', 'N/A')}
+                    {get(data, 'data.extension', 'N/A')}
                   </dd>
                 </div>
 
@@ -88,7 +84,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Mime Type
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.mimeType', 'N/A')}
+                    {get(data, 'data.mimeType', 'N/A')}
                   </dd>
                 </div>
 
@@ -97,7 +93,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Size
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.size', 'N/A')}
+                    {get(data, 'data.size', 'N/A')}
                   </dd>
                 </div>
 
@@ -106,7 +102,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Meta
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.meta', 'N/A')}
+                    {get(data, 'data.meta', 'N/A')}
                   </dd>
                 </div>
 
@@ -115,7 +111,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Owner User Id
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.ownerUserId', 'N/A')}
+                    {get(data, 'data.ownerUserId', 'N/A')}
                   </dd>
                 </div>
 
@@ -124,7 +120,7 @@ export default function ViewTgFileGeneral({objectId}) {
                     Created At
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.createdAt', 'N/A')}
+                    {get(data, 'data.createdAt', 'N/A')}
                   </dd>
                 </div>
 
@@ -133,14 +129,14 @@ export default function ViewTgFileGeneral({objectId}) {
                     Updated At
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.updatedAt', 'N/A')}
+                    {get(data, 'data.updatedAt', 'N/A')}
                   </dd>
                 </div>
           </dl>
         </div>
       </div>
       <ButtonLink to={path.join(location.pathname, 'edit')} color="primary" size="sm">
-      Edit
+        Edit
       </ButtonLink>
     </div>
   );

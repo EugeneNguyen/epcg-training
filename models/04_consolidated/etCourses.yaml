@@ -373,6 +373,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Is Active
+        isCourseAdmin:
+          type: TINYINT(1)
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: isCourseAdmin
+          graphType: Boolean
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Is Course Admin
         createdAt:
           type: DATETIME
           allowNull: false

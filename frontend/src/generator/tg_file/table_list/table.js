@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 TgFileTable.defaultProps = {
@@ -92,68 +92,68 @@ export default function TgFileTable({limit, offset, didLoadData, onRefRefetch, w
           {excludeColumns.includes("id") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'id')}
+            value={get(item, 'id')}
             link={`/tgFile/${item.id}`}
           />
         )}
           {excludeColumns.includes("service") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'service')}
+            value={get(item, 'service')}
           />
         )}
           {excludeColumns.includes("key") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'key')}
+            value={get(item, 'key')}
           />
         )}
           {excludeColumns.includes("originalName") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'originalName')}
+            value={get(item, 'originalName')}
           />
         )}
           {excludeColumns.includes("extension") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'extension')}
+            value={get(item, 'extension')}
           />
         )}
           {excludeColumns.includes("mimeType") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'mimeType')}
+            value={get(item, 'mimeType')}
           />
         )}
           {excludeColumns.includes("size") || (
           <Cell
             type="INT"
-            value={_.get(item, 'size')}
+            value={get(item, 'size')}
           />
         )}
           {excludeColumns.includes("meta") || (
           <Cell
             type="TEXT"
-            value={_.get(item, 'meta')}
+            value={get(item, 'meta')}
           />
         )}
           {excludeColumns.includes("ownerUserId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'ownerUserId')}
+            value={get(item, 'ownerUserId')}
           />
         )}
           {excludeColumns.includes("createdAt") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'createdAt')}
+            value={get(item, 'createdAt')}
           />
         )}
           {excludeColumns.includes("updatedAt") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'updatedAt')}
+            value={get(item, 'updatedAt')}
           />
         )}
         <td>

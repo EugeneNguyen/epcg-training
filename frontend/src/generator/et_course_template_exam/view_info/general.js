@@ -1,14 +1,10 @@
 import {useQuery} from '@apollo/client';
-import {useState} from 'react';
-import {Row, Col} from 'reactstrap';
 import {useLocation} from 'react-router-dom';
 import path from 'path';
-import moment from 'moment';
-import _ from 'lodash';
+import {get} from 'lodash';
 
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
-import {Form, Input} from '../../_components/form';
 
 export default function ViewEtCourseTemplateExamGeneral({objectId}) {
   const { loading, error, data } = useQuery(
@@ -43,7 +39,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Name
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.name', 'N/A')}
+                    {get(data, 'data.name', 'N/A')}
                   </dd>
                 </div>
 
@@ -52,7 +48,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Duration
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.duration', 'N/A')}
+                    {get(data, 'data.duration', 'N/A')}
                   </dd>
                 </div>
 
@@ -61,7 +57,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Number Of Question
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.numberOfQuestion', 'N/A')}
+                    {get(data, 'data.numberOfQuestion', 'N/A')}
                   </dd>
                 </div>
 
@@ -70,7 +66,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Unlimited Time
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.unlimitedTime', 'N/A')}
+                    {get(data, 'data.unlimitedTime', 'N/A')}
                   </dd>
                 </div>
 
@@ -79,7 +75,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Random Question Order
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.randomQuestionOrder', 'N/A')}
+                    {get(data, 'data.randomQuestionOrder', 'N/A')}
                   </dd>
                 </div>
 
@@ -88,7 +84,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Random Choice Order
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.randomChoiceOrder', 'N/A')}
+                    {get(data, 'data.randomChoiceOrder', 'N/A')}
                   </dd>
                 </div>
 
@@ -97,7 +93,7 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Is Public
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.isPublic', 'N/A')}
+                    {get(data, 'data.isPublic', 'N/A')}
                   </dd>
                 </div>
 
@@ -106,14 +102,14 @@ export default function ViewEtCourseTemplateExamGeneral({objectId}) {
                     Course Template
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.courseTemplate.name', 'N/A')}
+                    {get(data, 'data.courseTemplate.name', 'N/A')}
                   </dd>
                 </div>
           </dl>
         </div>
       </div>
       <ButtonLink to={path.join(location.pathname, 'edit')} color="primary" size="sm">
-      Edit
+        Edit
       </ButtonLink>
     </div>
   );

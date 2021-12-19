@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseTemplateQuestionMcqTable.defaultProps = {
@@ -37,6 +37,11 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             Correct Answer
           </TH>
         )}
+        {excludeColumns.includes("score") || (
+          <TH className="">
+            Score
+          </TH>
+        )}
         {excludeColumns.includes("questionSourceId") || (
           <TH className="">
             Question Source
@@ -53,7 +58,7 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
           {excludeColumns.includes("questionCode") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'questionCode')}
+            value={get(item, 'questionCode')}
             link={`/etCourseTemplateQuestionMCQ/${item.id}`}
             id={item.id}
             valueKey="questionCode"
@@ -65,7 +70,7 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
           {excludeColumns.includes("correctAnswer") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'correctAnswer')}
+            value={get(item, 'correctAnswer')}
             id={item.id}
             valueKey="correctAnswer"
             mutation={API.EDIT}
@@ -73,10 +78,16 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             editable
           />
         )}
+          {excludeColumns.includes("score") || (
+          <Cell
+            type="INT"
+            value={get(item, 'score')}
+          />
+        )}
           {excludeColumns.includes("questionSourceId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'questionSource.name')}
+            value={get(item, 'questionSource.name')}
           />
         )}
         <td>

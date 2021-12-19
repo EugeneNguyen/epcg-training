@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseTemplateExamTable.defaultProps = {
@@ -78,50 +78,50 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'name')}
+            value={get(item, 'name')}
             link={`/etCourseTemplateExam/${item.id}`}
           />
         )}
           {excludeColumns.includes("duration") || (
           <Cell
             type="INT"
-            value={_.get(item, 'duration')}
+            value={get(item, 'duration')}
           />
         )}
           {excludeColumns.includes("numberOfQuestion") || (
           <Cell
             type="INT"
-            value={_.get(item, 'numberOfQuestion')}
+            value={get(item, 'numberOfQuestion')}
           />
         )}
           {excludeColumns.includes("unlimitedTime") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'unlimitedTime')}
+            value={get(item, 'unlimitedTime')}
           />
         )}
           {excludeColumns.includes("randomQuestionOrder") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'randomQuestionOrder')}
+            value={get(item, 'randomQuestionOrder')}
           />
         )}
           {excludeColumns.includes("randomChoiceOrder") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'randomChoiceOrder')}
+            value={get(item, 'randomChoiceOrder')}
           />
         )}
           {excludeColumns.includes("isPublic") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'isPublic')}
+            value={get(item, 'isPublic')}
           />
         )}
           {excludeColumns.includes("courseTemplateId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'courseTemplate.name')}
+            value={get(item, 'courseTemplate.name')}
           />
         )}
         <td>

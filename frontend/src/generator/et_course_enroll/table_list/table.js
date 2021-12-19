@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseEnrollTable.defaultProps = {
@@ -57,25 +57,25 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
           {excludeColumns.includes("courseId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'course.name')}
+            value={get(item, 'course.name')}
           />
         )}
           {excludeColumns.includes("userId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'user.username')}
+            value={get(item, 'user.username')}
           />
         )}
           {excludeColumns.includes("isActive") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'isActive')}
+            value={get(item, 'isActive')}
           />
         )}
           {excludeColumns.includes("isCourseAdmin") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'isCourseAdmin')}
+            value={get(item, 'isCourseAdmin')}
           />
         )}
         <td>

@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableEtEducationProviderList from '../table_list';
 import FormEtEducationProviderAdd from '../form_add';
 import FormEtEducationProviderEdit from '../form_edit';
 import ViewEtEducationProviderInfo from '../view_info';
-import API from '../apis';
 import TableEtCourseTemplateList from '../../et_course_template/table_list';
 import FormEtCourseTemplateAdd from '../../et_course_template/form_add';
 import FormEtCourseTemplateEdit from '../../et_course_template/form_edit';

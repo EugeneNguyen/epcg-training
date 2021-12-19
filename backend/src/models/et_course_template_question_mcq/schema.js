@@ -14,6 +14,7 @@ type EtCourseTemplateQuestionMcq {
   correctAnswer: String
   explanation: String
   courseTemplateId: String
+  score: Int
   questionSourceId: String
   createdAt: String
   updatedAt: String
@@ -47,6 +48,7 @@ input EtCourseTemplateQuestionMcqInput {
   correctAnswer: String
   explanation: String
   courseTemplateId: String
+  score: Int
   questionSourceId: String
   tags: [String]
 }
@@ -68,6 +70,7 @@ input EtCourseTemplateQuestionMcqWhere {
   correctAnswer: String
   explanation: String
   courseTemplateId: String
+  score: Int
   questionSourceId: String
   createdAt: String
   updatedAt: String

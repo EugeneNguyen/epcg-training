@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseTemplateTable.defaultProps = {
@@ -47,14 +47,14 @@ export default function EtCourseTemplateTable({limit, offset, didLoadData, onRef
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'name')}
+            value={get(item, 'name')}
             link={`/etCourseTemplate/${item.id}`}
           />
         )}
           {excludeColumns.includes("educationProviderId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'educationProvider.name')}
+            value={get(item, 'educationProvider.name')}
           />
         )}
         <td>

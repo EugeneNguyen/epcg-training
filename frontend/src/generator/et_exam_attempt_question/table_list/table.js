@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtExamAttemptQuestionTable.defaultProps = {
@@ -97,73 +97,73 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
           {excludeColumns.includes("id") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'id')}
+            value={get(item, 'id')}
           />
         )}
           {excludeColumns.includes("attemptId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'attemptId')}
+            value={get(item, 'attemptId')}
           />
         )}
           {excludeColumns.includes("questionId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'questionId')}
+            value={get(item, 'questionId')}
           />
         )}
           {excludeColumns.includes("order") || (
           <Cell
             type="INT"
-            value={_.get(item, 'order')}
+            value={get(item, 'order')}
           />
         )}
           {excludeColumns.includes("displayedQuestionData") || (
           <Cell
             type="TEXT"
-            value={_.get(item, 'displayedQuestionData')}
+            value={get(item, 'displayedQuestionData')}
           />
         )}
           {excludeColumns.includes("fullQuestionData") || (
           <Cell
             type="TEXT"
-            value={_.get(item, 'fullQuestionData')}
+            value={get(item, 'fullQuestionData')}
           />
         )}
           {excludeColumns.includes("answer") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'answer')}
+            value={get(item, 'answer')}
           />
         )}
           {excludeColumns.includes("rawAnswer") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'rawAnswer')}
+            value={get(item, 'rawAnswer')}
           />
         )}
           {excludeColumns.includes("correct") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'correct')}
+            value={get(item, 'correct')}
           />
         )}
           {excludeColumns.includes("flag") || (
           <Cell
             type="TINYINT(1)"
-            value={_.get(item, 'flag')}
+            value={get(item, 'flag')}
           />
         )}
           {excludeColumns.includes("startTime") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'startTime')}
+            value={get(item, 'startTime')}
           />
         )}
           {excludeColumns.includes("endTime") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'endTime')}
+            value={get(item, 'endTime')}
           />
         )}
         <td>

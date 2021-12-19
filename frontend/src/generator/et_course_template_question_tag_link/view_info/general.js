@@ -1,14 +1,10 @@
 import {useQuery} from '@apollo/client';
-import {useState} from 'react';
-import {Row, Col} from 'reactstrap';
 import {useLocation} from 'react-router-dom';
 import path from 'path';
-import moment from 'moment';
-import _ from 'lodash';
+import {get} from 'lodash';
 
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
-import {Form, Input} from '../../_components/form';
 
 export default function ViewEtCourseTemplateQuestionTagLinkGeneral({objectId}) {
   const { loading, error, data } = useQuery(
@@ -43,7 +39,7 @@ export default function ViewEtCourseTemplateQuestionTagLinkGeneral({objectId}) {
                     Question
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.question.questionCode', 'N/A')}
+                    {get(data, 'data.question.questionCode', 'N/A')}
                   </dd>
                 </div>
 
@@ -52,14 +48,14 @@ export default function ViewEtCourseTemplateQuestionTagLinkGeneral({objectId}) {
                     Tag
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.tag.name', 'N/A')}
+                    {get(data, 'data.tag.name', 'N/A')}
                   </dd>
                 </div>
           </dl>
         </div>
       </div>
       <ButtonLink to={path.join(location.pathname, 'edit')} color="primary" size="sm">
-      Edit
+        Edit
       </ButtonLink>
     </div>
   );

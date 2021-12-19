@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtExamAttemptTable.defaultProps = {
@@ -72,45 +72,45 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
           {excludeColumns.includes("id") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'id')}
+            value={get(item, 'id')}
             link={`/etExamAttempt/${item.id}`}
           />
         )}
           {excludeColumns.includes("examId") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'exam.name')}
+            value={get(item, 'exam.name')}
           />
         )}
           {excludeColumns.includes("templateExamId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'templateExam.name')}
+            value={get(item, 'templateExam.name')}
           />
         )}
           {excludeColumns.includes("score") || (
           <Cell
             type="INT"
-            value={_.get(item, 'score')}
+            value={get(item, 'score')}
           />
         )}
           {excludeColumns.includes("duration") || (
           <Cell
             type="INT"
-            value={_.get(item, 'duration')}
+            value={get(item, 'duration')}
             link={`http://localhost:4000/#/exam/attempts/${item.id}`}
           />
         )}
           {excludeColumns.includes("startTime") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'startTime')}
+            value={get(item, 'startTime')}
           />
         )}
           {excludeColumns.includes("endTime") || (
           <Cell
             type="DATETIME"
-            value={_.get(item, 'endTime')}
+            value={get(item, 'endTime')}
           />
         )}
         <td>

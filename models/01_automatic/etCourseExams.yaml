@@ -500,6 +500,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Template Exam Id
+        score:
+          type: INT
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: score
+          graphType: Int
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Score
         duration:
           type: INT
           allowNull: true

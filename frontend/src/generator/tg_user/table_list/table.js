@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 TgUserTable.defaultProps = {
@@ -48,14 +48,14 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
           {excludeColumns.includes("username") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'username')}
+            value={get(item, 'username')}
             link={`/tgUser/${item.id}`}
           />
         )}
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'name')}
+            value={get(item, 'name')}
             id={item.id}
             valueKey="name"
             mutation={API.EDIT}

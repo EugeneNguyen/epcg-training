@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableEtCourseTemplateQuestionTagList from '../table_list';
 import FormEtCourseTemplateQuestionTagAdd from '../form_add';
 import FormEtCourseTemplateQuestionTagEdit from '../form_edit';
 import ViewEtCourseTemplateQuestionTagInfo from '../view_info';
-import API from '../apis';
 import TableEtCourseTemplateQuestionTagLinkList from '../../et_course_template_question_tag_link/table_list';
 import FormEtCourseTemplateQuestionTagLinkAdd from '../../et_course_template_question_tag_link/form_add';
 import FormEtCourseTemplateQuestionTagLinkEdit from '../../et_course_template_question_tag_link/form_edit';

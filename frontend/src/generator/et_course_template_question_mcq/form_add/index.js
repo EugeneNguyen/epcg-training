@@ -36,6 +36,7 @@ function FormAdd({fixedParams, parent={}}) {
   const [correctAnswer, setcorrectAnswer] = useState(null);
   const [explanation, setexplanation] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
+  const [score, setscore] = useState(null);
   const [questionSourceId, setquestionSourceId] = useState(null);
   const [tagsRelationship, settagsRelationship] = useState([]);
 
@@ -53,6 +54,7 @@ function FormAdd({fixedParams, parent={}}) {
       correctAnswer,
       explanation,
       courseTemplateId,
+      score,
       questionSourceId,
       tags: tagsRelationship,
       ...fixedParams,
@@ -175,6 +177,15 @@ function FormAdd({fixedParams, parent={}}) {
             displayLabel="Course Template"
             value={courseTemplateId}
             onValueChange={(value) => setcourseTemplateId(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.score) && (
+          <Input
+            type="INT"
+            name="score"
+            displayLabel="Score"
+            value={score}
+            onValueChange={(value) => setscore(value)}
           />
         )}
         {(!fixedParams || !fixedParams.questionSourceId) && (

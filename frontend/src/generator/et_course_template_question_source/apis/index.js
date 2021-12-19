@@ -49,6 +49,7 @@ query et_course_template_question_source_get_by_id($id: String) {
     id
     questionCode
     question
+    questionImageId
     answerA
     answerB
     answerC
@@ -56,6 +57,7 @@ query et_course_template_question_source_get_by_id($id: String) {
     correctAnswer
     explanation
     courseTemplateId
+    score
     questionSourceId
     createdAt
     updatedAt

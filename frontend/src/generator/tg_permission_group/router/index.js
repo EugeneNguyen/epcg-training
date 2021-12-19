@@ -1,10 +1,10 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
+import API from '../apis';
 import TableTgPermissionGroupList from '../table_list';
 import FormTgPermissionGroupAdd from '../form_add';
 import FormTgPermissionGroupEdit from '../form_edit';
 import ViewTgPermissionGroupInfo from '../view_info';
-import API from '../apis';
 import TableTgPermissionList from '../../tg_permission/table_list';
 import FormTgPermissionAdd from '../../tg_permission/form_add';
 import FormTgPermissionEdit from '../../tg_permission/form_edit';

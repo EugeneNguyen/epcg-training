@@ -78,7 +78,9 @@ query et_course_template_exam_get_by_id($id: String) {
   et_course_template_exam_get_by_id(id: $id) {
     id
     userId
+    examId
     templateExamId
+    score
     duration
     startTime
     endTime

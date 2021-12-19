@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseTemplateQuestionTagLinkTable.defaultProps = {
@@ -47,13 +47,13 @@ export default function EtCourseTemplateQuestionTagLinkTable({limit, offset, did
           {excludeColumns.includes("questionId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'question.questionCode')}
+            value={get(item, 'question.questionCode')}
           />
         )}
           {excludeColumns.includes("questionTagId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'tag.name')}
+            value={get(item, 'tag.name')}
           />
         )}
         <td>

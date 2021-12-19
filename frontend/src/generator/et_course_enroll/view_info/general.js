@@ -1,14 +1,10 @@
 import {useQuery} from '@apollo/client';
-import {useState} from 'react';
-import {Row, Col} from 'reactstrap';
 import {useLocation} from 'react-router-dom';
 import path from 'path';
-import moment from 'moment';
-import _ from 'lodash';
+import {get} from 'lodash';
 
 import API from '../apis';
 import {ButtonLink} from '../../_components/button';
-import {Form, Input} from '../../_components/form';
 
 export default function ViewEtCourseEnrollGeneral({objectId}) {
   const { loading, error, data } = useQuery(
@@ -43,7 +39,7 @@ export default function ViewEtCourseEnrollGeneral({objectId}) {
                     Course
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.course.name', 'N/A')}
+                    {get(data, 'data.course.name', 'N/A')}
                   </dd>
                 </div>
 
@@ -52,7 +48,7 @@ export default function ViewEtCourseEnrollGeneral({objectId}) {
                     User
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.user.username', 'N/A')}
+                    {get(data, 'data.user.username', 'N/A')}
                   </dd>
                 </div>
 
@@ -61,7 +57,7 @@ export default function ViewEtCourseEnrollGeneral({objectId}) {
                     Is Active
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.isActive', 'N/A')}
+                    {get(data, 'data.isActive', 'N/A')}
                   </dd>
                 </div>
 
@@ -70,14 +66,14 @@ export default function ViewEtCourseEnrollGeneral({objectId}) {
                     Is Course Admin
                   </dt>
                   <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    {_.get(data, 'data.isCourseAdmin', 'N/A')}
+                    {get(data, 'data.isCourseAdmin', 'N/A')}
                   </dd>
                 </div>
           </dl>
         </div>
       </div>
       <ButtonLink to={path.join(location.pathname, 'edit')} color="primary" size="sm">
-      Edit
+        Edit
       </ButtonLink>
     </div>
   );

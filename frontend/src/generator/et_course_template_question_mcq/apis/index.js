@@ -14,6 +14,7 @@ query et_course_template_question_mcq_get_all($where: EtCourseTemplateQuestionMc
     correctAnswer
     explanation
     courseTemplateId
+    score
     questionSourceId
     createdAt
     updatedAt
@@ -44,6 +45,7 @@ query et_course_template_question_mcq_get_all_with_page($pagination: EtCourseTem
         name
       }
       courseTemplateId
+      score
       questionSource {
         id
         name
@@ -83,6 +85,7 @@ query et_course_template_question_mcq_get_by_id($id: String) {
       name
     }
     courseTemplateId
+    score
     questionSource {
       id
       name
@@ -113,6 +116,7 @@ mutation et_course_template_question_mcq_add($data: EtCourseTemplateQuestionMcqI
     correctAnswer
     explanation
     courseTemplateId
+    score
     questionSourceId
     createdAt
     updatedAt
@@ -134,6 +138,7 @@ mutation et_course_template_question_mcq_edit($id: String, $data: EtCourseTempla
     correctAnswer
     explanation
     courseTemplateId
+    score
     questionSourceId
     createdAt
     updatedAt

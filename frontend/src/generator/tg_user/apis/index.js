@@ -73,7 +73,9 @@ query tg_user_get_by_id($id: String) {
   tg_user_get_by_id(id: $id) {
     id
     userId
+    examId
     templateExamId
+    score
     duration
     startTime
     endTime

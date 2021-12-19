@@ -170,6 +170,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Question
+        questionImageId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionImageId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Image Id
         answerA:
           type: TEXT
           allowNull: true
@@ -282,6 +298,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Course Template Id
+        score:
+          type: INT
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: score
+          graphType: Int
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Score
         questionSourceId:
           type: CHAR(36)
           allowNull: true

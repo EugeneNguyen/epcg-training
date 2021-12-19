@@ -69,6 +69,7 @@ query et_course_exam_get_by_id($id: String) {
     userId
     examId
     templateExamId
+    score
     duration
     startTime
     endTime

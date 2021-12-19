@@ -72,6 +72,7 @@ query et_course_get_by_id($id: String) {
     courseId
     userId
     isActive
+    isCourseAdmin
     createdAt
     updatedAt
   }

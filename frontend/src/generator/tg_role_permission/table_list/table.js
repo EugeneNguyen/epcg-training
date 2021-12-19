@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 TgRolePermissionTable.defaultProps = {
@@ -47,13 +47,13 @@ export default function TgRolePermissionTable({limit, offset, didLoadData, onRef
           {excludeColumns.includes("roleId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'role.name')}
+            value={get(item, 'role.name')}
           />
         )}
           {excludeColumns.includes("permissionId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'permission.name')}
+            value={get(item, 'permission.name')}
           />
         )}
         <td>

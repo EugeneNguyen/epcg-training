@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 EtCourseExamTable.defaultProps = {
@@ -52,19 +52,19 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'name')}
+            value={get(item, 'name')}
           />
         )}
           {excludeColumns.includes("courseId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'course.name')}
+            value={get(item, 'course.name')}
           />
         )}
           {excludeColumns.includes("courseTemplateExamId") || (
           <Cell
             type="CHAR(36)"
-            value={_.get(item, 'courseTemplateExam.name')}
+            value={get(item, 'courseTemplateExam.name')}
           />
         )}
         <td>

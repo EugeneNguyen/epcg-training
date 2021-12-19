@@ -7,7 +7,7 @@ import {Form, Input} from '../../_components/form';
 import {Button} from '../../_components/button';
 import {Box} from '../../_components';
 
-                            
+                              
 export default function FormEtCourseTemplateQuestionMcqEdit({fixedParams, parent={}}) {
   if (parent.query) {
     return <FormEditWithParent fixedParams={fixedParams} parent={parent}/>
@@ -38,6 +38,7 @@ function FormEdit({fixedParams, parent={}}) {
   const [correctAnswer, setcorrectAnswer] = useState(null);
   const [explanation, setexplanation] = useState(null);
   const [courseTemplateId, setcourseTemplateId] = useState(null);
+  const [score, setscore] = useState(null);
   const [questionSourceId, setquestionSourceId] = useState(null);
   const [tagsRelationship, settagsRelationship] = useState([]);
 
@@ -57,6 +58,7 @@ function FormEdit({fixedParams, parent={}}) {
         setcorrectAnswer(response.data.correctAnswer);
         setexplanation(response.data.explanation);
         setcourseTemplateId(response.data.courseTemplateId);
+        setscore(response.data.score);
         setquestionSourceId(response.data.questionSourceId);
 
         settagsRelationship(response.data.tags.map(r => r.id));
@@ -78,6 +80,7 @@ function FormEdit({fixedParams, parent={}}) {
       correctAnswer,
       explanation,
       courseTemplateId,
+      score,
       questionSourceId,
       tags: tagsRelationship,
       ...fixedParams,
@@ -195,6 +198,15 @@ function FormEdit({fixedParams, parent={}}) {
             displayLabel="Course Template"
             value={courseTemplateId}
             onValueChange={(value) => setcourseTemplateId(value)}
+          />
+        )}
+        {(!fixedParams || !fixedParams.score) && (
+          <Input
+            type="INT"
+            name="score"
+            displayLabel="Score"
+            value={score}
+            onValueChange={(value) => setscore(value)}
           />
         )}
         {(!fixedParams || !fixedParams.questionSourceId) && (

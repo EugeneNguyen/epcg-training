@@ -339,6 +339,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Question
+        questionImageId:
+          type: CHAR(36)
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: questionImageId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Question Image Id
         answerA:
           type: TEXT
           allowNull: true
@@ -451,6 +467,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Course Template Id
+        score:
+          type: INT
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: score
+          graphType: Int
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Score
         questionSourceId:
           type: CHAR(36)
           allowNull: true
@@ -651,6 +683,22 @@ relationships:
           edit:
             enable: true
           displayLabel: User Id
+        examId:
+          type: VARCHAR(255)
+          allowNull: true
+          defaultValue: null
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: examId
+          graphType: String
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Exam Id
         templateExamId:
           type: CHAR(36)
           allowNull: true
@@ -667,6 +715,22 @@ relationships:
           edit:
             enable: true
           displayLabel: Template Exam Id
+        score:
+          type: INT
+          allowNull: true
+          defaultValue: '0'
+          primaryKey: false
+          autoIncrement: false
+          comment: null
+          name: score
+          graphType: Int
+          list:
+            enable: true
+          add:
+            enable: true
+          edit:
+            enable: true
+          displayLabel: Score
         duration:
           type: INT
           allowNull: true

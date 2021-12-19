@@ -4,7 +4,7 @@ import {ButtonLink} from '../../_components/button';
 import Cell from '../../_components/table/cell';
 import {Table, THead, TBody, TH, TR} from '../../_components';
 import ButtonDelete from './button_delete';
-import _ from 'lodash';
+import {get} from 'lodash';
 import path from 'path';
 
 TgRoleTable.defaultProps = {
@@ -47,7 +47,7 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
           {excludeColumns.includes("name") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'name')}
+            value={get(item, 'name')}
             link={`/tgRole/${item.id}`}
             id={item.id}
             valueKey="name"
@@ -59,7 +59,7 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
           {excludeColumns.includes("description") || (
           <Cell
             type="VARCHAR(255)"
-            value={_.get(item, 'description')}
+            value={get(item, 'description')}
             id={item.id}
             valueKey="description"
             mutation={API.EDIT}
