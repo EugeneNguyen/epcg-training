@@ -1,5 +1,5 @@
 let db = require('../../database/models');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const {AuthService} = require("../../services");
 
 const SALT_ROUND = 10;
