@@ -33,7 +33,9 @@ export default function QuestionBox({question, index}) {
                 onChange={() => handleAnswer(choiceIndex)}
                 disabled={loading}
               />
-              <span className="ml-2">{choice}</span>
+              <span className="ml-2">
+                {['A', 'B', 'C', 'D'][choiceIndex]}. {choice}
+              </span>
             </label>
           ))}
         </div>

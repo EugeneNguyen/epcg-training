@@ -35,7 +35,7 @@ export default function QuestionBox({question, index}) {
                 disabled
               />
               <span className="ml-2">
-                {choice}
+                {['A', 'B', 'C', 'D'][choiceIndex]}. {choice}
                 {['A', 'B', 'C', 'D'][choiceIndex] == questionData.correctAnswer ? (
                   <Tag color="success">Correct Answer</Tag>
                 ) : null}
