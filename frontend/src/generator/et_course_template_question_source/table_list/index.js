@@ -4,12 +4,16 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtCourseTemplateQuestionSourceTerTable from './excel_table';
 import EtCourseTemplateQuestionSourceTable from './table';
 
 export default function TableEtCourseTemplateQuestionSourceList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [useExcelTable, setUseExcelTable] = useState(false);
+  const Table = useExcelTable ? EtCourseTemplateQuestionSourceTerTable : EtCourseTemplateQuestionSourceTable;
+
   const [searchBy, setSearchBy] = useState();
   const location = useLocation();
   let refetch = null;
@@ -24,8 +28,9 @@ export default function TableEtCourseTemplateQuestionSourceList({where, excludeC
         </Form>
       </div>
       <Box>
-        <EtCourseTemplateQuestionSourceTable
+        <Table
           limit={limit}
+
           offset={offset}
           where={where}
           relationshipName={relationshipName}

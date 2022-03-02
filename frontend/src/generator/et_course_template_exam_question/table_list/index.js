@@ -4,18 +4,22 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtCourseTemplateExamQuestionTerTable from './excel_table';
 import EtCourseTemplateExamQuestionTable from './table';
 
 export default function TableEtCourseTemplateExamQuestionList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [excelTable, setExcelTable] = useState(false);
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? EtCourseTemplateExamQuestionTerTable : EtCourseTemplateExamQuestionTable;
   return (
     <div className="space-y-4">
-      <Box>
-        <EtCourseTemplateExamQuestionTable
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
+      <Box title="List EtCourseTemplateExamQuestion">
+        <Table
           limit={limit}
           offset={offset}
           where={where}

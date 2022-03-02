@@ -4,17 +4,21 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtCourseTemplateQuestionMcqTerTable from './excel_table';
 import EtCourseTemplateQuestionMcqTable from './table';
 
 export default function TableEtCourseTemplateQuestionMcqList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [excelTable, setExcelTable] = useState(false);
   const [searchBy, setSearchBy] = useState();
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? EtCourseTemplateQuestionMcqTerTable : EtCourseTemplateQuestionMcqTable;
   return (
     <div className="space-y-4">
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
       <div className="flex flex-row-reverse">
         <Form className="w-4/12" onSubmitParams={({searchBy}) => setSearchBy(searchBy)}>
           <Input
@@ -23,8 +27,8 @@ export default function TableEtCourseTemplateQuestionMcqList({where, excludeColu
           />
         </Form>
       </div>
-      <Box>
-        <EtCourseTemplateQuestionMcqTable
+      <Box title="List EtCourseTemplateQuestionMcq">
+        <Table
           limit={limit}
           offset={offset}
           where={where}

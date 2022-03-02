@@ -86,12 +86,22 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
           <Cell
             type="INT"
             value={get(item, 'duration')}
+            id={item.id}
+            valueKey="duration"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("numberOfQuestion") || (
           <Cell
             type="INT"
             value={get(item, 'numberOfQuestion')}
+            id={item.id}
+            valueKey="numberOfQuestion"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("unlimitedTime") || (

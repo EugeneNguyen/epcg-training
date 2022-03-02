@@ -4,19 +4,24 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import TgPermissionGroupTerTable from './excel_table';
 import TgPermissionGroupTable from './table';
 
 export default function TableTgPermissionGroupList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [useExcelTable, setUseExcelTable] = useState(false);
+  const Table = useExcelTable ? TgPermissionGroupTerTable : TgPermissionGroupTable;
+
   const location = useLocation();
   let refetch = null;
   return (
     <div className="space-y-4">
       <Box>
-        <TgPermissionGroupTable
+        <Table
           limit={limit}
+
           offset={offset}
           where={where}
           relationshipName={relationshipName}

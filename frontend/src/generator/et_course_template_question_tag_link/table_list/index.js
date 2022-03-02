@@ -4,19 +4,24 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtCourseTemplateQuestionTagLinkTerTable from './excel_table';
 import EtCourseTemplateQuestionTagLinkTable from './table';
 
 export default function TableEtCourseTemplateQuestionTagLinkList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [useExcelTable, setUseExcelTable] = useState(false);
+  const Table = useExcelTable ? EtCourseTemplateQuestionTagLinkTerTable : EtCourseTemplateQuestionTagLinkTable;
+
   const location = useLocation();
   let refetch = null;
   return (
     <div className="space-y-4">
       <Box>
-        <EtCourseTemplateQuestionTagLinkTable
+        <Table
           limit={limit}
+
           offset={offset}
           where={where}
           relationshipName={relationshipName}

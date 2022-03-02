@@ -4,18 +4,22 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtCourseTerTable from './excel_table';
 import EtCourseTable from './table';
 
 export default function TableEtCourseList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [excelTable, setExcelTable] = useState(false);
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? EtCourseTerTable : EtCourseTable;
   return (
     <div className="space-y-4">
-      <Box>
-        <EtCourseTable
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
+      <Box title="List EtCourse">
+        <Table
           limit={limit}
           offset={offset}
           where={where}

@@ -28,12 +28,12 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
       <THead>
       <TR>
         {excludeColumns.includes("questionCode") || (
-          <TH className="w-4/12">
+          <TH className="">
             Question Code
           </TH>
         )}
         {excludeColumns.includes("correctAnswer") || (
-          <TH className="w-2/12">
+          <TH className="">
             Correct Answer
           </TH>
         )}

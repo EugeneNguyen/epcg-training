@@ -32,12 +32,12 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
           </TH>
         )}
         {excludeColumns.includes("questionId") || (
-          <TH className="w-3/12">
+          <TH className="">
             Question
           </TH>
         )}
         {excludeColumns.includes("order") || (
-          <TH className="w-2/12">
+          <TH className="">
             Order
           </TH>
         )}

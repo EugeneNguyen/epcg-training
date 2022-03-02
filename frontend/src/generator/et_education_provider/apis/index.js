@@ -12,8 +12,8 @@ query et_education_provider_get_all($where: EtEducationProviderWhere) {
 `;
 
 const ALL_WITH_PAGE = gql`
-query et_education_provider_get_all_with_page($pagination: EtEducationProviderPaginationInput, $where: EtEducationProviderWhere) {
-  data: et_education_provider_get_all_with_page(pagination: $pagination, where: $where) {
+query et_education_provider_get_all_with_page($pagination: EtEducationProviderPaginationInput, $where: EtEducationProviderWhere, $searchBy: String) {
+  data: et_education_provider_get_all_with_page(pagination: $pagination, where: $where, searchBy: $searchBy) {
     rows {
       id
       name

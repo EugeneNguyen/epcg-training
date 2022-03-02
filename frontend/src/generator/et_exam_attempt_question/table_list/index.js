@@ -4,19 +4,24 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import EtExamAttemptQuestionTerTable from './excel_table';
 import EtExamAttemptQuestionTable from './table';
 
 export default function TableEtExamAttemptQuestionList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [useExcelTable, setUseExcelTable] = useState(false);
+  const Table = useExcelTable ? EtExamAttemptQuestionTerTable : EtExamAttemptQuestionTable;
+
   const location = useLocation();
   let refetch = null;
   return (
     <div className="space-y-4">
       <Box>
-        <EtExamAttemptQuestionTable
+        <Table
           limit={limit}
+
           offset={offset}
           where={where}
           relationshipName={relationshipName}

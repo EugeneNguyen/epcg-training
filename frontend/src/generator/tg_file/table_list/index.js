@@ -4,19 +4,24 @@ import path from 'path';
 import {Box, ButtonLink, Button} from '../../_components';
 import {Form, Input} from '../../_components/form';
 import Paginator from '../../_components/paginator';
+import TgFileTerTable from './excel_table';
 import TgFileTable from './table';
 
 export default function TableTgFileList({where, excludeColumns, relationshipName}) {
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
+  const [useExcelTable, setUseExcelTable] = useState(false);
+  const Table = useExcelTable ? TgFileTerTable : TgFileTable;
+
   const location = useLocation();
   let refetch = null;
   return (
     <div className="space-y-4">
       <Box>
-        <TgFileTable
+        <Table
           limit={limit}
+
           offset={offset}
           where={where}
           relationshipName={relationshipName}
