@@ -1,11 +1,18 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 
 let type = {
   EtEducationProvider: {
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     courseTemplates(parent, {where}, context, info) {
       return db.etCourseTemplate.findAll({
         where: {

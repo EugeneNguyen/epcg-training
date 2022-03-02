@@ -2,7 +2,8 @@ const db = require('../../database/models');
 const Op = db.Sequelize.Op;
 
 const query = {
-  async et_education_provider_get_all_with_page(parent, {pagination, where={}}, context, info) {
+  async et_education_provider_get_all_with_page(parent, {pagination, where={}, searchBy}, context, info) {
+    if (searchBy) where.name = {[Op.like]: `%${searchBy}%`}
     const result = await db.etEducationProvider.findAndCountAll({
       where,
       offset: pagination.offset,

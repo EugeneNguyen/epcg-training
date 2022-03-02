@@ -1,19 +1,19 @@
 function Header() {
   return (
 
-    <nav className="bg-white shadow dark:bg-gray-800">
+    <nav className="bg-white shadow">
       <div className="container px-6 py-4 mx-auto">
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex items-center justify-between">
             <div className="text-xl font-semibold text-gray-700">
               <a
-                className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                className="text-2xl font-bold text-gray-800 lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 href="#"></a>
             </div>
 
             <div className="flex md:hidden">
               <button type="button"
-                      className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                      className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
                       aria-label="toggle menu">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                   <path fill-rule="evenodd"
@@ -26,7 +26,7 @@ function Header() {
           <div className="flex-1 md:flex md:items-center md:justify-end">
             <div className="flex items-center mt-4 md:mt-0">
               <button
-                className="hidden mx-4 text-gray-600 md:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
+                className="hidden mx-4 text-gray-600 md:block hover:text-gray-700 focus:text-gray-700 focus:outline-none"
                 aria-label="show notifications"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +47,7 @@ function Header() {
                     className="object-cover w-full h-full" alt="avatar"/>
                 </div>
 
-                <h3 className="mx-2 text-sm font-medium text-gray-700 dark:text-gray-200 md:hidden">Khatab wedaa</h3>
+                <h3 className="mx-2 text-sm font-medium text-gray-700 md:hidden">Khatab wedaa</h3>
               </button>
             </div>
           </div>

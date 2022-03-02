@@ -43,7 +43,7 @@ input EtEducationProviderWhere {
 
 let query = `
   et_education_provider_get_all(where: EtEducationProviderWhere): [EtEducationProvider]
-  et_education_provider_get_all_with_page(pagination: EtEducationProviderPaginationInput, where: EtEducationProviderWhere): EtEducationProviderWithPagination
+  et_education_provider_get_all_with_page(pagination: EtEducationProviderPaginationInput, where: EtEducationProviderWhere, searchBy: String): EtEducationProviderWithPagination
   et_education_provider_get_by_id(id: String): EtEducationProvider
 `;
 

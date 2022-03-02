@@ -1,6 +1,7 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 const questionSourceLoader = new DataLoader(async (keys) => {
@@ -36,6 +37,12 @@ const questionImageLoader = new DataLoader(async (keys) => {
 
 let type = {
   EtCourseTemplateQuestionMcq: {
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     questionSource(parent, args, context, info) {
       if (parent.questionSourceId) {
         return questionSourceLoader.load(parent.questionSourceId);
