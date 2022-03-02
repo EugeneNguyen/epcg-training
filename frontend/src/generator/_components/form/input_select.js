@@ -36,7 +36,7 @@ function InputSelectOption({displayLabel, name, onValueChange, options, isMulti,
   return options ? (
     <div>
       <label
-        className="text-gray-700 dark:text-gray-200"
+        className="text-gray-700"
         htmlFor={name}
       >
         {displayLabel}
