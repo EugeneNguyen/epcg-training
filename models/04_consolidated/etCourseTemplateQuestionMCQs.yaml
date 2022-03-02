@@ -32,7 +32,6 @@ fields:
     list:
       enable: true
       editable: true
-      size: '4'
       link: /etCourseTemplateQuestionMCQ/${item.id}
     add:
       enable: true
@@ -50,7 +49,6 @@ fields:
     graphType: String
     list:
       enable: false
-      size: '-3'
     add:
       enable: true
     edit:
@@ -148,7 +146,6 @@ fields:
     list:
       enable: true
       editable: true
-      size: '2'
     add:
       enable: true
     edit:

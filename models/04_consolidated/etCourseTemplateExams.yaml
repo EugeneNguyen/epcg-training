@@ -48,6 +48,7 @@ fields:
     graphType: Int
     list:
       enable: true
+      editable: true
     add:
       enable: true
     edit:
@@ -64,6 +65,7 @@ fields:
     graphType: Int
     list:
       enable: true
+      editable: true
     add:
       enable: true
     edit:

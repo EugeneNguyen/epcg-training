@@ -12,12 +12,10 @@ fields:
   questionCode:
     list:
       editable: true
-      size: '4'
       link: /etCourseTemplateQuestionMCQ/${item.id}
   question:
     list:
       enable: false
-      size: '-3'
   questionImageId:
     list:
       enable: false
@@ -36,7 +34,6 @@ fields:
   correctAnswer:
     list:
       editable: true
-      size: '2'
   explanation:
     list:
       enable: false

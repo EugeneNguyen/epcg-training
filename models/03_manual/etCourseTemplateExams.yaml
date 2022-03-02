@@ -11,6 +11,12 @@ fields:
   name:
     list:
       link: /etCourseTemplateExam/${item.id}
+  duration:
+    list:
+      editable: true
+  numberOfQuestion:
+    list:
+      editable: true
   createdAt:
     list:
       enable: false
