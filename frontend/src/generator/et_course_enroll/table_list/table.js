@@ -70,12 +70,22 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
           <Cell
             type="TINYINT(1)"
             value={get(item, 'isActive')}
+            id={item.id}
+            valueKey="isActive"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
           {excludeColumns.includes("isCourseAdmin") || (
           <Cell
             type="TINYINT(1)"
             value={get(item, 'isCourseAdmin')}
+            id={item.id}
+            valueKey="isCourseAdmin"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
           />
         )}
         <td>

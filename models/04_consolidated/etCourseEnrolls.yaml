@@ -63,6 +63,7 @@ fields:
     graphType: Boolean
     list:
       enable: true
+      editable: true
     add:
       enable: true
     edit:
@@ -79,6 +80,7 @@ fields:
     graphType: Boolean
     list:
       enable: true
+      editable: true
     add:
       enable: true
     edit:

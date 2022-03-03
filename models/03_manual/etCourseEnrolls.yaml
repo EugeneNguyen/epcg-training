@@ -2,6 +2,12 @@ fields:
   id:
     list:
       enable: false
+  isActive:
+    list:
+      editable: true
+  isCourseAdmin:
+    list:
+      editable: true
   createdAt:
     list:
       enable: false

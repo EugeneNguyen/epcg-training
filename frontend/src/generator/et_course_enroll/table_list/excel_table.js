@@ -60,10 +60,20 @@ export default function EtCourseEnrollTerTable(props) {
           <Cell
             type="TINYINT(1)"
             value={get(item, 'isActive')}
+            editId={item.id}
+            editKey="isActive"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="TINYINT(1)"
             value={get(item, 'isCourseAdmin')}
+            editId={item.id}
+            editKey="isCourseAdmin"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="DATETIME"
