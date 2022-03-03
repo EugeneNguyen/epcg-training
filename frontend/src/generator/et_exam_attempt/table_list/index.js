@@ -11,17 +11,16 @@ export default function TableEtExamAttemptList({where, excludeColumns, relations
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
-  const [useExcelTable, setUseExcelTable] = useState(false);
-  const Table = useExcelTable ? EtExamAttemptTerTable : EtExamAttemptTable;
-
+  const [excelTable, setExcelTable] = useState(false);
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? EtExamAttemptTerTable : EtExamAttemptTable;
   return (
     <div className="space-y-4">
-      <Box>
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
+      <Box title="List EtExamAttempt">
         <Table
           limit={limit}
-
           offset={offset}
           where={where}
           relationshipName={relationshipName}

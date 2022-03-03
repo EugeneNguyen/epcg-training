@@ -33,21 +33,11 @@ export default function TgRolePermissionTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH className="">
-            Id
-          </TH>
-          <TH className="">
-            Role
-          </TH>
-          <TH className="">
-            Permission
-          </TH>
-          <TH className="">
-            Created At
-          </TH>
-          <TH className="">
-            Updated At
-          </TH>
+          <TH>Id</TH>
+          <TH>Role</TH>
+          <TH>Permission</TH>
+          <TH>Created At</TH>
+          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -56,47 +46,22 @@ export default function TgRolePermissionTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'id')}
-            editId={item.id}
-            editKey="id"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'role.name')}
-            editId={item.id}
-            editKey="roleId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'permission.name')}
-            editId={item.id}
-            editKey="permissionId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'createdAt')}
-            editId={item.id}
-            editKey="createdAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'updatedAt')}
-            editId={item.id}
-            editKey="updatedAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
         </TR>
       ))}

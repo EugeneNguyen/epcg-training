@@ -1,6 +1,7 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 const groupLoader = new DataLoader(async (keys) => {
@@ -16,6 +17,12 @@ const groupLoader = new DataLoader(async (keys) => {
 
 let type = {
   TgPermission: {
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     group(parent, args, context, info) {
       if (parent.groupId) {
         return groupLoader.load(parent.groupId);

@@ -1,6 +1,7 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 const roleLoader = new DataLoader(async (keys) => {
@@ -26,6 +27,12 @@ const permissionLoader = new DataLoader(async (keys) => {
 
 let type = {
   TgRolePermission: {
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     role(parent, args, context, info) {
       if (parent.roleId) {
         return roleLoader.load(parent.roleId);

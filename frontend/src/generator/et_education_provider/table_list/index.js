@@ -18,8 +18,8 @@ export default function TableEtEducationProviderList({where, excludeColumns, rel
   const Table = excelTable ? EtEducationProviderTerTable : EtEducationProviderTable;
   return (
     <div className="space-y-4">
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
       <div className="flex flex-row-reverse">
-        <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
         <Form className="w-4/12" onSubmitParams={({searchBy}) => setSearchBy(searchBy)}>
           <Input
             name="searchBy"

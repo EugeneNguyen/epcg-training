@@ -11,14 +11,14 @@ export default function TableEtCourseTemplateQuestionSourceList({where, excludeC
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
-  const [useExcelTable, setUseExcelTable] = useState(false);
-  const Table = useExcelTable ? EtCourseTemplateQuestionSourceTerTable : EtCourseTemplateQuestionSourceTable;
-
+  const [excelTable, setExcelTable] = useState(false);
   const [searchBy, setSearchBy] = useState();
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? EtCourseTemplateQuestionSourceTerTable : EtCourseTemplateQuestionSourceTable;
   return (
     <div className="space-y-4">
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
       <div className="flex flex-row-reverse">
         <Form className="w-4/12" onSubmitParams={({searchBy}) => setSearchBy(searchBy)}>
           <Input
@@ -27,10 +27,9 @@ export default function TableEtCourseTemplateQuestionSourceList({where, excludeC
           />
         </Form>
       </div>
-      <Box>
+      <Box title="List EtCourseTemplateQuestionSource">
         <Table
           limit={limit}
-
           offset={offset}
           where={where}
           relationshipName={relationshipName}

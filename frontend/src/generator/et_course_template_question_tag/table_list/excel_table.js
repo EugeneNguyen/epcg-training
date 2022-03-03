@@ -34,21 +34,11 @@ export default function EtCourseTemplateQuestionTagTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH className="">
-            Id
-          </TH>
-          <TH className="w-6/12">
-            Name
-          </TH>
-          <TH className="">
-            Courese Template
-          </TH>
-          <TH className="">
-            Created At
-          </TH>
-          <TH className="">
-            Updated At
-          </TH>
+          <TH>Id</TH>
+          <TH size="6">Name</TH>
+          <TH>Courese Template</TH>
+          <TH>Created At</TH>
+          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -57,15 +47,11 @@ export default function EtCourseTemplateQuestionTagTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'id')}
-            editId={item.id}
-            editKey="id"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'name')}
+            size="6"
             link={`/etCourseTemplateQuestionTag/${item.id}`}
             editId={item.id}
             editKey="name"
@@ -76,29 +62,14 @@ export default function EtCourseTemplateQuestionTagTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
-            editId={item.id}
-            editKey="courseTemplateId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'createdAt')}
-            editId={item.id}
-            editKey="createdAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'updatedAt')}
-            editId={item.id}
-            editKey="updatedAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
         </TR>
       ))}

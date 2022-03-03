@@ -11,17 +11,16 @@ export default function TableTgRolePermissionList({where, excludeColumns, relati
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
-  const [useExcelTable, setUseExcelTable] = useState(false);
-  const Table = useExcelTable ? TgRolePermissionTerTable : TgRolePermissionTable;
-
+  const [excelTable, setExcelTable] = useState(false);
   const location = useLocation();
   let refetch = null;
+  const Table = excelTable ? TgRolePermissionTerTable : TgRolePermissionTable;
   return (
     <div className="space-y-4">
-      <Box>
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
+      <Box title="List TgRolePermission">
         <Table
           limit={limit}
-
           offset={offset}
           where={where}
           relationshipName={relationshipName}

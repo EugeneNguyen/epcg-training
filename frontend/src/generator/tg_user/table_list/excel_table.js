@@ -34,24 +34,12 @@ export default function TgUserTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH className="">
-            Id
-          </TH>
-          <TH className="">
-            Username
-          </TH>
-          <TH className="">
-            Password
-          </TH>
-          <TH className="">
-            Name
-          </TH>
-          <TH className="">
-            Created At
-          </TH>
-          <TH className="">
-            Updated At
-          </TH>
+          <TH>Id</TH>
+          <TH>Username</TH>
+          <TH>Password</TH>
+          <TH>Name</TH>
+          <TH>Created At</TH>
+          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -60,30 +48,15 @@ export default function TgUserTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'id')}
-            editId={item.id}
-            editKey="id"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'username')}
             link={`/tgUser/${item.id}`}
-            editId={item.id}
-            editKey="username"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'password')}
-            editId={item.id}
-            editKey="password"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
@@ -97,20 +70,10 @@ export default function TgUserTerTable(props) {
           <Cell
             type="DATETIME"
             value={get(item, 'createdAt')}
-            editId={item.id}
-            editKey="createdAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'updatedAt')}
-            editId={item.id}
-            editKey="updatedAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
         </TR>
       ))}

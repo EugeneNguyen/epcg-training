@@ -1,6 +1,7 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 const courseLoader = new DataLoader(async (keys) => {
@@ -26,6 +27,12 @@ const courseTemplateExamLoader = new DataLoader(async (keys) => {
 
 let type = {
   EtCourseExam: {
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     course(parent, args, context, info) {
       if (parent.courseId) {
         return courseLoader.load(parent.courseId);

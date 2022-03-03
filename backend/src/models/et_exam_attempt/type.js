@@ -1,6 +1,7 @@
 const db = require('../../database/models');
 const DataLoader = require('dataloader');
 const Op = db.Sequelize.Op;
+const moment = require('moment');
 const _ = require('lodash');
 
 const templateExamLoader = new DataLoader(async (keys) => {
@@ -36,6 +37,18 @@ const examLoader = new DataLoader(async (keys) => {
 
 let type = {
   EtExamAttempt: {
+    startTime(parent) {
+      return moment(parent.startTime).format();
+    },
+    endTime(parent) {
+      return moment(parent.endTime).format();
+    },
+    createdAt(parent) {
+      return moment(parent.createdAt).format();
+    },
+    updatedAt(parent) {
+      return moment(parent.updatedAt).format();
+    },
     questions(parent, {where}, context, info) {
       return db.etExamAttemptQuestion.findAll({
         where: {

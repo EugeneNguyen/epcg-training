@@ -33,24 +33,12 @@ export default function EtCourseExamTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH className="">
-            Id
-          </TH>
-          <TH className="w-4/12">
-            Name
-          </TH>
-          <TH className="">
-            Course
-          </TH>
-          <TH className="w-4/12">
-            Course Template Exam
-          </TH>
-          <TH className="">
-            Created At
-          </TH>
-          <TH className="">
-            Updated At
-          </TH>
+          <TH>Id</TH>
+          <TH size="4">Name</TH>
+          <TH>Course</TH>
+          <TH size="4">Course Template Exam</TH>
+          <TH>Created At</TH>
+          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -59,15 +47,11 @@ export default function EtCourseExamTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'id')}
-            editId={item.id}
-            editKey="id"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'name')}
+            size="4"
             editId={item.id}
             editKey="name"
             editMutation={API.EDIT}
@@ -77,38 +61,19 @@ export default function EtCourseExamTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'course.name')}
-            editId={item.id}
-            editKey="courseId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'courseTemplateExam.name')}
-            editId={item.id}
-            editKey="courseTemplateExamId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
+            size="4"
           />
           <Cell
             type="DATETIME"
             value={get(item, 'createdAt')}
-            editId={item.id}
-            editKey="createdAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'updatedAt')}
-            editId={item.id}
-            editKey="updatedAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
         </TR>
       ))}

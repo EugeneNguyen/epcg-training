@@ -17,6 +17,7 @@ export default function TableEtCourseEnrollList({where, excludeColumns, relation
   const Table = excelTable ? EtCourseEnrollTerTable : EtCourseEnrollTable;
   return (
     <div className="space-y-4">
+    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
       <Box title="List EtCourseEnroll">
         <Table
           limit={limit}

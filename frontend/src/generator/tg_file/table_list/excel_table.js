@@ -33,39 +33,17 @@ export default function TgFileTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH className="">
-            Id
-          </TH>
-          <TH className="">
-            Service
-          </TH>
-          <TH className="">
-            Key
-          </TH>
-          <TH className="">
-            Original Name
-          </TH>
-          <TH className="">
-            Extension
-          </TH>
-          <TH className="">
-            Mime Type
-          </TH>
-          <TH className="">
-            Size
-          </TH>
-          <TH className="">
-            Meta
-          </TH>
-          <TH className="">
-            Owner User Id
-          </TH>
-          <TH className="">
-            Created At
-          </TH>
-          <TH className="">
-            Updated At
-          </TH>
+          <TH>Id</TH>
+          <TH>Service</TH>
+          <TH>Key</TH>
+          <TH>Original Name</TH>
+          <TH>Extension</TH>
+          <TH>Mime Type</TH>
+          <TH>Size</TH>
+          <TH>Meta</TH>
+          <TH>Owner User Id</TH>
+          <TH>Created At</TH>
+          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -75,101 +53,46 @@ export default function TgFileTerTable(props) {
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/tgFile/${item.id}`}
-            editId={item.id}
-            editKey="id"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'service')}
-            editId={item.id}
-            editKey="service"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'key')}
-            editId={item.id}
-            editKey="key"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'originalName')}
-            editId={item.id}
-            editKey="originalName"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'extension')}
-            editId={item.id}
-            editKey="extension"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'mimeType')}
-            editId={item.id}
-            editKey="mimeType"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="INT"
             value={get(item, 'size')}
-            editId={item.id}
-            editKey="size"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="TEXT"
             value={get(item, 'meta')}
-            editId={item.id}
-            editKey="meta"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'ownerUserId')}
-            editId={item.id}
-            editKey="ownerUserId"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'createdAt')}
-            editId={item.id}
-            editKey="createdAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
           <Cell
             type="DATETIME"
             value={get(item, 'updatedAt')}
-            editId={item.id}
-            editKey="updatedAt"
-            editMutation={API.EDIT}
-            editOnCompleted={() => refetch()}
-            editable
           />
         </TR>
       ))}
