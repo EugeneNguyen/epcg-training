@@ -49,6 +49,7 @@ fields:
     graphType: String
     list:
       enable: false
+      editable: true
     add:
       enable: true
     edit:
@@ -81,6 +82,7 @@ fields:
     graphType: String
     list:
       enable: false
+      editable: true
     add:
       enable: true
     edit:
@@ -97,6 +99,7 @@ fields:
     graphType: String
     list:
       enable: false
+      editable: true
     add:
       enable: true
     edit:
@@ -113,6 +116,7 @@ fields:
     graphType: String
     list:
       enable: false
+      editable: true
     add:
       enable: true
     edit:
@@ -129,6 +133,7 @@ fields:
     graphType: String
     list:
       enable: false
+      editable: true
     add:
       enable: true
     edit:

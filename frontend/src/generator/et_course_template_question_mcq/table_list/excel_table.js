@@ -71,6 +71,11 @@ export default function EtCourseTemplateQuestionMcqTerTable(props) {
           <Cell
             type="TEXT"
             value={get(item, 'question')}
+            editId={item.id}
+            editKey="question"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="CHAR(36)"
@@ -79,18 +84,38 @@ export default function EtCourseTemplateQuestionMcqTerTable(props) {
           <Cell
             type="TEXT"
             value={get(item, 'answerA')}
+            editId={item.id}
+            editKey="answerA"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="TEXT"
             value={get(item, 'answerB')}
+            editId={item.id}
+            editKey="answerB"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="TEXT"
             value={get(item, 'answerC')}
+            editId={item.id}
+            editKey="answerC"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="TEXT"
             value={get(item, 'answerD')}
+            editId={item.id}
+            editKey="answerD"
+            editMutation={API.EDIT}
+            editOnCompleted={() => refetch()}
+            editable
           />
           <Cell
             type="VARCHAR(255)"

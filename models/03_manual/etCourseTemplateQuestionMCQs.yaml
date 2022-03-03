@@ -16,21 +16,26 @@ fields:
   question:
     list:
       enable: false
+      editable: true
   questionImageId:
     list:
       enable: false
   answerA:
     list:
       enable: false
+      editable: true
   answerB:
     list:
       enable: false
+      editable: true
   answerC:
     list:
       enable: false
+      editable: true
   answerD:
     list:
       enable: false
+      editable: true
   correctAnswer:
     list:
       editable: true
