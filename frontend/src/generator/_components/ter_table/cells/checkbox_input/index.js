@@ -8,7 +8,11 @@ export default function CellCheckBoxInput(props) {
   }
   return (
     <BaseCell link={props.link} size={props.size}>
-      {props.children || props.value}
+      <input
+        type="checkbox"
+        checked={props.children || props.value}
+        disabled
+      />
     </BaseCell>
   );
 }
