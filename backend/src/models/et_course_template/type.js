@@ -18,9 +18,11 @@ const educationProviderLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseTemplate: {
     createdAt(parent) {
+      if (parent.createdAt == null) return null;
       return moment(parent.createdAt).format();
     },
     updatedAt(parent) {
+      if (parent.updatedAt == null) return null;
       return moment(parent.updatedAt).format();
     },
     educationProvider(parent, args, context, info) {

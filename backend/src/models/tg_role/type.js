@@ -8,9 +8,11 @@ const _ = require('lodash');
 let type = {
   TgRole: {
     createdAt(parent) {
+      if (parent.createdAt == null) return null;
       return moment(parent.createdAt).format();
     },
     updatedAt(parent) {
+      if (parent.updatedAt == null) return null;
       return moment(parent.updatedAt).format();
     },
     async members(parent, {where}, context, info) {

@@ -38,15 +38,19 @@ const examLoader = new DataLoader(async (keys) => {
 let type = {
   EtExamAttempt: {
     startTime(parent) {
+      if (parent.startTime == null) return null;
       return moment(parent.startTime).format();
     },
     endTime(parent) {
+      if (parent.endTime == null) return null;
       return moment(parent.endTime).format();
     },
     createdAt(parent) {
+      if (parent.createdAt == null) return null;
       return moment(parent.createdAt).format();
     },
     updatedAt(parent) {
+      if (parent.updatedAt == null) return null;
       return moment(parent.updatedAt).format();
     },
     questions(parent, {where}, context, info) {

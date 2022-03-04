@@ -28,9 +28,11 @@ const userLoader = new DataLoader(async (keys) => {
 let type = {
   TgUserPermission: {
     createdAt(parent) {
+      if (parent.createdAt == null) return null;
       return moment(parent.createdAt).format();
     },
     updatedAt(parent) {
+      if (parent.updatedAt == null) return null;
       return moment(parent.updatedAt).format();
     },
     permission(parent, args, context, info) {

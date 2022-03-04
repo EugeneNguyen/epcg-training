@@ -38,9 +38,11 @@ const questionImageLoader = new DataLoader(async (keys) => {
 let type = {
   EtCourseTemplateQuestionMcq: {
     createdAt(parent) {
+      if (parent.createdAt == null) return null;
       return moment(parent.createdAt).format();
     },
     updatedAt(parent) {
+      if (parent.updatedAt == null) return null;
       return moment(parent.updatedAt).format();
     },
     questionSource(parent, args, context, info) {
