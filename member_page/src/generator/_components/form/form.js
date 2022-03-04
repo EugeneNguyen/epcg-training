@@ -1,4 +1,4 @@
-import isArray from 'lodash/isArray';
+import {isArray} from 'lodash';
 
 function Form({onSubmitParams, ...props}) {
   const handleSubmit = (e) => {
@@ -24,10 +24,10 @@ function Form({onSubmitParams, ...props}) {
 
   return (
     <form {...props} onSubmit={handleSubmit} >
-      <div class="grid grid-cols-1 gap-6 mt-4">
+      <div class="grid grid-cols-1 gap-6">
         {props.children}
       </div>
-      <input type="submit" class="invisible" />
+      <input type="submit" class="hidden" />
     </form>
   )
 }

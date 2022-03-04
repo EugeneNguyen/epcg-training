@@ -22,7 +22,7 @@ export default function CellDatetime(props) {
       mutation={props.mutation}
       onCompleted={props.onCompleted}
       editable={props.editable}
-      renderDisplay={() => moment(parseInt(props.value)).format(props.dateFormat)}
+      renderDisplay={() => moment(props.value).format(props.dateFormat)}
       renderInput={() => (
         <input
           type="date"

@@ -22,9 +22,14 @@ export default function CellDatetime(props) {
       mutation={props.mutation}
       onCompleted={props.onCompleted}
       editable={props.editable}
-      renderDisplay={() => moment(parseInt(props.value)).format(props.dateFormat)}
+      renderDisplay={() => moment(props.value).format(props.dateFormat)}
       renderInput={() => (
-        <input className="form-control" type="date" defaultValue={dateValue} name={props.valueKey} />
+        <input
+          type="date"
+          className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring"
+          defaultValue={dateValue}
+          name={props.valueKey}
+        />
       )}
     />
   );
