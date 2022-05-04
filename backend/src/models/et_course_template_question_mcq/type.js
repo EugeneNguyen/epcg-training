@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const questionSourceLoader = new DataLoader(async (keys) => {
+const questionSourceManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplateQuestionSource.findAll({
     where: {
       id: {
@@ -14,7 +14,7 @@ const questionSourceLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-const courseTemplateLoader = new DataLoader(async (keys) => {
+const courseTemplateManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplate.findAll({
     where: {
       id: {
@@ -24,7 +24,7 @@ const courseTemplateLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-const questionImageLoader = new DataLoader(async (keys) => {
+const questionImageManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.tgFile.findAll({
     where: {
       id: {
@@ -47,13 +47,13 @@ let type = {
     },
     questionSource(parent, args, context, info) {
       if (parent.questionSourceId) {
-        return questionSourceLoader.load(parent.questionSourceId);
+        return questionSourceManyToOneLoader.load(parent.questionSourceId);
       }
       return null;
     },
     courseTemplate(parent, args, context, info) {
       if (parent.courseTemplateId) {
-        return courseTemplateLoader.load(parent.courseTemplateId);
+        return courseTemplateManyToOneLoader.load(parent.courseTemplateId);
       }
       return null;
     },
@@ -91,7 +91,7 @@ let type = {
     },
     questionImage(parent, args, context, info) {
       if (parent.questionImageId) {
-        return questionImageLoader.load(parent.questionImageId);
+        return questionImageManyToOneLoader.load(parent.questionImageId);
       }
       return null;
     },

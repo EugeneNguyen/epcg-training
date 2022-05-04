@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const questionLoader = new DataLoader(async (keys) => {
+const questionManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplateQuestionMCQ.findAll({
     where: {
       id: {
@@ -27,7 +27,7 @@ let type = {
     },
     question(parent, args, context, info) {
       if (parent.questionId) {
-        return questionLoader.load(parent.questionId);
+        return questionManyToOneLoader.load(parent.questionId);
       }
       return null;
     },

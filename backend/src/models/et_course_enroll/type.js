@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const courseLoader = new DataLoader(async (keys) => {
+const courseManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourse.findAll({
     where: {
       id: {
@@ -14,7 +14,7 @@ const courseLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-const userLoader = new DataLoader(async (keys) => {
+const userManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.tgUser.findAll({
     where: {
       id: {
@@ -37,13 +37,13 @@ let type = {
     },
     course(parent, args, context, info) {
       if (parent.courseId) {
-        return courseLoader.load(parent.courseId);
+        return courseManyToOneLoader.load(parent.courseId);
       }
       return null;
     },
     user(parent, args, context, info) {
       if (parent.userId) {
-        return userLoader.load(parent.userId);
+        return userManyToOneLoader.load(parent.userId);
       }
       return null;
     },

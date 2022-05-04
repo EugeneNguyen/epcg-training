@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const roleLoader = new DataLoader(async (keys) => {
+const roleManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.tgRole.findAll({
     where: {
       id: {
@@ -14,7 +14,7 @@ const roleLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-const permissionLoader = new DataLoader(async (keys) => {
+const permissionManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.tgPermission.findAll({
     where: {
       id: {
@@ -37,13 +37,13 @@ let type = {
     },
     role(parent, args, context, info) {
       if (parent.roleId) {
-        return roleLoader.load(parent.roleId);
+        return roleManyToOneLoader.load(parent.roleId);
       }
       return null;
     },
     permission(parent, args, context, info) {
       if (parent.permissionId) {
-        return permissionLoader.load(parent.permissionId);
+        return permissionManyToOneLoader.load(parent.permissionId);
       }
       return null;
     },

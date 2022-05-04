@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const courseLoader = new DataLoader(async (keys) => {
+const courseManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourse.findAll({
     where: {
       id: {
@@ -14,7 +14,7 @@ const courseLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-const courseTemplateExamLoader = new DataLoader(async (keys) => {
+const courseTemplateExamManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplateExam.findAll({
     where: {
       id: {
@@ -24,6 +24,7 @@ const courseTemplateExamLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
+
 
 let type = {
   EtCourseExam: {
@@ -37,13 +38,13 @@ let type = {
     },
     course(parent, args, context, info) {
       if (parent.courseId) {
-        return courseLoader.load(parent.courseId);
+        return courseManyToOneLoader.load(parent.courseId);
       }
       return null;
     },
     courseTemplateExam(parent, args, context, info) {
       if (parent.courseTemplateExamId) {
-        return courseTemplateExamLoader.load(parent.courseTemplateExamId);
+        return courseTemplateExamManyToOneLoader.load(parent.courseTemplateExamId);
       }
       return null;
     },

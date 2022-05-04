@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const groupLoader = new DataLoader(async (keys) => {
+const groupManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.tgPermissionGroup.findAll({
     where: {
       id: {
@@ -27,7 +27,7 @@ let type = {
     },
     group(parent, args, context, info) {
       if (parent.groupId) {
-        return groupLoader.load(parent.groupId);
+        return groupManyToOneLoader.load(parent.groupId);
       }
       return null;
     },

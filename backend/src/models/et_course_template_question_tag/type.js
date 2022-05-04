@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const courseTemplateLoader = new DataLoader(async (keys) => {
+const courseTemplateManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplate.findAll({
     where: {
       id: {
@@ -27,7 +27,7 @@ let type = {
     },
     courseTemplate(parent, args, context, info) {
       if (parent.courseTemplateId) {
-        return courseTemplateLoader.load(parent.courseTemplateId);
+        return courseTemplateManyToOneLoader.load(parent.courseTemplateId);
       }
       return null;
     },

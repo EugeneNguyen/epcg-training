@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-const educationProviderLoader = new DataLoader(async (keys) => {
+const educationProviderManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etEducationProvider.findAll({
     where: {
       id: {
@@ -14,6 +14,10 @@ const educationProviderLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
+
+
+
+
 
 let type = {
   EtCourseTemplate: {
@@ -27,7 +31,7 @@ let type = {
     },
     educationProvider(parent, args, context, info) {
       if (parent.educationProviderId) {
-        return educationProviderLoader.load(parent.educationProviderId);
+        return educationProviderManyToOneLoader.load(parent.educationProviderId);
       }
       return null;
     },
