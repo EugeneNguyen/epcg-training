@@ -14,7 +14,16 @@ const courseTemplateManyToOneLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
+const attemptsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etExamAttempt.findAll({
+    where: {
+      templateExamId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.templateExamId === key));
+}, { cache: false });
 
 let type = {
   EtCourseTemplateExam: {
@@ -65,6 +74,12 @@ let type = {
       });
     },
     attempts(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return attemptsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etExamAttempt.findAll({
         where: {
           templateExamId: parent.id,

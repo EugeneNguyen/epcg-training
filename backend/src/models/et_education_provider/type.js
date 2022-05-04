@@ -4,8 +4,26 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-
-
+const courseTemplatesOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseTemplate.findAll({
+    where: {
+      educationProviderId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.educationProviderId === key));
+}, { cache: false });
+const coursesOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourse.findAll({
+    where: {
+      educationProviderId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.educationProviderId === key));
+}, { cache: false });
 
 let type = {
   EtEducationProvider: {
@@ -18,6 +36,12 @@ let type = {
       return moment(parent.updatedAt).format();
     },
     courseTemplates(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return courseTemplatesOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourseTemplate.findAll({
         where: {
           educationProviderId: parent.id,
@@ -34,6 +58,12 @@ let type = {
       });
     },
     courses(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return coursesOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourse.findAll({
         where: {
           educationProviderId: parent.id,

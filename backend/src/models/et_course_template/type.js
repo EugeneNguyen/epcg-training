@@ -14,10 +14,46 @@ const educationProviderManyToOneLoader = new DataLoader(async (keys) => {
   });
   return keys.map(key => items.find(item => item.id === key));
 }, { cache: false });
-
-
-
-
+const questionsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseTemplateQuestionMCQ.findAll({
+    where: {
+      courseTemplateId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.courseTemplateId === key));
+}, { cache: false });
+const questionSourcesOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseTemplateQuestionSource.findAll({
+    where: {
+      courseTemplateId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.courseTemplateId === key));
+}, { cache: false });
+const tagsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseTemplateQuestionTag.findAll({
+    where: {
+      courseTemplateId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.courseTemplateId === key));
+}, { cache: false });
+const examsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etCourseTemplateExam.findAll({
+    where: {
+      courseTemplateId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.courseTemplateId === key));
+}, { cache: false });
 
 let type = {
   EtCourseTemplate: {
@@ -36,6 +72,12 @@ let type = {
       return null;
     },
     questions(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return questionsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourseTemplateQuestionMCQ.findAll({
         where: {
           courseTemplateId: parent.id,
@@ -52,6 +94,12 @@ let type = {
       });
     },
     questionSources(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return questionSourcesOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourseTemplateQuestionSource.findAll({
         where: {
           courseTemplateId: parent.id,
@@ -68,6 +116,12 @@ let type = {
       });
     },
     tags(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return tagsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourseTemplateQuestionTag.findAll({
         where: {
           courseTemplateId: parent.id,
@@ -84,6 +138,12 @@ let type = {
       });
     },
     exams(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return examsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etCourseTemplateExam.findAll({
         where: {
           courseTemplateId: parent.id,

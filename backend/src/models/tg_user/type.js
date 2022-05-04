@@ -4,8 +4,26 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-
-
+const tokensOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.tgUserToken.findAll({
+    where: {
+      userId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.userId === key));
+}, { cache: false });
+const examAttemptsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etExamAttempt.findAll({
+    where: {
+      userId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.userId === key));
+}, { cache: false });
 
 let type = {
   TgUser: {
@@ -18,6 +36,12 @@ let type = {
       return moment(parent.updatedAt).format();
     },
     tokens(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return tokensOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.tgUserToken.findAll({
         where: {
           userId: parent.id,
@@ -130,6 +154,12 @@ let type = {
       });
     },
     examAttempts(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return examAttemptsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etExamAttempt.findAll({
         where: {
           userId: parent.id,

@@ -4,7 +4,16 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-
+const questionsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.etExamAttemptQuestion.findAll({
+    where: {
+      attemptId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.attemptId === key));
+}, { cache: false });
 const templateExamManyToOneLoader = new DataLoader(async (keys) => {
   const items = await db.etCourseTemplateExam.findAll({
     where: {
@@ -55,6 +64,12 @@ let type = {
       return moment(parent.updatedAt).format();
     },
     questions(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return questionsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.etExamAttemptQuestion.findAll({
         where: {
           attemptId: parent.id,

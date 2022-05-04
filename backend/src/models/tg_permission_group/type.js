@@ -4,7 +4,16 @@ const Op = db.Sequelize.Op;
 const moment = require('moment');
 const _ = require('lodash');
 
-
+const permissionsOneToManyLoader = new DataLoader(async (keys) => {
+  const items = await db.tgPermission.findAll({
+    where: {
+      groupId: {
+        [Op.in]: _.uniq(keys),
+      },
+    }
+  });
+  return keys.map(key => items.filter(item => item.groupId === key));
+}, { cache: false });
 
 let type = {
   TgPermissionGroup: {
@@ -17,6 +26,12 @@ let type = {
       return moment(parent.updatedAt).format();
     },
     permissions(parent, {where}, context, info) {
+      if (!where) {
+        if (parent.id) {
+          return permissionsOneToManyLoader.load(parent.id);
+        }
+        return null;
+      }
       return db.tgPermission.findAll({
         where: {
           groupId: parent.id,
