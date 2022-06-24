@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "./node_modules/pm2/bin/pm2-runtime app.js -i max",
+    "poststart": "node ./node_modules/pm2/bin/pm2 logs",
     "sql": "./node_modules/.bin/sequelize --migrations-path=src/database/migrations --seeders-path=src/database/seeders --models-path=src/database/models ----config=src/database/config/config.json"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.4",
     "mysql2": "^2.2.5",
+    "pm2": "^5.2.0",
     "pug": "2.0.0-beta11",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",

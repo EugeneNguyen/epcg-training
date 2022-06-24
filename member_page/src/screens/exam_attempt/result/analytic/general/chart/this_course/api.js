@@ -17,8 +17,6 @@ query Et_exam_attempt_get_by_id($id: String) {
             examAttempts {
               id
               examId
-              startTime
-              endTime
               questions {
                 id
                 order

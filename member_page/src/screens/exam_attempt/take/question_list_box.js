@@ -11,7 +11,7 @@ export default function QuestionListBox({questions, attemptId, setIndex, data}) 
   const history = useHistory();
   const [endAttempt] = useMutation(API.END_ATTEMPT, {variables: {id: attemptId}});
 
-  const endTime = moment(parseFloat(data.data.startTime)).add(data.data.duration, 'minute');
+  const endTime = moment(data.data.startTime).add(data.data.duration, 'minute');
   const unlimitedTime = data.data.templateExam.unlimitedTime;
 
   const tick = useTick();
