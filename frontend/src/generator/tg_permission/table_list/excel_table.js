@@ -14,6 +14,7 @@ TgPermissionTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgPermissionTerTable(props) {
@@ -33,19 +34,21 @@ export default function TgPermissionTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Name</TH>
-          <TH>Group</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
+          <TH hidden={props.excludeColumns.includes("groupId")}>Group</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/tgPermission/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("groupId")}
             type="CHAR(36)"
             value={get(item, 'group.name')}
           />

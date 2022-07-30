@@ -27,21 +27,60 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("questionCode") || (
-          <TH className="">
-            Question Code
-          </TH>
-        )}
-        {excludeColumns.includes("correctAnswer") || (
-          <TH className="">
-            Correct Answer
-          </TH>
-        )}
-        {excludeColumns.includes("questionSourceId") || (
-          <TH className="">
-            Question Source
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("questionCode")}
+          size="80"
+        >
+          Question Code
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("question")}
+          size="80"
+        >
+          Question
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("answerA")}
+          size="80"
+        >
+          Answer A
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("answerB")}
+          size="80"
+        >
+          Answer B
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("answerC")}
+          size="80"
+        >
+          Answer C
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("answerD")}
+          size="80"
+        >
+          Answer D
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("correctAnswer")}
+          size=""
+        >
+          Correct Answer
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("explanation")}
+          size="80"
+        >
+          Explanation
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("questionSourceId")}
+          size=""
+        >
+          Question Source
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -50,8 +89,9 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("questionCode") || (
           <Cell
+            hidden={excludeColumns.includes("questionCode")}
+            size="80"
             type="VARCHAR(255)"
             value={get(item, 'questionCode')}
             link={`/etCourseTemplateQuestionMCQ/${item.id}`}
@@ -61,9 +101,64 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("correctAnswer") || (
           <Cell
+            hidden={excludeColumns.includes("question")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'question')}
+            id={item.id}
+            valueKey="question"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("answerA")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'answerA')}
+            id={item.id}
+            valueKey="answerA"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("answerB")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'answerB')}
+            id={item.id}
+            valueKey="answerB"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("answerC")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'answerC')}
+            id={item.id}
+            valueKey="answerC"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("answerD")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'answerD')}
+            id={item.id}
+            valueKey="answerD"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("correctAnswer")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'correctAnswer')}
             id={item.id}
@@ -72,13 +167,23 @@ export default function EtCourseTemplateQuestionMcqTable({limit, offset, didLoad
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("questionSourceId") || (
           <Cell
+            hidden={excludeColumns.includes("explanation")}
+            size="80"
+            type="TEXT"
+            value={get(item, 'explanation')}
+            id={item.id}
+            valueKey="explanation"
+            mutation={API.EDIT}
+            onCompleted={() => refetch()}
+            editable
+          />
+          <Cell
+            hidden={excludeColumns.includes("questionSourceId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'questionSource.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

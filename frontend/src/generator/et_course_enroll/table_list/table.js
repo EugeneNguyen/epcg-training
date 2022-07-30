@@ -26,26 +26,30 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("courseId") || (
-          <TH className="">
-            Course
-          </TH>
-        )}
-        {excludeColumns.includes("userId") || (
-          <TH className="">
-            User
-          </TH>
-        )}
-        {excludeColumns.includes("isActive") || (
-          <TH className="">
-            Is Active
-          </TH>
-        )}
-        {excludeColumns.includes("isCourseAdmin") || (
-          <TH className="">
-            Is Course Admin
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("courseId")}
+          size=""
+        >
+          Course
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("userId")}
+          size=""
+        >
+          User
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("isActive")}
+          size=""
+        >
+          Is Active
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("isCourseAdmin")}
+          size=""
+        >
+          Is Course Admin
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -54,20 +58,21 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("courseId") || (
           <Cell
+            hidden={excludeColumns.includes("courseId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'course.name')}
           />
-        )}
-          {excludeColumns.includes("userId") || (
           <Cell
+            hidden={excludeColumns.includes("userId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'user.username')}
           />
-        )}
-          {excludeColumns.includes("isActive") || (
           <Cell
+            hidden={excludeColumns.includes("isActive")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'isActive')}
             id={item.id}
@@ -76,9 +81,9 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("isCourseAdmin") || (
           <Cell
+            hidden={excludeColumns.includes("isCourseAdmin")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'isCourseAdmin')}
             id={item.id}
@@ -87,7 +92,6 @@ export default function EtCourseEnrollTable({limit, offset, didLoadData, onRefRe
             onCompleted={() => refetch()}
             editable
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

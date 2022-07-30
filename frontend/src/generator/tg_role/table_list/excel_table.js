@@ -14,6 +14,7 @@ TgRoleTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgRoleTerTable(props) {
@@ -33,14 +34,15 @@ export default function TgRoleTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Name</TH>
-          <TH>Description</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
+          <TH hidden={props.excludeColumns.includes("description")}>Description</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/tgRole/${item.id}`}
@@ -51,6 +53,7 @@ export default function TgRoleTerTable(props) {
             editable
           />
           <Cell
+            hidden={props.excludeColumns.includes("description")}
             type="VARCHAR(255)"
             value={get(item, 'description')}
             editId={item.id}

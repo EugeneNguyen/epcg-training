@@ -14,6 +14,7 @@ TgUserRoleTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgUserRoleTerTable(props) {
@@ -33,18 +34,20 @@ export default function TgUserRoleTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>User</TH>
-          <TH>Role</TH>
+          <TH hidden={props.excludeColumns.includes("userId")}>User</TH>
+          <TH hidden={props.excludeColumns.includes("roleId")}>Role</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("userId")}
             type="CHAR(36)"
             value={get(item, 'user.username')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("roleId")}
             type="CHAR(36)"
             value={get(item, 'role.name')}
           />

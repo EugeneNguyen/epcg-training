@@ -26,26 +26,30 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("id") || (
-          <TH className="">
-            Id
-          </TH>
-        )}
-        {excludeColumns.includes("userId") || (
-          <TH className="">
-            User Id
-          </TH>
-        )}
-        {excludeColumns.includes("createdAt") || (
-          <TH className="">
-            Created At
-          </TH>
-        )}
-        {excludeColumns.includes("updatedAt") || (
-          <TH className="">
-            Updated At
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("id")}
+          size=""
+        >
+          Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("userId")}
+          size=""
+        >
+          User Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("createdAt")}
+          size=""
+        >
+          Created At
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("updatedAt")}
+          size=""
+        >
+          Updated At
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -54,30 +58,30 @@ export default function TgUserTokenTable({limit, offset, didLoadData, onRefRefet
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("id") || (
           <Cell
+            hidden={excludeColumns.includes("id")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'id')}
           />
-        )}
-          {excludeColumns.includes("userId") || (
           <Cell
+            hidden={excludeColumns.includes("userId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'userId')}
           />
-        )}
-          {excludeColumns.includes("createdAt") || (
           <Cell
+            hidden={excludeColumns.includes("createdAt")}
+            size=""
             type="DATETIME"
             value={get(item, 'createdAt')}
           />
-        )}
-          {excludeColumns.includes("updatedAt") || (
           <Cell
+            hidden={excludeColumns.includes("updatedAt")}
+            size=""
             type="DATETIME"
             value={get(item, 'updatedAt')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

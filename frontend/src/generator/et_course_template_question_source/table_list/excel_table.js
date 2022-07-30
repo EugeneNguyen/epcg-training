@@ -14,6 +14,7 @@ EtCourseTemplateQuestionSourceTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseTemplateQuestionSourceTerTable(props) {
@@ -34,19 +35,21 @@ export default function EtCourseTemplateQuestionSourceTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Name</TH>
-          <TH>Course Template Id</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
+          <TH hidden={props.excludeColumns.includes("courseTemplateId")}>Course Template Id</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourseTemplateQuestionSource/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("courseTemplateId")}
             type="CHAR(36)"
             value={get(item, 'courseTemplateId')}
           />

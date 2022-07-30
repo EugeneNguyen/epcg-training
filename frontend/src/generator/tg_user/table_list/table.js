@@ -27,16 +27,18 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("username") || (
-          <TH className="">
-            Username
-          </TH>
-        )}
-        {excludeColumns.includes("name") || (
-          <TH className="">
-            Name
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("username")}
+          size=""
+        >
+          Username
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size=""
+        >
+          Name
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -45,15 +47,16 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("username") || (
           <Cell
+            hidden={excludeColumns.includes("username")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'username')}
             link={`/tgUser/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'name')}
             id={item.id}
@@ -62,7 +65,6 @@ export default function TgUserTable({limit, offset, didLoadData, onRefRefetch, w
             onCompleted={() => refetch()}
             editable
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

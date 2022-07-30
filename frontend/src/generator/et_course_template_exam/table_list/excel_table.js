@@ -14,6 +14,7 @@ EtCourseTemplateExamTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseTemplateExamTerTable(props) {
@@ -34,25 +35,27 @@ export default function EtCourseTemplateExamTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Name</TH>
-          <TH>Duration</TH>
-          <TH>Number Of Question</TH>
-          <TH>Unlimited Time</TH>
-          <TH>Random Question Order</TH>
-          <TH>Random Choice Order</TH>
-          <TH>Is Public</TH>
-          <TH>Course Template</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
+          <TH hidden={props.excludeColumns.includes("duration")}>Duration</TH>
+          <TH hidden={props.excludeColumns.includes("numberOfQuestion")}>Number Of Question</TH>
+          <TH hidden={props.excludeColumns.includes("unlimitedTime")}>Unlimited Time</TH>
+          <TH hidden={props.excludeColumns.includes("randomQuestionOrder")}>Random Question Order</TH>
+          <TH hidden={props.excludeColumns.includes("randomChoiceOrder")}>Random Choice Order</TH>
+          <TH hidden={props.excludeColumns.includes("isPublic")}>Is Public</TH>
+          <TH hidden={props.excludeColumns.includes("courseTemplateId")}>Course Template</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourseTemplateExam/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("duration")}
             type="INT"
             value={get(item, 'duration')}
             editId={item.id}
@@ -62,6 +65,7 @@ export default function EtCourseTemplateExamTerTable(props) {
             editable
           />
           <Cell
+            hidden={props.excludeColumns.includes("numberOfQuestion")}
             type="INT"
             value={get(item, 'numberOfQuestion')}
             editId={item.id}
@@ -71,22 +75,27 @@ export default function EtCourseTemplateExamTerTable(props) {
             editable
           />
           <Cell
+            hidden={props.excludeColumns.includes("unlimitedTime")}
             type="TINYINT(1)"
             value={get(item, 'unlimitedTime')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("randomQuestionOrder")}
             type="TINYINT(1)"
             value={get(item, 'randomQuestionOrder')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("randomChoiceOrder")}
             type="TINYINT(1)"
             value={get(item, 'randomChoiceOrder')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("isPublic")}
             type="TINYINT(1)"
             value={get(item, 'isPublic')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("courseTemplateId")}
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
           />

@@ -26,16 +26,18 @@ export default function EtCourseTemplateQuestionTagLinkTable({limit, offset, did
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("questionId") || (
-          <TH className="">
-            Question
-          </TH>
-        )}
-        {excludeColumns.includes("questionTagId") || (
-          <TH className="">
-            Tag
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("questionId")}
+          size=""
+        >
+          Question
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("questionTagId")}
+          size=""
+        >
+          Tag
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -44,18 +46,18 @@ export default function EtCourseTemplateQuestionTagLinkTable({limit, offset, did
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("questionId") || (
           <Cell
+            hidden={excludeColumns.includes("questionId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'question.questionCode')}
           />
-        )}
-          {excludeColumns.includes("questionTagId") || (
           <Cell
+            hidden={excludeColumns.includes("questionTagId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'tag.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

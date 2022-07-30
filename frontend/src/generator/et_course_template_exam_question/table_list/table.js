@@ -26,21 +26,24 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("examId") || (
-          <TH className="">
-            Exam Id
-          </TH>
-        )}
-        {excludeColumns.includes("questionId") || (
-          <TH className="w-80">
-            Question
-          </TH>
-        )}
-        {excludeColumns.includes("order") || (
-          <TH className="">
-            Order
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("examId")}
+          size=""
+        >
+          Exam Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("questionId")}
+          size="80"
+        >
+          Question
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("order")}
+          size=""
+        >
+          Order
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -49,20 +52,21 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("examId") || (
           <Cell
+            hidden={excludeColumns.includes("examId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'examId')}
           />
-        )}
-          {excludeColumns.includes("questionId") || (
           <Cell
+            hidden={excludeColumns.includes("questionId")}
+            size="80"
             type="CHAR(36)"
             value={get(item, 'question.questionCode')}
           />
-        )}
-          {excludeColumns.includes("order") || (
           <Cell
+            hidden={excludeColumns.includes("order")}
+            size=""
             type="INT"
             value={get(item, 'order')}
             id={item.id}
@@ -71,7 +75,6 @@ export default function EtCourseTemplateExamQuestionTable({limit, offset, didLoa
             onCompleted={() => refetch()}
             editable
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

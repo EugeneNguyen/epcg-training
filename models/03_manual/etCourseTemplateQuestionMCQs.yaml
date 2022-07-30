@@ -12,36 +12,38 @@ fields:
   questionCode:
     list:
       editable: true
+      size: '80'
       link: /etCourseTemplateQuestionMCQ/${item.id}
   question:
     list:
-      enable: false
       editable: true
+      size: '80'
   questionImageId:
     list:
       enable: false
   answerA:
     list:
-      enable: false
       editable: true
+      size: '80'
   answerB:
     list:
-      enable: false
       editable: true
+      size: '80'
   answerC:
     list:
-      enable: false
       editable: true
+      size: '80'
   answerD:
     list:
-      enable: false
       editable: true
+      size: '80'
   correctAnswer:
     list:
       editable: true
   explanation:
     list:
-      enable: false
+      editable: true
+      size: '80'
   courseTemplateId:
     list:
       enable: false

@@ -26,21 +26,24 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("name") || (
-          <TH className="w-4">
-            Name
-          </TH>
-        )}
-        {excludeColumns.includes("courseId") || (
-          <TH className="">
-            Course
-          </TH>
-        )}
-        {excludeColumns.includes("courseTemplateExamId") || (
-          <TH className="w-4">
-            Course Template Exam
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size="4"
+        >
+          Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("courseId")}
+          size=""
+        >
+          Course
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("courseTemplateExamId")}
+          size="4"
+        >
+          Course Template Exam
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -49,8 +52,9 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size="4"
             type="VARCHAR(255)"
             value={get(item, 'name')}
             id={item.id}
@@ -59,19 +63,18 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("courseId") || (
           <Cell
+            hidden={excludeColumns.includes("courseId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'course.name')}
           />
-        )}
-          {excludeColumns.includes("courseTemplateExamId") || (
           <Cell
+            hidden={excludeColumns.includes("courseTemplateExamId")}
+            size="4"
             type="CHAR(36)"
             value={get(item, 'courseTemplateExam.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

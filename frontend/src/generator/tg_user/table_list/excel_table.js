@@ -14,6 +14,7 @@ TgUserTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgUserTerTable(props) {
@@ -34,19 +35,21 @@ export default function TgUserTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Username</TH>
-          <TH>Name</TH>
+          <TH hidden={props.excludeColumns.includes("username")}>Username</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("username")}
             type="VARCHAR(255)"
             value={get(item, 'username')}
             link={`/tgUser/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             editId={item.id}

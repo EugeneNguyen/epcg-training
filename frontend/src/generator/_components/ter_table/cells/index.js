@@ -7,6 +7,7 @@ import CellDateInput from './date_input';
 import CellCheckBoxInput from './checkbox_input';
 
 export default function Cell(props) {
+  if (props.hidden) return null;
   const {type, ...restProps} = props;
   if (type === 'INT' || type === 'FLOAT') return <CellIntegerInput {...restProps} />;
   if (type === 'DATETIME') return <CellDateInput {...restProps} />;
@@ -23,6 +24,7 @@ Cell.propTypes = {
   dateFormat: PropTypes.string,
   link: PropTypes.string,
   size: PropTypes.number,
+  hidden: PropTypes.bool,
 
   editable: PropTypes.bool,
   editId: PropTypes.string,

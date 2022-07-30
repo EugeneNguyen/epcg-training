@@ -14,6 +14,7 @@ EtCourseEnrollTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseEnrollTerTable(props) {
@@ -33,24 +34,27 @@ export default function EtCourseEnrollTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Course</TH>
-          <TH>User</TH>
-          <TH>Is Active</TH>
-          <TH>Is Course Admin</TH>
+          <TH hidden={props.excludeColumns.includes("courseId")}>Course</TH>
+          <TH hidden={props.excludeColumns.includes("userId")}>User</TH>
+          <TH hidden={props.excludeColumns.includes("isActive")}>Is Active</TH>
+          <TH hidden={props.excludeColumns.includes("isCourseAdmin")}>Is Course Admin</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("courseId")}
             type="CHAR(36)"
             value={get(item, 'course.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("userId")}
             type="CHAR(36)"
             value={get(item, 'user.username')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("isActive")}
             type="TINYINT(1)"
             value={get(item, 'isActive')}
             editId={item.id}
@@ -60,6 +64,7 @@ export default function EtCourseEnrollTerTable(props) {
             editable
           />
           <Cell
+            hidden={props.excludeColumns.includes("isCourseAdmin")}
             type="TINYINT(1)"
             value={get(item, 'isCourseAdmin')}
             editId={item.id}

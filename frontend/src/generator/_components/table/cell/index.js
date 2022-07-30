@@ -3,7 +3,8 @@ import CellLink from './cell_link';
 import CellText from './cell_text';
 import CellCheckbox from './cell_checkbox';
 
-export default function Cell({type, link, ...props}) {
+export default function Cell({type, link, hidden, ...props}) {
+  if (hidden) return null;
   if (type === 'DATETIME') {
     return <CellDatetime {...props} />;
   }

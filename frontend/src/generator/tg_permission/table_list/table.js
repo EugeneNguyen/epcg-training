@@ -26,16 +26,18 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("name") || (
-          <TH className="">
-            Name
-          </TH>
-        )}
-        {excludeColumns.includes("groupId") || (
-          <TH className="">
-            Group
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size=""
+        >
+          Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("groupId")}
+          size=""
+        >
+          Group
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -44,19 +46,19 @@ export default function TgPermissionTable({limit, offset, didLoadData, onRefRefe
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/tgPermission/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("groupId") || (
           <Cell
+            hidden={excludeColumns.includes("groupId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'group.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

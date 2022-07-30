@@ -32,6 +32,7 @@ fields:
     list:
       enable: true
       editable: true
+      size: '80'
       link: /etCourseTemplateQuestionMCQ/${item.id}
     add:
       enable: true
@@ -48,8 +49,9 @@ fields:
     name: question
     graphType: String
     list:
-      enable: false
+      enable: true
       editable: true
+      size: '80'
     add:
       enable: true
     edit:
@@ -81,8 +83,9 @@ fields:
     name: answerA
     graphType: String
     list:
-      enable: false
+      enable: true
       editable: true
+      size: '80'
     add:
       enable: true
     edit:
@@ -98,8 +101,9 @@ fields:
     name: answerB
     graphType: String
     list:
-      enable: false
+      enable: true
       editable: true
+      size: '80'
     add:
       enable: true
     edit:
@@ -115,8 +119,9 @@ fields:
     name: answerC
     graphType: String
     list:
-      enable: false
+      enable: true
       editable: true
+      size: '80'
     add:
       enable: true
     edit:
@@ -132,8 +137,9 @@ fields:
     name: answerD
     graphType: String
     list:
-      enable: false
+      enable: true
       editable: true
+      size: '80'
     add:
       enable: true
     edit:
@@ -166,7 +172,9 @@ fields:
     name: explanation
     graphType: String
     list:
-      enable: false
+      enable: true
+      editable: true
+      size: '80'
     add:
       enable: true
     edit:

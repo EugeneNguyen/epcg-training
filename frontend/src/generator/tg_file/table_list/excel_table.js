@@ -14,6 +14,7 @@ TgFileTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgFileTerTable(props) {
@@ -33,64 +34,75 @@ export default function TgFileTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
-          <TH>Service</TH>
-          <TH>Key</TH>
-          <TH>Original Name</TH>
-          <TH>Extension</TH>
-          <TH>Mime Type</TH>
-          <TH>Size</TH>
-          <TH>Meta</TH>
-          <TH>Owner User Id</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
+          <TH hidden={props.excludeColumns.includes("id")}>Id</TH>
+          <TH hidden={props.excludeColumns.includes("service")}>Service</TH>
+          <TH hidden={props.excludeColumns.includes("key")}>Key</TH>
+          <TH hidden={props.excludeColumns.includes("originalName")}>Original Name</TH>
+          <TH hidden={props.excludeColumns.includes("extension")}>Extension</TH>
+          <TH hidden={props.excludeColumns.includes("mimeType")}>Mime Type</TH>
+          <TH hidden={props.excludeColumns.includes("size")}>Size</TH>
+          <TH hidden={props.excludeColumns.includes("meta")}>Meta</TH>
+          <TH hidden={props.excludeColumns.includes("ownerUserId")}>Owner User Id</TH>
+          <TH hidden={props.excludeColumns.includes("createdAt")}>Created At</TH>
+          <TH hidden={props.excludeColumns.includes("updatedAt")}>Updated At</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("id")}
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/tgFile/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("service")}
             type="VARCHAR(255)"
             value={get(item, 'service')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("key")}
             type="VARCHAR(255)"
             value={get(item, 'key')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("originalName")}
             type="VARCHAR(255)"
             value={get(item, 'originalName')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("extension")}
             type="VARCHAR(255)"
             value={get(item, 'extension')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("mimeType")}
             type="VARCHAR(255)"
             value={get(item, 'mimeType')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("size")}
             type="INT"
             value={get(item, 'size')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("meta")}
             type="TEXT"
             value={get(item, 'meta')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("ownerUserId")}
             type="CHAR(36)"
             value={get(item, 'ownerUserId')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("createdAt")}
             type="DATETIME"
             value={get(item, 'createdAt')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("updatedAt")}
             type="DATETIME"
             value={get(item, 'updatedAt')}
           />

@@ -26,41 +26,48 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("id") || (
-          <TH className="">
-            Id
-          </TH>
-        )}
-        {excludeColumns.includes("examId") || (
-          <TH className="">
-            Exam
-          </TH>
-        )}
-        {excludeColumns.includes("templateExamId") || (
-          <TH className="">
-            Template Exam
-          </TH>
-        )}
-        {excludeColumns.includes("score") || (
-          <TH className="">
-            Score
-          </TH>
-        )}
-        {excludeColumns.includes("duration") || (
-          <TH className="">
-            Duration
-          </TH>
-        )}
-        {excludeColumns.includes("startTime") || (
-          <TH className="">
-            Start Time
-          </TH>
-        )}
-        {excludeColumns.includes("endTime") || (
-          <TH className="">
-            End Time
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("id")}
+          size=""
+        >
+          Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("examId")}
+          size=""
+        >
+          Exam
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("templateExamId")}
+          size=""
+        >
+          Template Exam
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("score")}
+          size=""
+        >
+          Score
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("duration")}
+          size=""
+        >
+          Duration
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("startTime")}
+          size=""
+        >
+          Start Time
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("endTime")}
+          size=""
+        >
+          End Time
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -69,50 +76,50 @@ export default function EtExamAttemptTable({limit, offset, didLoadData, onRefRef
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("id") || (
           <Cell
+            hidden={excludeColumns.includes("id")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/etExamAttempt/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("examId") || (
           <Cell
+            hidden={excludeColumns.includes("examId")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'exam.name')}
           />
-        )}
-          {excludeColumns.includes("templateExamId") || (
           <Cell
+            hidden={excludeColumns.includes("templateExamId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'templateExam.name')}
           />
-        )}
-          {excludeColumns.includes("score") || (
           <Cell
+            hidden={excludeColumns.includes("score")}
+            size=""
             type="INT"
             value={get(item, 'score')}
           />
-        )}
-          {excludeColumns.includes("duration") || (
           <Cell
+            hidden={excludeColumns.includes("duration")}
+            size=""
             type="INT"
             value={get(item, 'duration')}
             link={`http://localhost:4000/#/exam/attempts/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("startTime") || (
           <Cell
+            hidden={excludeColumns.includes("startTime")}
+            size=""
             type="DATETIME"
             value={get(item, 'startTime')}
           />
-        )}
-          {excludeColumns.includes("endTime") || (
           <Cell
+            hidden={excludeColumns.includes("endTime")}
+            size=""
             type="DATETIME"
             value={get(item, 'endTime')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

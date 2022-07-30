@@ -27,46 +27,54 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("name") || (
-          <TH className="">
-            Name
-          </TH>
-        )}
-        {excludeColumns.includes("duration") || (
-          <TH className="">
-            Duration
-          </TH>
-        )}
-        {excludeColumns.includes("numberOfQuestion") || (
-          <TH className="">
-            Number Of Question
-          </TH>
-        )}
-        {excludeColumns.includes("unlimitedTime") || (
-          <TH className="">
-            Unlimited Time
-          </TH>
-        )}
-        {excludeColumns.includes("randomQuestionOrder") || (
-          <TH className="">
-            Random Question Order
-          </TH>
-        )}
-        {excludeColumns.includes("randomChoiceOrder") || (
-          <TH className="">
-            Random Choice Order
-          </TH>
-        )}
-        {excludeColumns.includes("isPublic") || (
-          <TH className="">
-            Is Public
-          </TH>
-        )}
-        {excludeColumns.includes("courseTemplateId") || (
-          <TH className="">
-            Course Template
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size=""
+        >
+          Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("duration")}
+          size=""
+        >
+          Duration
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("numberOfQuestion")}
+          size=""
+        >
+          Number Of Question
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("unlimitedTime")}
+          size=""
+        >
+          Unlimited Time
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("randomQuestionOrder")}
+          size=""
+        >
+          Random Question Order
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("randomChoiceOrder")}
+          size=""
+        >
+          Random Choice Order
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("isPublic")}
+          size=""
+        >
+          Is Public
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("courseTemplateId")}
+          size=""
+        >
+          Course Template
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -75,15 +83,16 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourseTemplateExam/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("duration") || (
           <Cell
+            hidden={excludeColumns.includes("duration")}
+            size=""
             type="INT"
             value={get(item, 'duration')}
             id={item.id}
@@ -92,9 +101,9 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("numberOfQuestion") || (
           <Cell
+            hidden={excludeColumns.includes("numberOfQuestion")}
+            size=""
             type="INT"
             value={get(item, 'numberOfQuestion')}
             id={item.id}
@@ -103,37 +112,36 @@ export default function EtCourseTemplateExamTable({limit, offset, didLoadData, o
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("unlimitedTime") || (
           <Cell
+            hidden={excludeColumns.includes("unlimitedTime")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'unlimitedTime')}
           />
-        )}
-          {excludeColumns.includes("randomQuestionOrder") || (
           <Cell
+            hidden={excludeColumns.includes("randomQuestionOrder")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'randomQuestionOrder')}
           />
-        )}
-          {excludeColumns.includes("randomChoiceOrder") || (
           <Cell
+            hidden={excludeColumns.includes("randomChoiceOrder")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'randomChoiceOrder')}
           />
-        )}
-          {excludeColumns.includes("isPublic") || (
           <Cell
+            hidden={excludeColumns.includes("isPublic")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'isPublic')}
           />
-        )}
-          {excludeColumns.includes("courseTemplateId") || (
           <Cell
+            hidden={excludeColumns.includes("courseTemplateId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

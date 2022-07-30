@@ -14,6 +14,7 @@ EtCourseExamTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseExamTerTable(props) {
@@ -33,15 +34,16 @@ export default function EtCourseExamTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH size="4">Name</TH>
-          <TH>Course</TH>
-          <TH size="4">Course Template Exam</TH>
+          <TH hidden={props.excludeColumns.includes("name")} size="4">Name</TH>
+          <TH hidden={props.excludeColumns.includes("courseId")}>Course</TH>
+          <TH hidden={props.excludeColumns.includes("courseTemplateExamId")} size="4">Course Template Exam</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             size="4"
@@ -52,10 +54,12 @@ export default function EtCourseExamTerTable(props) {
             editable
           />
           <Cell
+            hidden={props.excludeColumns.includes("courseId")}
             type="CHAR(36)"
             value={get(item, 'course.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("courseTemplateExamId")}
             type="CHAR(36)"
             value={get(item, 'courseTemplateExam.name')}
             size="4"

@@ -26,16 +26,18 @@ export default function TgUserRoleTable({limit, offset, didLoadData, onRefRefetc
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("userId") || (
-          <TH className="">
-            User
-          </TH>
-        )}
-        {excludeColumns.includes("roleId") || (
-          <TH className="">
-            Role
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("userId")}
+          size=""
+        >
+          User
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("roleId")}
+          size=""
+        >
+          Role
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -44,18 +46,18 @@ export default function TgUserRoleTable({limit, offset, didLoadData, onRefRefetc
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("userId") || (
           <Cell
+            hidden={excludeColumns.includes("userId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'user.username')}
           />
-        )}
-          {excludeColumns.includes("roleId") || (
           <Cell
+            hidden={excludeColumns.includes("roleId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'role.name')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

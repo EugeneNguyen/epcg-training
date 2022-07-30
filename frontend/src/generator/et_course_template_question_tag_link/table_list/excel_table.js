@@ -14,6 +14,7 @@ EtCourseTemplateQuestionTagLinkTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseTemplateQuestionTagLinkTerTable(props) {
@@ -33,18 +34,20 @@ export default function EtCourseTemplateQuestionTagLinkTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Question</TH>
-          <TH>Tag</TH>
+          <TH hidden={props.excludeColumns.includes("questionId")}>Question</TH>
+          <TH hidden={props.excludeColumns.includes("questionTagId")}>Tag</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("questionId")}
             type="CHAR(36)"
             value={get(item, 'question.questionCode')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("questionTagId")}
             type="CHAR(36)"
             value={get(item, 'tag.name')}
           />

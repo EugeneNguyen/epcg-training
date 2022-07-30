@@ -14,6 +14,7 @@ EtCourseTemplateExamQuestionTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseTemplateExamQuestionTerTable(props) {
@@ -33,24 +34,27 @@ export default function EtCourseTemplateExamQuestionTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Exam Id</TH>
-          <TH size="80">Question</TH>
-          <TH>Order</TH>
+          <TH hidden={props.excludeColumns.includes("examId")}>Exam Id</TH>
+          <TH hidden={props.excludeColumns.includes("questionId")} size="80">Question</TH>
+          <TH hidden={props.excludeColumns.includes("order")}>Order</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("examId")}
             type="CHAR(36)"
             value={get(item, 'examId')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("questionId")}
             type="CHAR(36)"
             value={get(item, 'question.questionCode')}
             size="80"
           />
           <Cell
+            hidden={props.excludeColumns.includes("order")}
             type="INT"
             value={get(item, 'order')}
             editId={item.id}

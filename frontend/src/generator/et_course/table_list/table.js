@@ -26,26 +26,30 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("name") || (
-          <TH className="">
-            Name
-          </TH>
-        )}
-        {excludeColumns.includes("educationProviderId") || (
-          <TH className="">
-            Education Provider
-          </TH>
-        )}
-        {excludeColumns.includes("courseTemplateId") || (
-          <TH className="">
-            Course Template
-          </TH>
-        )}
-        {excludeColumns.includes("isPrivateCourse") || (
-          <TH className="">
-            Is Private Course
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size=""
+        >
+          Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("educationProviderId")}
+          size=""
+        >
+          Education Provider
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("courseTemplateId")}
+          size=""
+        >
+          Course Template
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("isPrivateCourse")}
+          size=""
+        >
+          Is Private Course
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -54,31 +58,31 @@ export default function EtCourseTable({limit, offset, didLoadData, onRefRefetch,
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourse/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("educationProviderId") || (
           <Cell
+            hidden={excludeColumns.includes("educationProviderId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'educationProvider.name')}
           />
-        )}
-          {excludeColumns.includes("courseTemplateId") || (
           <Cell
+            hidden={excludeColumns.includes("courseTemplateId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
           />
-        )}
-          {excludeColumns.includes("isPrivateCourse") || (
           <Cell
+            hidden={excludeColumns.includes("isPrivateCourse")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'isPrivateCourse')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

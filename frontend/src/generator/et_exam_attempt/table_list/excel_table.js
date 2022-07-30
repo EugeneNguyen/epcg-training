@@ -14,6 +14,7 @@ EtExamAttemptTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtExamAttemptTerTable(props) {
@@ -33,45 +34,52 @@ export default function EtExamAttemptTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
-          <TH>Exam</TH>
-          <TH>Template Exam</TH>
-          <TH>Score</TH>
-          <TH>Duration</TH>
-          <TH>Start Time</TH>
-          <TH>End Time</TH>
+          <TH hidden={props.excludeColumns.includes("id")}>Id</TH>
+          <TH hidden={props.excludeColumns.includes("examId")}>Exam</TH>
+          <TH hidden={props.excludeColumns.includes("templateExamId")}>Template Exam</TH>
+          <TH hidden={props.excludeColumns.includes("score")}>Score</TH>
+          <TH hidden={props.excludeColumns.includes("duration")}>Duration</TH>
+          <TH hidden={props.excludeColumns.includes("startTime")}>Start Time</TH>
+          <TH hidden={props.excludeColumns.includes("endTime")}>End Time</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("id")}
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/etExamAttempt/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("examId")}
             type="VARCHAR(255)"
             value={get(item, 'exam.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("templateExamId")}
             type="CHAR(36)"
             value={get(item, 'templateExam.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("score")}
             type="INT"
             value={get(item, 'score')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("duration")}
             type="INT"
             value={get(item, 'duration')}
             link={`http://localhost:4000/#/exam/attempts/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("startTime")}
             type="DATETIME"
             value={get(item, 'startTime')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("endTime")}
             type="DATETIME"
             value={get(item, 'endTime')}
           />

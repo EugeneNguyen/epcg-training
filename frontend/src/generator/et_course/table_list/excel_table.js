@@ -14,6 +14,7 @@ EtCourseTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function EtCourseTerTable(props) {
@@ -33,29 +34,33 @@ export default function EtCourseTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Name</TH>
-          <TH>Education Provider</TH>
-          <TH>Course Template</TH>
-          <TH>Is Private Course</TH>
+          <TH hidden={props.excludeColumns.includes("name")}>Name</TH>
+          <TH hidden={props.excludeColumns.includes("educationProviderId")}>Education Provider</TH>
+          <TH hidden={props.excludeColumns.includes("courseTemplateId")}>Course Template</TH>
+          <TH hidden={props.excludeColumns.includes("isPrivateCourse")}>Is Private Course</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("name")}
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/etCourse/${item.id}`}
           />
           <Cell
+            hidden={props.excludeColumns.includes("educationProviderId")}
             type="CHAR(36)"
             value={get(item, 'educationProvider.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("courseTemplateId")}
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("isPrivateCourse")}
             type="TINYINT(1)"
             value={get(item, 'isPrivateCourse')}
           />

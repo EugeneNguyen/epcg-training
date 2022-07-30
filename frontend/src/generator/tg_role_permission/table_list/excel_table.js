@@ -14,6 +14,7 @@ TgRolePermissionTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgRolePermissionTerTable(props) {
@@ -33,18 +34,20 @@ export default function TgRolePermissionTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Role</TH>
-          <TH>Permission</TH>
+          <TH hidden={props.excludeColumns.includes("roleId")}>Role</TH>
+          <TH hidden={props.excludeColumns.includes("permissionId")}>Permission</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("roleId")}
             type="CHAR(36)"
             value={get(item, 'role.name')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("permissionId")}
             type="CHAR(36)"
             value={get(item, 'permission.name')}
           />

@@ -14,6 +14,7 @@ TgUserTokenTerTable.propTypes = {
   where: PropTypes.object,
   searchBy: PropTypes.object,
   didLoadData: PropTypes.func,
+  excludeColumns: PropTypes.array,
 };
 
 export default function TgUserTokenTerTable(props) {
@@ -33,28 +34,32 @@ export default function TgUserTokenTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
-          <TH>User Id</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
+          <TH hidden={props.excludeColumns.includes("id")}>Id</TH>
+          <TH hidden={props.excludeColumns.includes("userId")}>User Id</TH>
+          <TH hidden={props.excludeColumns.includes("createdAt")}>Created At</TH>
+          <TH hidden={props.excludeColumns.includes("updatedAt")}>Updated At</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
+            hidden={props.excludeColumns.includes("id")}
             type="CHAR(36)"
             value={get(item, 'id')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("userId")}
             type="CHAR(36)"
             value={get(item, 'userId')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("createdAt")}
             type="DATETIME"
             value={get(item, 'createdAt')}
           />
           <Cell
+            hidden={props.excludeColumns.includes("updatedAt")}
             type="DATETIME"
             value={get(item, 'updatedAt')}
           />

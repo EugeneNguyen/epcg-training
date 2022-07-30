@@ -26,61 +26,72 @@ export default function TgFileTable({limit, offset, didLoadData, onRefRefetch, w
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("id") || (
-          <TH className="">
-            Id
-          </TH>
-        )}
-        {excludeColumns.includes("service") || (
-          <TH className="">
-            Service
-          </TH>
-        )}
-        {excludeColumns.includes("key") || (
-          <TH className="">
-            Key
-          </TH>
-        )}
-        {excludeColumns.includes("originalName") || (
-          <TH className="">
-            Original Name
-          </TH>
-        )}
-        {excludeColumns.includes("extension") || (
-          <TH className="">
-            Extension
-          </TH>
-        )}
-        {excludeColumns.includes("mimeType") || (
-          <TH className="">
-            Mime Type
-          </TH>
-        )}
-        {excludeColumns.includes("size") || (
-          <TH className="">
-            Size
-          </TH>
-        )}
-        {excludeColumns.includes("meta") || (
-          <TH className="">
-            Meta
-          </TH>
-        )}
-        {excludeColumns.includes("ownerUserId") || (
-          <TH className="">
-            Owner User Id
-          </TH>
-        )}
-        {excludeColumns.includes("createdAt") || (
-          <TH className="">
-            Created At
-          </TH>
-        )}
-        {excludeColumns.includes("updatedAt") || (
-          <TH className="">
-            Updated At
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("id")}
+          size=""
+        >
+          Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("service")}
+          size=""
+        >
+          Service
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("key")}
+          size=""
+        >
+          Key
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("originalName")}
+          size=""
+        >
+          Original Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("extension")}
+          size=""
+        >
+          Extension
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("mimeType")}
+          size=""
+        >
+          Mime Type
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("size")}
+          size=""
+        >
+          Size
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("meta")}
+          size=""
+        >
+          Meta
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("ownerUserId")}
+          size=""
+        >
+          Owner User Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("createdAt")}
+          size=""
+        >
+          Created At
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("updatedAt")}
+          size=""
+        >
+          Updated At
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -89,73 +100,73 @@ export default function TgFileTable({limit, offset, didLoadData, onRefRefetch, w
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("id") || (
           <Cell
+            hidden={excludeColumns.includes("id")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/tgFile/${item.id}`}
           />
-        )}
-          {excludeColumns.includes("service") || (
           <Cell
+            hidden={excludeColumns.includes("service")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'service')}
           />
-        )}
-          {excludeColumns.includes("key") || (
           <Cell
+            hidden={excludeColumns.includes("key")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'key')}
           />
-        )}
-          {excludeColumns.includes("originalName") || (
           <Cell
+            hidden={excludeColumns.includes("originalName")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'originalName')}
           />
-        )}
-          {excludeColumns.includes("extension") || (
           <Cell
+            hidden={excludeColumns.includes("extension")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'extension')}
           />
-        )}
-          {excludeColumns.includes("mimeType") || (
           <Cell
+            hidden={excludeColumns.includes("mimeType")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'mimeType')}
           />
-        )}
-          {excludeColumns.includes("size") || (
           <Cell
+            hidden={excludeColumns.includes("size")}
+            size=""
             type="INT"
             value={get(item, 'size')}
           />
-        )}
-          {excludeColumns.includes("meta") || (
           <Cell
+            hidden={excludeColumns.includes("meta")}
+            size=""
             type="TEXT"
             value={get(item, 'meta')}
           />
-        )}
-          {excludeColumns.includes("ownerUserId") || (
           <Cell
+            hidden={excludeColumns.includes("ownerUserId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'ownerUserId')}
           />
-        )}
-          {excludeColumns.includes("createdAt") || (
           <Cell
+            hidden={excludeColumns.includes("createdAt")}
+            size=""
             type="DATETIME"
             value={get(item, 'createdAt')}
           />
-        )}
-          {excludeColumns.includes("updatedAt") || (
           <Cell
+            hidden={excludeColumns.includes("updatedAt")}
+            size=""
             type="DATETIME"
             value={get(item, 'updatedAt')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -26,16 +26,18 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("name") || (
-          <TH className="">
-            Name
-          </TH>
-        )}
-        {excludeColumns.includes("description") || (
-          <TH className="">
-            Description
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("name")}
+          size=""
+        >
+          Name
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("description")}
+          size=""
+        >
+          Description
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -44,8 +46,9 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("name") || (
           <Cell
+            hidden={excludeColumns.includes("name")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'name')}
             link={`/tgRole/${item.id}`}
@@ -55,9 +58,9 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
             onCompleted={() => refetch()}
             editable
           />
-        )}
-          {excludeColumns.includes("description") || (
           <Cell
+            hidden={excludeColumns.includes("description")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'description')}
             id={item.id}
@@ -66,7 +69,6 @@ export default function TgRoleTable({limit, offset, didLoadData, onRefRefetch, w
             onCompleted={() => refetch()}
             editable
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -26,66 +26,78 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
     <Table>
       <THead>
       <TR>
-        {excludeColumns.includes("id") || (
-          <TH className="">
-            Id
-          </TH>
-        )}
-        {excludeColumns.includes("attemptId") || (
-          <TH className="">
-            Attempt Id
-          </TH>
-        )}
-        {excludeColumns.includes("questionId") || (
-          <TH className="">
-            Question Id
-          </TH>
-        )}
-        {excludeColumns.includes("order") || (
-          <TH className="">
-            Order
-          </TH>
-        )}
-        {excludeColumns.includes("displayedQuestionData") || (
-          <TH className="">
-            Displayed Question Data
-          </TH>
-        )}
-        {excludeColumns.includes("fullQuestionData") || (
-          <TH className="">
-            Full Question Data
-          </TH>
-        )}
-        {excludeColumns.includes("answer") || (
-          <TH className="">
-            Answer
-          </TH>
-        )}
-        {excludeColumns.includes("rawAnswer") || (
-          <TH className="">
-            Raw Answer
-          </TH>
-        )}
-        {excludeColumns.includes("correct") || (
-          <TH className="">
-            Correct
-          </TH>
-        )}
-        {excludeColumns.includes("flag") || (
-          <TH className="">
-            Flag
-          </TH>
-        )}
-        {excludeColumns.includes("startTime") || (
-          <TH className="">
-            Start Time
-          </TH>
-        )}
-        {excludeColumns.includes("endTime") || (
-          <TH className="">
-            End Time
-          </TH>
-        )}
+        <TH
+          hidden={excludeColumns.includes("id")}
+          size=""
+        >
+          Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("attemptId")}
+          size=""
+        >
+          Attempt Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("questionId")}
+          size=""
+        >
+          Question Id
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("order")}
+          size=""
+        >
+          Order
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("displayedQuestionData")}
+          size=""
+        >
+          Displayed Question Data
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("fullQuestionData")}
+          size=""
+        >
+          Full Question Data
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("answer")}
+          size=""
+        >
+          Answer
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("rawAnswer")}
+          size=""
+        >
+          Raw Answer
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("correct")}
+          size=""
+        >
+          Correct
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("flag")}
+          size=""
+        >
+          Flag
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("startTime")}
+          size=""
+        >
+          Start Time
+        </TH>
+        <TH
+          hidden={excludeColumns.includes("endTime")}
+          size=""
+        >
+          End Time
+        </TH>
         <TH className="w-30">
           Action
         </TH>
@@ -94,78 +106,78 @@ export default function EtExamAttemptQuestionTable({limit, offset, didLoadData, 
       <TBody>
       {data && data.data.rows.map(item => (
       <TR key={item.id} hover>
-          {excludeColumns.includes("id") || (
           <Cell
+            hidden={excludeColumns.includes("id")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'id')}
           />
-        )}
-          {excludeColumns.includes("attemptId") || (
           <Cell
+            hidden={excludeColumns.includes("attemptId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'attemptId')}
           />
-        )}
-          {excludeColumns.includes("questionId") || (
           <Cell
+            hidden={excludeColumns.includes("questionId")}
+            size=""
             type="CHAR(36)"
             value={get(item, 'questionId')}
           />
-        )}
-          {excludeColumns.includes("order") || (
           <Cell
+            hidden={excludeColumns.includes("order")}
+            size=""
             type="INT"
             value={get(item, 'order')}
           />
-        )}
-          {excludeColumns.includes("displayedQuestionData") || (
           <Cell
+            hidden={excludeColumns.includes("displayedQuestionData")}
+            size=""
             type="TEXT"
             value={get(item, 'displayedQuestionData')}
           />
-        )}
-          {excludeColumns.includes("fullQuestionData") || (
           <Cell
+            hidden={excludeColumns.includes("fullQuestionData")}
+            size=""
             type="TEXT"
             value={get(item, 'fullQuestionData')}
           />
-        )}
-          {excludeColumns.includes("answer") || (
           <Cell
+            hidden={excludeColumns.includes("answer")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'answer')}
           />
-        )}
-          {excludeColumns.includes("rawAnswer") || (
           <Cell
+            hidden={excludeColumns.includes("rawAnswer")}
+            size=""
             type="VARCHAR(255)"
             value={get(item, 'rawAnswer')}
           />
-        )}
-          {excludeColumns.includes("correct") || (
           <Cell
+            hidden={excludeColumns.includes("correct")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'correct')}
           />
-        )}
-          {excludeColumns.includes("flag") || (
           <Cell
+            hidden={excludeColumns.includes("flag")}
+            size=""
             type="TINYINT(1)"
             value={get(item, 'flag')}
           />
-        )}
-          {excludeColumns.includes("startTime") || (
           <Cell
+            hidden={excludeColumns.includes("startTime")}
+            size=""
             type="DATETIME"
             value={get(item, 'startTime')}
           />
-        )}
-          {excludeColumns.includes("endTime") || (
           <Cell
+            hidden={excludeColumns.includes("endTime")}
+            size=""
             type="DATETIME"
             value={get(item, 'endTime')}
           />
-        )}
         <td>
           <ButtonLink to={path.join(pathname, relationshipName || "", item.id, 'edit')} color="primary" size="sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
