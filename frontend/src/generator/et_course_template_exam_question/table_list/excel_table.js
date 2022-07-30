@@ -35,7 +35,7 @@ export default function EtCourseTemplateExamQuestionTerTable(props) {
         <TR>
           <TH>Id</TH>
           <TH>Exam Id</TH>
-          <TH>Question</TH>
+          <TH size="80">Question</TH>
           <TH>Order</TH>
           <TH>Created At</TH>
           <TH>Updated At</TH>
@@ -55,6 +55,7 @@ export default function EtCourseTemplateExamQuestionTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'question.questionCode')}
+            size="80"
           />
           <Cell
             type="INT"

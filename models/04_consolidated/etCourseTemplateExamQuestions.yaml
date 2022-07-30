@@ -47,6 +47,7 @@ fields:
     graphType: String
     list:
       enable: true
+      size: '80'
     add:
       enable: true
     edit:

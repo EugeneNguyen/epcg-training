@@ -7,6 +7,12 @@ fields:
   id:
     list:
       enable: false
+  examId:
+    list:
+      enable: true
+  questionId:
+    list:
+      size: '80'
   order:
     list:
       editable: true

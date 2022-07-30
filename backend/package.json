@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "local-start": "node app.js",
     "start": "./node_modules/pm2/bin/pm2-runtime app.js -i max",
     "poststart": "node ./node_modules/pm2/bin/pm2 logs",
     "sql": "./node_modules/.bin/sequelize --migrations-path=src/database/migrations --seeders-path=src/database/seeders --models-path=src/database/models ----config=src/database/config/config.json"
