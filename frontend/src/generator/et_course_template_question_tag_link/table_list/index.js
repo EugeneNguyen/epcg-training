@@ -11,13 +11,13 @@ export default function TableEtCourseTemplateQuestionTagLinkList({where, exclude
   const [limit, setLimit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(0);
-  const [excelTable, setExcelTable] = useState(false);
+  const [isTerTable, setIsTerTable] = useState(false);
+
   const location = useLocation();
   let refetch = null;
-  const Table = excelTable ? EtCourseTemplateQuestionTagLinkTerTable : EtCourseTemplateQuestionTagLinkTable;
+  const Table = isTerTable ? EtCourseTemplateQuestionTagLinkTerTable : EtCourseTemplateQuestionTagLinkTable;
   return (
     <div className="space-y-4">
-    <Button onClick={() => setExcelTable(!excelTable)}>Switch</Button>
       <Box title="List EtCourseTemplateQuestionTagLink">
         <Table
           limit={limit}
@@ -35,6 +35,8 @@ export default function TableEtCourseTemplateQuestionTagLinkList({where, exclude
           limit={limit}
           onChangePage={page => setOffset(page * limit)}
           onChangeLimit={limit => setLimit(limit)}
+          onChangeTerTable={() => setIsTerTable(!isTerTable)}
+          isTerTable={isTerTable}
           refetch={() => refetch()}
         />
       </Box>

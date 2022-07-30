@@ -1,48 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SelectLimit from './select_limit';
 import {Button} from '../button';
+import {IconArrowLeft, IconArrowRight, IconRefresh, IconTable} from "./icons/index";
 
 const PAGE_AROUND = 2;
 
-function IconTable() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-         strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round"
-            d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-    </svg>
-  )
-}
-
-function IconRefresh() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-         strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-    </svg>
-  )
-}
-
-function IconArrowRight() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-         strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/>
-    </svg>
-  )
-}
-
-function IconArrowLeft() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-         strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/>
-    </svg>
-  )
-}
-
-export default function Paginator({total, offset, limit, onChangePage, onChangeLimit, refetch}) {
+export default function Paginator({total, offset, limit, onChangePage, onChangeLimit, refetch, onChangeTerTable, isTerTable}) {
+  const [useTerTable, setUseTerTable] = useState(false);
   const totalPage = Math.ceil(total / limit);
   const currentPage = Math.floor(offset / limit);
   const pageIndexed = [];
@@ -115,7 +79,7 @@ export default function Paginator({total, offset, limit, onChangePage, onChangeL
           <Button onClick={() => refetch()} color="secondary" className="ml-2" outline>
             <IconRefresh/>
           </Button>
-          <Button onClick={() => refetch()} color="secondary" className="ml-2" outline>
+          <Button onClick={() => onChangeTerTable()} className="ml-2" outline={!isTerTable}>
             <IconTable/>
           </Button>
         </div>
