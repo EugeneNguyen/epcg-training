@@ -34,7 +34,6 @@ export default function EtCourseTemplateExamTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
           <TH>Name</TH>
           <TH>Duration</TH>
           <TH>Number Of Question</TH>
@@ -43,17 +42,11 @@ export default function EtCourseTemplateExamTerTable(props) {
           <TH>Random Choice Order</TH>
           <TH>Is Public</TH>
           <TH>Course Template</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
-          <Cell
-            type="CHAR(36)"
-            value={get(item, 'id')}
-          />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'name')}
@@ -96,14 +89,6 @@ export default function EtCourseTemplateExamTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

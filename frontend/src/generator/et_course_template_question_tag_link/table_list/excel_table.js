@@ -33,11 +33,8 @@ export default function EtCourseTemplateQuestionTagLinkTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
           <TH>Question</TH>
           <TH>Tag</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -45,23 +42,11 @@ export default function EtCourseTemplateQuestionTagLinkTerTable(props) {
         <TR key={item.id} hover>
           <Cell
             type="CHAR(36)"
-            value={get(item, 'id')}
-          />
-          <Cell
-            type="CHAR(36)"
             value={get(item, 'question.questionCode')}
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'tag.name')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

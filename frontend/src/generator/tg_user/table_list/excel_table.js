@@ -34,29 +34,17 @@ export default function TgUserTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
           <TH>Username</TH>
-          <TH>Password</TH>
           <TH>Name</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
           <Cell
-            type="CHAR(36)"
-            value={get(item, 'id')}
-          />
-          <Cell
             type="VARCHAR(255)"
             value={get(item, 'username')}
             link={`/tgUser/${item.id}`}
-          />
-          <Cell
-            type="VARCHAR(255)"
-            value={get(item, 'password')}
           />
           <Cell
             type="VARCHAR(255)"
@@ -66,14 +54,6 @@ export default function TgUserTerTable(props) {
             editMutation={API.EDIT}
             editOnCompleted={() => refetch()}
             editable
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

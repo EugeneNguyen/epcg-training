@@ -27,7 +27,7 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
       <THead>
       <TR>
         {excludeColumns.includes("name") || (
-          <TH className="w-4/12">
+          <TH className="w-4">
             Name
           </TH>
         )}
@@ -37,7 +37,7 @@ export default function EtCourseExamTable({limit, offset, didLoadData, onRefRefe
           </TH>
         )}
         {excludeColumns.includes("courseTemplateExamId") || (
-          <TH className="w-4/12">
+          <TH className="w-4">
             Course Template Exam
           </TH>
         )}

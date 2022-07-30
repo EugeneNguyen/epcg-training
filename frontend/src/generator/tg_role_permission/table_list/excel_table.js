@@ -33,11 +33,8 @@ export default function TgRolePermissionTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
           <TH>Role</TH>
           <TH>Permission</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -45,23 +42,11 @@ export default function TgRolePermissionTerTable(props) {
         <TR key={item.id} hover>
           <Cell
             type="CHAR(36)"
-            value={get(item, 'id')}
-          />
-          <Cell
-            type="CHAR(36)"
             value={get(item, 'role.name')}
           />
           <Cell
             type="CHAR(36)"
             value={get(item, 'permission.name')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

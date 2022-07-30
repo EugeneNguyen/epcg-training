@@ -34,15 +34,12 @@ export default function EtExamAttemptTerTable(props) {
       <THead>
         <TR>
           <TH>Id</TH>
-          <TH>User</TH>
           <TH>Exam</TH>
           <TH>Template Exam</TH>
           <TH>Score</TH>
           <TH>Duration</TH>
           <TH>Start Time</TH>
           <TH>End Time</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -52,10 +49,6 @@ export default function EtExamAttemptTerTable(props) {
             type="CHAR(36)"
             value={get(item, 'id')}
             link={`/etExamAttempt/${item.id}`}
-          />
-          <Cell
-            type="CHAR(36)"
-            value={get(item, 'user.username')}
           />
           <Cell
             type="VARCHAR(255)"
@@ -81,14 +74,6 @@ export default function EtExamAttemptTerTable(props) {
           <Cell
             type="DATETIME"
             value={get(item, 'endTime')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

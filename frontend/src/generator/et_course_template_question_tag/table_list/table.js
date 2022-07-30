@@ -28,7 +28,7 @@ export default function EtCourseTemplateQuestionTagTable({limit, offset, didLoad
       <THead>
       <TR>
         {excludeColumns.includes("name") || (
-          <TH className="w-6/12">
+          <TH className="w-6">
             Name
           </TH>
         )}

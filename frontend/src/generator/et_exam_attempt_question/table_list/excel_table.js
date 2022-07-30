@@ -45,8 +45,6 @@ export default function EtExamAttemptQuestionTerTable(props) {
           <TH>Flag</TH>
           <TH>Start Time</TH>
           <TH>End Time</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
@@ -99,14 +97,6 @@ export default function EtExamAttemptQuestionTerTable(props) {
           <Cell
             type="DATETIME"
             value={get(item, 'endTime')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}

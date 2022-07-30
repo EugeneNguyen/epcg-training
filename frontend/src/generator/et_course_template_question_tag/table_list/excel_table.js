@@ -34,20 +34,13 @@ export default function EtCourseTemplateQuestionTagTerTable(props) {
     <Table>
       <THead>
         <TR>
-          <TH>Id</TH>
           <TH size="6">Name</TH>
           <TH>Courese Template</TH>
-          <TH>Created At</TH>
-          <TH>Updated At</TH>
         </TR>
       </THead>
       <TBody>
       {data && data.data.rows.map(item => (
         <TR key={item.id} hover>
-          <Cell
-            type="CHAR(36)"
-            value={get(item, 'id')}
-          />
           <Cell
             type="VARCHAR(255)"
             value={get(item, 'name')}
@@ -62,14 +55,6 @@ export default function EtCourseTemplateQuestionTagTerTable(props) {
           <Cell
             type="CHAR(36)"
             value={get(item, 'courseTemplate.name')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'createdAt')}
-          />
-          <Cell
-            type="DATETIME"
-            value={get(item, 'updatedAt')}
           />
         </TR>
       ))}
