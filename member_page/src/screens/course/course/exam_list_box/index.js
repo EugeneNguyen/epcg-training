@@ -22,14 +22,17 @@ export default function ExamListBox() {
   if (error) return <Box title="All Exams" padding>{error.message}</Box>;
   if (!data) return <Box title="All Exams" padding>No Data</Box>;
 
-  data.data.map(exam => {
+  const results = data.data.map(exam => {
     const attempts = data.me.examAttempts.filter(attempt => attempt.templateExamId == exam.courseTemplateExam.id);
-    if (attempts.length == 0) return;
+    if (attempts.length === 0) return exam;
 
     const bestAttempt = attempts.reduce((a, b) => (a.score > b.score) ? a : b);
-    if (bestAttempt.endTime === null) return
+    if (bestAttempt.endTime === null) return exam;
 
-    exam.bestAttempt = bestAttempt;
+    return {
+      ...exam,
+      bestAttempt
+    };
   })
 
   return (
@@ -44,7 +47,7 @@ export default function ExamListBox() {
           </tr>
         </THead>
         <TBody>
-          {data.data.map(exam => (
+          {results.map(exam => (
             <tr>
               <CellLink link={`/exam/${exam.id}`}>{exam.name}</CellLink>
               <Cell>{exam.courseTemplateExam.duration}</Cell>
